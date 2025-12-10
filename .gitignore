@@ -1,0 +1,25 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+~$*
+
+# Project specific
+# Add any filled templates with sensitive data
+*-FILLED.md
+*-CONFIDENTIAL.md
+
+# Office temporary files
+~$*.docx
+~$*.xlsx
+~$*.pptx
