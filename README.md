@@ -6,23 +6,22 @@ This repository contains comprehensive templates, guides, and documentation for 
 
 ## 🎯 Methodology Phases
 
-### **Vision → Discovery → Prototype → Build → Scale → Value**
+### **Vision to Value → Discovery → Prototype → Deploy → Scale **
 
 The methodology follows a structured approach with clear phase gates and outcomes-driven milestones:
 
 1. **Pre-sales & Discovery** - Qualify opportunities and understand requirements
 2. **Mobilise and Initiate** - Set up the project foundation
 3. **Hackathons (Prototype)** - Rapid prototyping and validation
-4. **Test & Evaluate** - Comprehensive testing and quality assurance
-5. **Prepare and Deploy** - Production deployment and scaling
-6. **Operate and Care** - Ongoing operations and optimization
+4. **Setup Platform** - Set the platform, infrastructure components for build
+5. **Build** - Build the solution
+6. **Integrate** - Integrate the solution with the rest of ecosystem
+7. **Test & Evaluate** - Comprehensive testing and quality assurance
+8. **Prepare and Deploy** - Production deployment and scaling
+9. **Operate and Care** - Ongoing operations and optimization
 
-Each phase is supported by **360° Governance and Execution, Strategy** around:
-- Setup Platform
-- Prototype & Build
-- Integrate
-- Outcomes Focus
-- Ops Planning and Change Management
+Underpinned by **360° Governance and Execution, Strategy, Ops Planning and Change Management**
+  
 
 ---
 
