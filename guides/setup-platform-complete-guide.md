@@ -936,24 +936,219 @@ Layer 5: Monitoring & Response
 
 **Common Compliance Standards**:
 
-**GDPR (General Data Protection Regulation)**:
-- [ ] Data minimization implemented
-- [ ] Right to deletion supported
-- [ ] Data processing agreements in place
-- [ ] Privacy by design implemented
-- [ ] Data breach notification process
+#### **GDPR (General Data Protection Regulation)**
 
-**HIPAA (if applicable)**:
-- [ ] PHI encryption
-- [ ] Access controls
-- [ ] Audit logging
-- [ ] Business Associate Agreements
+Applicable for organizations handling EU citizens' personal data.
 
-**SOC 2 (if applicable)**:
-- [ ] Security controls documented
-- [ ] Access reviews conducted
-- [ ] Change management process
+**Key Requirements**:
+- [ ] **Data Minimization**: Collect only necessary data
+- [ ] **Right to Access**: Data subjects can request their data
+- [ ] **Right to Erasure**: "Right to be forgotten" - data deletion on request
+- [ ] **Right to Data Portability**: Export data in machine-readable format
+- [ ] **Consent Management**: Explicit consent for data processing
+- [ ] **Data Processing Agreements**: Contracts with third-party processors
+- [ ] **Privacy by Design**: Security built into system design
+- [ ] **Data Breach Notification**: Report breaches within 72 hours
+- [ ] **Data Protection Impact Assessment (DPIA)**: For high-risk processing
+
+**Implementation Considerations**:
+- Store data in EU regions (or ensure adequate safeguards for transfers)
+- Implement automated data export functionality
+- Create data deletion workflows
+- Maintain audit logs for all personal data access
+
+---
+
+#### **HIPAA (Health Insurance Portability and Accountability Act)**
+
+Applicable for healthcare organizations handling Protected Health Information (PHI).
+
+**Key Requirements**:
+- [ ] **PHI Encryption**: Encrypt all PHI at rest and in transit
+- [ ] **Access Controls**: Role-based access, minimum necessary principle
+- [ ] **Audit Controls**: Track all PHI access
+- [ ] **Integrity Controls**: Ensure data is not altered or destroyed
+- [ ] **Transmission Security**: Secure electronic PHI transmission
+- [ ] **Business Associate Agreements (BAAs)**: Contracts with vendors handling PHI
+
+**Implementation Considerations**:
+- Use FIPS 140-2 validated encryption modules
+- Implement automatic logoff after inactivity
+- Maintain audit logs for at least 6 years
+- Conduct annual HIPAA Security Risk Assessment
+
+---
+
+#### **SOC 2 (Service Organization Control 2)**
+
+Applicable for service providers storing customer data in the cloud.
+
+**Trust Service Criteria**:
+- [ ] **Security**: Protection against unauthorized access
+- [ ] **Availability**: System availability for operation and use
+- [ ] **Processing Integrity**: Complete, valid, accurate, timely processing
+- [ ] **Confidentiality**: Protect confidential information
+- [ ] **Privacy**: Personal information handling (if applicable)
+
+**Implementation Considerations**:
+- Document all security controls and policies
+- Conduct quarterly access reviews
+- Implement change management process
+- Perform annual penetration testing
+- Maintain incident response plan
+- Prepare for SOC 2 Type II audit (6-12 month observation period)
+
+---
+
+#### **PCI-DSS (Payment Card Industry Data Security Standard)**
+
+Applicable for organizations processing, storing, or transmitting credit card data.
+
+**12 Requirements**:
+
+**Build and Maintain a Secure Network**:
+1. [ ] **Install and maintain firewall**: Network segmentation, documented rules
+2. [ ] **No default passwords**: Change all vendor defaults
+
+**Protect Cardholder Data**:
+3. [ ] **Protect stored cardholder data**: 
+   - Encrypt using AES-256 or equivalent
+   - Minimize data storage (don't store CVV/PIN)
+   - Mask PAN (show only last 4 digits)
+   - Implement key management
+4. [ ] **Encrypt transmission**: TLS 1.2+ for all cardholder data
+
+**Maintain Vulnerability Management**:
+5. [ ] **Protect against malware**: Anti-malware on all systems
+6. [ ] **Develop secure systems**: 
+   - Secure SDLC
+   - Code reviews
+   - Vulnerability scanning
+   - Penetration testing
+
+**Implement Strong Access Controls**:
+7. [ ] **Restrict access by business need-to-know**: RBAC, least privilege
+8. [ ] **Identify and authenticate access**: 
+   - MFA for all access to CDE
+   - Strong passwords (complex, rotated)
+9. [ ] **Restrict physical access**: Badge access, cameras (if applicable)
+
+**Monitor and Test Networks**:
+10. [ ] **Track and monitor access**: 
+    - Audit logs for all cardholder data access
+    - Log retention: 1 year minimum
+    - Daily log reviews
+11. [ ] **Regularly test security**: 
+    - Quarterly vulnerability scans (ASV)
+    - Annual penetration testing
+    - File integrity monitoring
+
+**Maintain Information Security Policy**:
+12. [ ] **Security policy**: 
+    - Documented and communicated
+    - Annual security awareness training
+    - Incident response plan
+
+**PCI-DSS Levels**:
+- **Level 1**: >6M transactions/year - Annual on-site audit by QSA
+- **Level 2-4**: Fewer transactions - Self-Assessment Questionnaire (SAQ)
+
+**Implementation Considerations**:
+- Minimize cardholder data environment (CDE) scope
+- Use tokenization to avoid storing actual card numbers
+- Segment network to isolate CDE
+- Engage Qualified Security Assessor (QSA) early
+- Schedule quarterly ASV scans
+- Budget for annual compliance costs
+
+---
+
+#### **APRA CPS 234 (Australian Prudential Regulation Authority)**
+
+Applicable for APRA-regulated entities (banks, insurers, superannuation funds) in Australia.
+
+**Key Requirements**:
+
+**1. Information Security Capability**:
+- [ ] Maintain information security capability commensurate with threats
+- [ ] Resources, skills, and technology appropriate for information assets
+- [ ] Board-level oversight and accountability
+
+**2. Information Asset Management**:
+- [ ] Identify and classify all information assets
+- [ ] Assess criticality based on:
+  - Impact if compromised
+  - Legal/regulatory obligations
+  - Service delivery impact
+- [ ] Implement protection measures aligned with criticality
+
+**3. Implementation Controls**:
+- [ ] Access management (user and privileged access)
+- [ ] Segregation of duties
+- [ ] Change management
+- [ ] Data backup and recovery
+- [ ] Network security
+- [ ] Incident detection and response
+
+**4. Third-Party/Outsourcing Arrangements**:
+- [ ] Identify material outsourcing arrangements
+- [ ] Due diligence on service providers
+- [ ] Contractual protections:
+  - Right to audit
+  - Security requirements
+  - Incident notification
+  - Data access and deletion
+- [ ] Monitor service provider security posture
+
+**5. Incident Management**:
 - [ ] Incident response plan
+- [ ] Notify APRA of material information security incidents within **72 hours**
+- [ ] Material incident criteria:
+  - Significant data breach
+  - Extended service disruption
+  - Potential for significant financial loss
+- [ ] Post-incident reviews and remediation
+
+**6. Testing and Assurance**:
+- [ ] Systematic testing of controls:
+  - Vulnerability assessments (regular)
+  - Penetration testing (at least annually)
+  - Security control effectiveness reviews
+- [ ] Independent assurance for material arrangements
+- [ ] Board reporting on information security (at least annually)
+
+**7. Business Continuity**:
+- [ ] Business continuity plan aligned with risk profile
+- [ ] Disaster recovery capabilities
+- [ ] Regular testing (at least annually)
+- [ ] RTO/RPO defined and tested
+
+**Data Residency Considerations**:
+- [ ] Data stored in Australian regions (Azure Australia East/Southeast)
+- [ ] Cross-border data transfer assessment
+- [ ] Ensure data sovereignty requirements met
+- [ ] Document data flows and storage locations
+
+**APRA Notification Requirements**:
+- [ ] Material incidents: Within 72 hours
+- [ ] Material changes to arrangements: 30 days prior notice
+- [ ] Annual attestation on CPS 234 compliance
+
+**Implementation Considerations**:
+- APRA CPS 234 applies to **all** information assets, not just personal data
+- Focus on **proportionality** - controls should match asset criticality
+- Board involvement is mandatory - not just an IT issue
+- Document everything - APRA expects evidence of compliance
+- If using cloud providers (like Azure):
+  - Ensure provider meets APRA requirements
+  - Maintain right to audit
+  - Understand provider's security controls
+  - Consider Azure's IRAP assessment for additional assurance
+
+**Useful Resources**:
+- APRA Prudential Practice Guide CPG 234
+- Australian Cyber Security Centre (ACSC) Essential Eight
+- ISM (Information Security Manual) from ACSC
 
 ### 6.3 Data Privacy & Protection
 

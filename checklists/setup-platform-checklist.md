@@ -440,16 +440,145 @@
   - [ ] Data deletion process defined
 
 - [ ] **Regulatory Compliance (if applicable)**
-  - [ ] GDPR requirements met (if applicable)
-  - [ ] HIPAA requirements met (if applicable)
-  - [ ] SOC 2 requirements met (if applicable)
-  - [ ] Industry-specific regulations met
-  - [ ] Compliance documentation completed
+  
+  **GDPR (General Data Protection Regulation) - if applicable**
+  - [ ] Data minimization principles applied
+  - [ ] Right to access implemented (data subject requests)
+  - [ ] Right to erasure implemented (right to be forgotten)
+  - [ ] Right to data portability implemented
+  - [ ] Consent management implemented
+  - [ ] Data processing agreements in place
+  - [ ] Privacy by design and by default
+  - [ ] Data breach notification process (72 hours)
+  - [ ] Data Protection Impact Assessment (DPIA) completed
+  - [ ] GDPR compliance documentation completed
+  
+  **HIPAA (Health Insurance Portability and Accountability Act) - if applicable**
+  - [ ] PHI (Protected Health Information) identified
+  - [ ] PHI encryption at rest and in transit
+  - [ ] Access controls for PHI (minimum necessary principle)
+  - [ ] Audit controls implemented
+  - [ ] Integrity controls implemented
+  - [ ] Transmission security implemented
+  - [ ] Business Associate Agreements (BAAs) in place
+  - [ ] HIPAA Security Rule compliance documented
+  - [ ] HIPAA Privacy Rule compliance documented
+  - [ ] Breach notification procedures documented
+  
+  **SOC 2 (Service Organization Control 2) - if applicable**
+  - [ ] Security controls documented and implemented
+  - [ ] Availability controls implemented
+  - [ ] Processing integrity controls implemented
+  - [ ] Confidentiality controls implemented
+  - [ ] Privacy controls implemented (if applicable)
+  - [ ] Access reviews conducted regularly
+  - [ ] Change management process documented
+  - [ ] Incident response plan documented and tested
+  - [ ] Vendor risk management process
+  - [ ] SOC 2 audit preparation completed
+  
+  **PCI-DSS (Payment Card Industry Data Security Standard) - if applicable**
+  - [ ] Cardholder data environment (CDE) identified and segmented
+  - [ ] **Requirement 1**: Install and maintain firewall configuration
+    - [ ] Firewall rules documented and reviewed
+    - [ ] Network segmentation implemented
+  - [ ] **Requirement 2**: Do not use vendor-supplied defaults
+    - [ ] Default passwords changed
+    - [ ] Unnecessary services disabled
+  - [ ] **Requirement 3**: Protect stored cardholder data
+    - [ ] Cardholder data encrypted (AES-256 or equivalent)
+    - [ ] Encryption key management process
+    - [ ] Cardholder data retention policy (minimize storage)
+    - [ ] PAN (Primary Account Number) masking implemented
+  - [ ] **Requirement 4**: Encrypt transmission of cardholder data
+    - [ ] TLS 1.2+ for all transmissions
+    - [ ] Strong cryptography protocols
+  - [ ] **Requirement 5**: Protect against malware
+    - [ ] Anti-malware solutions deployed
+    - [ ] Regular malware scans
+  - [ ] **Requirement 6**: Develop secure systems and applications
+    - [ ] Secure development lifecycle implemented
+    - [ ] Code reviews conducted
+    - [ ] Vulnerability scanning completed
+    - [ ] Penetration testing completed
+  - [ ] **Requirement 7**: Restrict access by business need-to-know
+    - [ ] Role-based access control (RBAC) implemented
+    - [ ] Least privilege principle enforced
+  - [ ] **Requirement 8**: Identify and authenticate access
+    - [ ] Multi-factor authentication (MFA) for all access
+    - [ ] Strong password policies
+    - [ ] User account management process
+  - [ ] **Requirement 9**: Restrict physical access (if applicable)
+  - [ ] **Requirement 10**: Track and monitor all access
+    - [ ] Audit logging enabled for all cardholder data access
+    - [ ] Log retention: minimum 1 year
+    - [ ] Logs reviewed regularly
+  - [ ] **Requirement 11**: Regularly test security systems
+    - [ ] Quarterly vulnerability scans
+    - [ ] Annual penetration testing
+    - [ ] File integrity monitoring
+  - [ ] **Requirement 12**: Maintain information security policy
+    - [ ] Security policy documented
+    - [ ] Annual security awareness training
+    - [ ] Incident response plan
+  - [ ] PCI-DSS Self-Assessment Questionnaire (SAQ) completed
+  - [ ] Attestation of Compliance (AOC) obtained (if required)
+  - [ ] Quarterly PCI scans scheduled with ASV (Approved Scanning Vendor)
+  
+  **APRA (Australian Prudential Regulation Authority) - if applicable**
+  - [ ] **CPS 234 Information Security Requirements**
+    - [ ] Information security capability maintained commensurate with threats
+    - [ ] Board-level oversight of information security
+    - [ ] Information security controls implemented
+    - [ ] Systematic testing and assurance of information security
+  - [ ] **Information Asset Classification**
+    - [ ] Information assets identified and classified
+    - [ ] Criticality assessment completed
+    - [ ] Protection measures aligned with criticality
+  - [ ] **Access Management**
+    - [ ] User access management controls
+    - [ ] Privileged access management implemented
+    - [ ] Access reviews conducted regularly (at least annually)
+    - [ ] Segregation of duties implemented
+  - [ ] **Incident Management**
+    - [ ] Incident response plan documented
+    - [ ] Incident notification to APRA (within 72 hours for material incidents)
+    - [ ] Incident register maintained
+    - [ ] Post-incident reviews conducted
+  - [ ] **Third-Party/Outsourcing Risk**
+    - [ ] Material outsourcing arrangements identified
+    - [ ] Due diligence on service providers completed
+    - [ ] Contractual protections in place
+    - [ ] Right to audit service providers
+    - [ ] Service provider security assessments conducted
+  - [ ] **Business Continuity and Disaster Recovery**
+    - [ ] Business continuity plan documented
+    - [ ] Disaster recovery plan documented
+    - [ ] Recovery time objectives (RTO) defined: _____ hours
+    - [ ] Recovery point objectives (RPO) defined: _____ hours
+    - [ ] BC/DR testing conducted (at least annually)
+  - [ ] **Testing and Assurance**
+    - [ ] Vulnerability assessments conducted regularly
+    - [ ] Penetration testing conducted (at least annually)
+    - [ ] Security control effectiveness reviews
+    - [ ] Independent assurance reviews (if material arrangement)
+  - [ ] **Data Residency and Sovereignty**
+    - [ ] Data stored in Australian regions (if required)
+    - [ ] Cross-border data flow assessment
+    - [ ] Data sovereignty requirements documented
+  - [ ] **Notification and Reporting**
+    - [ ] Material information security incident notification process
+    - [ ] APRA notification template prepared
+    - [ ] Board reporting on information security (at least annually)
+  - [ ] APRA CPS 234 compliance self-assessment completed
+  - [ ] APRA reporting obligations documented
+  - [ ] Annual information security attestation prepared
 
 **Outputs:**
 - [ ] Azure Policies enforced
 - [ ] Compliance gaps identified and remediated
 - [ ] Data governance implemented
+- [ ] Regulatory compliance requirements met and documented
 
 ---
 
