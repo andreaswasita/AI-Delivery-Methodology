@@ -13,9 +13,9 @@
 
 **Purpose**: **PRESSURE TEST** all previous phases (discovery, requirements, data, architecture, ML approach) by rapidly building a working prototype with continuous validation from business stakeholders and technical teams
 
-**Duration**: 4-6 weeks (typically 3-4 x 2-week sprints)
+**Duration**: 3 days (intensive hackathon)
 
-**Key Outcome**: Validated prototype that proves the solution works end-to-end and delivers business value
+**Key Outcome**: Validated prototype that proves the solution works end-to-end and delivers business value (or proves it doesn't work - fail fast!)
 
 **Approach**: High-velocity sprints with **continuous pressure testing** from:
 - Business stakeholders (use cases, value, usability)
@@ -76,27 +76,28 @@
 
 ---
 
-## PRE-SPRINT 0: HACKATHON KICKOFF (Week 0)
+## PRE-HACKATHON PREPARATION (1 Week Before)
 
-### 0.1 Hackathon Kickoff Meeting
+### 0.1 Pre-Hackathon Kickoff Meeting (1 Week Before)
 
 - [ ] **Kickoff Session with ALL Stakeholders**
   - [ ] Date: ___________
-  - [ ] **Business stakeholders** present (end users, business owners, executives)
-  - [ ] **Technical teams** present (architects, engineers, security, operations)
-  - [ ] **Microsoft teams** invited (ATU, STU, FDE, ISD, CSU)
+  - [ ] **Business stakeholders** committed (end users, business owners, executives)
+  - [ ] **Technical teams** committed (architects, engineers, security, operations)
+  - [ ] **Microsoft teams** invited for Day 3 demo (ATU, STU, FDE, ISD, CSU)
 
-- [ ] **Pressure Testing Mindset Established**
-  - [ ] Hackathon goal: **Prove or disprove** the solution works
+- [ ] **3-Day Hackathon Approach Explained**
+  - [ ] Hackathon goal: **Prove or disprove** the solution works in 3 days
   - [ ] Discovery findings will be **tested with real code and data**
   - [ ] Business requirements will be **validated with working prototype**
   - [ ] Architecture assumptions will be **proven or challenged**
-  - [ ] All feedback welcome and acted upon immediately
+  - [ ] Day 3 demo is MANDATORY for all stakeholders
 
-- [ ] **Demo Schedule Communicated**
-  - [ ] End-of-sprint demos mandatory for all stakeholders
-  - [ ] Demo feedback drives next sprint priorities
-  - [ ] No holds barred - stakeholders challenge everything
+- [ ] **Day 3 Demo Schedule Locked**
+  - [ ] Day 3 demo date/time: ___________
+  - [ ] Calendar holds sent to all stakeholders (non-negotiable)
+  - [ ] Demo location/Teams link confirmed
+  - [ ] Stakeholder attendance confirmed
 
 **Outputs:**
 - [ ] Kickoff presentation delivered
@@ -104,30 +105,35 @@
 
 ---
 
-### 0.2 Backlog Preparation
+### 0.2 3-Day Task Breakdown
 
-- [ ] **Product Backlog Created**
-  - [ ] User stories written (As a [user], I want [feature], so that [benefit])
-  - [ ] Acceptance criteria defined for each story
-  - [ ] Stories prioritized (Must Have, Should Have, Could Have)
-  - [ ] Technical tasks identified
-  - [ ] Dependencies mapped
+- [ ] **Day 1 Tasks Identified**
+  - [ ] Data pipeline tasks listed
+  - [ ] Baseline model training tasks listed
+  - [ ] Infrastructure setup tasks listed
+  - [ ] Team roles assigned for Day 1
 
-- [ ] **Story Pointing Completed**
-  - [ ] Estimation session held
-  - [ ] Story points assigned (Fibonacci: 1, 2, 3, 5, 8, 13)
-  - [ ] Team velocity estimated
-  - [ ] Sprint capacity calculated
+- [ ] **Day 2 Tasks Identified**
+  - [ ] Model optimization tasks listed
+  - [ ] API development tasks listed
+  - [ ] UI setup tasks listed
+  - [ ] Team roles assigned for Day 2
 
-- [ ] **Sprint Backlogs Created**
-  - [ ] Sprint 1 backlog ready (highest priority stories)
-  - [ ] Sprint 2 backlog outlined
-  - [ ] Sprint 3 backlog outlined
-  - [ ] Sprint 4 backlog outlined (if needed)
+- [ ] **Day 3 Tasks Identified**
+  - [ ] Integration tasks listed
+  - [ ] Demo preparation tasks listed
+  - [ ] Testing tasks listed
+  - [ ] Team roles assigned for Day 3
+
+- [ ] **Success Criteria Defined**
+  - [ ] Day 1 success criteria clear
+  - [ ] Day 2 success criteria clear
+  - [ ] Day 3 success criteria clear
+  - [ ] Overall hackathon success criteria documented
 
 **Outputs:**
-- [ ] Product backlog in Azure DevOps
-- [ ] Sprint 1 backlog ready
+- [ ] 3-day task plan documented
+- [ ] Team knows what to build each day
 
 ---
 
