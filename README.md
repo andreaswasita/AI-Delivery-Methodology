@@ -57,6 +57,13 @@ AI-Delivery-Methodology/
 **Guides**:
 - [Business Envisioning Workshop Guide](./guides/business-envisioning-workshop-guide.md) - Full-day workshop facilitation guide with detailed activities
 
+**Industry Use Case Libraries**:
+- [Financial Services Use Cases](./guides/industry-use-cases/financial-services-use-cases.md) - 24 use cases across customer experience, risk, fraud, trading
+- [Energy & Mining Use Cases](./guides/industry-use-cases/energy-mining-use-cases.md) - 25 use cases across operations, safety, exploration, trading
+- [Retail Use Cases](./guides/industry-use-cases/retail-use-cases.md) - 20 use cases across personalization, inventory, pricing, store ops
+- [Defense Use Cases](./guides/industry-use-cases/defense-use-cases.md) - 16 use cases across ISR, mission planning, logistics, cybersecurity
+- [Public Sector Use Cases](./guides/industry-use-cases/public-sector-use-cases.md) - 22 use cases across citizen services, public safety, infrastructure, education
+
 **Key Activities**:
 - ✅ Opportunity qualification (business value, technical feasibility, data readiness)
 - ✅ Business requirements workshops
