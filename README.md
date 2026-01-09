@@ -47,9 +47,15 @@ AI-Delivery-Methodology/
 - [Pre-sales Qualification Framework](./templates/11-presales-qualification.md) - 5-dimensional scoring system (50 points)
 - [Business Requirements Document (BRD)](./templates/09-business-requirements-document.md) - Comprehensive requirements capture
 - [Data Assessment Report](./templates/10-data-assessment-report.md) - Complete data quality & readiness assessment
+- [Business Envisioning Pre-Work](./templates/13-business-envisioning-pre-work.md) - Pre-workshop assignment template
+- [AI Use Case Template](./templates/14-business-envisioning-use-case-template.md) - Comprehensive use case documentation
 
 **Checklists**:
 - [Discovery Phase Checklist](./checklists/discovery-checklist.md) - 200+ items covering 4 weeks of activities
+- [Business Envisioning Workshop Checklist](./checklists/business-envisioning-workshop-checklist.md) - Complete workshop preparation and execution guide
+
+**Guides**:
+- [Business Envisioning Workshop Guide](./guides/business-envisioning-workshop-guide.md) - Full-day workshop facilitation guide with detailed activities
 
 **Key Activities**:
 - ✅ Opportunity qualification (business value, technical feasibility, data readiness)
