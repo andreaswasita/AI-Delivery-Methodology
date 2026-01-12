@@ -1,6 +1,8 @@
 :root {
-    --primary-color: #0078d4;
-    --primary-hover: #106ebe;
+    --primary-color: #8250df;
+    --primary-hover: #6e40c9;
+    --banner-color: #001f3f;
+    --banner-gradient: #003366;
     --secondary-color: #50e6ff;
     --success-color: #13a10e;
     --warning-color: #ffb900;
@@ -35,7 +37,7 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--primary-color), #005a9e);
+    background: linear-gradient(135deg, var(--banner-color), var(--banner-gradient));
     color: white;
     padding: 60px 20px;
     text-align: center;
