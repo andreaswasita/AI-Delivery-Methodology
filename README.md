@@ -199,6 +199,11 @@ AI-Delivery-Methodology/
 ├── templates/          # Ready-to-use templates for all deliverables
 ├── checklists/         # Phase-specific checklists with 200+ actionable items
 ├── guides/             # Detailed implementation guides
+├── infrastructure/     # Azure infrastructure-as-code (Bicep templates)
+│   ├── bicep/         # Infrastructure modules and parameters
+│   ├── scripts/       # Deployment automation (PowerShell/Bash)
+│   ├── policies/      # Azure Policy definitions
+│   └── docs/          # Infrastructure documentation
 └── README.md          # This file
 ```
 
@@ -536,9 +541,13 @@ Before diving into phase details, select the right approach for your project:
 - [MLOps/DevOps Complete Guide](./guides/mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines (Azure DevOps & GitHub Actions), model registry, automated testing, monitoring
 - [AI Center of Excellence Framework](./guides/ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise (3 CoE models: Centralized, Federated, Hub-and-Spoke)
 - [AI Scaling Patterns Guide](./guides/ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio - component reuse, multi-tenancy, portfolio management
-- [MLOps/DevOps Complete Guide](./guides/mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines, model registry, automated testing
-- [AI Center of Excellence Framework](./guides/ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise
-- [AI Scaling Patterns Guide](./guides/ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio (component reuse, multi-tenancy, portfolio management)
+
+**Infrastructure** (Deploy in 15 minutes):
+- [Standardized Azure Infrastructure README](./infrastructure/README.md) - **NEW!** Complete infrastructure-as-code guide with compliance built-in (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA)
+- [Quick Start Guide](./infrastructure/docs/QUICKSTART.md) - **NEW!** Deploy production-ready AI platform in 15 minutes
+- [Bicep Templates](./infrastructure/bicep/) - **NEW!** 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance)
+- [Deployment Scripts](./infrastructure/scripts/) - **NEW!** PowerShell and Bash deployment automation
+- [Azure Policies](./infrastructure/policies/) - **NEW!** 5 compliance policy definitions
 
 **Sequential Steps**:
 
@@ -1303,6 +1312,14 @@ For questions, issues, or support:
   - Phase-specific guides (10 guides)
 - ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
 - ✅ **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
+- ✅ **Standardized Azure Infrastructure** (Deploy production-ready AI platform in 15 minutes):
+  - Complete Bicep infrastructure-as-code templates (3,500+ lines)
+  - 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance)
+  - Built-in compliance for 6 frameworks (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA)
+  - 4 environment configurations (dev, test, uat, prod)
+  - PowerShell and Bash deployment scripts
+  - 5 Azure Policy definitions
+  - Quick Start Guide for 15-minute deployment
 - ✅ **1,000+ Pages of Documentation** (Guides, best practices, frameworks, code examples)
 
 ---
@@ -1333,8 +1350,9 @@ For questions, issues, or support:
 | **1.8** | January 10, 2026 | Andreas Wasita | **Enhanced Business Envisioning materials with Five Whys root cause analysis technique** - Added comprehensive Five Whys framework, industry examples, facilitation guide, and integration into templates |
 | **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% → 95%) and High Risk in Emerging Tech (70% → 95%) |
 | **2.1** | January 12, 2026 | Andreas Wasita | **Added 3-Month Fast-Track Guide** - Compressed methodology for rapid AI project delivery (pilots, POCs, quick wins). Includes week-by-week timeline, simplified templates, minimum viable team (5-8 people), budget estimates ($250-450K), and pre-flight readiness checklist. Perfect for teams needing results in 3 months. |
+| **2.2** | January 13, 2026 | Andreas Wasita | **Standardized Azure Infrastructure** - Added complete infrastructure-as-code templates (3,500+ lines of Bicep), 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance), built-in compliance for 6 frameworks (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA), 4 environment configurations, PowerShell/Bash deployment scripts, 5 Azure Policy definitions, and Quick Start Guide for 15-minute deployment. Cost estimates: Dev $1.5-3K, Test $3-5K, Prod $10-25K per month. |
 
-**Current Version**: 2.1 (Complete + Scalability + Responsible AI + Fast-Track)
+**Current Version**: 2.2 (Complete + Scalability + Responsible AI + Fast-Track + Infrastructure)
 
 ---
 
@@ -1359,9 +1377,9 @@ For questions, feedback, or contributions:
 
 ---
 
-**Last Updated**: January 10, 2026  
-**Version**: 1.8  
-**Status**: ✅ Complete + Enhanced
+**Last Updated**: January 13, 2026  
+**Version**: 2.2  
+**Status**: ✅ Complete + Enhanced + Infrastructure
 
 ---
 
