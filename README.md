@@ -463,6 +463,12 @@ AI-Delivery-Methodology/
 
 **Guides**:
 - [Setup Platform Complete Guide](./guides/setup-platform-complete-guide.md) - Production platform setup guide
+- [MLOps/DevOps Complete Guide](./guides/mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines (Azure DevOps & GitHub Actions), model registry, automated testing, monitoring
+- [AI Center of Excellence Framework](./guides/ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise (3 CoE models: Centralized, Federated, Hub-and-Spoke)
+- [AI Scaling Patterns Guide](./guides/ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio - component reuse, multi-tenancy, portfolio management
+- [MLOps/DevOps Complete Guide](./guides/mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines, model registry, automated testing
+- [AI Center of Excellence Framework](./guides/ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise
+- [AI Scaling Patterns Guide](./guides/ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio (component reuse, multi-tenancy, portfolio management)
 
 **Sequential Steps**:
 
@@ -690,6 +696,10 @@ AI-Delivery-Methodology/
 **Purpose**: Comprehensive testing, quality assurance, and performance validation
 
 **Duration**: 4-6 weeks
+
+**Templates**:
+- [Model Card Template](./templates/17-model-card-template.md) - **NEW!** Comprehensive model documentation for responsible AI (13 sections including model overview, performance, fairness, explainability, limitations)
+- [Dataset Datasheet Template](./templates/18-dataset-datasheet-template.md) - **NEW!** Dataset documentation for transparency (12 sections covering composition, collection, privacy, ethics)
 
 **Checklists**:
 - [Test & Evaluate Phase Checklist](./checklists/test-evaluate-phase-checklist.md) - Comprehensive testing activities
@@ -1211,9 +1221,9 @@ For questions, issues, or support:
 | **Phase 8: Operate & Care** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
 
 **Total Deliverables**:
-- ✅ **17+ Templates** (Project management, business, technical, and executive coaching)
+- ✅ **20+ Templates** (Project management, business, technical, and responsible AI documentation including Model Cards & Dataset Datasheets)
 - ✅ **10 Phase-Specific Checklists** (200-1,200+ items each)
-- ✅ **10 Complete Implementation Guides** (60-170 pages each) including Model Risk Management
+- ✅ **14 Complete Implementation Guides** (40-170 pages each) including Model Risk Management, MLOps/DevOps, AI CoE Framework, and Scaling Patterns
 - ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector)
 - ✅ **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
 - ✅ **100+ Pages of Documentation** (Guides, best practices, frameworks)
@@ -1244,8 +1254,9 @@ For questions, issues, or support:
 | **1.6** | January 9, 2026 | Andreas Wasita | Added Prepare & Deploy Phase checklist and guide (Phase 7) |
 | **1.7** | January 10, 2026 | Andreas Wasita | **Complete methodology - All 9 phases with comprehensive materials** |
 | **1.8** | January 10, 2026 | Andreas Wasita | **Enhanced Business Envisioning materials with Five Whys root cause analysis technique** - Added comprehensive Five Whys framework, industry examples, facilitation guide, and integration into templates |
+| **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% → 95%) and High Risk in Emerging Tech (70% → 95%) |
 
-**Current Version**: 1.8 (Complete + Enhanced)
+**Current Version**: 2.0 (Complete + Scalability + Responsible AI)
 
 ---
 
