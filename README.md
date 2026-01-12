@@ -47,10 +47,13 @@ This methodology provides a **proven, repeatable framework** that:
 - Clear decision gates prevent projects from drifting
 
 **👥 Engages C-Level Stakeholders**
-- Executive decision frameworks for investment approval
+- **Executive coaching guide** with 5 persona-based strategies (Visionary, Steward, Realist, People Leader, Compliance Guardian)
+- **55-point readiness assessment** to evaluate organizational preparedness
+- Executive decision frameworks for investment approval with ROI scenarios
 - Competitive intelligence and market positioning analysis
 - Board-ready presentations and decision memos
 - Strategic options evaluation (build vs. buy vs. partner)
+- Objection handling for 7 common executive concerns
 
 ### Who This Is For
 
@@ -66,13 +69,13 @@ This methodology provides a **proven, repeatable framework** that:
 
 **✅ Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
 
-**✅ Template-Driven**: 15+ ready-to-use templates eliminate guesswork and accelerate delivery
+**✅ Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
 
 **✅ Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
 
 **✅ Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
 
-**✅ Executive-Focused**: Purpose-built materials for C-level engagement and decision-making
+**✅ Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
 
 **✅ Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
 
@@ -103,6 +106,36 @@ This is a **living methodology** that evolves with:
 - Community feedback and contributions
 
 We believe AI should be **ethical, explainable, and valuable**—not just technically impressive.
+
+---
+
+## 🤝 Executive Coaching & Business Alignment
+
+### Bridging the Business-IT Gap
+
+One of the most critical success factors for AI initiatives is **executive engagement and alignment**. Our methodology includes comprehensive coaching materials to help consultants build trusted advisor relationships with C-level stakeholders.
+
+**Executive Coaching Guide** - A complete framework covering:
+- **5 Executive Personas** with tailored coaching strategies for each stakeholder type
+- **7-Phase Journey Coaching** from initial engagement through scaling
+- **Objection Handling** for 7 common executive concerns with proven responses
+- **Trust-Building Techniques** using The Trust Equation
+- **Communication Templates** for status updates, escalations, and presentations
+
+**Executive Readiness Assessment** - A 55-point assessment tool evaluating:
+- **Strategic Clarity** - Vision alignment and problem articulation (15 points)
+- **Executive Commitment** - Leadership engagement and support (10 points)
+- **Decision-Making Readiness** - AI understanding and decision pace (10 points)
+- **Risk Tolerance & Governance** - Comfort with experimentation and ethics (10 points)
+- **Change Leadership** - Change management capability and track record (10 points)
+
+**Assessment Outcomes:**
+- **45-55 points**: Strong readiness - proceed with confidence
+- **35-44 points**: Moderate readiness - address gaps before scaling
+- **25-34 points**: Low readiness - significant preparation needed
+- **<25 points**: Not ready - defer until fundamentals addressed
+
+These materials help Microsoft consultants navigate organizational politics, manage executive expectations, and ensure AI initiatives have the sustained leadership support required for success.
 
 ---
 
@@ -155,8 +188,10 @@ AI-Delivery-Methodology/
 - [Pre-sales Qualification Framework](./templates/11-presales-qualification.md) - 5-dimensional scoring system (50 points)
 - [Business Requirements Document (BRD)](./templates/09-business-requirements-document.md) - Comprehensive requirements capture
 - [Data Assessment Report](./templates/10-data-assessment-report.md) - Complete data quality & readiness assessment
-- [Business Envisioning Pre-Work](./templates/13-business-envisioning-pre-work.md) - Pre-workshop assignment template
+- [Business Envisioning Pre-Work](./templates/13-business-envisioning-pre-work.md) - Pre-workshop assignment with executive investment & risk tolerance questions
 - [AI Use Case Template](./templates/14-business-envisioning-use-case-template.md) - Comprehensive use case documentation
+- [Executive Decision Memo](./templates/15-executive-decision-memo.md) - Board-ready investment decision template with ROI, risks, and governance
+- [Executive Readiness Assessment](./templates/16-executive-readiness-assessment.md) - 55-point assessment across 5 dimensions of organizational readiness
 
 **Checklists**:
 - [Discovery Phase Checklist](./checklists/discovery-checklist.md) - 200+ items covering 4 weeks of activities
@@ -164,6 +199,7 @@ AI-Delivery-Methodology/
 
 **Guides**:
 - [Business Envisioning Workshop Guide](./guides/business-envisioning-workshop-guide.md) - Full-day workshop facilitation guide with detailed activities, **now includes Five Whys root cause analysis technique**
+- [Executive Coaching Guide](./guides/executive-coaching-guide.md) - **NEW!** Comprehensive guide for coaching C-level stakeholders through AI transformation
 
 **Industry Use Case Libraries**:
 - [Financial Services Use Cases](./guides/industry-use-cases/financial-services-use-cases.md) - 24 use cases across customer experience, risk, fraud, trading
@@ -176,9 +212,11 @@ AI-Delivery-Methodology/
 
 **Week 0 (Pre-Discovery)**:
 1. **Pre-sales Qualification** - Score opportunity (Business Value, Technical Feasibility, Data Readiness, Client Readiness, Commercial)
-2. **Go/No-Go Decision** - Must score ≥35/50 points to proceed
-3. **Stakeholder Identification** - Map key stakeholders and decision-makers
-4. **Pre-Work Distribution** - Send Business Envisioning pre-work assignment to participants
+2. **Executive Readiness Assessment** - Assess organizational and executive readiness (55-point assessment)
+3. **Go/No-Go Decision** - Must score ≥35/50 points (qualification) and address any critical readiness gaps
+4. **Stakeholder Identification** - Map key stakeholders and decision-makers
+5. **Executive 1-on-1 Interviews** - Conduct 60-90 min interviews with C-level stakeholders
+6. **Pre-Work Distribution** - Send Business Envisioning pre-work assignment to participants
 
 **Week 1 (Business Alignment)**:
 5. **Business Envisioning Workshop** - Full-day workshop with executives and business stakeholders
