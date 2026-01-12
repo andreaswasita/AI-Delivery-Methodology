@@ -83,6 +83,24 @@ This methodology provides a **proven, repeatable framework** that:
 
 ### The Journey: Vision to Value
 
+We offer **two delivery tracks** to match your project needs:
+
+#### **🚀 Fast-Track (3 Months)** - For Pilots & Quick Wins
+Perfect for single use cases, POCs, and rapid value delivery. Compressed timeline with essential activities only.
+
+- **Timeline:** 12 weeks
+- **Budget:** $250K-450K
+- **Team:** 5-8 people
+- **Scope:** Single use case
+- **Best For:** Pilots, POCs, quick wins, building momentum
+
+[**→ See 3-Month Fast-Track Guide**](./guides/3-month-fast-track-guide.md)
+
+---
+
+#### **🏗️ Full Methodology (6-12+ Months)** - For Enterprise Solutions
+Comprehensive approach for production systems, multiple use cases, and enterprise-wide transformation.
+
 Our methodology guides you through nine structured phases:
 
 **1. Pre-sales & Discovery** → Qualify opportunities, understand business context, identify root causes  
@@ -96,6 +114,18 @@ Our methodology guides you through nine structured phases:
 **9. Operate & Care** → Monitoring, optimization, continuous improvement  
 
 **Underpinned by**: 360° Governance | Execution Strategy | Change Management | Value Tracking
+
+---
+
+**Comparison:**
+
+| Aspect | Fast-Track | Full Methodology |
+|--------|-----------|------------------|
+| **Timeline** | 3 months | 6-12+ months |
+| **Scope** | Single use case | Multiple use cases |
+| **Team** | 5-8 people | 10-20 people |
+| **Budget** | $250-450K | $1M-5M+ |
+| **Best For** | Pilots, POCs | Production systems |
 
 ### Our Commitment
 
@@ -176,7 +206,49 @@ AI-Delivery-Methodology/
 
 ---
 
-## 📋 Available Materials by Phase
+## � Choose Your Delivery Track
+
+Before diving into phase details, select the right approach for your project:
+
+### **Fast-Track (3 Months)** - Rapid Value Delivery
+
+**Use When:**
+- Single, well-defined use case
+- Pilot or proof-of-concept
+- Quick win needed to build momentum
+- Data readily available
+- Limited budget (<$500K)
+
+**Key Features:**
+- 12-week compressed timeline
+- 5-8 person team
+- Essential activities only
+- Defer advanced features to Phase 2
+
+[**📖 Read Full 3-Month Fast-Track Guide →**](./guides/3-month-fast-track-guide.md)
+
+---
+
+### **Full Methodology (6-12+ Months)** - Enterprise Scale
+
+**Use When:**
+- Multiple use cases
+- Production-grade system
+- Enterprise-wide transformation
+- Complex integrations (5+ systems)
+- Large budget (>$1M)
+
+**Key Features:**
+- Comprehensive 9-phase lifecycle
+- 10-20 person team
+- 200+ checklists, 20+ templates
+- Full MLOps, governance, scaling
+
+**Continue reading below for detailed phase-by-phase guidance →**
+
+---
+
+## �📋 Available Materials by Phase
 
 ### � **Phase 0: Pre-sales & Discovery**
 
@@ -1221,12 +1293,19 @@ For questions, issues, or support:
 | **Phase 8: Operate & Care** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
 
 **Total Deliverables**:
+- ✅ **2 Delivery Tracks** (3-Month Fast-Track for pilots & POCs, Full Methodology for enterprise solutions)
 - ✅ **20+ Templates** (Project management, business, technical, and responsible AI documentation including Model Cards & Dataset Datasheets)
 - ✅ **10 Phase-Specific Checklists** (200-1,200+ items each)
-- ✅ **14 Complete Implementation Guides** (40-170 pages each) including Model Risk Management, MLOps/DevOps, AI CoE Framework, and Scaling Patterns
-- ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector)
+- ✅ **15 Complete Implementation Guides** (40-170 pages each):
+  - 3-Month Fast-Track Guide (rapid delivery)
+  - Model Risk Management (drift detection, adversarial defenses)
+  - MLOps/DevOps (CI/CD pipelines, automation)
+  - AI Center of Excellence Framework (organizational scaling)
+  - Scaling Patterns (enterprise patterns)
+  - Phase-specific guides (10 guides)
+- ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
 - ✅ **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
-- ✅ **100+ Pages of Documentation** (Guides, best practices, frameworks)
+- ✅ **1,000+ Pages of Documentation** (Guides, best practices, frameworks, code examples)
 
 ---
 
@@ -1255,8 +1334,9 @@ For questions, issues, or support:
 | **1.7** | January 10, 2026 | Andreas Wasita | **Complete methodology - All 9 phases with comprehensive materials** |
 | **1.8** | January 10, 2026 | Andreas Wasita | **Enhanced Business Envisioning materials with Five Whys root cause analysis technique** - Added comprehensive Five Whys framework, industry examples, facilitation guide, and integration into templates |
 | **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% → 95%) and High Risk in Emerging Tech (70% → 95%) |
+| **2.1** | January 12, 2026 | Andreas Wasita | **Added 3-Month Fast-Track Guide** - Compressed methodology for rapid AI project delivery (pilots, POCs, quick wins). Includes week-by-week timeline, simplified templates, minimum viable team (5-8 people), budget estimates ($250-450K), and pre-flight readiness checklist. Perfect for teams needing results in 3 months. |
 
-**Current Version**: 2.0 (Complete + Scalability + Responsible AI)
+**Current Version**: 2.1 (Complete + Scalability + Responsible AI + Fast-Track)
 
 ---
 
