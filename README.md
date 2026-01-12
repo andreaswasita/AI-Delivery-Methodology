@@ -1,6 +1,8 @@
 # AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
+🌐 **[Try Our Interactive ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/)** - Calculate NPV, payback period, and 5-year projections for your AI projects
+
 ---
 
 ## 📖 About This Methodology
@@ -196,12 +198,110 @@ Underpinned by **360° Governance and Execution, Strategy, Ops Planning and Chan
 
 ```
 AI-Delivery-Methodology/
+├── calculators/        # 🧮 Interactive web calculators (hosted on GitHub Pages)
+│   ├── roi-calculator.html      # ROI, NPV, and payback analysis tool
+│   ├── css/                     # Styling for calculators
+│   ├── js/                      # Calculator logic
+│   └── GITHUB-PAGES-SETUP.md    # Deployment guide
 ├── templates/          # Ready-to-use templates for all deliverables
 ├── checklists/         # Phase-specific checklists with 200+ actionable items
 ├── guides/             # Detailed implementation guides
-├── infrastructure/     # Azure infrastructure-as-code (Bicep templates)
+├── infrastructure/     # 🏗️ Azure infrastructure-as-code (Bicep templates)
 │   ├── bicep/         # Infrastructure modules and parameters
+│   │   ├── modules/   # Static Web Apps, AI services, compute, data, security
+│   │   └── main.bicep # Main deployment template
 │   ├── scripts/       # Deployment automation (PowerShell/Bash)
+│  🧮 Interactive Tools & Calculators
+
+### AI Project ROI Calculator (Live on GitHub Pages)
+
+**🌐 [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/)**
+
+Calculate comprehensive ROI metrics for your AI projects:
+- **Net Present Value (NPV)** - Time-value adjusted returns
+- **ROI Percentage** - Return on investment calculation
+- **Payback Period** - Time to break even
+- **5-Year Projections** - Long-term financial forecasting
+- **Benefit Growth Modeling** - Compound annual growth tracking
+- **Sensitivity Analysis** - Test different scenarios
+
+**Features:**
+- ✅ Runs entirely in your browser (no data sent to servers)
+- ✅ Customizable discount rates and growth factors
+- ✅ Real-time calculations with detailed breakdowns
+- ✅ Professional results ready for executive presentations
+
+**Use For:**
+- Building business cases for AI investments
+- Executive approval and budget justification
+- Comparing multiple AI initiatives
+- Creating financial models for proposals
+
+[View Calculator Documentation →](./calculators/README.md)
+
+---
+
+## 🏗️ Azure Deployment Options
+
+### Option 1: GitHub Pages (Free - For Static Sites)
+
+The calculators are already deployed on GitHub Pages at no cost. Perfect for static HTML/CSS/JS tools.
+
+**Quick Setup:**
+1. Enable GitHub Pages in repository settings
+2. Push to main branch
+3. Auto-deploys via GitHub Actions
+
+[See GitHub Pages Setup Guide →](./calculators/GITHUB-PAGES-SETUP.md)
+
+---
+
+### Option 2: Azure Static Web Apps (For Enhanced Features)
+
+Deploy to Azure for advanced capabilities like authentication, APIs, and custom domains.
+
+**Features:**
+- Free tier available ($0/month)
+- Custom domains with automatic SSL
+- Global CDN distribution
+- Staging environments for testing
+- Integration with Azure services
+
+**Quick Deploy:**
+```powershell
+cd infrastructure/scripts
+.\deploy-calculators.ps1
+```
+
+[See Azure Deployment Guide →](./calculators/DEPLOYMENT.md)
+
+---
+
+### Option 3: Full Azure AI Platform (For Production AI Projects)
+
+Enterprise-grade infrastructure with compliance, security, and MLOps built-in.
+
+**Includes:**
+- Azure Machine Learning workspaces
+- Azure OpenAI Service
+- Compute clusters for training
+- Private networking and security
+- Compliance controls (GDPR, SOC 2, ISO 27001)
+- Monitoring and observability
+
+**Deploy with Bicep:**
+```powershell
+cd infrastructure/bicep
+az deployment subscription create \
+  --template-file main.bicep \
+  --parameters @parameters/prod.json
+```
+
+[See Infrastructure Documentation →](./infrastructure/README.md)
+
+---
+
+##  │   └── deploy-calculators.ps1  # Azure Static Web App deployment
 │   ├── policies/      # Azure Policy definitions
 │   └── docs/          # Infrastructure documentation
 └── README.md          # This file
