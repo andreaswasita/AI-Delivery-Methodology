@@ -696,6 +696,7 @@ AI-Delivery-Methodology/
 
 **Guides**:
 - [Test & Evaluate Phase Complete Guide](./guides/test-evaluate-phase-complete-guide.md) - Complete testing guide with best practices
+- [AI Model Risk Management Guide](./guides/ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense with Python code
 
 **Sequential Steps**:
 
@@ -852,6 +853,7 @@ AI-Delivery-Methodology/
 
 **Guides**:
 - [Operate & Care Phase Complete Guide](./guides/operate-care-phase-complete-guide.md) - Operations guide
+- [AI Model Risk Management Guide](./guides/ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense
 
 **Sequential Steps**:
 
@@ -1209,9 +1211,9 @@ For questions, issues, or support:
 | **Phase 8: Operate & Care** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
 
 **Total Deliverables**:
-- ✅ **14 Templates** (Project management, business, and technical)
-- ✅ **9 Phase-Specific Checklists** (200-1,200+ items each)
-- ✅ **9 Complete Implementation Guides** (60-170 pages each)
+- ✅ **17+ Templates** (Project management, business, technical, and executive coaching)
+- ✅ **10 Phase-Specific Checklists** (200-1,200+ items each)
+- ✅ **10 Complete Implementation Guides** (60-170 pages each) including Model Risk Management
 - ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector)
 - ✅ **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
 - ✅ **100+ Pages of Documentation** (Guides, best practices, frameworks)

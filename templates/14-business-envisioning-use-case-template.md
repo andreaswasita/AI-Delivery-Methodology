@@ -55,12 +55,45 @@
 
 ### Root Cause Analysis
 
-**Why Does This Problem Exist?**
-```
-[Describe the underlying causes, not just symptoms]
+**Five Whys Analysis:**
 
-Example: "Manual data entry across 5 disconnected systems because of legacy infrastructure and lack of integration."
+Use the Five Whys technique to understand the fundamental cause of this problem:
+
+1. **Why does this problem exist?**
+   ```
+   [Your answer - be specific and fact-based]
+   ```
+
+2. **Why [answer from question 1]?**
+   ```
+   [Your answer]
+   ```
+
+3. **Why [answer from question 2]?**
+   ```
+   [Your answer]
+   ```
+
+4. **Why [answer from question 3]?**
+   ```
+   [Your answer]
+   ```
+
+5. **Why [answer from question 4]?**
+   ```
+   [Your answer]
+   ```
+
+**Root Cause Identified:**
 ```
+[Based on the Five Whys analysis above, state the fundamental root cause that must be addressed]
+```
+
+**Root Cause Validation:**
+- [ ] This root cause is based on facts and data, not assumptions
+- [ ] Addressing this root cause will resolve the problem
+- [ ] This root cause is within our ability to influence or change
+- [ ] The AI solution proposed directly addresses this root cause
 
 **What Have You Tried Before?**
 ```
@@ -78,6 +111,13 @@ Example: "Manual data entry across 5 disconnected systems because of legacy infr
 [Describe how AI will solve the problem. What will the solution do? How will it work from a user's perspective?]
 
 Example: "An AI-powered document processing system will automatically extract, classify, and route customer documents, eliminating 90% of manual data entry and reducing processing time from 48 hours to 2 hours."
+```
+
+**How This Solution Addresses the Root Cause:**
+```
+[Explicitly explain how this AI solution addresses the root cause identified in the Five Whys analysis. This is critical for ensuring the solution creates lasting value.]
+
+Example: "By implementing an AI-powered integration layer that intelligently aggregates data across all legacy systems, we address the root cause of system fragmentation without requiring expensive system replacements."
 ```
 
 **AI Capability Type:**
