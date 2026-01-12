@@ -142,6 +142,9 @@
   - Industry case studies (2-3 relevant examples)
   - Strategic context document
   - Glossary of AI terms
+  - **Competitive intelligence brief** (who's doing what in AI)
+  - **Industry analyst reports summary** (market trends)
+  - **One-page executive summary** of AI opportunity
   - **Date Completed:** ___________
   - **Notes/Owner:** ___________
 
@@ -154,9 +157,15 @@
 - [ ] **Workshop templates prepared**
   - Vision statement framework
   - Problem statement template
+  - Five Whys root cause analysis template
   - Use case template
   - Prioritization matrix
   - Success criteria template
+  - **ROI estimation framework** (TCO, payback period, IRR)
+  - **Business case rapid prototype template**
+  - **Risk assessment matrix** (technical, business, regulatory)
+  - **AI maturity assessment framework**
+  - **Workforce impact analysis template**
   - **Date Completed:** ___________
   - **Notes/Owner:** ___________
 
@@ -470,15 +479,26 @@ ___________________________________________
 - [ ] **Silent brainstorm completed**
 - [ ] **Gallery walk and clustering done**
 - [ ] **Top 3-5 problems selected**
+- [ ] **Five Whys root cause analysis completed for each problem**
+  - Problem 1 root cause documented
+  - Problem 2 root cause documented
+  - Problem 3 root cause documented
+  - Problem 4 root cause documented (if applicable)
+  - Problem 5 root cause documented (if applicable)
 - [ ] **Deep dive discussions completed for each**
 - [ ] **Impact quantified**
 
-**Top Problems Identified:**
-1. ___________________________________________
-2. ___________________________________________
-3. ___________________________________________
-4. ___________________________________________
-5. ___________________________________________
+**Top Problems Identified (with Root Causes):**
+1. Problem: ___________________________________________ 
+   Root Cause: ___________________________________________
+2. Problem: ___________________________________________ 
+   Root Cause: ___________________________________________
+3. Problem: ___________________________________________ 
+   Root Cause: ___________________________________________
+4. Problem: ___________________________________________ 
+   Root Cause: ___________________________________________
+5. Problem: ___________________________________________ 
+   Root Cause: ___________________________________________
 
 ### Break (15 min)
 
@@ -490,13 +510,16 @@ ___________________________________________
 - [ ] **Structured ideation completed**
 - [ ] **10-15 use cases selected for development**
 - [ ] **Small groups developed use cases**
+- [ ] **Each use case validated against root causes from Five Whys**
 - [ ] **Gallery walk and share completed**
 
 **Number of Use Cases Generated:** _______
 
-**Top Use Cases Developed:**
-1. ___________________________________________
-2. ___________________________________________
+**Top Use Cases Developed (with Root Cause Alignment):**
+1. Use Case: ___________________________________________ 
+   Addresses Root Cause: ___________________________________________
+2. Use Case: ___________________________________________ 
+   Addresses Root Cause: ___________________________________________
 3. ___________________________________________
 4. ___________________________________________
 5. ___________________________________________
@@ -524,13 +547,52 @@ ___________________________________________
 - [ ] **Success criteria defined for top use cases**
 - [ ] **Value realization framework created**
 - [ ] **Measurement plan established**
+- [ ] **ROI projections developed** (cost savings, revenue impact, efficiency gains)
+- [ ] **Financial scenarios created** (best case, likely case, conservative case)
 
 **Key Success Metrics:**
 ___________________________________________
 
+**ROI Summary:**
+- Projected ROI: ___________
+- Payback Period: ___________
+- NPV/IRR: ___________
+
 ### Break (15 min)
 
 - [ ] **Break taken on schedule**
+
+### Activity 6A: Executive Decision Points & Risk Governance (30 min)
+
+- [ ] **Investment thresholds discussed**
+  - Budget appetite confirmed
+  - Resource allocation priorities
+  - Speed vs. scale trade-offs
+- [ ] **Risk & governance framework addressed**
+  - AI ethics and responsible AI principles
+  - Regulatory compliance requirements (GDPR, industry-specific)
+  - Data privacy and security considerations
+  - Model bias and fairness evaluation
+  - Reputational risk assessment
+- [ ] **Change management implications discussed**
+  - Workforce transformation needs
+  - Skills gap analysis
+  - Cultural readiness assessment
+  - Stakeholder communication strategy
+- [ ] **Strategic options evaluated**
+  - Build vs. buy vs. partner decisions
+  - Ecosystem partnership opportunities
+  - Infrastructure prerequisites
+
+**Investment Decisions:**
+- Approved Budget Range: ___________
+- Resource Commitment: ___________
+- Risk Tolerance Level: ___________
+
+**Key Governance Decisions:**
+1. ___________________________________________
+2. ___________________________________________
+3. ___________________________________________
 
 ### Activity 7: Feasibility & Constraints (45 min)
 
@@ -538,9 +600,22 @@ ___________________________________________
 - [ ] **Constraints identified for each use case**
 - [ ] **Risks documented**
 - [ ] **Go/No-Go decisions made**
+- [ ] **AI maturity assessment conducted**
+  - Current state vs. required state
+  - Gap analysis
+  - Maturity roadmap milestones
+- [ ] **Competitive positioning evaluated**
+  - First-mover advantage opportunities
+  - Threat analysis (cost of inaction)
+  - Market disruption scenarios
 
 **Feasibility Assessment Summary:**
 ___________________________________________
+
+**Maturity Assessment:**
+- Current AI Maturity Level: ___________
+- Target Maturity Level: ___________
+- Key Gaps: ___________________________________________
 
 ### Activity 8: Roadmap & Next Steps (30 min)
 
@@ -623,6 +698,35 @@ ___________________________________________
   - Feasibility assessment
   - Roadmap and action plan
   - Appendices
+  - **Date Completed:** ___________
+
+- [ ] **Executive decision memo created** (1-2 pages)
+  - Using template: 15-executive-decision-memo.md
+  - Investment recommendations
+  - ROI projections and financial scenarios
+  - Risk summary and mitigation strategies
+  - Strategic rationale
+  - Go/No-Go recommendation
+  - **Date Completed:** ___________
+
+- [ ] **Board presentation deck created** (if applicable)
+  - Strategic context and competitive landscape
+  - Investment opportunity summary
+  - Financial projections and ROI
+  - Risk and governance framework
+  - Approval request
+  - **Date Completed:** ___________
+
+- [ ] **90-day action plan created**
+  - Immediate next steps with resource requirements
+  - Quick win identification
+  - Milestone tracking approach
+  - **Date Completed:** ___________
+
+- [ ] **Executive dashboard mockup created**
+  - Key metrics to track
+  - Reporting frequency
+  - Visualization format
   - **Date Completed:** ___________
 
 - [ ] **Use case documents created for top 3-5 use cases**
@@ -775,6 +879,12 @@ ___________________________________________
 1. ___________________________________________
 2. ___________________________________________
 3. ___________________________________________
+
+**Five Whys Technique Effectiveness:**
+- [ ] Helped uncover root causes effectively
+- [ ] Participants understood and engaged with the technique
+- [ ] Led to better-aligned AI solutions
+- **Notes:** ___________________________________________
 
 **Changes for Next Workshop:**
 1. ___________________________________________
