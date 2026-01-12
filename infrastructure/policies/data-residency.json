@@ -1,0 +1,51 @@
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "in": [
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.Sql/servers",
+            "Microsoft.DocumentDB/databaseAccounts",
+            "Microsoft.MachineLearningServices/workspaces",
+            "Microsoft.CognitiveServices/accounts"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "field": "location",
+              "notIn": "[parameters('allowedLocations')]"
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {
+    "allowedLocations": {
+      "type": "Array",
+      "metadata": {
+        "displayName": "Allowed locations",
+        "description": "The list of locations where resources can be created to comply with data residency requirements",
+        "strongType": "location"
+      },
+      "defaultValue": [
+        "australiaeast",
+        "australiasoutheast",
+        "australiacentral"
+      ]
+    }
+  },
+  "metadata": {
+    "category": "General",
+    "version": "1.0.0",
+    "displayName": "Enforce Data Residency for AI Resources",
+    "description": "This policy restricts the locations where AI and data resources can be created to ensure compliance with data residency requirements (GDPR, APRA CPS 234, local regulations)."
+  }
+}

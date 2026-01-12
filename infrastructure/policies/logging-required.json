@@ -1,0 +1,114 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "in": [
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.Sql/servers",
+            "Microsoft.DocumentDB/databaseAccounts",
+            "Microsoft.MachineLearningServices/workspaces",
+            "Microsoft.CognitiveServices/accounts",
+            "Microsoft.KeyVault/vaults",
+            "Microsoft.ContainerRegistry/registries",
+            "Microsoft.ContainerService/managedClusters"
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deployIfNotExists",
+      "details": {
+        "type": "Microsoft.Insights/diagnosticSettings",
+        "existenceCondition": {
+          "allOf": [
+            {
+              "field": "Microsoft.Insights/diagnosticSettings/logs.enabled",
+              "equals": "true"
+            },
+            {
+              "field": "Microsoft.Insights/diagnosticSettings/metrics.enabled",
+              "equals": "true"
+            }
+          ]
+        },
+        "roleDefinitionIds": [
+          "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+          "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293"
+        ],
+        "deployment": {
+          "properties": {
+            "mode": "incremental",
+            "template": {
+              "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+              "contentVersion": "1.0.0.0",
+              "parameters": {
+                "resourceName": {
+                  "type": "string"
+                },
+                "location": {
+                  "type": "string"
+                },
+                "logAnalyticsWorkspaceId": {
+                  "type": "string"
+                }
+              },
+              "resources": [
+                {
+                  "type": "Microsoft.Insights/diagnosticSettings",
+                  "apiVersion": "2021-05-01-preview",
+                  "name": "diagnostics",
+                  "scope": "[parameters('resourceName')]",
+                  "properties": {
+                    "workspaceId": "[parameters('logAnalyticsWorkspaceId')]",
+                    "logs": [
+                      {
+                        "category": "AllLogs",
+                        "enabled": true
+                      }
+                    ],
+                    "metrics": [
+                      {
+                        "category": "AllMetrics",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "parameters": {
+              "resourceName": {
+                "value": "[field('name')]"
+              },
+              "location": {
+                "value": "[field('location')]"
+              },
+              "logAnalyticsWorkspaceId": {
+                "value": "[parameters('logAnalyticsWorkspaceId')]"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "logAnalyticsWorkspaceId": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Log Analytics Workspace ID",
+        "description": "The resource ID of the Log Analytics workspace where logs will be sent",
+        "strongType": "Microsoft.OperationalInsights/workspaces"
+      }
+    }
+  },
+  "metadata": {
+    "category": "Monitoring",
+    "version": "1.0.0",
+    "displayName": "Deploy Diagnostic Settings for AI Resources",
+    "description": "This policy automatically deploys diagnostic settings for AI and data resources to enable audit logging. Required for: SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA."
+  }
+}

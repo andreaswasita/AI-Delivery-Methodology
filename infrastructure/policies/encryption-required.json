@@ -1,0 +1,56 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "in": [
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.Sql/servers/databases",
+            "Microsoft.DocumentDB/databaseAccounts",
+            "Microsoft.MachineLearningServices/workspaces",
+            "Microsoft.CognitiveServices/accounts",
+            "Microsoft.KeyVault/vaults"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "field": "Microsoft.Storage/storageAccounts/encryption.keySource",
+              "notEquals": "Microsoft.Storage"
+            },
+            {
+              "field": "Microsoft.Storage/storageAccounts/encryption.requireInfrastructureEncryption",
+              "notEquals": "true"
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the policy"
+      },
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Audit"
+    }
+  },
+  "metadata": {
+    "category": "Security",
+    "version": "1.0.0",
+    "displayName": "Require Encryption at Rest for AI Resources",
+    "description": "This policy ensures that all AI and data resources use encryption at rest. Required for: GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        },
+        {
+          "anyOf": [
+            {
+              "field": "[concat('tags[', parameters('tagName'), ']')]",
+              "exists": "false"
+            },
+            {
+              "field": "[concat('tags[', parameters('tagName'), ']')]",
+              "equals": ""
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  },
+  "parameters": {
+    "tagName": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag Name",
+        "description": "Name of the tag, such as 'Environment', 'Project', 'CostCenter'"
+      },
+      "defaultValue": "Environment"
+    },
+    "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the policy"
+      },
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Deny"
+    }
+  },
+  "metadata": {
+    "category": "Tags",
+    "version": "1.0.0",
+    "displayName": "Require Tag on Resource Groups",
+    "description": "This policy enforces tagging standards for resource organization, cost allocation, and compliance tracking. Required for: SOC 2, ISO 27001."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "mode": "Indexed",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "in": [
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.Sql/servers",
+            "Microsoft.DocumentDB/databaseAccounts",
+            "Microsoft.MachineLearningServices/workspaces",
+            "Microsoft.CognitiveServices/accounts",
+            "Microsoft.KeyVault/vaults",
+            "Microsoft.ContainerRegistry/registries"
+          ]
+        },
+        {
+          "anyOf": [
+            {
+              "field": "Microsoft.Storage/storageAccounts/publicNetworkAccess",
+              "notEquals": "Disabled"
+            },
+            {
+              "field": "Microsoft.Sql/servers/publicNetworkAccess",
+              "notEquals": "Disabled"
+            },
+            {
+              "field": "Microsoft.DocumentDB/databaseAccounts/publicNetworkAccess",
+              "notEquals": "Disabled"
+            },
+            {
+              "field": "Microsoft.CognitiveServices/accounts/publicNetworkAccess",
+              "notEquals": "Disabled"
+            },
+            {
+              "field": "Microsoft.KeyVault/vaults/publicNetworkAccess",
+              "notEquals": "Disabled"
+            },
+            {
+              "field": "Microsoft.ContainerRegistry/registries/publicNetworkAccess",
+              "notEquals": "Disabled"
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "[parameters('effect')]"
+    }
+  },
+  "parameters": {
+    "effect": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the policy"
+      },
+      "allowedValues": [
+        "Audit",
+        "Deny",
+        "Disabled"
+      ],
+      "defaultValue": "Audit"
+    }
+  },
+  "metadata": {
+    "category": "Network",
+    "version": "1.0.0",
+    "displayName": "Require Network Isolation for AI Resources",
+    "description": "This policy ensures that all AI and data resources use private endpoints and disable public network access. Required for: SOC 2, ISO 27001, PCI-DSS Level 1, APRA CPS 234."
+  }
+}
