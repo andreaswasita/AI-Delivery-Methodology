@@ -1324,14 +1324,25 @@ For questions, issues, or support:
 
 ---
 
-## 📋 Planned Enhancements
+## 📋 Interactive Tools & Planned Enhancements
 
-**🔄 Upcoming:**
-- PowerPoint presentation templates (customizable for client engagements)
-- Excel calculators (ROI calculator, effort estimation tool, cost model)
-- Example filled templates (sample project documentation)
-- Video walkthroughs (phase-by-phase implementation guidance)
-- Miro board templates (workshop facilitation boards)
+**✅ Available Now:**
+- **Interactive Web Calculators** - Browser-based tools hosted on GitHub Pages:
+  - [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) - NPV, payback period, 5-year projections
+
+**🔄 Coming Soon:**
+- **Additional Calculators**:
+  - Effort Estimator (story points to hours/days conversion)
+  - Azure Cost Estimator (infrastructure cost modeling)
+  - Team Sizing Calculator (optimal team composition)
+- **PowerPoint Templates** - Customizable slide decks for client engagements, executive briefings, technical deep-dives
+- **Example Filled Templates** - Sample project documentation showing realistic completed examples
+- **Video Walkthroughs** - Screen recordings with narration for phase-by-phase implementation
+- **Digital Collaboration Boards** - Pre-built templates for virtual workshops:
+  - Miro boards (visual collaboration platform)
+  - Microsoft Whiteboard templates (Teams-integrated)
+  - FigJam templates (design-thinking workshops)
+  - Templates: Business Envisioning Canvas, Five Whys Analysis, Risk Assessment Matrix, Stakeholder Mapping
 
 ---
 

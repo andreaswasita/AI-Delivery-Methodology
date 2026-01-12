@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Project ROI Calculator</title>
+    <meta name="description" content="Calculate ROI, NPV, and payback period for AI projects">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>💰 AI Project ROI Calculator</h1>
+            <p class="subtitle">Calculate return on investment with NPV and payback analysis</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">← Back to Calculators</a>
+        </div>
+    </nav>
+
+    <main class="calculator-container">
+        <div class="calculator-header">
+            <h1>ROI Calculator</h1>
+            <p>Enter your AI project costs and expected benefits to calculate ROI, NPV, payback period, and 5-year projections.</p>
+        </div>
+
+        <form id="roiForm">
+            <!-- Initial Investment -->
+            <div class="form-section">
+                <h3>💵 Initial Investment</h3>
+                
+                <div class="form-group">
+                    <label for="initialCost">Initial Development Cost</label>
+                    <input type="number" id="initialCost" value="500000" min="0" step="1000" required>
+                    <small>One-time cost for development, infrastructure setup, and initial training (USD)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataPrep">Data Preparation & Migration</label>
+                    <input type="number" id="dataPrep" value="100000" min="0" step="1000">
+                    <small>Cost for data cleaning, labeling, and migration (USD)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="changeManagement">Change Management & Training</label>
+                    <input type="number" id="changeManagement" value="50000" min="0" step="1000">
+                    <small>Cost for user training, documentation, and organizational change (USD)</small>
+                </div>
+            </div>
+
+            <!-- Ongoing Costs -->
+            <div class="form-section">
+                <h3>🔄 Annual Ongoing Costs</h3>
+                
+                <div class="form-group">
+                    <label for="infraCost">Infrastructure & Hosting (Annual)</label>
+                    <input type="number" id="infraCost" value="120000" min="0" step="1000" required>
+                    <small>Azure costs, compute, storage, networking (USD per year)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="maintenanceCost">Maintenance & Support (Annual)</label>
+                    <input type="number" id="maintenanceCost" value="80000" min="0" step="1000">
+                    <small>Model retraining, bug fixes, feature enhancements (USD per year)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseCost">Software Licenses (Annual)</label>
+                    <input type="number" id="licenseCost" value="30000" min="0" step="1000">
+                    <small>Azure ML, OpenAI, third-party tools (USD per year)</small>
+                </div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="form-section">
+                <h3>📈 Annual Benefits</h3>
+                
+                <div class="form-group">
+                    <label for="costSavings">Cost Savings (Annual)</label>
+                    <input type="number" id="costSavings" value="400000" min="0" step="1000" required>
+                    <small>Labor cost reduction, efficiency gains, automation savings (USD per year)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="revenueIncrease">Revenue Increase (Annual)</label>
+                    <input type="number" id="revenueIncrease" value="300000" min="0" step="1000">
+                    <small>New revenue from improved conversions, upsells, new products (USD per year)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="riskReduction">Risk Reduction Value (Annual)</label>
+                    <input type="number" id="riskReduction" value="100000" min="0" step="1000">
+                    <small>Avoided fraud losses, compliance fines, security breaches (USD per year)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="benefitGrowth">Annual Benefit Growth Rate</label>
+                    <input type="number" id="benefitGrowth" value="10" min="0" max="100" step="1">
+                    <small>Percentage increase in benefits year-over-year (%)</small>
+                </div>
+            </div>
+
+            <!-- Financial Parameters -->
+            <div class="form-section">
+                <h3>⚙️ Financial Parameters</h3>
+                
+                <div class="form-group">
+                    <label for="discountRate">Discount Rate (WACC)</label>
+                    <input type="number" id="discountRate" value="10" min="0" max="50" step="0.5" required>
+                    <small>Your organization's weighted average cost of capital (%)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeHorizon">Time Horizon (Years)</label>
+                    <select id="timeHorizon" required>
+                        <option value="3">3 years</option>
+                        <option value="5" selected>5 years</option>
+                        <option value="7">7 years</option>
+                        <option value="10">10 years</option>
+                    </select>
+                    <small>Period for ROI analysis</small>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">
+                Calculate ROI
+            </button>
+        </form>
+
+        <div id="results" class="results-section" style="display: none;">
+            <h3>📊 Results</h3>
+            
+            <div class="result-card">
+                <h4>Net Present Value (NPV)</h4>
+                <div id="npvResult" class="result-value"></div>
+                <p id="npvInterpretation"></p>
+            </div>
+
+            <div class="result-card">
+                <h4>Return on Investment (ROI)</h4>
+                <div id="roiResult" class="result-value"></div>
+                <p id="roiInterpretation"></p>
+            </div>
+
+            <div class="result-card">
+                <h4>Payback Period</h4>
+                <div id="paybackResult" class="result-value"></div>
+                <p id="paybackInterpretation"></p>
+            </div>
+
+            <div class="result-card">
+                <h4>5-Year Financial Summary</h4>
+                <div id="summaryTable"></div>
+            </div>
+
+            <div style="margin-top: 20px; text-align: center;">
+                <button onclick="window.print()" class="btn btn-secondary">🖨️ Print Results</button>
+                <button onclick="copyResults()" class="btn btn-secondary">📋 Copy to Clipboard</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Delivery Methodology | Part of Microsoft AI Frontier</p>
+            <p><a href="https://github.com/andreaswasita/AI-Delivery-Methodology">GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <script src="js/roi-calculator.js"></script>
+</body>
+</html>
