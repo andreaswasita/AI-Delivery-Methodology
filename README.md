@@ -89,7 +89,6 @@ We offer **two delivery tracks** to match your project needs:
 Perfect for single use cases, POCs, and rapid value delivery. Compressed timeline with essential activities only.
 
 - **Timeline:** 12 weeks
-- **Budget:** $250K-450K
 - **Team:** 5-8 people
 - **Scope:** Single use case
 - **Best For:** Pilots, POCs, quick wins, building momentum
@@ -124,7 +123,6 @@ Our methodology guides you through nine structured phases:
 | **Timeline** | 3 months | 6-12+ months |
 | **Scope** | Single use case | Multiple use cases |
 | **Team** | 5-8 people | 10-20 people |
-| **Budget** | $250-450K | $1M-5M+ |
 | **Best For** | Pilots, POCs | Production systems |
 
 ### Our Commitment
@@ -217,7 +215,7 @@ Before diving into phase details, select the right approach for your project:
 - Pilot or proof-of-concept
 - Quick win needed to build momentum
 - Data readily available
-- Limited budget (<$500K)
+- Limited budget
 
 **Key Features:**
 - 12-week compressed timeline
@@ -236,7 +234,7 @@ Before diving into phase details, select the right approach for your project:
 - Production-grade system
 - Enterprise-wide transformation
 - Complex integrations (5+ systems)
-- Large budget (>$1M)
+- Large budget
 
 **Key Features:**
 - Comprehensive 9-phase lifecycle
