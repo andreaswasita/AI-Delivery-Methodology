@@ -55,42 +55,49 @@ INT │     [Name]        │   [Business Owner]│ INT
 
 ### 2.2 Detailed Stakeholder Analysis
 
+> 📚 **8 Standard Stakeholder Personas Available**: This template uses standard stakeholder personas with detailed engagement strategies. See [**Stakeholder Personas Shared Module**](shared-components/stakeholder-personas.md) for complete persona profiles, needs/expectations, concerns, engagement strategies, and risk mitigation approaches.
+>
+> **How to Use**:
+> 1. Review the [Stakeholder Personas Library](shared-components/stakeholder-personas.md) and identify which personas exist in your project
+> 2. Map your actual stakeholders to the standard personas below
+> 3. Customize the engagement approach based on organizational culture and project specifics
+> 4. Add any project-specific stakeholders not covered in the standard 8 personas
+>
+> **Standard Personas**: Executive Sponsor | Business Owner | End Users | CIO/CTO | CFO | Compliance/Legal | IT Operations | Data Team
+
+---
+
 #### STAKEHOLDER 1: [Executive Sponsor]
 
+> 📖 **Full Persona Profile**: See [Stakeholder Personas - Executive Sponsor](shared-components/stakeholder-personas.md#persona-1-executive-sponsor) for complete profile, typical concerns, engagement strategies, and best practices.
+
 **Basic Information**
-- **Name**: [Name]
+- **Name**: [Insert actual stakeholder name]
 - **Role**: [Executive Sponsor / VP / C-Level]
 - **Department**: [Executive Office]
 - **Reporting To**: [CEO/Board]
 
-**Analysis**
-| Dimension | Assessment |
-|-----------|------------|
-| **Power/Influence** | ⭐⭐⭐⭐⭐ Very High - Ultimate decision authority, controls budget |
-| **Interest Level** | ⭐⭐⭐⭐ High - Accountable for project success, strategic importance |
-| **Current Support Level** | 🟢 Champion - Actively supporting and advocating |
-| **Impact on Project** | Critical - Can make or break the project |
-| **Impact of Project on Them** | High - Success reflects on their leadership |
+**Project-Specific Assessment** (customize from persona baseline)
+| Dimension | Your Assessment | Standard Profile |
+|-----------|----------------|------------------|
+| **Power/Influence** | [Your rating 1-5⭐] | ⭐⭐⭐⭐⭐ Very High |
+| **Interest Level** | [Your rating 1-5⭐] | ⭐⭐⭐⭐ High |
+| **Current Support Level** | [Champion/Supporter/Neutral/Resistor] | 🟢 Champion (typical) |
+| **Impact on Project** | [Your assessment] | Critical |
+| **Impact of Project on Them** | [Your assessment] | High |
 
-**Needs & Expectations**
-- Strategic business value and ROI
-- Minimal risk exposure
-- Regular high-level updates
-- Quick escalation resolution
-- Organizational readiness
+**Project-Specific Needs** (add to standard persona needs)
+- [Add any unique needs for this specific stakeholder beyond standard persona]
+- [Add another if applicable]
 
-**Concerns & Objections**
-- Budget overruns
-- Timeline delays
-- Organizational disruption
-- Failure risk
+**Project-Specific Concerns** (add to standard persona concerns)
+- [Add any unique concerns for this stakeholder]
 
-**Engagement Strategy**
-- **Frequency**: Monthly steering committee + ad-hoc for decisions
-- **Communication Method**: Executive briefings, dashboard
-- **Key Messages**: Business value, strategic alignment, risk mitigation
-- **Involvement**: Key decisions, escalations, go-live approval
-- **Success Metrics They Care About**: ROI, strategic objectives, risk status
+**Customized Engagement Plan** (based on persona recommendations)
+- **Frequency**: [Customize from standard: Monthly steering committee + ad-hoc]
+- **Communication Method**: [Customize from standard: Executive briefings, dashboard]
+- **Key Messages**: [Customize: Business value, strategic alignment, risk mitigation]
+- **Involvement Points**: [Customize list from persona guidance]
 
 **Actions**
 - [ ] Secure commitment and charter approval
@@ -98,47 +105,40 @@ INT │     [Name]        │   [Business Owner]│ INT
 - [ ] Provide executive dashboard access
 - [ ] Brief on quick wins and value
 - [ ] Involve in major milestones
+- [ ] [Add project-specific actions]
 
-**Risk if Not Engaged**: Project cancellation, budget cuts, lack of organizational support
+**Risk if Not Engaged**: Project cancellation, budget cuts, lack of organizational support (see [Persona Risk Analysis](shared-components/stakeholder-personas.md#risk-if-not-engaged))
 
 ---
 
 #### STAKEHOLDER 2: [Business Owner]
 
+> 📖 **Full Persona Profile**: See [Stakeholder Personas - Business Owner](shared-components/stakeholder-personas.md#persona-2-business-ownerdepartment-head)
+
 **Basic Information**
-- **Name**: [Name]
+- **Name**: [Insert actual name]
 - **Role**: [Director of Operations / Department Head]
 - **Department**: [Business Unit]
 - **Reporting To**: [VP/SVP]
 
-**Analysis**
-| Dimension | Assessment |
-|-----------|------------|
-| **Power/Influence** | ⭐⭐⭐⭐ High - Controls business requirements, user access |
-| **Interest Level** | ⭐⭐⭐⭐⭐ Very High - Direct impact on their operations |
-| **Current Support Level** | 🟢 Supporter - Positive but needs evidence |
-| **Impact on Project** | Critical - Requirements authority, user adoption driver |
-| **Impact of Project on Them** | Very High - Changes their team's operations |
+**Project-Specific Assessment**
+| Dimension | Your Assessment | Standard Profile |
+|-----------|----------------|------------------|
+| **Power/Influence** | [Your rating] | ⭐⭐⭐⭐ High |
+| **Interest Level** | [Your rating] | ⭐⭐⭐⭐⭐ Very High |
+| **Current Support Level** | [Assessment] | 🟢 Supporter |
+| **Impact on Project** | [Your assessment] | Critical |
+| **Impact of Project on Them** | [Your assessment] | Very High |
 
-**Needs & Expectations**
-- Solution solves their pain points
-- Minimal disruption to operations
-- User adoption and satisfaction
-- Measurable operational improvements
-- Team training and support
+**Project-Specific Customizations**
+- **Unique Needs**: [Add any specific needs beyond standard persona]
+- **Unique Concerns**: [Add specific concerns]
+- **Department Context**: [Any relevant department-specific details]
 
-**Concerns & Objections**
-- Impact on daily operations
-- User resistance
-- Reliability of AI solution
-- Time required from their team
-
-**Engagement Strategy**
-- **Frequency**: Bi-weekly reviews + weekly status updates
-- **Communication Method**: Business reviews, demos, user feedback sessions
-- **Key Messages**: Operational benefits, user value, support plan
-- **Involvement**: Requirements, UAT, training, user adoption
-- **Success Metrics They Care About**: User productivity, error reduction, user satisfaction
+**Customized Engagement Plan**
+- **Frequency**: [Based on standard: Bi-weekly reviews + weekly updates]
+- **Communication Method**: [Customize: Business reviews, demos, feedback sessions]
+- **Key Focus Areas**: [Customize for your project context]
 
 **Actions**
 - [ ] Conduct detailed requirements workshops
@@ -146,97 +146,114 @@ INT │     [Name]        │   [Business Owner]│ INT
 - [ ] Partner on UAT planning
 - [ ] Co-create training and adoption plan
 - [ ] Celebrate wins together
+- [ ] [Project-specific actions]
 
 **Risk if Not Engaged**: Poor requirements, user resistance, adoption failure
 
 ---
 
+#### STAKEHOLDER 3-8: [Map Remaining Stakeholders to Personas]
+
+> 💡 **Instructions**: For each remaining stakeholder, identify the matching persona from the library and create a similar profile:
+>
+> **Available Personas:**
+> - [End Users](shared-components/stakeholder-personas.md#persona-3-end-users) - Frontline staff who use the solution daily
+> - [CIO/CTO](shared-components/stakeholder-personas.md#persona-4-ciocto-chief-informationtechnology-officer) - Technology leadership
+> - [CFO](shared-components/stakeholder-personas.md#persona-5-cfo-chief-financial-officer) - Financial approval authority
+> - [Compliance/Legal/Risk](shared-components/stakeholder-personas.md#persona-6-compliancelegalrisk-officer) - Regulatory oversight
+> - [IT Operations](shared-components/stakeholder-personas.md#persona-7-it-operations-team) - Production support
+> - [Data Team](shared-components/stakeholder-personas.md#persona-8-data-team-data-engineersscientists) - Data infrastructure and quality
+>
+> **Template for Additional Stakeholders:**
+> ```markdown
+> #### STAKEHOLDER [N]: [Stakeholder Name]
+> 
+> > 📖 **Persona**: [Link to relevant persona in shared module]
+> 
+> **Basic Information**
+> - Name: [Name]
+> - Role: [Role]
+> - Department: [Dept]
+> - Persona Match: [Which standard persona this maps to]
+> 
+> **Project-Specific Assessment**
+> [Use table format from Stakeholder 1 above]
+> 
+> **Customizations**
+> [List any project-specific variations from standard persona]
+> 
+> **Actions**
+> [Checklist of engagement actions]
+> ```
+
+---
+
+---
+
 #### STAKEHOLDER 3: [End Users]
 
+> 📖 **Full Persona Profile**: See [Stakeholder Personas - End Users](shared-components/stakeholder-personas.md#persona-3-end-users)
+
 **Basic Information**
-- **Name**: [User Group Name]
+- **User Group Name**: [e.g., "Customer Service Representatives"]
 - **Role**: [Customer Service Reps / Analysts / etc.]
 - **Department**: [Department]
 - **Count**: [Approximately X users]
+- **Persona Match**: End Users (see shared module for complete profile)
 
-**Analysis**
-| Dimension | Assessment |
-|-----------|------------|
-| **Power/Influence** | ⭐⭐ Low - Individual power low, collective medium |
-| **Interest Level** | ⭐⭐⭐⭐⭐ Very High - Directly affects their daily work |
-| **Current Support Level** | 🟡 Neutral/Mixed - Cautiously optimistic, some skepticism |
-| **Impact on Project** | High - Adoption determines success |
-| **Impact of Project on Them** | Very High - Changes how they work |
+**Project-Specific Assessment**
+| Dimension | Your Assessment | Standard Profile |
+|-----------|----------------|------------------|
+| **Power/Influence** | [Your rating] | ⭐⭐ Low (individual), Medium (collective) |
+| **Interest Level** | [Your rating] | ⭐⭐⭐⭐⭐ Very High |
+| **Current Support Level** | [Assessment] | 🟡 Neutral/Mixed |
+| **Impact on Project** | [Assessment] | High - adoption determines success |
+| **Impact of Project on Them** | [Assessment] | Very High - changes daily work |
 
-**Needs & Expectations**
-- Easy to use solution
-- Makes their job easier, not harder
-- Adequate training and support
-- Job security (not replacement)
-- Voice in design
+**Project-Specific Customizations**
+- **User Group Characteristics**: [Describe your specific user population]
+- **Unique Concerns**: [Any concerns specific to your users beyond standard]
+- **Current Sentiment**: [What are users saying about this project?]
 
-**Concerns & Objections**
-- Fear of job loss/redundancy
-- Learning curve and change fatigue
-- AI accuracy and trust
-- Increased workload during transition
-- Lack of input in design
-
-**Engagement Strategy**
-- **Frequency**: Monthly updates + involvement in design/UAT
-- **Communication Method**: Town halls, newsletters, training sessions, champions network
-- **Key Messages**: Augmentation not replacement, ease of use, support availability
-- **Involvement**: Design feedback, UAT, champions program
-- **Success Metrics They Care About**: Ease of use, time savings, job satisfaction
+**Customized Engagement Plan**
+- **Champions Identified**: [List 15-20 champion names]
+- **Training Approach**: [Customize for your context]
+- **Communication Channels**: [Which channels work best for your users?]
 
 **Actions**
-- [ ] Create user champions program
+- [ ] Create user champions program (15-20 champions)
 - [ ] Involve users early in UX design
-- [ ] Comprehensive training program
-- [ ] Address fears directly in communications
+- [ ] Comprehensive training program developed
+- [ ] Address job security fears in town halls
 - [ ] Celebrate user success stories
-
-**Risk if Not Engaged**: Low adoption, resistance, workarounds, project perceived as failure
+- [ ] [Project-specific actions]
 
 ---
 
 #### STAKEHOLDER 4: [CIO/CTO]
 
+> 📖 **Full Persona Profile**: See [Stakeholder Personas - CIO/CTO](shared-components/stakeholder-personas.md#persona-4-ciocto-chief-informationtechnology-officer)
+
 **Basic Information**
-- **Name**: [Name]
+- **Name**: [Insert name]
 - **Role**: [Chief Information Officer / Chief Technology Officer]
 - **Department**: [IT/Technology]
 - **Reporting To**: [CEO]
+- **Persona Match**: CIO/CTO
 
-**Analysis**
-| Dimension | Assessment |
-|-----------|------------|
-| **Power/Influence** | ⭐⭐⭐⭐⭐ Very High - Technology authority, architecture approval |
-| **Interest Level** | ⭐⭐⭐⭐ High - Strategic IT implications |
-| **Current Support Level** | 🟡 Neutral - Needs convincing on technical approach |
-| **Impact on Project** | High - Can approve/block technical decisions |
-| **Impact of Project on Them** | Medium - Adds to IT portfolio, sets AI precedent |
+**Project-Specific Assessment**
+| Dimension | Your Assessment | Standard Profile |
+|-----------|----------------|------------------|
+| **Power/Influence** | [Your rating] | ⭐⭐⭐⭐⭐ Very High |
+| **Interest Level** | [Your rating] | ⭐⭐⭐⭐ High |
+| **Current Support Level** | [Assessment] | 🟡 Neutral (typical) |
+| **Impact on Project** | [Assessment] | High - technical authority |
+| **Impact of Project on Them** | [Assessment] | Medium - IT portfolio |
 
-**Needs & Expectations**
-- Technical excellence and best practices
-- Security and compliance
-- Scalability and maintainability
-- Integration with enterprise architecture
-- IT operational readiness
-
-**Concerns & Objections**
-- Technical risk and complexity
-- Security vulnerabilities
-- Support burden on IT
-- Precedent for future AI projects
-- Cloud costs
-
-**Engagement Strategy**
-- **Frequency**: Monthly technical reviews + architecture approvals
-- **Communication Method**: Technical presentations, architecture reviews
-- **Key Messages**: Technical soundness, security first, Azure best practices
-- **Involvement**: Architecture approval, security reviews, infrastructure planning
-- **Success Metrics They Care About**: System performance, security, uptime, technical debt
+**Project-Specific Context**
+- **IT Priorities**: [What are CIO's current strategic priorities?]
+- **Technical Concerns**: [Any specific technical concerns raised?]
+- **Architecture Standards**: [Key enterprise architecture requirements]
 
 **Actions**
 - [ ] Present technical architecture for approval
@@ -244,41 +261,59 @@ INT │     [Name]        │   [Business Owner]│ INT
 - [ ] Demonstrate Azure best practices
 - [ ] Plan for operational handover to IT
 - [ ] Include IT in capacity planning
-
-**Risk if Not Engaged**: Technical roadblocks, delayed approvals, post-launch IT issues
+- [ ] [Project-specific actions]
 
 ---
 
 #### STAKEHOLDER 5: [CFO]
 
+> 📖 **Full Persona Profile**: See [Stakeholder Personas - CFO](shared-components/stakeholder-personas.md#persona-5-cfo-chief-financial-officer)
+
 **Basic Information**
-- **Name**: [Name]
+- **Name**: [Insert name]
 - **Role**: [Chief Financial Officer]
 - **Department**: [Finance]
 - **Reporting To**: [CEO]
+- **Persona Match**: CFO
 
-**Analysis**
-| Dimension | Assessment |
-|-----------|------------|
-| **Power/Influence** | ⭐⭐⭐⭐⭐ Very High - Controls budget |
-| **Interest Level** | ⭐⭐⭐ Medium - Interested in financial returns |
-| **Current Support Level** | 🟡 Neutral - Show me the ROI |
-| **Impact on Project** | High - Budget approval authority |
-| **Impact of Project on Them** | Medium - P&L impact, capital allocation |
+**Project-Specific Assessment**
+| Dimension | Your Assessment | Standard Profile |
+|-----------|----------------|------------------|
+| **Power/Influence** | [Your rating] | ⭐⭐⭐⭐⭐ Very High |
+| **Interest Level** | [Your rating] | ⭐⭐⭐ Medium |
+| **Current Support Level** | [Assessment] | 🟡 Neutral - "Show me the ROI" |
+| **Impact on Project** | [Assessment] | High - budget authority |
+| **Impact of Project on Them** | [Assessment] | Medium - P&L impact |
 
-**Needs & Expectations**
-- Clear ROI and financial justification
-- Budget adherence
-- Benefit realization tracking
-- Cost controls
+**Project-Specific Context**
+- **Financial Year Priorities**: [CFO's current focus areas]
+- **Budget Constraints**: [Any budget constraints or concerns?]
+- **ROI Expectations**: [What ROI threshold does CFO expect?]
 
-**Concerns & Objections**
-- Unproven ROI
-- Cost overruns
-- Benefits may not materialize
-- Opportunity cost
+**Customized Engagement Plan**
+- **Frequency**: [Based on standard: Quarterly + budget approvals]
+- **Key Financial Metrics**: [Which metrics matter most to this CFO?]
+- **Reporting Format**: [Preferred financial reporting format]
 
-**Engagement Strategy**
+**Actions**
+- [ ] Present business case with conservative ROI
+- [ ] Regular budget variance reporting (monthly)
+- [ ] Track and report benefit realization
+- [ ] Demonstrate cost controls
+- [ ] [Project-specific actions]
+
+---
+
+#### STAKEHOLDERS 6-8: [Additional Stakeholders]
+
+> 💡 **Map Remaining Stakeholders**: Use the templates above to map any additional stakeholders:
+> - **Compliance/Legal/Risk Officer**: [Link to persona](shared-components/stakeholder-personas.md#persona-6-compliancelegalrisk-officer)
+> - **IT Operations Team**: [Link to persona](shared-components/stakeholder-personas.md#persona-7-it-operations-team)
+> - **Data Team**: [Link to persona](shared-components/stakeholder-personas.md#persona-8-data-team-data-engineersscientists)
+>
+> **Add Project-Specific Stakeholders**: If you have stakeholders not covered in the 8 standard personas, add them here with custom profiles.
+
+---
 - **Frequency**: Quarterly business reviews + budget approvals
 - **Communication Method**: Financial reports, ROI updates
 - **Key Messages**: Financial discipline, ROI trajectory, cost controls

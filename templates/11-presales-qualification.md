@@ -242,6 +242,8 @@
 ### 3.3 Technical Approach
 
 **Recommended Approach**:
+- [ ] Azure AI Foundry (unified AI platform with prompt flow)
+- [ ] Copilot Studio (low-code copilot builder)
 - [ ] Azure OpenAI (GPT models)
 - [ ] Azure Cognitive Services
 - [ ] Custom ML model (Azure ML)

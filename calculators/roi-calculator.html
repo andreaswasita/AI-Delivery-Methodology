@@ -25,6 +25,9 @@
         <div class="calculator-header">
             <h1>ROI Calculator</h1>
             <p>Enter your AI project costs and expected benefits to calculate ROI, NPV, payback period, and 5-year projections.</p>
+            <p style="margin-top: 10px; padding: 10px; background-color: #f3f2f1; border-radius: 4px; font-size: 0.95rem;">
+                💡 <strong>Need help estimating Azure costs?</strong> Use the <a href="https://azure.microsoft.com/en-us/pricing/calculator" target="_blank" rel="noopener noreferrer" style="color: #0078d4; text-decoration: underline;">Microsoft Azure Pricing Calculator</a> to get detailed pricing for VMs, storage, Azure OpenAI, Azure ML, and other services.
+            </p>
         </div>
 
         <form id="roiForm">
@@ -35,7 +38,7 @@
                 <div class="form-group">
                     <label for="initialCost">Initial Development Cost</label>
                     <input type="number" id="initialCost" value="500000" min="0" step="1000" required>
-                    <small>One-time cost for development, infrastructure setup, and initial training (USD)</small>
+                    <small>One-time cost for development, infrastructure setup, and initial training (USD). <em>Includes: Azure Landing Zone setup, MLOps pipelines (Azure DevOps/GitHub Actions), model development, integration. Typical range: $200K-$2M</em></small>
                 </div>
 
                 <div class="form-group">
@@ -58,7 +61,7 @@
                 <div class="form-group">
                     <label for="infraCost">Infrastructure & Hosting (Annual)</label>
                     <input type="number" id="infraCost" value="120000" min="0" step="1000" required>
-                    <small>Azure costs, compute, storage, networking (USD per year)</small>
+                    <small><strong>Azure Costs (USD/year):</strong> Compute (VM/AKS: $50K-$200K), Storage (Blob/Data Lake: $5K-$30K), Networking (VNet/ExpressRoute: $10K-$50K), Azure Monitor ($5K-$20K). <em>Example: 3x Standard_D16s_v3 VMs 24/7 = $70K/yr + 10TB storage = $2.4K/yr + monitoring = $10K/yr = ~$82K/yr</em></small>
                 </div>
 
                 <div class="form-group">
@@ -70,7 +73,7 @@
                 <div class="form-group">
                     <label for="licenseCost">Software Licenses (Annual)</label>
                     <input type="number" id="licenseCost" value="30000" min="0" step="1000">
-                    <small>Azure ML, OpenAI, third-party tools (USD per year)</small>
+                    <small><strong>Azure AI Services (USD/year):</strong> Azure OpenAI (GPT-4: $0.03/1K tokens, ~$20K-$100K/yr for 1M daily requests), Azure ML ($0-$50K depending on compute), Cognitive Services ($5K-$30K), Power BI Premium ($5K-$20K). <em>Example: Azure OpenAI 500K tokens/day = $45K/yr + Azure ML managed endpoints = $15K/yr + Cognitive Services = $10K/yr = ~$70K/yr</em></small>
                 </div>
             </div>
 

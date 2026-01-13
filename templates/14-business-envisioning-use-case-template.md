@@ -129,7 +129,7 @@ Example: "By implementing an AI-powered integration layer that intelligently agg
 
 **Technology Approach:**
 - **AI/ML Model Type:** [e.g., Transformer, CNN, Random Forest, LLM]
-- **Azure Services:** [e.g., Azure OpenAI, Azure Machine Learning, Cognitive Services]
+- **Azure Services:** [e.g., Azure AI Foundry, Azure OpenAI, Copilot Studio, Azure Machine Learning, Cognitive Services]
 - **Development Approach:** [Pre-built / Customized / Built from scratch]
 
 ### User Experience

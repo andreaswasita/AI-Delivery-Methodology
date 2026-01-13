@@ -1245,12 +1245,16 @@ Each of these must be completed and approved:
 - **Azure CLI / PowerShell**: Infrastructure automation
 
 **AI/ML Platform:**
+- **Azure AI Foundry**: Unified AI development platform with prompt flow, evaluation, model catalog (recommended)
+- **Copilot Studio**: Low-code platform for building custom copilots with conversational AI
 - **Azure Machine Learning**: ML workspace, compute, pipelines
 - **Azure Databricks**: Data engineering and ML at scale
 - **Azure Cognitive Services**: Pre-built AI capabilities
 - **Azure OpenAI Service**: GPT models and more
 
 **Data Platform:**
+- **Microsoft Fabric**: Unified analytics with Lakehouse, Data Factory, Synapse Data Engineering, Power BI (recommended)
+- **Dataverse**: Low-code data platform with security roles (for Power Platform integration)
 - **Azure Data Lake Storage Gen2**: Data lake
 - **Azure Synapse Analytics**: Data warehousing and analytics
 - **Azure Data Factory**: Data integration and ETL

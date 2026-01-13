@@ -702,7 +702,9 @@ Example: **Active**
 
 Example:
 ```
+Microsoft Fabric Lakehouse: abfss://datasets@fabricworkspace.lakehouse.fabric.microsoft.com/customer_transactions/
 Azure Data Lake: abfss://datasets@dlstorageprod.dfs.core.windows.net/customer_transactions/
+Dataverse: https://org.crm.dynamics.com/api/data/v9.2/customerdata
 Format: Parquet (compressed)
 Partitioned by: year, month
 ```
@@ -745,7 +747,7 @@ Example:
 
 **If no (internal use only):**
 
-- **Internal Distribution Platform**: Azure Data Lake, SharePoint, internal data catalog
+- **Internal Distribution Platform**: Microsoft Fabric Lakehouse, Dataverse, Azure Data Lake, SharePoint, internal data catalog
 - **Access Governance**: RBAC enforced, access logged and audited
 
 ---

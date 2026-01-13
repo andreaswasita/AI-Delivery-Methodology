@@ -142,7 +142,7 @@ Prioritize integrations:
 
 **Best for**: Large data volumes, scheduled updates  
 **Advantages**: Efficient for bulk data, lower real-time load  
-**Tools**: Azure Data Factory, SSIS, Informatica
+**Tools**: Microsoft Fabric Data Factory, Azure Data Factory, Dataverse, SSIS, Informatica
 
 #### Pattern 4: Database Integration
 

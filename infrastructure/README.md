@@ -158,10 +158,14 @@ $environment = "prod"
 | | Private Endpoints | No public internet access | GDPR, SOC 2 |
 | | Azure Firewall | Centralized egress filtering | PCI-DSS |
 | | DDoS Protection | Distributed denial-of-service protection | ISO 27001 |
-| **AI Services** | Azure Machine Learning | ML model training and deployment | SOC 2, ISO 27001 |
+| **AI Services** | Azure AI Foundry | Unified AI development with prompt flow, evaluation, model catalog (recommended) | SOC 2, ISO 27001, GDPR |
+| | Copilot Studio | Low-code copilot builder with conversational AI | SOC 2, GDPR |
+| | Azure Machine Learning | ML model training and deployment | SOC 2, ISO 27001 |
 | | Azure OpenAI | GPT-4, embeddings, chat | GDPR, SOC 2 |
 | | Cognitive Services | Vision, Speech, Language | GDPR, HIPAA |
-| **Data Layer** | Azure Data Lake Gen2 | Data storage with hierarchical namespace | GDPR, PCI-DSS |
+| **Data Layer** | Microsoft Fabric | Unified analytics: Lakehouse, Data Factory, Synapse, Power BI (recommended) | GDPR, SOC 2, ISO 27001 |
+| | Dataverse | Low-code data platform with security roles (Power Platform) | GDPR, SOC 2 |
+| | Azure Data Lake Gen2 | Data storage with hierarchical namespace | GDPR, PCI-DSS |
 | | Azure SQL Database | Relational data with TDE | PCI-DSS, SOC 2 |
 | | Cosmos DB | NoSQL for low-latency scenarios | GDPR, SOC 2 |
 | | Azure Synapse | Data warehousing and analytics | GDPR, ISO 27001 |

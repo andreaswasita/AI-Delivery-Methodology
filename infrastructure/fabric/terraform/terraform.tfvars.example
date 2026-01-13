@@ -1,0 +1,44 @@
+# Example: Production Financial Services Environment
+
+capacity_name  = "fabric-ai-prod"
+capacity_sku   = "F64"
+region         = "australiaeast"
+workspace_prefix = "ai-platform"
+project_name   = "ai-platform"
+environment    = "prod"
+
+# Administrator configuration
+capacity_admin_emails = [
+  "fabric-admin@company.com",
+  "data-platform-team@company.com"
+]
+alert_email_address = "fabric-alerts@company.com"
+
+# Environments to create workspaces for
+environments = ["dev", "test", "prod"]
+
+# Compliance configuration
+compliance_profile = "FinancialServices"
+
+# Security settings (recommended for Financial Services)
+enable_private_link            = true
+enable_customer_managed_keys   = true
+require_mfa                    = true
+
+# Governance settings
+enable_purview = true
+enable_dlp     = true
+log_retention_days = 2555  # 7 years for APRA CPS 234
+
+# Cost management
+monthly_budget      = 10000
+enable_cost_alerts  = true
+enable_auto_scale   = false  # Keep false for production
+
+# Additional tags
+additional_tags = {
+  BusinessUnit = "Data & Analytics"
+  CostCenter   = "CC-12345"
+  Owner        = "data-platform-team@company.com"
+  Criticality  = "High"
+}

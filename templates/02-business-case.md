@@ -66,6 +66,8 @@
 
 ### 2.2 Technology Approach
 **Microsoft Azure Services:**
+- Azure AI Foundry (recommended for unified AI development)
+- Copilot Studio (for conversational AI scenarios)
 - Azure Machine Learning
 - Azure Cognitive Services
 - Azure OpenAI Service
@@ -175,43 +177,101 @@
 
 ## 5. Financial Analysis
 
-### 5.1 Return on Investment (ROI)
+> 📊 **Comprehensive ROI Toolkit Available**: For detailed ROI formulas, calculation methodologies, cash flow templates, NPV/IRR analysis, sensitivity analysis frameworks, and benefit quantification guidance, see [**ROI & Financial Analysis Shared Module**](shared-components/roi-financial-analysis.md).
+> 
+> 🧮 **Interactive Calculator**: Use the [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) for real-time financial modeling.
 
-| Metric | Value |
-|--------|-------|
-| **Total Investment** | $[X] |
-| **Total 5-Year Benefits** | $[Y] |
-| **Net Benefit** | $[Y-X] |
-| **ROI %** | [(Y-X)/X × 100]% |
-| **Payback Period** | [Months/Years] |
+### 5.1 Financial Summary (Quick Reference)
 
-### 5.2 Cash Flow Analysis
+Complete your detailed financial analysis using the [ROI & Financial Analysis Module](shared-components/roi-financial-analysis.md), then summarize key findings here:
 
-| Year | Investment | Benefits | Net Cash Flow | Cumulative |
-|------|-----------|----------|---------------|------------|
-| Year 0 | ($[X]) | $0 | ($[X]) | ($[X]) |
-| Year 1 | ($[X]) | $[Y] | $[Z] | $[Z] |
-| Year 2 | ($[X]) | $[Y] | $[Z] | $[Z] |
-| Year 3 | ($[X]) | $[Y] | $[Z] | $[Z] |
-| Year 4 | ($[X]) | $[Y] | $[Z] | $[Z] |
-| Year 5 | ($[X]) | $[Y] | $[Z] | $[Z] |
+| Metric | Value | Notes |
+|--------|-------|-------|
+| **Total Investment (5 years)** | $[X] | Include all CapEx and OpEx from Section 4 |
+| **Total Benefits (5 years)** | $[Y] | See benefit quantification in ROI module |
+| **Net Benefit** | $[Y-X] | Total value creation |
+| **ROI %** | [(Y-X)/X × 100]% | Target: >200% for AI projects |
+| **Payback Period** | [Months] | Target: <24 months preferred |
+| **NPV @ 10% discount rate** | $[X] | Must be positive |
+| **Internal Rate of Return (IRR)** | [Y]% | Compare to cost of capital |
 
-### 5.3 NPV & IRR
+**Financial Viability Assessment:** [✅ Proceed | ⚠️ Conditional | ❌ Not Viable]
 
-| Metric | Value |
-|--------|-------|
-| **Net Present Value (NPV)** @ 10% discount rate | $[X] |
-| **Internal Rate of Return (IRR)** | [Y]% |
+### 5.2 Cash Flow Summary
 
-### 5.4 Sensitivity Analysis
+Detailed 5-year cash flow analysis from [ROI Module Section 3](shared-components/roi-financial-analysis.md#3-cash-flow-analysis-template):
 
-**Best Case Scenario:**
-- Benefits increased by 20%: ROI = [X]%, Payback = [Y months]
+| Year | Investment | Benefits | Net Cash Flow | Cumulative | Notes |
+|------|-----------|----------|---------------|------------|-------|
+| Year 0 | ($[X]) | $0 | ($[X]) | ($[X]) | Setup & infrastructure |
+| Year 1 | ($[X]) | $[Y] | $[Z] | $[Z] | Ramp-up (60% of full benefits) |
+| Year 2 | ($[X]) | $[Y] | $[Z] | $[Z] | Stabilization (90% benefits) |
+| Year 3 | ($[X]) | $[Y] | $[Z] | $[Z] | Full benefits realized |
+| Year 4 | ($[X]) | $[Y] | $[Z] | $[Z] | Optimization phase |
+| Year 5 | ($[X]) | $[Y] | $[Z] | $[Z] | Mature operations |
+| **Total** | **($[X])** | **$[Y]** | **$[Z]** | **$[Z]** | **5-year cumulative** |
 
-**Base Case Scenario:**
-- As calculated above: ROI = [X]%, Payback = [Y months]
+**Payback Analysis:** [Payback achieved in Month X of Year Y]
 
-**Worst Case Scenario:**
+### 5.3 Sensitivity Analysis Summary
+
+Complete sensitivity analysis framework available in [ROI Module Section 6](shared-components/roi-financial-analysis.md#6-sensitivity-analysis-framework):
+
+| Scenario | ROI % | NPV | Payback | Probability |
+|----------|-------|-----|---------|-------------|
+| **Best Case** (+20% benefits, -10% costs) | [X]% | $[Y] | [Z] months | 10% |
+| **Base Case** (as modeled) | [X]% | $[Y] | [Z] months | 60% |
+| **Worst Case** (-20% benefits, +20% costs) | [X]% | $[Y] | [Z] months | 30% |
+
+**Expected Value (weighted):** ROI = [X]%, NPV = $[Y]
+
+**Financial Risk Assessment:** [Low | Medium | High]
+
+---
+
+### 5.4 Key Assumptions & Risks
+
+**Critical Financial Assumptions:**
+1. [Assumption 1 - e.g., "User adoption reaches 90% by Month 6"]
+2. [Assumption 2 - e.g., "Productivity gains of 30% are achievable"]
+3. [Assumption 3 - e.g., "No major technical delays or scope changes"]
+4. [Assumption 4 - e.g., "Azure costs grow linearly with usage"]
+5. [Assumption 5 - e.g., "Benefits begin accruing in Month 3 post-launch"]
+
+**Financial Risks:** (see [Risk Library](shared-components/risk-library.md) for mitigation strategies)
+- **R012**: Unrealistic ROI Expectations (Medium severity) - [Mitigation summary]
+- **R010**: Lack of Executive Sponsorship (High severity) - [Mitigation summary]
+- **R016**: Scope Creep affecting budget (High severity) - [Mitigation summary]
+
+**Benefit Realization Dependencies:**
+- Successful user adoption (>80% target)
+- Model performance meets accuracy targets (>85%)
+- Integration with existing systems completed
+- Adequate training and change management
+
+---
+
+### 5.5 Approval & Recommendations
+
+**Financial Recommendation:** [Proceed | Proceed with Conditions | Do Not Proceed]
+
+**Conditions (if applicable):**
+1. [Condition 1 - e.g., "Secure executive sponsorship commitment"]
+2. [Condition 2 - e.g., "Complete data quality assessment confirms feasibility"]
+3. [Condition 3 - e.g., "Pilot demonstrates minimum 20% productivity gains"]
+
+**CFO Approval:** ___________________________ Date: ___________
+
+**Exec Sponsor Approval:** ___________________________ Date: ___________
+
+**Next Steps:**
+1. Present to steering committee on [Date]
+2. Secure final budget approval
+3. Proceed to [Mobilization Phase / Detailed Discovery]
+
+---
+
+## 6. Strategic Alignment**Worst Case Scenario:**
 - Benefits decreased by 20%: ROI = [X]%, Payback = [Y months]
 
 ---

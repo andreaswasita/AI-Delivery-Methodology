@@ -81,7 +81,7 @@
 6. Privacy and compliance review
 
 **Tools Used**:
-- [Tool 1, e.g., Azure Data Factory]
+- [Tool 1, e.g., Microsoft Fabric, Azure Data Factory, Dataverse]
 - [Tool 2, e.g., Python (pandas profiling)]
 - [Tool 3, e.g., Great Expectations]
 

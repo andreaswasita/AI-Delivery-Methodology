@@ -47,17 +47,60 @@
 
 ---
 
+## Risk Library Reference
+
+> 📚 **18 Pre-Defined AI Project Risks Available**: This project uses the standard risk library containing 18 common AI project risks with detailed mitigation strategies. See [**Risk Library Shared Module**](shared-components/risk-library.md) for complete risk definitions, mitigation strategies, and best practices.
+> 
+> **How to Use**: 
+> 1. Review the [Risk Library](shared-components/risk-library.md) and select relevant risks (typically 8-12 risks per project)
+> 2. Import selected risks into this register below
+> 3. Customize probability, impact, and mitigation plans for your specific project context
+> 4. Add 3-5 project-specific risks not covered in the library
+
+### Quick Reference: Standard Risk Categories
+- **Technical Risks (5)**: Data quality, model performance, integration, scalability, security
+- **Data Risks (3)**: Insufficient training data, access/privacy constraints, data drift
+- **Business Risks (4)**: Unclear requirements, lack of sponsorship, user adoption, unrealistic ROI
+- **Organizational Risks (3)**: Resource availability, lack of AI expertise, vendor dependency
+- **Project Management Risks (3)**: Scope creep, inadequate testing, communication breakdown
+
+---
+
 ## Active Risks
+
+> **Instructions**: Import relevant risks from the [Risk Library](shared-components/risk-library.md) by copying risk templates below. Update the **Status**, **Current Probability**, **Current Impact**, **Owner**, **Mitigation Strategy** (customize), and **Next Review** fields for your project.
+
+### Summary Dashboard
+
+| Risk ID | Risk Name | Category | Score | Priority | Status | Owner |
+|---------|-----------|----------|-------|----------|--------|-------|
+| R001 | [Import from library or add custom] | [Category] | [P×I] | [H/M/L] | [Status] | [Owner] |
+| R002 | [Import from library or add custom] | [Category] | [P×I] | [H/M/L] | [Status] | [Owner] |
+| R003 | [Import from library or add custom] | [Category] | [P×I] | [H/M/L] | [Status] | [Owner] |
+| R004 | [Import from library or add custom] | [Category] | [P×I] | [H/M/L] | [Status] | [Owner] |
+| R005 | [Import from library or add custom] | [Category] | [P×I] | [H/M/L] | [Status] | [Owner] |
+| ... | ... | ... | ... | ... | ... | ... |
+
+**Current Risk Profile:** 
+- Critical (20-25): [Count] 
+- High (15-19): [Count]  
+- Medium (10-14): [Count]  
+- Low (1-9): [Count]
+
+---
 
 ### CATEGORY 1: TECHNICAL RISKS
 
-#### R001: Inadequate Data Quality
+> 💡 **Tip**: Review [Risk Library - Technical Risks](shared-components/risk-library.md#category-1-technical-risks-5-risks) for R001-R005 definitions and standard mitigation strategies.
+
+#### R001: [Inadequate Data Quality - Import from Risk Library]
 | Field | Details |
 |-------|---------|
 | **Risk ID** | R001 |
 | **Category** | Technical - Data |
 | **Description** | Available data may have poor quality, missing values, or inconsistencies that prevent effective model training |
-| **Cause** | Legacy systems, data entry errors, incomplete data collection processes |
+| **Standard Definition** | See [Risk Library R001](shared-components/risk-library.md#r001-inadequate-data-quality) for complete risk profile |
+| **Cause** | [Customize for your project - e.g., "Legacy CRM system, inconsistent data entry"]
 | **Impact** | Model accuracy below acceptable thresholds, project delays, additional data cleansing effort required |
 | **Probability** | 4 - High |
 | **Impact** | 4 - High |
@@ -71,31 +114,86 @@
 | **Last Updated** | [Date] |
 | **Next Review** | [Date] |
 
+> 📖 **Full Risk Details**: See [Risk Library R001](shared-components/risk-library.md#r001-inadequate-data-quality) for complete mitigation strategies, best practices, and contingency plans.
+
 ---
 
-#### R002: Model Performance Below Expectations
+#### R002: [Model Performance Below Expectations - Import from Risk Library]
 | Field | Details |
 |-------|---------|
 | **Risk ID** | R002 |
 | **Category** | Technical - AI/ML |
 | **Description** | ML model fails to achieve target accuracy, precision, or recall metrics defined in success criteria |
-| **Cause** | Insufficient training data, feature selection issues, algorithm limitations, concept drift |
+| **Standard Definition** | See [Risk Library R002](shared-components/risk-library.md#r002-model-performance-below-expectations) |
+| **Cause** | [Customize - e.g., "Limited historical data, complex business rules"] |
 | **Impact** | Business value not realized, stakeholder confidence lost, project may be cancelled |
-| **Probability** | 3 - Medium |
-| **Impact** | 5 - Critical |
-| **Risk Score** | 15 (High) |
-| **Status** | Active |
-| **Owner** | AI/ML Lead |
-| **Mitigation Strategy** | - Set realistic performance targets based on baseline<br>- Use ensemble methods and advanced algorithms<br>- Implement comprehensive feature engineering<br>- Plan for multiple modeling iterations<br>- Engage external ML experts if needed |
-| **Contingency Plan** | - Adjust success criteria if business still achieves value<br>- Pivot to rule-based approach for critical cases<br>- Implement human-in-the-loop workflow |
-| **Trigger Indicators** | - Prototype model < 70% of target<br>- No improvement after 3 iterations<br>- Cross-validation results declining |
-| **Response Actions** | □ Baseline performance established<br>□ Multiple algorithms tested<br>□ Expert review scheduled |
+| **Probability** | [1-5] |
+| **Impact** | [1-5] |
+| **Risk Score** | [P×I] |
+| **Status** | [Active/Mitigated/Closed] |
+| **Owner** | [AI/ML Lead] |
+| **Mitigation Strategy** | [Customize standard strategies from Risk Library] |
+| **Contingency Plan** | [Customize from Risk Library] |
+| **Trigger Indicators** | [Select relevant triggers from Risk Library] |
+| **Response Actions** | □ [Action 1]<br>□ [Action 2]<br>□ [Action 3] |
 | **Last Updated** | [Date] |
 | **Next Review** | [Date] |
 
+> 📖 **Full Risk Details**: See [Risk Library R002](shared-components/risk-library.md#r002-model-performance-below-expectations)
+
 ---
 
-#### R003: Integration Complexity
+#### R003-R018: [Additional Risks - Import from Risk Library as Needed]
+
+> 💡 **Import Additional Risks**: Review the [Risk Library](shared-components/risk-library.md) and import other relevant risks:
+> - **R003**: Integration Complexity
+> - **R004**: Scalability & Performance Issues
+> - **R005**: Security & Compliance Violation
+> - **R006**: Insufficient Training Data
+> - **R007**: Data Access & Privacy Constraints
+> - **R008**: Data Drift & Model Degradation
+> - **R009**: Unclear or Changing Requirements
+> - **R010**: Lack of Executive Sponsorship
+> - **R011**: User Adoption Resistance
+> - **R012**: Unrealistic ROI Expectations
+> - **R013**: Resource Availability
+> - **R014**: Lack of AI/ML Expertise
+> - **R015**: Vendor/Third-Party Dependency
+> - **R016**: Scope Creep
+> - **R017**: Inadequate Testing
+> - **R018**: Communication Breakdown
+>
+> **Template for Importing Risks:**
+> ```markdown
+> #### R0XX: [Risk Name from Library]
+> | Field | Details |
+> |-------|---------|
+> | **Risk ID** | R0XX |
+> | **Category** | [Category from Library] |
+> | **Description** | [Copy from Library] |
+> | **Standard Definition** | See [Risk Library R0XX](shared-components/risk-library.md#r0XX-risk-name) |
+> | **Cause** | [Customize for your project context] |
+> | **Impact** | [Expected impact on your project] |
+> | **Probability** | [Your assessment: 1-5] |
+> | **Impact** | [Your assessment: 1-5] |
+> | **Risk Score** | [P×I] |
+> | **Status** | [Active/Monitoring/Mitigated/Closed] |
+> | **Owner** | [Assign owner from your team] |
+> | **Mitigation Strategy** | [Customize strategies from Risk Library] |
+> | **Contingency Plan** | [Customize from Risk Library] |
+> | **Trigger Indicators** | [Select relevant triggers] |
+> | **Response Actions** | □ [Action 1]<br>□ [Action 2] |
+> | **Last Updated** | [Date] |
+> | **Next Review** | [Date] |
+> ```
+
+---
+
+### PROJECT-SPECIFIC RISKS
+
+> **Add Custom Risks**: Add 3-5 risks specific to your project that are not covered in the standard risk library.
+
+#### R101: [Project-Specific Risk 1]
 | Field | Details |
 |-------|---------|
 | **Risk ID** | R003 |

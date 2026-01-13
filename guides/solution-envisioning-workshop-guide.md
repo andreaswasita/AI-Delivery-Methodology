@@ -313,9 +313,9 @@ Review AI capability types and Azure services:
 | AI Capability | Azure Services | Use Case Examples |
 |---------------|----------------|-------------------|
 | **Predictive Analytics** | Azure Machine Learning, Automated ML | Demand forecasting, churn prediction, risk scoring |
-| **Generative AI** | Azure OpenAI Service, Azure AI Studio | Content generation, summarization, code assistance |
+| **Generative AI** | Azure AI Foundry, Azure OpenAI Service, Copilot Studio, Azure AI Studio | Content generation, summarization, code assistance, custom copilots |
 | **Computer Vision** | Azure AI Vision, Custom Vision | Quality inspection, document processing, video analytics |
-| **Natural Language** | Azure AI Language, Azure OpenAI | Document understanding, chatbots, sentiment analysis |
+| **Natural Language** | Azure AI Language, Azure OpenAI, Copilot Studio | Document understanding, chatbots, sentiment analysis |
 | **Speech** | Azure AI Speech | Transcription, voice assistants, translation |
 | **Decision Intelligence** | Azure Personalizer, Metrics Advisor | Recommendations, anomaly detection, personalization |
 
@@ -347,9 +347,9 @@ Data Requirements:
 - Data Gaps: [What's missing, how to fill]
 
 Azure Services:
-- Primary: [e.g., Azure OpenAI, Azure ML]
+- Primary: [e.g., Azure AI Foundry, Azure OpenAI, Azure ML, Copilot Studio]
 - Supporting: [e.g., Azure Databricks, Cognitive Search]
-- Data Platform: [e.g., Azure Data Lake, Synapse Analytics]
+- Data Platform: [e.g., Microsoft Fabric, Azure Data Lake, Synapse Analytics]
 
 Technical Feasibility:
 - Feasibility Score: [High/Medium/Low]
@@ -482,13 +482,13 @@ Data Sources:
    - Access Method: [API, Direct connection, File transfer]
 
 Data Ingestion:
-- Tool: [Azure Data Factory, Event Hubs, IoT Hub]
+- Tool: [Microsoft Fabric Data Factory, Azure Data Factory, Event Hubs, IoT Hub, Dataverse]
 - Frequency: [Real-time, Hourly, Daily]
 - Validation: [Schema validation, data quality checks]
 - Error Handling: [Retry logic, dead letter queue]
 
 Data Processing:
-- Tool: [Azure Databricks, Synapse, Data Factory]
+- Tool: [Microsoft Fabric (Synapse Data Engineering, Notebooks), Azure Databricks, Azure Synapse, Azure Data Factory, Dataverse]
 - Transformations:
   1. [Cleansing - remove nulls, duplicates]
   2. [Enrichment - join with reference data]
@@ -497,16 +497,16 @@ Data Processing:
 - Output: [Feature store, processed data lake]
 
 Data Storage:
-- Raw Data: [Azure Data Lake Gen2 - Bronze layer]
-- Processed Data: [Delta Lake - Silver layer]
-- Feature Store: [Azure ML Feature Store / Feast]
-- Model Artifacts: [Azure ML model registry]
+- Raw Data: [Microsoft Fabric Lakehouse - Bronze layer, Azure Data Lake Gen2, Dataverse]
+- Processed Data: [Microsoft Fabric Lakehouse - Silver layer, Delta Lake, Dataverse]
+- Feature Store: [Azure ML Feature Store, Feast, Microsoft Fabric]
+- Model Artifacts: [Azure ML model registry, Microsoft Fabric]
 
 Data Governance:
-- Catalog: [Microsoft Purview]
-- Lineage: [Automated tracking in Purview]
-- Access Control: [RBAC + Data masking]
-- Data Quality: [Great Expectations, Azure Data Quality]
+- Catalog: [Microsoft Fabric (built-in), Microsoft Purview, Dataverse]
+- Lineage: [Microsoft Fabric (built-in), Automated tracking in Purview]
+- Access Control: [RBAC + Data masking, Dataverse security roles]
+- Data Quality: [Microsoft Fabric Data Quality, Great Expectations, Azure Data Quality]
 
 Performance:
 - Batch window: [e.g., <4 hours for daily batch]

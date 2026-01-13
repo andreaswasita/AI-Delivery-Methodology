@@ -147,6 +147,8 @@ The Setup Platform phase bridges the gap between prototype (Hackathons) and prod
 - Managed endpoints for deployment
 
 #### **B. Data Platform**
+- **Microsoft Fabric** - Unified analytics platform with Lakehouse, Data Factory, Synapse Data Engineering (recommended)
+- **Dataverse** - Low-code data platform with built-in security (for Power Platform scenarios)
 - **Azure Data Lake Gen2** - Raw and processed data storage
 - **Azure Data Factory** - ETL/ELT pipelines
 - **Azure Synapse Analytics** - Data warehousing (optional)

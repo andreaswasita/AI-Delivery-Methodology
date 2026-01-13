@@ -67,7 +67,7 @@
 - **Driver 3**: [e.g., Enable data-driven decision making]
 
 ### 1.4 Expected Benefits
-- **Quantitative**: [e.g., £500K annual cost savings, 40% time reduction]
+- **Quantitative**: [e.g., $500K annual cost savings, 40% time reduction]
 - **Qualitative**: [e.g., Improved accuracy, better customer experience]
 
 ### 1.5 Project Timeline
