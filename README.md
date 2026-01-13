@@ -198,6 +198,12 @@ Underpinned by **360° Governance and Execution, Strategy, Ops Planning and Chan
 
 ```
 AI-Delivery-Methodology/
+├── agents/             # 🤖 AI agents for delivery methodology tasks
+│   ├── value_analysis_agent.py  # Value analysis and ROI agent
+│   ├── value_calculator.py      # Advanced financial calculations
+│   ├── example_usage.py         # Pre-built industry examples
+│   ├── README.md               # Comprehensive documentation
+│   └── QUICKSTART.md           # 5-minute quick start guide
 ├── calculators/        # 🧮 Interactive web calculators (hosted on GitHub Pages)
 │   ├── roi-calculator.html      # ROI, NPV, and payback analysis tool
 │   ├── css/                     # Styling for calculators
@@ -211,7 +217,56 @@ AI-Delivery-Methodology/
 │   │   ├── modules/   # Static Web Apps, AI services, compute, data, security
 │   │   └── main.bicep # Main deployment template
 │   ├── scripts/       # Deployment automation (PowerShell/Bash)
-│  🧮 Interactive Tools & Calculators
+```
+
+---
+
+## 🤖 AI Agents for Delivery Teams
+
+### Value Analysis Agent ✨ **NEW!**
+
+**Purpose:** Automate comprehensive value analysis for AI projects with interactive CLI-based agent
+
+**🚀 [Quick Start Guide](./agents/QUICKSTART.md) | 📖 [Full Documentation](./agents/README.md)**
+
+**Key Features:**
+- **Interactive Value Analysis** - Guided CLI interface for use case evaluation
+- **ROI Calculation** - NPV, IRR, payback period, profitability metrics
+- **Use Case Prioritization** - Value vs. effort scoring with recommendations
+- **Five Whys Analysis** - Interactive root cause analysis technique
+- **Risk-Adjusted Modeling** - Confidence weighting and sensitivity analysis
+- **Comprehensive Reporting** - JSON exports and stakeholder-ready reports
+
+**Quick Start:**
+```powershell
+cd agents
+python value_analysis_agent.py
+```
+
+**Pre-Built Examples:**
+- Financial Services: Fraud Detection System
+- Retail: Demand Forecasting + Personalized Recommendations
+- Manufacturing: Predictive Maintenance
+
+```powershell
+python example_usage.py
+```
+
+**Use Cases:**
+- Business Envisioning Workshops - Prioritize use cases by value
+- Business Case Development - Quantify financial benefits
+- Portfolio Management - Rank initiatives for roadmap planning
+- Benefit Tracking - Monitor value realization vs. projections
+
+**Integration:**
+- Complements [Business Case Template](./templates/02-business-case.md)
+- Supports [Business Envisioning Workshop](./guides/business-envisioning-workshop-guide.md)
+- Aligns with [Use Case Template](./templates/14-business-envisioning-use-case-template.md)
+- Works with [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/) for quick single-use-case analysis
+
+---
+
+## 🧮 Interactive Tools & Calculators
 
 ### AI Project ROI Calculator (Live on GitHub Pages)
 

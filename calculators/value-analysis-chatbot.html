@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Value Analysis Chatbot - Interactive Assistant</title>
+    <meta name="description" content="Interactive AI chatbot for value analysis, use case prioritization, and ROI assessment">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chatbot-styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🤖 AI Value Analysis Chatbot</h1>
+            <p class="subtitle">Your interactive assistant for AI project value analysis</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">← Back to Calculators</a>
+        </div>
+    </nav>
+
+    <main class="chatbot-container">
+        <div class="chatbot-header">
+            <div class="bot-avatar">🤖</div>
+            <div class="bot-info">
+                <h2>Value Analysis Assistant</h2>
+                <p class="status">
+                    <span class="status-indicator"></span>
+                    Online - Ready to help
+                </p>
+            </div>
+            <button id="resetBtn" class="reset-btn" title="Start new analysis">
+                🔄 Reset
+            </button>
+        </div>
+
+        <div id="chatMessages" class="chat-messages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="chat-input-container">
+            <div id="quickReplies" class="quick-replies">
+                <!-- Quick reply buttons will be added here -->
+            </div>
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="userInput" 
+                    placeholder="Type your response..."
+                    autocomplete="off"
+                >
+                <button id="sendBtn" class="send-btn">
+                    <span>Send</span>
+                    <span class="send-icon">➤</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Summary Panel (hidden initially) -->
+        <div id="summaryPanel" class="summary-panel" style="display: none;">
+            <div class="summary-header">
+                <h3>📊 Analysis Summary</h3>
+                <button id="closeSummary" class="close-summary">✕</button>
+            </div>
+            <div id="summaryContent" class="summary-content">
+                <!-- Summary will be populated here -->
+            </div>
+            <div class="summary-actions">
+                <button id="exportJson" class="btn btn-secondary">📥 Export JSON</button>
+                <button id="exportReport" class="btn btn-primary">📄 Download Report</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Delivery Methodology | 
+                <a href="https://github.com/andreaswasita/AI-Delivery-Methodology">GitHub Repository</a> |
+                <a href="roi-calculator.html">ROI Calculator</a>
+            </p>
+            <p class="privacy-note">🔒 Privacy: All calculations run in your browser. No data is sent to any server.</p>
+        </div>
+    </footer>
+
+    <script src="js/value-analysis-chatbot.js"></script>
+</body>
+</html>

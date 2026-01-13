@@ -1,0 +1,64 @@
+================================================================================
+VALUE ANALYSIS REPORT: Test Project
+================================================================================
+Generated: 2026-01-13 21:19:05
+
+📊 EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+Total Expected Benefits (5-year): $700,000.00
+Total Investment Required: $450,000.00
+Net Benefit: $250,000.00
+ROI: 55.6%
+
+🎯 USE CASE ANALYSIS
+--------------------------------------------------------------------------------
+Total Use Cases Analyzed: 1
+
+USE CASE PRIORITIZATION (by Value Score):
+
+1. Test Use Case
+   Priority Score: 140000.0
+   Impact: HIGH
+   Total Benefit: $700,000
+   Effort: 20 points
+   🚀 MUST DO - High value, high impact
+
+
+======================================================================
+VALUE vs EFFORT MATRIX
+======================================================================
+
+🎯 QUICK WINS (High Value, Low Effort):
+   • Test Use Case - Value: $700,000, Effort: 20
+
+📈 STRATEGIC (High Value, High Effort):
+
+⏳ FILL-INS (Low Value, Low Effort):
+
+❌ AVOID (Low Value, High Effort):
+
+
+💰 FINANCIAL ANALYSIS
+--------------------------------------------------------------------------------
+Benefits by Category:
+  • Cost Reduction: $700,000 (100.0%)
+
+Cost Breakdown:
+  • Development: $450,000 (100.0%)
+
+📋 RECOMMENDATIONS
+--------------------------------------------------------------------------------
+Immediate Actions (Phase 1):
+  1. Test Use Case
+     - Expected Value: $700,000
+     - Estimated Effort: 20 points
+
+Risk Considerations:
+  • Validate benefit assumptions with stakeholders
+  • Pilot high-value use cases before full deployment
+  • Monitor and track actual vs expected benefits
+  • Adjust roadmap based on early results
+
+================================================================================
+END OF REPORT
+================================================================================
