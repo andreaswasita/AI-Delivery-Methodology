@@ -1,7 +1,7 @@
 # AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Try Our Interactive ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/)** - Calculate NPV, payback period, and 5-year projections for your AI projects
+🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | **[Try ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | **[Try Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
 
 ---
 
