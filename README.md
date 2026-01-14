@@ -1,7 +1,7 @@
 # AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | **[Try ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | **[Try Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
+🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
 
 ---
 
@@ -205,10 +205,12 @@ AI-Delivery-Methodology/
 │   ├── README.md               # Comprehensive documentation
 │   └── QUICKSTART.md           # 5-minute quick start guide
 ├── calculators/        # 🧮 Interactive web calculators (hosted on GitHub Pages)
-│   ├── roi-calculator.html      # ROI, NPV, and payback analysis tool
-│   ├── css/                     # Styling for calculators
-│   ├── js/                      # Calculator logic
-│   └── GITHUB-PAGES-SETUP.md    # Deployment guide
+│   ├── value-analysis-chatbot.html  # AI-powered value analysis chatbot
+│   ├── roi-calculator.html          # ROI, NPV, and payback analysis tool
+│   ├── effort-estimator.html        # Effort estimation with story points
+│   ├── css/                         # Styling for calculators
+│   ├── js/                          # Calculator logic
+│   └── GITHUB-PAGES-SETUP.md        # Deployment guide
 ├── templates/          # Ready-to-use templates for all deliverables
 ├── checklists/         # Phase-specific checklists with 200+ actionable items
 ├── guides/             # Detailed implementation guides
@@ -262,15 +264,36 @@ python example_usage.py
 - Complements [Business Case Template](./templates/02-business-case.md)
 - Supports [Business Envisioning Workshop](./guides/business-envisioning-workshop-guide.md)
 - Aligns with [Use Case Template](./templates/14-business-envisioning-use-case-template.md)
-- Works with [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/) for quick single-use-case analysis
+- Works with [Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html) for conversational analysis
+- Pairs with [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) for quick single-use-case analysis
 
 ---
 
 ## 🧮 Interactive Tools & Calculators
 
-### AI Project ROI Calculator (Live on GitHub Pages)
+### 🌐 [View All Calculators](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/)
 
-**🌐 [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/)**
+All calculators run entirely in your browser—100% private, no data sent to any server.
+
+### 1. Value Analysis Chatbot 🤖 ✨ **NEW!**
+
+**🌐 [Launch Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
+
+Interactive AI assistant that guides you through comprehensive value analysis:
+- **Conversational Interface** - Natural chat flow for use case analysis
+- **Multi-Use Case Analysis** - Analyze multiple initiatives in one session
+- **Five Whys Root Cause** - Interactive problem exploration technique
+- **Real-Time ROI Calculations** - NPV, IRR, payback period
+- **Value Matrix Prioritization** - Visual 2x2 matrix with recommendations
+- **JSON Export** - Download complete analysis for documentation
+
+**Use For:** Business envisioning workshops, use case prioritization, stakeholder alignment
+
+---
+
+### 2. AI Project ROI Calculator 📊
+
+**🌐 [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)**
 
 Calculate comprehensive ROI metrics for your AI projects:
 - **Net Present Value (NPV)** - Time-value adjusted returns
@@ -280,17 +303,27 @@ Calculate comprehensive ROI metrics for your AI projects:
 - **Benefit Growth Modeling** - Compound annual growth tracking
 - **Sensitivity Analysis** - Test different scenarios
 
-**Features:**
-- ✅ Runs entirely in your browser (no data sent to servers)
-- ✅ Customizable discount rates and growth factors
-- ✅ Real-time calculations with detailed breakdowns
-- ✅ Professional results ready for executive presentations
+**Use For:** Business cases, executive approvals, budget justification, comparing initiatives
 
-**Use For:**
-- Building business cases for AI investments
-- Executive approval and budget justification
-- Comparing multiple AI initiatives
-- Creating financial models for proposals
+---
+
+### 3. Effort Estimator ⏱️ ✨ **NEW!**
+
+**🌐 [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
+
+Convert project scope into accurate effort estimates:
+- **Journey Phase Selection** - Discovery, MVP, Pilot, Production, Enterprise
+- **Industry-Standard Story Points** - Auto-calculated by complexity (3-13 points)
+- **Team Velocity Calculation** - Based on FTE and complexity (4-8 points/sprint/FTE)
+- **Fixed 2-Week Sprints** - Industry standard sprint duration
+- **Risk-Adjusted Estimates** - Low (4%), Medium (7%), High (15%) buffers
+- **Phase Breakdown** - Discovery, Development, Testing, Deployment
+- **Team Composition** - Suggested roles and sizing
+- **Sprint Timeline** - Total sprints, weeks, and months
+
+**Use For:** Project planning, sprint planning, resource allocation, timeline estimation
+
+---
 
 [View Calculator Documentation →](./calculators/README.md)
 
