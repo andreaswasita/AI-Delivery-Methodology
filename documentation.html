@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - AI Delivery Methodology</title>
+    <meta name="description" content="Complete documentation, templates, guides, and checklists for AI delivery">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb {
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: #999;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1.5rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .content-section h3 {
+            color: #764ba2;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h3:first-of-type {
+            margin-top: 1rem;
+        }
+
+        .doc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .doc-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .doc-list li:last-child {
+            border-bottom: none;
+        }
+
+        .doc-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .doc-link:hover {
+            color: #764ba2;
+            padding-left: 0.5rem;
+        }
+
+        .doc-link::before {
+            content: "📄";
+            font-size: 1.2rem;
+        }
+
+        .doc-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+            margin-left: 2rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-box h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .quick-link {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .quick-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .category-box {
+                margin-left: 0;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <span>Documentation</span>
+            </div>
+            <h1>📚 Complete Documentation</h1>
+            <p class="subtitle">Templates, Guides, Checklists & Resources</p>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn">🏠 Home</a>
+                <a href="calculators/" class="nav-btn">🧮 Calculators</a>
+                <a href="https://github.com/andreaswasita/AI-Delivery-Methodology" class="nav-btn">💻 GitHub</a>
+                <a href="agents/README.md" class="nav-btn">🐍 Python Agent</a>
+            </div>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Templates</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Guides</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Checklists</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Delivery Phases</div>
+            </div>
+        </div>
+
+        <!-- TEMPLATES SECTION -->
+        <div class="content-section">
+            <h2>📝 Templates</h2>
+            <p style="margin-bottom: 2rem; color: #666;">
+                Ready-to-use document templates for all phases of AI delivery. These templates provide 
+                structure and consistency across your AI projects.
+            </p>
+
+            <h3>📋 Project Governance & Planning</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="templates/01-project-charter.md" class="doc-link">Project Charter</a>
+                    <p class="doc-description">Project foundation, objectives, scope, and authority structure</p>
+                </li>
+                <li>
+                    <a href="templates/02-business-case.md" class="doc-link">Business Case</a>
+                    <p class="doc-description">Financial justification, ROI analysis, and investment rationale</p>
+                </li>
+                <li>
+                    <a href="templates/03-raci-matrix.md" class="doc-link">RACI Matrix</a>
+                    <p class="doc-description">Roles and responsibilities mapping for all stakeholders</p>
+                </li>
+                <li>
+                    <a href="templates/04-project-plan-roadmap.md" class="doc-link">Project Plan & Roadmap</a>
+                    <p class="doc-description">Timeline, milestones, and delivery roadmap planning</p>
+                </li>
+                <li>
+                    <a href="templates/05-risk-register.md" class="doc-link">Risk Register</a>
+                    <p class="doc-description">Risk identification, assessment, and mitigation strategies</p>
+                </li>
+                <li>
+                    <a href="templates/06-communication-plan.md" class="doc-link">Communication Plan</a>
+                    <p class="doc-description">Stakeholder communication strategy and engagement plan</p>
+                </li>
+                <li>
+                    <a href="templates/07-success-criteria-kpis.md" class="doc-link">Success Criteria & KPIs</a>
+                    <p class="doc-description">Success metrics, measurements, and KPI definitions</p>
+                </li>
+                <li>
+                    <a href="templates/08-stakeholder-analysis.md" class="doc-link">Stakeholder Analysis</a>
+                    <p class="doc-description">Stakeholder mapping, influence, and engagement strategies</p>
+                </li>
+            </ul>
+
+            <h3>🔍 Discovery & Assessment</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="templates/09-business-requirements-document.md" class="doc-link">Business Requirements Document</a>
+                    <p class="doc-description">Comprehensive business needs and requirements documentation</p>
+                </li>
+                <li>
+                    <a href="templates/10-data-assessment-report.md" class="doc-link">Data Assessment Report</a>
+                    <p class="doc-description">Data readiness, quality evaluation, and gap analysis</p>
+                </li>
+                <li>
+                    <a href="templates/11-presales-qualification.md" class="doc-link">Presales Qualification</a>
+                    <p class="doc-description">Opportunity qualification and readiness scoring</p>
+                </li>
+                <li>
+                    <a href="templates/13-business-envisioning-pre-work.md" class="doc-link">Business Envisioning Pre-work</a>
+                    <p class="doc-description">Workshop preparation and pre-engagement activities</p>
+                </li>
+                <li>
+                    <a href="templates/16-executive-readiness-assessment.md" class="doc-link">Executive Readiness Assessment</a>
+                    <p class="doc-description">Leadership readiness and organizational maturity evaluation</p>
+                </li>
+            </ul>
+
+            <h3>🎯 Use Case & Value Analysis</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="templates/12-sprint-planning-template.md" class="doc-link">Sprint Planning Template</a>
+                    <p class="doc-description">Agile sprint planning and backlog management</p>
+                </li>
+                <li>
+                    <a href="templates/14-business-envisioning-use-case-template.md" class="doc-link">Business Envisioning Use Case</a>
+                    <p class="doc-description">Detailed use case documentation and requirements</p>
+                </li>
+                <li>
+                    <a href="templates/15-executive-decision-memo.md" class="doc-link">Executive Decision Memo</a>
+                    <p class="doc-description">Executive approval documentation and decision rationale</p>
+                </li>
+                <li>
+                    <a href="templates/19-use-case-prioritization-matrix.md" class="doc-link">Use Case Prioritization Matrix</a>
+                    <p class="doc-description">Use case ranking, scoring, and selection framework</p>
+                </li>
+            </ul>
+
+            <h3>🤖 AI/ML Documentation</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="templates/17-model-card-template.md" class="doc-link">Model Card Template</a>
+                    <p class="doc-description">ML model documentation, performance, and governance</p>
+                </li>
+                <li>
+                    <a href="templates/18-dataset-datasheet-template.md" class="doc-link">Dataset Datasheet</a>
+                    <p class="doc-description">Dataset documentation, metadata, and lineage</p>
+                </li>
+            </ul>
+
+            <h3>💰 FinOps & Value Tracking</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="templates/20-finops-value-realization-tracking.md" class="doc-link">FinOps Value Realization Tracking</a>
+                    <p class="doc-description">Comprehensive NPV tracking, benefit realization, cost optimization, and FinOps integration</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- GUIDES SECTION -->
+        <div class="content-section">
+            <h2>📖 Comprehensive Guides</h2>
+            <p style="margin-bottom: 2rem; color: #666;">
+                Detailed implementation guides for each phase of the AI delivery lifecycle, frameworks, and specialized activities.
+            </p>
+
+            <h3>🚀 Phase-Specific Guides</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="guides/mobilisation-complete-guide.md" class="doc-link">Mobilisation Complete Guide</a>
+                    <p class="doc-description">Phase 1: Project setup, team formation, and kickoff</p>
+                </li>
+                <li>
+                    <a href="guides/hackathons-complete-guide.md" class="doc-link">Hackathons Complete Guide</a>
+                    <p class="doc-description">Phase 2: Rapid prototyping and proof-of-concept development</p>
+                </li>
+                <li>
+                    <a href="guides/setup-platform-complete-guide.md" class="doc-link">Setup Platform Complete Guide</a>
+                    <p class="doc-description">Phase 3: Infrastructure, MLOps, and platform configuration</p>
+                </li>
+                <li>
+                    <a href="guides/build-phase-complete-guide.md" class="doc-link">Build Phase Complete Guide</a>
+                    <p class="doc-description">Phase 4: Model development, training, and optimization</p>
+                </li>
+                <li>
+                    <a href="guides/integrate-phase-complete-guide.md" class="doc-link">Integrate Phase Complete Guide</a>
+                    <p class="doc-description">Phase 5: System integration and API development</p>
+                </li>
+                <li>
+                    <a href="guides/test-evaluate-phase-complete-guide.md" class="doc-link">Test & Evaluate Phase Complete Guide</a>
+                    <p class="doc-description">Phase 6: Testing, validation, and quality assurance</p>
+                </li>
+                <li>
+                    <a href="guides/prepare-deploy-phase-complete-guide.md" class="doc-link">Prepare & Deploy Phase Complete Guide</a>
+                    <p class="doc-description">Phase 7: Deployment planning and production rollout</p>
+                </li>
+                <li>
+                    <a href="guides/operate-care-phase-complete-guide.md" class="doc-link">Operate & Care Phase Complete Guide</a>
+                    <p class="doc-description">Phase 8: Operations, monitoring, and continuous improvement</p>
+                </li>
+            </ul>
+
+            <h3>🎯 Workshop & Engagement Guides</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="guides/business-envisioning-workshop-guide.md" class="doc-link">Business Envisioning Workshop Guide</a>
+                    <p class="doc-description">Facilitation guide for executive envisioning sessions</p>
+                </li>
+                <li>
+                    <a href="guides/solution-envisioning-workshop-guide.md" class="doc-link">Solution Envisioning Workshop Guide</a>
+                    <p class="doc-description">Technical solution design and architecture workshops</p>
+                </li>
+                <li>
+                    <a href="guides/presales-discovery-activities-for-presentations.md" class="doc-link">Presales Discovery Activities</a>
+                    <p class="doc-description">Discovery activities for client presentations and proposals</p>
+                </li>
+                <li>
+                    <a href="guides/executive-coaching-guide.md" class="doc-link">Executive Coaching Guide</a>
+                    <p class="doc-description">Executive stakeholder engagement and coaching framework</p>
+                </li>
+            </ul>
+
+            <h3>🏗️ Technical & Operational Guides</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="guides/mlops-devops-complete-guide.md" class="doc-link">MLOps & DevOps Complete Guide</a>
+                    <p class="doc-description">CI/CD, model deployment, and operations automation</p>
+                </li>
+                <li>
+                    <a href="guides/ai-model-risk-management-guide.md" class="doc-link">AI Model Risk Management Guide</a>
+                    <p class="doc-description">Model governance, risk assessment, and compliance</p>
+                </li>
+                <li>
+                    <a href="guides/story-points-estimation-guide.md" class="doc-link">Story Points Estimation Guide</a>
+                    <p class="doc-description">Agile estimation techniques for AI projects</p>
+                </li>
+            </ul>
+
+            <h3>📊 Strategic Frameworks</h3>
+            <ul class="doc-list">
+                <li>
+                    <a href="guides/3-month-fast-track-guide.md" class="doc-link">3-Month Fast Track Guide</a>
+                    <p class="doc-description">Accelerated delivery approach for quick wins</p>
+                </li>
+                <li>
+                    <a href="guides/ai-center-of-excellence-framework.md" class="doc-link">AI Center of Excellence Framework</a>
+                    <p class="doc-description">Building organizational AI capability and governance</p>
+                </li>
+                <li>
+                    <a href="guides/ai-scaling-patterns-guide.md" class="doc-link">AI Scaling Patterns Guide</a>
+                    <p class="doc-description">Patterns for scaling AI across the enterprise</p>
+                </li>
+                <li>
+                    <a href="guides/engagement-modes-framework.md" class="doc-link">Engagement Modes Framework</a>
+                    <p class="doc-description">Different engagement models and delivery approaches</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CHECKLISTS SECTION -->
+        <div class="content-section">
+            <h2>✅ Phase Checklists</h2>
+            <p style="margin-bottom: 2rem; color: #666;">
+                Comprehensive checklists ensuring nothing is missed during each phase of delivery. Use these 
+                to track progress and validate phase completion.
+            </p>
+
+            <ul class="doc-list">
+                <li>
+                    <a href="checklists/discovery-checklist.md" class="doc-link">Discovery Checklist</a>
+                    <p class="doc-description">Phase 0: Presales and discovery activities validation</p>
+                </li>
+                <li>
+                    <a href="checklists/mobilisation-checklist.md" class="doc-link">Mobilisation Checklist</a>
+                    <p class="doc-description">Phase 1: Project setup and kickoff verification</p>
+                </li>
+                <li>
+                    <a href="checklists/hackathons-prototype-checklist.md" class="doc-link">Hackathons & Prototype Checklist</a>
+                    <p class="doc-description">Phase 2: Prototyping and POC validation</p>
+                </li>
+                <li>
+                    <a href="checklists/setup-platform-checklist.md" class="doc-link">Setup Platform Checklist</a>
+                    <p class="doc-description">Phase 3: Platform and infrastructure readiness</p>
+                </li>
+                <li>
+                    <a href="checklists/build-phase-checklist.md" class="doc-link">Build Phase Checklist</a>
+                    <p class="doc-description">Phase 4: Model development and training completion</p>
+                </li>
+                <li>
+                    <a href="checklists/integrate-phase-checklist.md" class="doc-link">Integrate Phase Checklist</a>
+                    <p class="doc-description">Phase 5: Integration and API development verification</p>
+                </li>
+                <li>
+                    <a href="checklists/test-evaluate-phase-checklist.md" class="doc-link">Test & Evaluate Phase Checklist</a>
+                    <p class="doc-description">Phase 6: Testing and quality assurance completion</p>
+                </li>
+                <li>
+                    <a href="checklists/prepare-deploy-phase-checklist.md" class="doc-link">Prepare & Deploy Phase Checklist</a>
+                    <p class="doc-description">Phase 7: Deployment readiness and go-live preparation</p>
+                </li>
+                <li>
+                    <a href="checklists/operate-care-phase-checklist.md" class="doc-link">Operate & Care Phase Checklist</a>
+                    <p class="doc-description">Phase 8: Operations and continuous improvement tracking</p>
+                </li>
+                <li>
+                    <a href="checklists/business-envisioning-workshop-checklist.md" class="doc-link">Business Envisioning Workshop Checklist</a>
+                    <p class="doc-description">Workshop preparation and facilitation verification</p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- QUICK REFERENCE SECTION -->
+        <div class="content-section">
+            <h2>🎯 Quick Reference</h2>
+            
+            <div class="category-box">
+                <h4>🚀 Getting Started</h4>
+                <div class="quick-links">
+                    <a href="README.md" class="quick-link">Main README</a>
+                    <a href="agents/README.md" class="quick-link">Python Agent Guide</a>
+                    <a href="agents/QUICKSTART.md" class="quick-link">Quick Start</a>
+                    <a href="calculators/README.md" class="quick-link">Calculators Guide</a>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h4>🧮 Calculators & Tools</h4>
+                <div class="quick-links">
+                    <a href="calculators/value-analysis-chatbot.html" class="quick-link">Value Analysis Chatbot</a>
+                    <a href="calculators/roi-calculator.html" class="quick-link">ROI Calculator</a>
+                    <a href="calculators/effort-estimator.html" class="quick-link">Effort Estimator</a>
+                    <a href="agents/value_analysis_agent.py" class="quick-link">Python CLI Agent</a>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h4>🏗️ Infrastructure & Deployment</h4>
+                <div class="quick-links">
+                    <a href="infrastructure/README.md" class="quick-link">Infrastructure Overview</a>
+                    <a href="infrastructure/bicep/" class="quick-link">Azure Bicep Templates</a>
+                    <a href="infrastructure/FABRIC-LANDING-ZONE.md" class="quick-link">Fabric Landing Zone</a>
+                    <a href="calculators/DEPLOYMENT.md" class="quick-link">Deployment Guide</a>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h4>📊 Analysis & Comparisons</h4>
+                <div class="quick-links">
+                    <a href="APPROACH-COMPARISON.md" class="quick-link">Approach Comparison</a>
+                    <a href="OVERLAP-ANALYSIS.md" class="quick-link">Overlap Analysis</a>
+                    <a href="agents/PHASES_FEATURE_SUMMARY.md" class="quick-link">Phases Feature Summary</a>
+                    <a href="agents/PHASES_QUICK_REFERENCE.md" class="quick-link">Phases Quick Ref</a>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h4>🏭 Industry Use Cases</h4>
+                <div class="quick-links">
+                    <a href="guides/industry-use-cases/" class="quick-link">All Use Cases</a>
+                    <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/tree/main/guides/industry-use-cases" class="quick-link">Browse on GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADDITIONAL RESOURCES -->
+        <div class="content-section">
+            <h2>📚 Additional Resources</h2>
+            
+            <div class="grid-2col">
+                <div>
+                    <h3>📄 Key Documents</h3>
+                    <ul class="doc-list">
+                        <li>
+                            <a href="README.md" class="doc-link">Main README</a>
+                            <p class="doc-description">Complete methodology overview and documentation</p>
+                        </li>
+                        <li>
+                            <a href="APPROACH-COMPARISON.md" class="doc-link">Approach Comparison</a>
+                            <p class="doc-description">Comparison with other AI delivery frameworks</p>
+                        </li>
+                        <li>
+                            <a href="OVERLAP-ANALYSIS.md" class="doc-link">Overlap Analysis</a>
+                            <p class="doc-description">Analysis of methodology overlaps and integration</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>🐍 Python Tools</h3>
+                    <ul class="doc-list">
+                        <li>
+                            <a href="agents/README.md" class="doc-link">AI Delivery Agent</a>
+                            <p class="doc-description">Python CLI agent for value analysis</p>
+                        </li>
+                        <li>
+                            <a href="agents/QUICKSTART.md" class="doc-link">Quick Start Guide</a>
+                            <p class="doc-description">Get started with the Python agent</p>
+                        </li>
+                        <li>
+                            <a href="agents/PACKAGE_SUMMARY.md" class="doc-link">Package Summary</a>
+                            <p class="doc-description">Agent features and capabilities overview</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            Built with ❤️ by <a href="https://github.com/andreaswasita">Andreas Wasita</a> | 
+            <a href="https://github.com/andreaswasita/AI-Delivery-Methodology">View on GitHub</a> | 
+            <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/blob/main/LICENSE">MIT License</a>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.9;">
+            Microsoft AI Frontier - Empowering organizations to realize AI value
+        </p>
+    </footer>
+</body>
+</html>
