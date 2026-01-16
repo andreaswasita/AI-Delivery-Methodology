@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Project Team Sizing Calculator - AI Delivery Methodology</title>
+    <meta name="description" content="Determine optimal team composition and size based on project scope, complexity, and timeline">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .calculator-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .input-section, .results-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group small {
+            display: block;
+            color: #666;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-subtext {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .team-breakdown {
+            margin-top: 2rem;
+        }
+
+        .role-card {
+            background: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .role-count {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        .role-details {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .role-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .cost-breakdown {
+            margin-top: 2rem;
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .cost-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cost-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+            border-top: 2px solid #333;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .export-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .recommendations {
+            background: #e7f3ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .recommendations h3 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendations li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .recommendations li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        @media (max-width: 968px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>👥 AI Project Team Sizing Calculator</h1>
+            <p class="subtitle">Determine optimal team composition based on your project requirements</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">← Back to Calculators</a>
+        </div>
+    </nav>
+
+    <div class="calculator-container">
+        <div class="calculator-grid">
+            <!-- Input Section -->
+            <div class="input-section">
+                <h2>Project Inputs</h2>
+                
+                <div class="input-group">
+                    <label for="projectName">Project Name</label>
+                    <input type="text" id="projectName" placeholder="e.g., Customer Intelligence Platform">
+                    <small>Name your project for the report</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="projectPhase">Project Phase</label>
+                    <select id="projectPhase" onchange="updateDefaults()">
+                        <option value="discovery">Discovery & Planning (2-3 months)</option>
+                        <option value="mvp" selected>MVP / Proof of Concept (3-6 months)</option>
+                        <option value="pilot">Pilot / Limited Production (6-9 months)</option>
+                        <option value="production">Full Production (9-18 months)</option>
+                        <option value="enterprise">Enterprise Scale (18+ months)</option>
+                    </select>
+                    <small>Select the phase to get recommended team sizes</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="projectComplexity">Project Complexity</label>
+                    <select id="projectComplexity" onchange="updateDefaults()">
+                        <option value="low">Low - Simple ML/Analytics, Dashboard</option>
+                        <option value="medium" selected>Medium - Document AI, Chatbot, Predictive Models</option>
+                        <option value="high">High - Computer Vision, Multi-Model Systems</option>
+                        <option value="veryHigh">Very High - Real-time AI, Multi-tenant Platforms</option>
+                    </select>
+                    <small>Complexity impacts required expertise levels</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="projectDuration">Project Duration (months)</label>
+                    <input type="number" id="projectDuration" value="6" min="1" max="36">
+                    <small>Total project timeline in months</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="teamModel">Team Model</label>
+                    <select id="teamModel">
+                        <option value="dedicated">Dedicated Full-Time Team</option>
+                        <option value="hybrid" selected>Hybrid (Mix of FT and PT)</option>
+                        <option value="parttime">Part-Time / Shared Resources</option>
+                    </select>
+                    <small>How team members will be allocated</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="includeDataTeam">
+                        <input type="checkbox" id="includeDataTeam" checked style="width: auto; margin-right: 0.5rem;">
+                        Include Data Engineering Team
+                    </label>
+                    <small>Data pipeline, ETL, and data quality roles</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="includeMLOps">
+                        <input type="checkbox" id="includeMLOps" checked style="width: auto; margin-right: 0.5rem;">
+                        Include MLOps/DevOps Resources
+                    </label>
+                    <small>CI/CD, model deployment, and monitoring</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="avgRate">Average Daily Rate (USD)</label>
+                    <input type="number" id="avgRate" value="800" min="0" step="50">
+                    <small>Average blended rate per person per day</small>
+                </div>
+
+                <button class="calculate-btn" onclick="calculateTeam()">👥 Calculate Team Size</button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection">
+                <h2>Team Composition</h2>
+                
+                <div class="result-card">
+                    <div class="result-label">Recommended Team Size</div>
+                    <div class="result-value" id="totalTeam">-</div>
+                    <div class="result-subtext" id="teamSubtext">Calculate to see results</div>
+                </div>
+
+                <div class="result-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="result-label">Estimated Budget</div>
+                    <div class="result-value" id="totalBudget">-</div>
+                    <div class="result-subtext" id="budgetSubtext">-</div>
+                </div>
+
+                <div class="team-breakdown" id="teamBreakdown" style="display: none;">
+                    <h3>Team Breakdown by Role</h3>
+                    <!-- Roles will be inserted here by JavaScript -->
+                </div>
+
+                <div class="recommendations" id="recommendations" style="display: none;">
+                    <h3>💡 Recommendations</h3>
+                    <ul id="recommendationsList">
+                        <!-- Recommendations will be inserted here -->
+                    </ul>
+                </div>
+
+                <div class="cost-breakdown" id="costBreakdown" style="display: none;">
+                    <h3>💰 Cost Breakdown</h3>
+                    <!-- Cost items will be inserted here -->
+                </div>
+
+                <div class="export-buttons" style="display: none;" id="exportButtons">
+                    <button class="export-btn" onclick="exportToJSON()">📥 Export JSON</button>
+                    <button class="export-btn" onclick="copyToClipboard()">📋 Copy Summary</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Delivery Methodology | Part of Microsoft AI Frontier</p>
+        </div>
+    </footer>
+
+    <script>
+        // Team sizing templates based on phase and complexity
+        const teamTemplates = {
+            discovery: {
+                low: { base: 3, ml: 1, data: 1, dev: 0, qa: 0, devops: 0, pm: 1, architect: 0 },
+                medium: { base: 4, ml: 2, data: 1, dev: 0, qa: 0, devops: 0, pm: 1, architect: 0 },
+                high: { base: 5, ml: 2, data: 1, dev: 0, qa: 0, devops: 0, pm: 1, architect: 1 },
+                veryHigh: { base: 6, ml: 3, data: 1, dev: 0, qa: 0, devops: 0, pm: 1, architect: 1 }
+            },
+            mvp: {
+                low: { base: 5, ml: 2, data: 1, dev: 1, qa: 1, devops: 0, pm: 1, architect: 0 },
+                medium: { base: 7, ml: 3, data: 2, dev: 2, qa: 1, devops: 1, pm: 1, architect: 1 },
+                high: { base: 9, ml: 3, data: 2, dev: 2, qa: 1, devops: 1, pm: 1, architect: 1 },
+                veryHigh: { base: 11, ml: 4, data: 2, dev: 2, qa: 2, devops: 1, pm: 1, architect: 1 }
+            },
+            pilot: {
+                low: { base: 6, ml: 2, data: 2, dev: 2, qa: 1, devops: 1, pm: 1, architect: 1 },
+                medium: { base: 9, ml: 3, data: 2, dev: 3, qa: 2, devops: 1, pm: 1, architect: 1 },
+                high: { base: 12, ml: 4, data: 3, dev: 3, qa: 2, devops: 1, pm: 1, architect: 1 },
+                veryHigh: { base: 15, ml: 5, data: 3, dev: 4, qa: 2, devops: 1, pm: 1, architect: 1 }
+            },
+            production: {
+                low: { base: 8, ml: 3, data: 2, dev: 3, qa: 2, devops: 1, pm: 1, architect: 1 },
+                medium: { base: 12, ml: 4, data: 3, dev: 4, qa: 2, devops: 2, pm: 1, architect: 1 },
+                high: { base: 16, ml: 5, data: 4, dev: 5, qa: 3, devops: 2, pm: 1, architect: 1 },
+                veryHigh: { base: 20, ml: 6, data: 4, dev: 6, qa: 3, devops: 2, pm: 1, architect: 1 }
+            },
+            enterprise: {
+                low: { base: 12, ml: 4, data: 3, dev: 5, qa: 3, devops: 2, pm: 1, architect: 1 },
+                medium: { base: 18, ml: 6, data: 4, dev: 7, qa: 4, devops: 2, pm: 2, architect: 2 },
+                high: { base: 25, ml: 8, data: 5, dev: 9, qa: 5, devops: 3, pm: 2, architect: 2 },
+                veryHigh: { base: 32, ml: 10, data: 6, dev: 11, qa: 6, devops: 3, pm: 2, architect: 2 }
+            }
+        };
+
+        // Role definitions with skills and descriptions
+        const roleDefinitions = {
+            pm: {
+                title: 'Product Manager / Project Lead',
+                description: 'Oversees project delivery, stakeholder management, and business alignment',
+                skills: ['Agile', 'Stakeholder Mgmt', 'AI Strategy', 'Risk Management']
+            },
+            architect: {
+                title: 'Solution Architect',
+                description: 'Designs overall system architecture, integration patterns, and technology stack',
+                skills: ['Azure/AWS', 'System Design', 'ML Architecture', 'Security']
+            },
+            ml: {
+                title: 'ML Engineer / Data Scientist',
+                description: 'Develops ML models, experiments with algorithms, and optimizes performance',
+                skills: ['Python', 'PyTorch/TensorFlow', 'ML Algorithms', 'Feature Engineering']
+            },
+            data: {
+                title: 'Data Engineer',
+                description: 'Builds data pipelines, manages data quality, and handles data infrastructure',
+                skills: ['SQL', 'Spark/Databricks', 'ETL', 'Data Modeling']
+            },
+            dev: {
+                title: 'Software Engineer',
+                description: 'Develops application code, APIs, integrations, and user interfaces',
+                skills: ['Full Stack', 'APIs', 'React/Angular', 'Microservices']
+            },
+            qa: {
+                title: 'QA Engineer',
+                description: 'Tests ML models and applications, ensures quality and reliability',
+                skills: ['Test Automation', 'ML Testing', 'Performance Testing', 'CI/CD']
+            },
+            devops: {
+                title: 'MLOps / DevOps Engineer',
+                description: 'Manages deployments, monitoring, CI/CD, and infrastructure',
+                skills: ['Docker/Kubernetes', 'Azure DevOps', 'Monitoring', 'IaC']
+            }
+        };
+
+        function updateDefaults() {
+            // Could add logic to auto-adjust other fields based on phase/complexity
+        }
+
+        function calculateTeam() {
+            // Get inputs
+            const projectName = document.getElementById('projectName').value || 'AI Project';
+            const phase = document.getElementById('projectPhase').value;
+            const complexity = document.getElementById('projectComplexity').value;
+            const duration = parseInt(document.getElementById('projectDuration').value);
+            const teamModel = document.getElementById('teamModel').value;
+            const includeDataTeam = document.getElementById('includeDataTeam').checked;
+            const includeMLOps = document.getElementById('includeMLOps').checked;
+            const avgRate = parseInt(document.getElementById('avgRate').value);
+
+            // Get team template
+            const template = teamTemplates[phase][complexity];
+            
+            // Calculate team composition
+            let roles = [];
+            let totalFTE = 0;
+
+            // Always include PM
+            if (template.pm > 0) {
+                roles.push({
+                    ...roleDefinitions.pm,
+                    count: template.pm,
+                    fte: template.pm
+                });
+                totalFTE += template.pm;
+            }
+
+            // Include architect for larger projects
+            if (template.architect > 0) {
+                roles.push({
+                    ...roleDefinitions.architect,
+                    count: template.architect,
+                    fte: template.architect
+                });
+                totalFTE += template.architect;
+            }
+
+            // ML Engineers
+            if (template.ml > 0) {
+                roles.push({
+                    ...roleDefinitions.ml,
+                    count: template.ml,
+                    fte: template.ml
+                });
+                totalFTE += template.ml;
+            }
+
+            // Data Engineers (optional)
+            if (includeDataTeam && template.data > 0) {
+                roles.push({
+                    ...roleDefinitions.data,
+                    count: template.data,
+                    fte: template.data
+                });
+                totalFTE += template.data;
+            }
+
+            // Software Engineers
+            if (template.dev > 0) {
+                roles.push({
+                    ...roleDefinitions.dev,
+                    count: template.dev,
+                    fte: template.dev
+                });
+                totalFTE += template.dev;
+            }
+
+            // QA Engineers
+            if (template.qa > 0) {
+                roles.push({
+                    ...roleDefinitions.qa,
+                    count: template.qa,
+                    fte: template.qa
+                });
+                totalFTE += template.qa;
+            }
+
+            // DevOps/MLOps (optional)
+            if (includeMLOps && template.devops > 0) {
+                roles.push({
+                    ...roleDefinitions.devops,
+                    count: template.devops,
+                    fte: template.devops
+                });
+                totalFTE += template.devops;
+            }
+
+            // Adjust for team model
+            const modelMultipliers = {
+                dedicated: 1.0,
+                hybrid: 1.15,
+                parttime: 1.3
+            };
+            const adjustedFTE = totalFTE * modelMultipliers[teamModel];
+
+            // Calculate costs
+            const workingDaysPerMonth = 20;
+            const totalDays = duration * workingDaysPerMonth;
+            const totalCost = adjustedFTE * avgRate * totalDays;
+            const monthlyCost = totalCost / duration;
+
+            // Display results
+            document.getElementById('totalTeam').textContent = `${Math.round(adjustedFTE)} FTE`;
+            document.getElementById('teamSubtext').textContent = `${roles.length} distinct roles`;
+
+            document.getElementById('totalBudget').textContent = `$${(totalCost / 1000000).toFixed(2)}M`;
+            document.getElementById('budgetSubtext').textContent = `$${Math.round(monthlyCost / 1000)}K per month`;
+
+            // Display team breakdown
+            const teamBreakdownDiv = document.getElementById('teamBreakdown');
+            teamBreakdownDiv.style.display = 'block';
+            teamBreakdownDiv.innerHTML = '<h3>Team Breakdown by Role</h3>';
+
+            roles.forEach(role => {
+                const roleCard = document.createElement('div');
+                roleCard.className = 'role-card';
+                roleCard.innerHTML = `
+                    <div class="role-header">
+                        <div class="role-title">${role.title}</div>
+                        <div class="role-count">${role.count} FTE</div>
+                    </div>
+                    <div class="role-details">${role.description}</div>
+                    <div class="role-skills">
+                        ${role.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                    </div>
+                `;
+                teamBreakdownDiv.appendChild(roleCard);
+            });
+
+            // Display recommendations
+            const recommendations = generateRecommendations(phase, complexity, totalFTE, duration, teamModel);
+            const recommendationsDiv = document.getElementById('recommendations');
+            recommendationsDiv.style.display = 'block';
+            const recList = document.getElementById('recommendationsList');
+            recList.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+
+            // Display cost breakdown
+            const costBreakdownDiv = document.getElementById('costBreakdown');
+            costBreakdownDiv.style.display = 'block';
+            
+            const roleCosts = roles.map(role => ({
+                name: role.title,
+                cost: role.fte * avgRate * totalDays
+            }));
+
+            costBreakdownDiv.innerHTML = '<h3>💰 Cost Breakdown</h3>';
+            roleCosts.forEach(item => {
+                const costItem = document.createElement('div');
+                costItem.className = 'cost-item';
+                costItem.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>$${Math.round(item.cost / 1000)}K</span>
+                `;
+                costBreakdownDiv.appendChild(costItem);
+            });
+
+            // Total
+            const totalItem = document.createElement('div');
+            totalItem.className = 'cost-item';
+            totalItem.innerHTML = `
+                <span>Total Project Cost</span>
+                <span>$${(totalCost / 1000000).toFixed(2)}M</span>
+            `;
+            costBreakdownDiv.appendChild(totalItem);
+
+            // Show export buttons
+            document.getElementById('exportButtons').style.display = 'flex';
+
+            // Store data for export
+            window.teamData = {
+                projectName,
+                inputs: {
+                    phase,
+                    complexity,
+                    duration,
+                    teamModel,
+                    avgRate,
+                    includeDataTeam,
+                    includeMLOps
+                },
+                results: {
+                    totalFTE: Math.round(adjustedFTE),
+                    roleCount: roles.length,
+                    totalCost,
+                    monthlyCost,
+                    totalDays
+                },
+                roles: roles.map(r => ({
+                    title: r.title,
+                    count: r.count,
+                    fte: r.fte,
+                    skills: r.skills
+                })),
+                costs: roleCosts,
+                recommendations
+            };
+        }
+
+        function generateRecommendations(phase, complexity, teamSize, duration, teamModel) {
+            const recs = [];
+
+            if (phase === 'discovery' || phase === 'mvp') {
+                recs.push('Start with a smaller core team and scale up as requirements solidify');
+            }
+
+            if (complexity === 'high' || complexity === 'veryHigh') {
+                recs.push('Consider hiring senior/lead level engineers given project complexity');
+                recs.push('Plan for dedicated architect role from day one');
+            }
+
+            if (teamSize > 10) {
+                recs.push('Consider splitting into multiple squads (e.g., ML squad, platform squad)');
+                recs.push('Ensure strong PM/technical lead to coordinate across teams');
+            }
+
+            if (teamModel === 'parttime') {
+                recs.push('Part-time model may increase coordination overhead - factor in additional time');
+            }
+
+            if (duration > 12) {
+                recs.push('Long timeline - consider phased delivery with milestones every 3 months');
+                recs.push('Plan for team rotation and knowledge transfer');
+            }
+
+            recs.push('Include buffer for ramp-up time (typically 2-4 weeks per new team member)');
+            recs.push('Consider mix of onshore and offshore resources to optimize cost');
+
+            return recs;
+        }
+
+        function exportToJSON() {
+            const dataStr = JSON.stringify(window.teamData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `team-sizing-${window.teamData.projectName.replace(/\s+/g, '-')}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const data = window.teamData;
+            const summary = `
+TEAM SIZING: ${data.projectName}
+
+INPUTS:
+- Phase: ${data.inputs.phase}
+- Complexity: ${data.inputs.complexity}
+- Duration: ${data.inputs.duration} months
+- Team Model: ${data.inputs.teamModel}
+- Average Rate: $${data.inputs.avgRate}/day
+
+RESULTS:
+- Total Team Size: ${data.results.totalFTE} FTE
+- Number of Roles: ${data.results.roleCount}
+- Total Project Cost: $${(data.results.totalCost / 1000000).toFixed(2)}M
+- Monthly Burn Rate: $${Math.round(data.results.monthlyCost / 1000)}K
+
+TEAM COMPOSITION:
+${data.roles.map(r => `- ${r.title}: ${r.count} FTE
+  Skills: ${r.skills.join(', ')}`).join('\n')}
+
+COST BREAKDOWN:
+${data.costs.map(c => `- ${c.name}: $${Math.round(c.cost / 1000)}K`).join('\n')}
+
+RECOMMENDATIONS:
+${data.recommendations.map(r => `• ${r}`).join('\n')}
+            `.trim();
+
+            navigator.clipboard.writeText(summary).then(() => {
+                alert('✅ Summary copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
