@@ -1,7 +1,77 @@
-# AI Delivery Methodology
+﻿# AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
+🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
+
+---
+
+## 🧭 Quick Navigation
+
+<table>
+<tr>
+<td width="25%" valign="top">
+
+### 📋 [Methodology Phases](./guides)
+**Complete delivery framework**
+- 🎯 [Business Envisioning](./guides/business-envisioning-workshop-guide.md)
+- 🔍 [Discovery & Planning](./guides/mobilisation-complete-guide.md)
+- 🏗️ [Build & Development](./guides/build-phase-complete-guide.md)
+- 🧪 [Test & Evaluate](./guides/test-evaluate-phase-complete-guide.md)
+- 🚀 [Deploy & Integrate](./guides/prepare-deploy-phase-complete-guide.md)
+- 🔧 [Operate & Care](./guides/operate-care-phase-complete-guide.md)
+- ⚙️ [MLOps & DevOps](./guides/mlops-devops-complete-guide.md)
+- 🎨 [Hackathons & Prototyping](./guides/hackathons-complete-guide.md)
+
+[→ View All Guides](./guides)
+
+</td>
+<td width="25%" valign="top">
+
+### 🏭 [Industry Use Cases](./guides/industry-use-cases)
+**Real-world AI applications**
+- 💼 [Financial Services](./guides/industry-use-cases/financial-services-use-cases.md) - Fraud detection, credit risk, trading
+- ⚡ [Energy & Mining](./guides/industry-use-cases/energy-mining-use-cases.md) - Predictive maintenance, exploration
+- 🛒 [Retail & Consumer](./guides/industry-use-cases/retail-consumer-use-cases.md) - Demand forecasting, personalization
+- 🏛️ [Public Sector](./guides/industry-use-cases/public-sector-use-cases.md) - Citizen services, infrastructure
+- 🛡️ [Defense](./guides/industry-use-cases/defense-security-use-cases.md) - Intelligence, logistics optimization
+
+[→ Explore All Industries](./guides/industry-use-cases)
+
+</td>
+<td width="25%" valign="top">
+
+### 📚 [Guides & Frameworks](./guides)
+**Expert knowledge & best practices**
+- 🎯 [Executive Coaching Guide](./guides/executive-coaching-guide.md)
+- 🏢 [AI Center of Excellence](./guides/ai-center-of-excellence-framework.md)
+- 📊 [Story Points Estimation](./guides/story-points-estimation-guide.md)
+- 🔄 [AI Scaling Patterns](./guides/ai-scaling-patterns-guide.md)
+- ⚖️ [AI Model Risk Management](./guides/ai-model-risk-management-guide.md)
+- 🤝 [Engagement Modes](./guides/engagement-modes-framework.md)
+- 🏃 [3-Month Fast Track](./guides/3-month-fast-track-guide.md)
+- 🎤 [Presales Activities](./guides/presales-discovery-activities-for-presentations.md)
+
+[→ Browse All Guides](./guides)
+
+</td>
+<td width="25%" valign="top">
+
+### 📄 [Templates & Checklists](./templates)
+**Ready-to-use documents**
+- 📋 [Project Charter](./templates/01-project-charter.md)
+- 💼 [Business Case](./templates/02-business-case.md)
+- 👥 [RACI Matrix](./templates/03-raci-matrix.md)
+- 📅 [Project Plan](./templates/04-project-plan-roadmap.md)
+- ⚠️ [Risk Register](./templates/05-risk-register.md)
+- 📢 [Communication Plan](./templates/06-communication-plan.md)
+- 🎯 [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
+- ✅ [Phase Checklists](./checklists)
+
+[→ Get All Templates](./templates)
+
+</td>
+</tr>
+</table>
 
 ---
 
