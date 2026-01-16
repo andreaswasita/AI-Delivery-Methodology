@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Project Effort Estimator - AI Delivery Methodology</title>
+    <meta name="description" content="Convert project scope into effort estimates using story points, complexity factors, and historical data">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .calculator-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .input-section, .results-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group small {
+            display: block;
+            color: #666;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .slider-container {
+            margin-top: 0.5rem;
+        }
+
+        .slider-value {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-subtext {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .phase-breakdown {
+            margin-top: 2rem;
+        }
+
+        .phase-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .phase-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .phase-hours {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .phase-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .phase-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+
+        .team-composition {
+            margin-top: 2rem;
+        }
+
+        .role-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .role-item:last-child {
+            border-bottom: none;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .export-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 968px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>⏱️ AI Project Effort Estimator</h1>
+            <p class="subtitle">Convert project scope into accurate effort estimates</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">← Back to Calculators</a>
+        </div>
+    </nav>
+
+    <div class="calculator-container">
+        <div class="calculator-grid">
+            <!-- Input Section -->
+            <div class="input-section">
+                <h2>Project Inputs</h2>
+                
+                <div class="input-group">
+                    <label for="projectName">Project Name</label>
+                    <input type="text" id="projectName" placeholder="e.g., Customer Churn Prediction AI">
+                    <small>Give your project a name for the report</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="journeyPhase">AI Delivery Journey Phase</label>
+                    <select id="journeyPhase" onchange="updateFeatureEstimate()">
+                        <option value="">-- Select Phase --</option>
+                        <option value="discovery">Discovery & Planning (5-10 features)</option>
+                        <option value="mvp">MVP / Proof of Concept (10-20 features)</option>
+                        <option value="pilot">Pilot / Limited Release (20-40 features)</option>
+                        <option value="production">Full Production (40-80 features)</option>
+                        <option value="enterprise">Enterprise Scale (80-150 features)</option>
+                        <option value="custom">Custom - I'll specify</option>
+                    </select>
+                    <small>Select the project phase to get feature estimate guidance</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="numFeatures">Number of Features/User Stories</label>
+                    <input type="number" id="numFeatures" value="20" min="1" max="500" onchange="calculateStoryPoints()">
+                    <small id="featureGuidance">Based on your selection above</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="complexity">Project Complexity (from workshops/use cases)</label>
+                    <select id="complexity" onchange="calculateStoryPoints()">
+                        <option value="low">Low - Reporting/Analytics, Simple UI</option>
+                        <option value="medium" selected>Medium - Document Processing, Chatbots</option>
+                        <option value="high">High - Predictive Models, Computer Vision</option>
+                        <option value="veryHigh">Very High - Multi-Model AI, Real-time Systems</option>
+                    </select>
+                    <small>Complexity identified in business envisioning workshops</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="avgStoryPoints">Average Story Points per Feature</label>
+                    <input type="number" id="avgStoryPoints" value="5" min="1" max="21" readonly style="background: #f0f0f0;">
+                    <small id="storyPointGuidance">Auto-calculated based on industry guidance (Fibonacci: 1, 2, 3, 5, 8, 13, 21)</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="teamVelocity">Team Velocity (Story Points per Sprint)</label>
+                    <input type="number" id="teamVelocity" value="25" min="1" max="100" readonly style="background: #f0f0f0;">
+                    <small id="velocityGuidance">Auto-calculated: Industry standard 2-week sprints</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="teamSize">Team Size (FTE)</label>
+                    <input type="number" id="teamSize" value="5" min="1" max="50">
+                    <small>Full-time equivalent team members</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="riskLevel">Risk Level</label>
+                    <select id="riskLevel" onchange="updateRiskBuffer()">
+                        <option value="4">Low Risk - Clear requirements (4%)</option>
+                        <option value="7" selected>Medium Risk - Some unknowns (7%)</option>
+                        <option value="15">High Risk - Many uncertainties (15%)</option>
+                    </select>
+                    <small>Risk buffer based on project uncertainty and requirements clarity</small>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="includeDiscovery" checked>
+                        Include Discovery Phase (15% of development effort)
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="includeDeployment" checked>
+                        Include Deployment Phase (10% of development effort)
+                    </label>
+                </div>
+
+                <button class="calculate-btn" onclick="calculateEffort()">📊 Calculate Effort</button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection">
+                <h2>Effort Estimate</h2>
+                
+                <div class="result-card">
+                    <div class="result-label">Total Effort</div>
+                    <div class="result-value" id="totalHours">-</div>
+                    <div class="result-subtext" id="totalDays">Calculate to see results</div>
+                </div>
+
+                <div class="result-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="result-label">Timeline (with <span id="teamSizeDisplay">-</span> FTE)</div>
+                    <div class="result-value" id="timeline">-</div>
+                    <div class="result-subtext" id="timelineWeeks">-</div>
+                </div>
+
+                <div class="phase-breakdown" id="phaseBreakdown" style="display: none;">
+                    <h3>Phase Breakdown</h3>
+                    <!-- Phases will be inserted here by JavaScript -->
+                </div>
+
+                <div class="team-composition" id="teamComposition" style="display: none;">
+                    <h3>Suggested Team Composition</h3>
+                    <!-- Team roles will be inserted here by JavaScript -->
+                </div>
+
+                <div class="export-buttons" style="display: none;" id="exportButtons">
+                    <button class="export-btn" onclick="exportToJSON()">📥 Export JSON</button>
+                    <button class="export-btn" onclick="copyToClipboard()">📋 Copy Summary</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Delivery Methodology | Part of Microsoft AI Frontier</p>
+        </div>
+    </footer>
+Industry guidance for story points based on complexity
+        const storyPointGuidance = {
+            low: { 
+                avg: 3, 
+                description: 'Low complexity: 2-5 story points per feature',
+                velocityPerFTE: 8  // story points per sprint per FTE
+            },
+            medium: { 
+                avg: 5, 
+                description: 'Medium complexity: 3-8 story points per feature',
+                velocityPerFTE: 6  // story points per sprint per FTE
+            },
+            high: { 
+                avteamVelocity = parseInt(document.getElementById('teamVelocity').value);
+            const teamSize = parseInt(document.getElementById('teamSize').value);
+            const riskBuffer = parseInt(document.getElementById('riskLevel').value) / 100;
+            const includeDiscovery = document.getElementById('includeDiscovery').checked;
+            const includeDeployment = document.getElementById('includeDeployment').checked;
+
+            // Calculate total story points
+            const totalStoryPoints = numFeatures * avgStoryPoints;
+            
+            // Industry standard: 6-8 productive hours per day, use 6.5 as average
+            const productiveHoursPerDay = 6.5;
+            const daysPerSprint = 10; // 2-week sprint
+            const hoursPerSprint = productiveHoursPerDay * daysPerSprint;
+            
+            // Calculate hours per story point based on velocity
+            // If team completes 'teamVelocity' points in a sprint with 'teamSize' people
+            const hoursPerPoint = (teamSize * hoursPerSprint) / teamVelocity;
+            
+            // Calculate base development effort
+            const baseHours = totalStoryPoints * hoursPerPoint
+
+        function updateFeatureEstimate() {
+            const phase = document.getElementById('journeyPhase').value;
+            const numFeaturesInput = document.getElementById('numFeatures');
+            const guidance = document.getElementById('featureGuidance');
+            
+            const featureRanges = {
+                discovery: { min: 5, max: 10, avg: 7 },
+                mvp: { min: 10, max: 20, avg: 15 },
+                pilot: { min: 20, max: 40, avg: 30 },
+                production: { min: 40, max: 80, avg: 60 },
+                enterprise: { min: 80, max: 150, avg: 115 },
+                custom: { avg: parseInt(numFeaturesInput.value) }
+            };
+            
+            if (phase && phase !== 'custom') {
+                const range = featureRanges[phase];
+                numFeaturesInput.value = range.avg;
+                guidance.textContent = `Typical range: ${range.min}-${range.max} features for this phase`;
+                calculateStoryPoints();
+            } else if (phase === 'custom') {
+                guidance.textContent = 'Enter your custom feature count';
+            }
+        }
+
+        functioCalculate number of sprints
+            const numSprints = Math.ceil(totalStoryPoints / teamVelocity);
+            
+            // Display results
+            document.getElementById('totalHours').textContent = Math.round(totalHours).toLocaleString() + ' hrs';
+            document.getElementById('totalDays').textContent = `${Math.round(totalDays)} working days | ${numSprints} sprints (2 weeks each)`;
+            
+            document.getElementById('teamSizeDisplay').textContent = teamSize;
+            
+            if (totalMonths >= 1) {
+                document.getElementById('timeline').textContent = totalMonths.toFixed(1) + ' months';
+            } else {
+                document.getElementById('timeline').textContent = Math.round(totalWeeks) + ' weeks';
+            }
+            document.getElementById('timelineWeeks').textContent = `${Math.round(totalWeeks)} weeks | ${numSprints} sprint
+            document.getElementById('teamVelocity').value = teamVelocity;
+            document.getElementById('velocityGuidance').textContent = 
+                `${guidance.velocityPerFTE} points/sprint/FTE × ${teamSize} FTE = ${teamVelocity} points per 2-week sprint`;
+        }
+
+        function updateRiskBuffer() {
+            const riskLevel = document.getElementById('riskLevel').value;
+            // Risk levels are now in the select options: 4%, 7%, 15%
+        }
+
+        // Update velocity when team size changes
+        document.getElementById('teamSize').addEventListener('input', calculateStoryPointsocument.getElementById('riskBuffer').addEventListener('input', function() {
+            document.getElementById('riskBufferValue').textContent = this.value + '%';
+        });
+
+        function calculateEffort() {
+            // Get inputs
+            const projectName = document.getElementById('projectName').value || 'AI Project';
+            const numFeatures = parseInt(document.getElementById('numFeatures').value);
+            const complexity = document.getElementById('complexity').value;
+            const avgStoryPoints = parseInt(document.getElementById('avgStoryPoints').value);
+            const hoursPerPoint = parseFloat(document.getElementById('hoursPerPoint').value);
+            const teamSize = parseInt(document.getElementById('teamSize').value);
+            const riskBuffer = parseInt(document.getElementById('riskBuffer').value) / 100;
+            const includeDiscovery = document.getElementById('includeDiscovery').checked;
+            const includeDeployment = document.getElementById('includeDeployment').checked;
+
+            // Complexity multipliers
+            const complexityMultipliers = {
+                low: 0.8,
+                medium: 1.0,
+                high: 1.3,
+                veryHigh: 1.6
+            };
+
+            // Calculate base effort
+            const baseHours = numFeatures * avgStoryPoints * hoursPerPoint * complexityMultipliers[complexity];
+
+            // Phase percentages (of base development hours)
+            const phases = {
+                development: { name: 'Development & Build', percentage: 1.0, hours: baseHours }
+            };
+
+            if (includeDiscovery) {
+                phases.discovery = { name: 'Discovery & Planning', percentage: 0.15, hours: baseHours * 0.15 };
+            }
+
+            phases.testing = { name: 'Testing & QA', percentage: 0.25, hours: baseHours * 0.25 };
+
+            if (includeDeployment) {
+                phases.deployment = { name: 'Deployment & Handover', percentage: 0.10, hours: baseHours * 0.10 };
+            }
+
+            // Calculate subtotal
+            let subtotal = Object.values(phases).reduce((sum, phase) => sum + phase.hours, 0);
+
+            // Add risk buffer
+            const bufferHours = subtotal * riskBuffer;
+            const totalHours = subtotal + bufferHours;
+
+            // Calculate timeline
+            const workingHoursPerDay = 6; // Productive hours per day
+            const totalDays = totalHours / (teamSize * workingHoursPerDay);
+            const totalWeeks = totalDays / 5;
+            const totalMonths = totalWeeks / 4;
+
+            // Display results
+            document.getElementById('totalHours').textContent = Math.round(totalHours).toLocaleString() + ' hrs';
+            document.getElementById('totalDays').textContent = `${Math.round(totalDays)} working days (${Math.round(totalHours/teamSize)} hrs per FTE)`;
+            
+            document.getElementById('teamSizeDisplay').textContent = teamSize;
+            
+            if (totalMonths >= 1) {
+                document.getElementById('timeline').textContent = totalMonths.toFixed(1) + ' months';
+            } else {
+                document.getElementById('timeline').textContent = Math.round(totalWeeks) + ' weeks';
+            }
+            document.getElementById('timelineWeeks').textContent = `${Math.round(totalWeeks)} weeks | ${Math.round(totalDays)} days`;
+
+            // Display phase breakdown
+            const phaseBreakdownDiv = document.getElementById('phaseBreakdown');
+            phaseBreakdownDiv.style.display = 'block';
+            phaseBreakdownDiv.innerHTML = '<h3>Phase Breakdown</h3>';
+
+            const phaseOrder = ['discovery', 'development', 'testing', 'deployment'];
+            phaseOrder.forEach(key => {
+                if (phases[key]) {
+                    const phase = phases[key];
+                    const percentage = (phase.hours / totalHours * 100).toFixed(1);
+                    const phaseDiv = document.createElement('div');
+                    phaseDiv.className = 'phase-item';
+                    phaseDiv.innerHTML = `
+                        <div>
+                            <div class="phase-name">${phase.name}</div>
+                            <div class="phase-bar">
+                                <div class="phase-bar-fill" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                        <div class="phase-hours">${Math.round(phase.hours).toLocaleString()} hrs (${percentage}%)</div>
+                    `;
+                    phaseBreakdownDiv.appendChild(phaseDiv);
+                }
+            });
+
+            // Add risk buffer display
+            const bufferDiv = document.createElement('div');
+            bufferDiv.className = 'phase-item';
+            bufferDiv.style.background = '#fff3cd';
+            bufferDiv.innerHTML = `
+                <div>
+                    <div class="phase-name">⚠️ Risk Buffer / Contingency</div>
+                </div>
+                <div class="phase-hours">${Math.round(bufferHours).toLocaleString()} hrs (${(riskBuffer * 100).toFixed(0)}%)</div>
+            `;
+            phaseBreakdownDiv.appendChild(bufferDiv);
+
+            // Display team composition
+            const teamCompositionDiv = document.getElementById('teamComposition');
+            teamCompositionDiv.style.display = 'block';
+            teamCompositionDiv.innerHTML = '<h3>Suggested Team Composition</h3>';
+
+            const roles = calculateTeamComposition(teamSize, complexity);
+            roles.forEach(role => {
+                const roleDiv = document.createElement('div');
+                roleDiv.className = 'role-item';
+                roleDiv.innerHTML = `
+                    <span><strong>${role.title}</strong></span>
+                    <span>${role.count} FTE (${role.percentage}%)</span>
+                `;
+                teamCompositionDiv.appendChild(roleDiv);
+            });
+
+            // Show export buttons
+            document.getElementById('exportButtons').style.display = 'flex';
+
+            // StoretotalStoryPoints,
+                    teamVelocity,
+                    sprintDuration: '2 weeks',
+                    teamSize,
+                    riskLevel: riskBuffer * 100 + '%'
+                inputs: {
+                    numFeatures,
+                    complexity,
+                    avgStoryPoints,
+                    hoursPerPoint,
+                    teamSize,
+                    totalSprints: numSprints,
+                    riskBufferPercentage: riskBuffer * 100,
+                    includeDiscovery,
+                    includeDeployment
+                },
+                results: {
+                    totalHours: Math.round(totalHours),
+                    totalDays: Math.round(totalDays),
+                    totalWeeks: Math.round(totalWeeks),
+                    totalMonths: parseFloat(totalMonths.toFixed(1)),
+                    hoursPerFTE: Math.round(totalHours/teamSize)
+                },
+                phases: Object.entries(phases).map(([key, phase]) => ({
+                    name: phase.name,
+                    hours: Math.round(phase.hours),
+                    percentage: (phase.hours / totalHours * 100).toFixed(1)
+                })).concat([{
+                    name: 'Risk Buffer',
+                    hours: Math.round(bufferHours),
+                    percentage: (riskBuffer * 100).toFixed(0)
+                }]),
+                teamComposition: roles
+            };
+        }
+
+        function calculateTeamComposition(teamSize, complexity) {
+            // Base percentages
+            let roles = [];
+
+            if (teamSize <= 3) {
+                // Small team
+                roles = [
+                    { title: 'Tech Lead / Architect', count: 1, percentage: '33%' },
+                    { title: 'ML Engineers / Developers', count: Math.max(1, teamSize - 2), percentage: `${Math.round((teamSize-2)/teamSize*100)}%` },
+                    { title: 'QA / DevOps', count: 1, percentage: '33%' }
+                ];
+            } else if (teamSize <= 8) {
+                // Medium team
+                const mlEngineers = Math.ceil(teamSize * 0.5);
+                const qaDevOps = Math.ceil(teamSize * 0.2);
+                const architect = 1;
+                const pm = 1;
+                
+                roles = [
+                    { title: 'Product Manager', count: pm, percentage: '12%' },
+                    { title: 'Solution Architect', count: architect, percentage: '12%' },
+                    { title: 'ML Engineers / Developers', count: mlEngineers, percentage: '50%' },
+                    { title: 'QA Engineers', count: Math.max(1, Math.floor(qaDevOps/2)), percentage: '13%' },
+                    { title: 'DevOps Engineer', count: Math.max(1, Math.ceil(qaDevOps/2)), percentage: '13%' }
+                ];
+            } else {
+                // Large team
+                roles = [
+                    { title: 'Product Manager', count: 1, percentage: '8%' },
+                    { title: 'Solution Architect', count: 1, percentage: '8%' },
+                    { title: 'Tech Lead', count: 1, percentage: '8%' },
+                    { title: 'ML Engineers / Data Scientists', count: Math.ceil(teamSize * 0.4), percentage: '40%' },
+                    { title: 'Software Engineers', count: Math.ceil(teamSize * 0.2), percentage: '20%' },
+                    { title: 'QA Engineers', count: Math.ceil(teamSize * 0.08), percentage: '8%' },
+                    { title: 'DevOps Engineer', count: Math.ceil(teamSize * 0.08), percentage: '8%' }
+                ];
+            }
+
+            return roles;
+        }
+
+        function exportToJSON() {
+            const dataStr = JSON.stringify(window.effortData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `effort-estimate-${window.effortData.projectName.replace(/\s+/g, '-')}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const data = window.effortData;
+  Total Story Points: ${data.inputs.totalStoryPoints}
+- Complexity: ${data.inputs.complexity}
+- Avg Story Points per Feature: ${data.inputs.avgStoryPoints}
+- Team Velocity: ${data.inputs.teamVelocity} points per sprint
+- Sprint Duration: ${data.inputs.sprintDuration}
+- Team Size: ${data.inputs.teamSize} FTE
+- Risk Level: ${data.inputs.riskLevel}
+
+RESULTS:
+- Total Effort: ${data.results.totalHours.toLocaleString()} hours
+- Timeline: ${data.results.totalMonths} months (${data.results.totalWeeks} weeks, ${data.results.totalSprints} sprint
+- Team Size: ${data.inputs.teamSize} FTE
+- Risk Buffer: ${data.inputs.riskBufferPercentage}%
+
+RESULTS:
+- Total Effort: ${data.results.totalHours.toLocaleString()} hours
+- Timeline: ${data.results.totalMonths} months (${data.results.totalWeeks} weeks)
+- Effort per FTE: ${data.results.hoursPerFTE.toLocaleString()} hours
+
+PHASE BREAKDOWN:
+${data.phases.map(p => `- ${p.name}: ${p.hours.toLocaleString()} hrs (${p.percentage}%)`).join('\n')}
+
+TEAM COMPOSITION:
+${data.teamComposition.map(r => `- ${r.title}: ${r.count} FTE (${r.percentage})`).join('\n')}
+            `.trim();
+
+            navigator.clipboard.writeText(summary).then(() => {
+                alert('✅ Summary copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>

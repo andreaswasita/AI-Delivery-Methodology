@@ -1,0 +1,46 @@
+{
+  "project_name": "Test Project",
+  "generated_date": "2026-01-13T21:19:05.494648",
+  "discount_rate": 0.1,
+  "use_cases": [
+    {
+      "id": "TEST-001",
+      "title": "Test Use Case",
+      "description": "Test description",
+      "business_problem": "Test problem",
+      "impact_level": "HIGH",
+      "effort_estimate": 20,
+      "total_benefit": 700000,
+      "value_score": 35000.0,
+      "priority_score": 140000.0,
+      "benefits": [
+        {
+          "category": "ValueCategory.COST_REDUCTION",
+          "description": "Test benefit",
+          "year_0": 0.0,
+          "year_1": 100000,
+          "year_2": 120000,
+          "year_3": 140000,
+          "year_4": 160000,
+          "year_5": 180000,
+          "confidence_level": 0.85
+        }
+      ],
+      "root_causes": [],
+      "stakeholders": [],
+      "dependencies": []
+    }
+  ],
+  "costs": [
+    {
+      "category": "Development",
+      "description": "Test cost",
+      "year_0": 200000,
+      "year_1": 50000,
+      "year_2": 50000,
+      "year_3": 50000,
+      "year_4": 50000,
+      "year_5": 50000
+    }
+  ]
+}

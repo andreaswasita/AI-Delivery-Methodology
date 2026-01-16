@@ -114,6 +114,42 @@ main {
     box-shadow: var(--shadow-hover);
 }
 
+.calculator-card.featured {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 2px solid #5a67d8;
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator-card.featured::before {
+    content: "NEW";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.calculator-card.featured h3,
+.calculator-card.featured p,
+.calculator-card.featured .features li {
+    color: white;
+}
+
+.calculator-card.featured .features li::before {
+    color: #fbbf24;
+}
+
+.calculator-card.featured:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+}
+
 .card-icon {
     font-size: 3rem;
     margin-bottom: 15px;
