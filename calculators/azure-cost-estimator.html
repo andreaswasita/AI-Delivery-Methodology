@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure AI/ML Cost Estimator - AI Delivery Methodology</title>
+    <meta name="description" content="Estimate monthly Azure infrastructure costs for AI/ML workloads across Dev, Test, UAT, and Production environments">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .calculator-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .info-banner {
+            background: #e7f3ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #0078d4;
+        }
+
+        .info-banner h3 {
+            color: #0078d4;
+            margin-top: 0;
+        }
+
+        .info-banner a {
+            color: #0078d4;
+            text-decoration: underline;
+        }
+
+        .environment-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .env-tab {
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .env-tab.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .env-tab h4 {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .env-tab p {
+            margin: 0;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .service-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group small {
+            display: block;
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .cost-display {
+            background: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            text-align: right;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .summary-section {
+            position: sticky;
+            top: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .summary-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .breakdown-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .breakdown-cost {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .export-btn {
+            flex: 1;
+            padding: 0.75rem;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .export-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>☁️ Azure AI/ML Cost Estimator</h1>
+            <p class="subtitle">Estimate monthly Azure infrastructure costs for AI/ML workloads</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">← Back to Calculators</a>
+        </div>
+    </nav>
+
+    <div class="calculator-container">
+        <div class="info-banner">
+            <h3>💡 About Azure Pricing</h3>
+            <p>This calculator provides estimates based on typical Azure pricing. For detailed and up-to-date pricing, visit the <a href="https://azure.microsoft.com/en-us/pricing/calculator/" target="_blank" rel="noopener">Microsoft Azure Pricing Calculator</a>. Prices shown are approximate and may vary by region. All estimates are in USD and assume East US region.</p>
+        </div>
+
+        <div class="environment-tabs">
+            <div class="env-tab active" data-env="dev" onclick="switchEnvironment('dev')">
+                <h4>Development</h4>
+                <p>Smaller instances</p>
+            </div>
+            <div class="env-tab" data-env="test" onclick="switchEnvironment('test')">
+                <h4>Test</h4>
+                <p>Mid-size instances</p>
+            </div>
+            <div class="env-tab" data-env="uat" onclick="switchEnvironment('uat')">
+                <h4>UAT</h4>
+                <p>Production-like</p>
+            </div>
+            <div class="env-tab" data-env="prod" onclick="switchEnvironment('prod')">
+                <h4>Production</h4>
+                <p>Full scale</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 400px; gap: 2rem;">
+            <div>
+                <div class="services-grid">
+                    <!-- Azure ML Compute -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🤖</div>
+                            <div class="service-title">Azure Machine Learning</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="azureml-compute">Compute Instance Type</label>
+                            <select id="azureml-compute" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="70">Standard_DS3_v2 (4 vCPU, 14GB) - $70/month</option>
+                                <option value="140">Standard_DS4_v2 (8 vCPU, 28GB) - $140/month</option>
+                                <option value="280">Standard_DS5_v2 (16 vCPU, 56GB) - $280/month</option>
+                                <option value="800">Standard_NC6 (6 vCPU, 56GB, 1 GPU) - $800/month</option>
+                                <option value="1600">Standard_NC12 (12 vCPU, 112GB, 2 GPU) - $1,600/month</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="azureml-hours">Hours per Month</label>
+                            <input type="number" id="azureml-hours" value="160" min="0" max="730" onchange="calculateCosts()">
+                            <small>730 hours = 24/7 operation</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="azureml-storage">Workspace Storage (GB)</label>
+                            <input type="number" id="azureml-storage" value="100" min="0" onchange="calculateCosts()">
+                            <small>$0.02 per GB/month</small>
+                        </div>
+                    </div>
+
+                    <!-- Azure OpenAI -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🧠</div>
+                            <div class="service-title">Azure OpenAI Service</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="openai-model">Model Type</label>
+                            <select id="openai-model" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="0.002">GPT-4o - $0.002/1K tokens</option>
+                                <option value="0.005">GPT-4 Turbo - $0.005/1K tokens</option>
+                                <option value="0.03">GPT-4-32k - $0.03/1K tokens</option>
+                                <option value="0.0005">GPT-3.5-Turbo - $0.0005/1K tokens</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="openai-tokens">Monthly Tokens (millions)</label>
+                            <input type="number" id="openai-tokens" value="1" min="0" step="0.1" onchange="calculateCosts()">
+                            <small>1M tokens ≈ 750,000 words</small>
+                        </div>
+                    </div>
+
+                    <!-- Azure Kubernetes Service -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🐳</div>
+                            <div class="service-title">Azure Kubernetes Service (AKS)</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="aks-nodes">Number of Nodes</label>
+                            <input type="number" id="aks-nodes" value="3" min="0" onchange="calculateCosts()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="aks-vm-size">Node VM Size</label>
+                            <select id="aks-vm-size" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="73">Standard_D2s_v3 (2 vCPU, 8GB) - $73/node/month</option>
+                                <option value="146">Standard_D4s_v3 (4 vCPU, 16GB) - $146/node/month</option>
+                                <option value="292">Standard_D8s_v3 (8 vCPU, 32GB) - $292/node/month</option>
+                                <option value="584">Standard_D16s_v3 (16 vCPU, 64GB) - $584/node/month</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Storage Account -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">💾</div>
+                            <div class="service-title">Azure Storage</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="storage-blob">Blob Storage (TB)</label>
+                            <input type="number" id="storage-blob" value="1" min="0" step="0.1" onchange="calculateCosts()">
+                            <small>Hot tier: $18/TB/month</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="storage-files">Azure Files (TB)</label>
+                            <input type="number" id="storage-files" value="0.5" min="0" step="0.1" onchange="calculateCosts()">
+                            <small>Premium: $153/TB/month</small>
+                        </div>
+                    </div>
+
+                    <!-- Cognitive Services -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🎯</div>
+                            <div class="service-title">Cognitive Services</div>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="cognitive-vision" onchange="calculateCosts()">
+                            <label for="cognitive-vision">Computer Vision ($1/1K transactions)</label>
+                        </div>
+                        <div class="input-group" style="margin-left: 1.5rem;">
+                            <input type="number" id="vision-transactions" value="10" min="0" placeholder="Thousands of transactions" onchange="calculateCosts()">
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="cognitive-speech" onchange="calculateCosts()">
+                            <label for="cognitive-speech">Speech Services ($1/hour)</label>
+                        </div>
+                        <div class="input-group" style="margin-left: 1.5rem;">
+                            <input type="number" id="speech-hours" value="100" min="0" placeholder="Hours" onchange="calculateCosts()">
+                        </div>
+                    </div>
+
+                    <!-- Azure SQL Database -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🗄️</div>
+                            <div class="service-title">Azure SQL Database</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="sql-tier">Service Tier</label>
+                            <select id="sql-tier" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="5">Basic (5 DTUs) - $5/month</option>
+                                <option value="30">Standard S2 (50 DTUs) - $30/month</option>
+                                <option value="150">Standard S4 (200 DTUs) - $150/month</option>
+                                <option value="450">Premium P2 (250 DTUs) - $450/month</option>
+                                <option value="900">Premium P4 (500 DTUs) - $900/month</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="sql-storage">Database Storage (GB)</label>
+                            <input type="number" id="sql-storage" value="100" min="0" onchange="calculateCosts()">
+                            <small>$0.115 per GB/month</small>
+                        </div>
+                    </div>
+
+                    <!-- Cosmos DB -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🌐</div>
+                            <div class="service-title">Azure Cosmos DB</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="cosmos-rus">Request Units (RU/s)</label>
+                            <input type="number" id="cosmos-rus" value="0" min="0" step="100" onchange="calculateCosts()">
+                            <small>$0.008 per RU/s per hour</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="cosmos-storage">Storage (GB)</label>
+                            <input type="number" id="cosmos-storage" value="0" min="0" onchange="calculateCosts()">
+                            <small>$0.25 per GB/month</small>
+                        </div>
+                    </div>
+
+                    <!-- Virtual Machines -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🖥️</div>
+                            <div class="service-title">Virtual Machines</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="vm-count">Number of VMs</label>
+                            <input type="number" id="vm-count" value="0" min="0" onchange="calculateCosts()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="vm-size">VM Size</label>
+                            <select id="vm-size" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="70">Standard_D2s_v3 (2 vCPU, 8GB) - $70/month</option>
+                                <option value="140">Standard_D4s_v3 (4 vCPU, 16GB) - $140/month</option>
+                                <option value="280">Standard_D8s_v3 (8 vCPU, 32GB) - $280/month</option>
+                                <option value="560">Standard_D16s_v3 (16 vCPU, 64GB) - $560/month</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Networking -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🌍</div>
+                            <div class="service-title">Networking</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="network-vnet">Virtual Network</label>
+                            <select id="network-vnet" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="10">Basic VNet - $10/month</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="network-gateway">VPN Gateway</label>
+                            <select id="network-gateway" onchange="calculateCosts()">
+                                <option value="0">None</option>
+                                <option value="140">Basic Gateway - $140/month</option>
+                                <option value="360">VpnGw1 - $360/month</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="network-egress">Data Egress (GB)</label>
+                            <input type="number" id="network-egress" value="100" min="0" onchange="calculateCosts()">
+                            <small>First 5GB free, then $0.087/GB</small>
+                        </div>
+                    </div>
+
+                    <!-- Azure DevOps -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">🔧</div>
+                            <div class="service-title">Azure DevOps</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="devops-users">Basic Users (beyond free 5)</label>
+                            <input type="number" id="devops-users" value="0" min="0" onchange="calculateCosts()">
+                            <small>$6 per user/month</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="devops-pipelines">Parallel Jobs</label>
+                            <input type="number" id="devops-pipelines" value="1" min="0" onchange="calculateCosts()">
+                            <small>$40 per parallel job/month</small>
+                        </div>
+                    </div>
+
+                    <!-- Application Insights -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">📊</div>
+                            <div class="service-title">Application Insights</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="appinsights-data">Data Ingestion (GB)</label>
+                            <input type="number" id="appinsights-data" value="5" min="0" step="0.5" onchange="calculateCosts()">
+                            <small>First 5GB free, then $2.30/GB</small>
+                        </div>
+                    </div>
+
+                    <!-- Azure Monitor -->
+                    <div class="service-card">
+                        <div class="service-header">
+                            <div class="service-icon">📈</div>
+                            <div class="service-title">Azure Monitor & Log Analytics</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="monitor-data">Log Data Ingestion (GB)</label>
+                            <input type="number" id="monitor-data" value="10" min="0" onchange="calculateCosts()">
+                            <small>$2.76 per GB</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Section -->
+            <div>
+                <div class="summary-section">
+                    <h2>Cost Summary</h2>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Environment: <strong id="currentEnv">Development</strong></p>
+                    
+                    <button class="calculate-btn" onclick="calculateCosts()">💰 Calculate Costs</button>
+                    
+                    <div class="summary-card">
+                        <div class="summary-label">Monthly Cost</div>
+                        <div class="summary-value" id="monthlyCost">$0</div>
+                    </div>
+
+                    <div class="summary-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="summary-label">Annual Cost</div>
+                        <div class="summary-value" id="annualCost">$0</div>
+                    </div>
+
+                    <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Breakdown by Service</h3>
+                    <ul class="breakdown-list" id="breakdownList">
+                        <li class="breakdown-item">
+                            <span class="breakdown-name">Calculate to see breakdown</span>
+                            <span class="breakdown-cost">$0</span>
+                        </li>
+                    </ul>
+
+                    <div class="export-buttons">
+                        <button class="export-btn" onclick="exportToJSON()">📥 JSON</button>
+                        <button class="export-btn" onclick="copyToClipboard()">📋 Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AI Delivery Methodology | Part of Microsoft AI Frontier</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentEnvironment = 'dev';
+        let costData = {};
+
+        function switchEnvironment(env) {
+            currentEnvironment = env;
+            
+            // Update active tab
+            document.querySelectorAll('.env-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-env="${env}"]`).classList.add('active');
+            
+            // Update environment name
+            const envNames = {
+                dev: 'Development',
+                test: 'Test',
+                uat: 'UAT',
+                prod: 'Production'
+            };
+            document.getElementById('currentEnv').textContent = envNames[env];
+            
+            calculateCosts();
+        }
+
+        function calculateCosts() {
+            let costs = {};
+            let totalMonthlyCost = 0;
+
+            // Azure ML
+            const amlComputeRate = parseFloat(document.getElementById('azureml-compute').value) || 0;
+            const amlHours = parseFloat(document.getElementById('azureml-hours').value) || 0;
+            const amlStorage = parseFloat(document.getElementById('azureml-storage').value) || 0;
+            const amlCost = (amlComputeRate * amlHours / 730) + (amlStorage * 0.02);
+            if (amlCost > 0) {
+                costs['Azure Machine Learning'] = amlCost;
+                totalMonthlyCost += amlCost;
+            }
+
+            // Azure OpenAI
+            const openaiRate = parseFloat(document.getElementById('openai-model').value) || 0;
+            const openaiTokens = parseFloat(document.getElementById('openai-tokens').value) || 0;
+            const openaiCost = openaiRate * openaiTokens * 1000;
+            if (openaiCost > 0) {
+                costs['Azure OpenAI Service'] = openaiCost;
+                totalMonthlyCost += openaiCost;
+            }
+
+            // AKS
+            const aksNodes = parseFloat(document.getElementById('aks-nodes').value) || 0;
+            const aksVmSize = parseFloat(document.getElementById('aks-vm-size').value) || 0;
+            const aksCost = aksNodes * aksVmSize;
+            if (aksCost > 0) {
+                costs['Azure Kubernetes Service'] = aksCost;
+                totalMonthlyCost += aksCost;
+            }
+
+            // Storage
+            const blobStorage = parseFloat(document.getElementById('storage-blob').value) || 0;
+            const filesStorage = parseFloat(document.getElementById('storage-files').value) || 0;
+            const storageCost = (blobStorage * 18) + (filesStorage * 153);
+            if (storageCost > 0) {
+                costs['Azure Storage'] = storageCost;
+                totalMonthlyCost += storageCost;
+            }
+
+            // Cognitive Services
+            let cognitiveCost = 0;
+            if (document.getElementById('cognitive-vision').checked) {
+                const visionTx = parseFloat(document.getElementById('vision-transactions').value) || 0;
+                cognitiveCost += visionTx * 1;
+            }
+            if (document.getElementById('cognitive-speech').checked) {
+                const speechHours = parseFloat(document.getElementById('speech-hours').value) || 0;
+                cognitiveCost += speechHours * 1;
+            }
+            if (cognitiveCost > 0) {
+                costs['Cognitive Services'] = cognitiveCost;
+                totalMonthlyCost += cognitiveCost;
+            }
+
+            // SQL Database
+            const sqlTier = parseFloat(document.getElementById('sql-tier').value) || 0;
+            const sqlStorage = parseFloat(document.getElementById('sql-storage').value) || 0;
+            const sqlCost = sqlTier + (sqlStorage * 0.115);
+            if (sqlCost > 0) {
+                costs['Azure SQL Database'] = sqlCost;
+                totalMonthlyCost += sqlCost;
+            }
+
+            // Cosmos DB
+            const cosmosRus = parseFloat(document.getElementById('cosmos-rus').value) || 0;
+            const cosmosStorage = parseFloat(document.getElementById('cosmos-storage').value) || 0;
+            const cosmosCost = (cosmosRus * 0.008 * 730) + (cosmosStorage * 0.25);
+            if (cosmosCost > 0) {
+                costs['Azure Cosmos DB'] = cosmosCost;
+                totalMonthlyCost += cosmosCost;
+            }
+
+            // Virtual Machines
+            const vmCount = parseFloat(document.getElementById('vm-count').value) || 0;
+            const vmSize = parseFloat(document.getElementById('vm-size').value) || 0;
+            const vmCost = vmCount * vmSize;
+            if (vmCost > 0) {
+                costs['Virtual Machines'] = vmCost;
+                totalMonthlyCost += vmCost;
+            }
+
+            // Networking
+            const vnet = parseFloat(document.getElementById('network-vnet').value) || 0;
+            const gateway = parseFloat(document.getElementById('network-gateway').value) || 0;
+            const egress = parseFloat(document.getElementById('network-egress').value) || 0;
+            const egressCost = Math.max(0, egress - 5) * 0.087;
+            const networkCost = vnet + gateway + egressCost;
+            if (networkCost > 0) {
+                costs['Networking'] = networkCost;
+                totalMonthlyCost += networkCost;
+            }
+
+            // Azure DevOps
+            const devopsUsers = parseFloat(document.getElementById('devops-users').value) || 0;
+            const devopsPipelines = parseFloat(document.getElementById('devops-pipelines').value) || 0;
+            const devopsCost = (devopsUsers * 6) + (devopsPipelines * 40);
+            if (devopsCost > 0) {
+                costs['Azure DevOps'] = devopsCost;
+                totalMonthlyCost += devopsCost;
+            }
+
+            // Application Insights
+            const appInsightsData = parseFloat(document.getElementById('appinsights-data').value) || 0;
+            const appInsightsCost = Math.max(0, appInsightsData - 5) * 2.30;
+            if (appInsightsCost > 0) {
+                costs['Application Insights'] = appInsightsCost;
+                totalMonthlyCost += appInsightsCost;
+            }
+
+            // Azure Monitor
+            const monitorData = parseFloat(document.getElementById('monitor-data').value) || 0;
+            const monitorCost = monitorData * 2.76;
+            if (monitorCost > 0) {
+                costs['Azure Monitor'] = monitorCost;
+                totalMonthlyCost += monitorCost;
+            }
+
+            // Display results
+            document.getElementById('monthlyCost').textContent = `$${totalMonthlyCost.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+            document.getElementById('annualCost').textContent = `$${(totalMonthlyCost * 12).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+
+            // Display breakdown
+            const breakdownList = document.getElementById('breakdownList');
+            breakdownList.innerHTML = '';
+            
+            Object.entries(costs).sort((a, b) => b[1] - a[1]).forEach(([service, cost]) => {
+                const li = document.createElement('li');
+                li.className = 'breakdown-item';
+                li.innerHTML = `
+                    <span class="breakdown-name">${service}</span>
+                    <span class="breakdown-cost">$${cost.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}</span>
+                `;
+                breakdownList.appendChild(li);
+            });
+
+            if (Object.keys(costs).length === 0) {
+                breakdownList.innerHTML = '<li class="breakdown-item"><span class="breakdown-name">No services selected</span><span class="breakdown-cost">$0</span></li>';
+            }
+
+            // Store data for export
+            costData = {
+                environment: currentEnvironment,
+                monthlyCost: totalMonthlyCost,
+                annualCost: totalMonthlyCost * 12,
+                breakdown: costs,
+                timestamp: new Date().toISOString()
+            };
+        }
+
+        function exportToJSON() {
+            const dataStr = JSON.stringify(costData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `azure-cost-estimate-${currentEnvironment}-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const summary = `
+AZURE AI/ML COST ESTIMATE
+
+Environment: ${currentEnvironment.toUpperCase()}
+Date: ${new Date().toLocaleDateString()}
+
+SUMMARY:
+- Monthly Cost: $${costData.monthlyCost.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}
+- Annual Cost: $${costData.annualCost.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}
+
+BREAKDOWN BY SERVICE:
+${Object.entries(costData.breakdown).sort((a, b) => b[1] - a[1]).map(([service, cost]) => 
+    `- ${service}: $${cost.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0})}`
+).join('\n')}
+
+Note: Estimates are approximate and based on East US region pricing.
+For detailed pricing, visit: https://azure.microsoft.com/pricing/calculator/
+            `.trim();
+
+            navigator.clipboard.writeText(summary).then(() => {
+                alert('✅ Cost estimate copied to clipboard!');
+            });
+        }
+
+        // Initialize
+        calculateCosts();
+    </script>
+</body>
+</html>
