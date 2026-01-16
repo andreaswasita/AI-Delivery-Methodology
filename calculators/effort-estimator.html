@@ -344,7 +344,9 @@
             <p>&copy; 2026 AI Delivery Methodology | Part of Microsoft AI Frontier</p>
         </div>
     </footer>
-Industry guidance for story points based on complexity
+
+    <script>
+        // Industry guidance for story points based on complexity
         const storyPointGuidance = {
             low: { 
                 avg: 3, 
@@ -357,26 +359,34 @@ Industry guidance for story points based on complexity
                 velocityPerFTE: 6  // story points per sprint per FTE
             },
             high: { 
-                avteamVelocity = parseInt(document.getElementById('teamVelocity').value);
-            const teamSize = parseInt(document.getElementById('teamSize').value);
-            const riskBuffer = parseInt(document.getElementById('riskLevel').value) / 100;
-            const includeDiscovery = document.getElementById('includeDiscovery').checked;
-            const includeDeployment = document.getElementById('includeDeployment').checked;
+                avg: 8, 
+                description: 'High complexity: 5-13 story points per feature',
+                velocityPerFTE: 5  // story points per sprint per FTE
+            },
+            veryHigh: { 
+                avg: 13, 
+                description: 'Very high complexity: 8-21 story points per feature',
+                velocityPerFTE: 4  // story points per sprint per FTE
+            }
+        };
 
-            // Calculate total story points
-            const totalStoryPoints = numFeatures * avgStoryPoints;
+        function calculateStoryPoints() {
+            const complexity = document.getElementById('complexity').value;
+            const teamSize = parseInt(document.getElementById('teamSize').value);
+            const guidance = storyPointGuidance[complexity];
             
-            // Industry standard: 6-8 productive hours per day, use 6.5 as average
-            const productiveHoursPerDay = 6.5;
-            const daysPerSprint = 10; // 2-week sprint
-            const hoursPerSprint = productiveHoursPerDay * daysPerSprint;
+            // Update average story points
+            document.getElementById('avgStoryPoints').value = guidance.avg;
+            document.getElementById('storyPointGuidance').textContent = guidance.description;
             
-            // Calculate hours per story point based on velocity
-            // If team completes 'teamVelocity' points in a sprint with 'teamSize' people
-            const hoursPerPoint = (teamSize * hoursPerSprint) / teamVelocity;
+            // Calculate team velocity based on team size and complexity
+            const teamVelocity = teamSize * guidance.velocityPerFTE;
             
-            // Calculate base development effort
-            const baseHours = totalStoryPoints * hoursPerPoint
+            // Update velocity display
+            document.getElementById('teamVelocity').value = teamVelocity;
+            document.getElementById('velocityGuidance').textContent = 
+                `${guidance.velocityPerFTE} points/sprint/FTE × ${teamSize} FTE = ${teamVelocity} points per 2-week sprint`;
+        }
 
         function updateFeatureEstimate() {
             const phase = document.getElementById('journeyPhase').value;
@@ -402,35 +412,13 @@ Industry guidance for story points based on complexity
             }
         }
 
-        functioCalculate number of sprints
-            const numSprints = Math.ceil(totalStoryPoints / teamVelocity);
-            
-            // Display results
-            document.getElementById('totalHours').textContent = Math.round(totalHours).toLocaleString() + ' hrs';
-            document.getElementById('totalDays').textContent = `${Math.round(totalDays)} working days | ${numSprints} sprints (2 weeks each)`;
-            
-            document.getElementById('teamSizeDisplay').textContent = teamSize;
-            
-            if (totalMonths >= 1) {
-                document.getElementById('timeline').textContent = totalMonths.toFixed(1) + ' months';
-            } else {
-                document.getElementById('timeline').textContent = Math.round(totalWeeks) + ' weeks';
-            }
-            document.getElementById('timelineWeeks').textContent = `${Math.round(totalWeeks)} weeks | ${numSprints} sprint
-            document.getElementById('teamVelocity').value = teamVelocity;
-            document.getElementById('velocityGuidance').textContent = 
-                `${guidance.velocityPerFTE} points/sprint/FTE × ${teamSize} FTE = ${teamVelocity} points per 2-week sprint`;
-        }
-
         function updateRiskBuffer() {
             const riskLevel = document.getElementById('riskLevel').value;
             // Risk levels are now in the select options: 4%, 7%, 15%
         }
 
         // Update velocity when team size changes
-        document.getElementById('teamSize').addEventListener('input', calculateStoryPointsocument.getElementById('riskBuffer').addEventListener('input', function() {
-            document.getElementById('riskBufferValue').textContent = this.value + '%';
-        });
+        document.getElementById('teamSize').addEventListener('input', calculateStoryPoints);
 
         function calculateEffort() {
             // Get inputs
@@ -438,12 +426,27 @@ Industry guidance for story points based on complexity
             const numFeatures = parseInt(document.getElementById('numFeatures').value);
             const complexity = document.getElementById('complexity').value;
             const avgStoryPoints = parseInt(document.getElementById('avgStoryPoints').value);
-            const hoursPerPoint = parseFloat(document.getElementById('hoursPerPoint').value);
+            const teamVelocity = parseInt(document.getElementById('teamVelocity').value);
             const teamSize = parseInt(document.getElementById('teamSize').value);
-            const riskBuffer = parseInt(document.getElementById('riskBuffer').value) / 100;
+            const riskBuffer = parseInt(document.getElementById('riskLevel').value) / 100;
             const includeDiscovery = document.getElementById('includeDiscovery').checked;
             const includeDeployment = document.getElementById('includeDeployment').checked;
 
+            // Calculate total story points
+            const totalStoryPoints = numFeatures * avgStoryPoints;
+            
+            // Industry standard: 6-8 productive hours per day, use 6.5 as average
+            const productiveHoursPerDay = 6.5;
+            const daysPerSprint = 10; // 2-week sprint
+            const hoursPerSprint = productiveHoursPerDay * daysPerSprint;
+            
+            // Calculate hours per story point based on velocity
+            // If team completes 'teamVelocity' points in a sprint with 'teamSize' people
+            const hoursPerPoint = (teamSize * hoursPerSprint) / teamVelocity;
+            
+            // Calculate base development effort
+            const baseHours = totalStoryPoints * hoursPerPoint;
+            
             // Complexity multipliers
             const complexityMultipliers = {
                 low: 0.8,
@@ -451,9 +454,6 @@ Industry guidance for story points based on complexity
                 high: 1.3,
                 veryHigh: 1.6
             };
-
-            // Calculate base effort
-            const baseHours = numFeatures * avgStoryPoints * hoursPerPoint * complexityMultipliers[complexity];
 
             // Phase percentages (of base development hours)
             const phases = {
@@ -482,10 +482,13 @@ Industry guidance for story points based on complexity
             const totalDays = totalHours / (teamSize * workingHoursPerDay);
             const totalWeeks = totalDays / 5;
             const totalMonths = totalWeeks / 4;
+            
+            // Calculate number of sprints
+            const numSprints = Math.ceil(totalStoryPoints / teamVelocity);
 
             // Display results
             document.getElementById('totalHours').textContent = Math.round(totalHours).toLocaleString() + ' hrs';
-            document.getElementById('totalDays').textContent = `${Math.round(totalDays)} working days (${Math.round(totalHours/teamSize)} hrs per FTE)`;
+            document.getElementById('totalDays').textContent = `${Math.round(totalDays)} working days | ${numSprints} sprints (2 weeks each)`;
             
             document.getElementById('teamSizeDisplay').textContent = teamSize;
             
@@ -494,7 +497,7 @@ Industry guidance for story points based on complexity
             } else {
                 document.getElementById('timeline').textContent = Math.round(totalWeeks) + ' weeks';
             }
-            document.getElementById('timelineWeeks').textContent = `${Math.round(totalWeeks)} weeks | ${Math.round(totalDays)} days`;
+            document.getElementById('timelineWeeks').textContent = `${Math.round(totalWeeks)} weeks | ${numSprints} sprints`;
 
             // Display phase breakdown
             const phaseBreakdownDiv = document.getElementById('phaseBreakdown');
@@ -552,18 +555,19 @@ Industry guidance for story points based on complexity
             // Show export buttons
             document.getElementById('exportButtons').style.display = 'flex';
 
-            // StoretotalStoryPoints,
-                    teamVelocity,
-                    sprintDuration: '2 weeks',
-                    teamSize,
-                    riskLevel: riskBuffer * 100 + '%'
+            // Store calculation data for export
+            window.effortData = {
+                projectName,
                 inputs: {
                     numFeatures,
                     complexity,
                     avgStoryPoints,
-                    hoursPerPoint,
+                    totalStoryPoints,
+                    teamVelocity,
+                    sprintDuration: '2 weeks',
                     teamSize,
                     totalSprints: numSprints,
+                    riskLevel: riskBuffer * 100 + '%',
                     riskBufferPercentage: riskBuffer * 100,
                     includeDiscovery,
                     includeDeployment
@@ -642,7 +646,12 @@ Industry guidance for story points based on complexity
 
         function copyToClipboard() {
             const data = window.effortData;
-  Total Story Points: ${data.inputs.totalStoryPoints}
+            const summary = `
+EFFORT ESTIMATE: ${data.projectName}
+
+INPUTS:
+- Number of Features: ${data.inputs.numFeatures}
+- Total Story Points: ${data.inputs.totalStoryPoints}
 - Complexity: ${data.inputs.complexity}
 - Avg Story Points per Feature: ${data.inputs.avgStoryPoints}
 - Team Velocity: ${data.inputs.teamVelocity} points per sprint
@@ -652,13 +661,8 @@ Industry guidance for story points based on complexity
 
 RESULTS:
 - Total Effort: ${data.results.totalHours.toLocaleString()} hours
-- Timeline: ${data.results.totalMonths} months (${data.results.totalWeeks} weeks, ${data.results.totalSprints} sprint
-- Team Size: ${data.inputs.teamSize} FTE
-- Risk Buffer: ${data.inputs.riskBufferPercentage}%
-
-RESULTS:
-- Total Effort: ${data.results.totalHours.toLocaleString()} hours
 - Timeline: ${data.results.totalMonths} months (${data.results.totalWeeks} weeks)
+- Sprints Required: ${data.inputs.totalSprints}
 - Effort per FTE: ${data.results.hoursPerFTE.toLocaleString()} hours
 
 PHASE BREAKDOWN:
