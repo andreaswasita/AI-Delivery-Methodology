@@ -22,7 +22,7 @@
 - ⚙️ [MLOps & DevOps](./guides/03-mlops-devops-complete-guide.md)
 - 🎨 [Hackathons & Prototyping](./guides/02-hackathons-complete-guide.md)
 
-[→[ View All Guides](./guides)
+[→ View All Guides](./guides)
 
 </td>
 <td width="25%" valign="top">
@@ -35,7 +35,7 @@
 - 🏛️ [Public Sector](./guides/industry-use-cases/public-sector-use-cases.md) - Citizen services, infrastructure
 - 🛡️ [Defense](./guides/industry-use-cases/defense-security-use-cases.md) - Intelligence, logistics optimization
 
-[→[ Explore All Industries](./guides/industry-use-cases)
+[→ Explore All Industries](./guides/industry-use-cases)
 
 </td>
 <td width="25%" valign="top">
@@ -51,7 +51,7 @@
 - 🏃 [3-Month Fast Track](./guides/93-3-month-fast-track-guide.md)
 - 🎤 [Presales Activities](./guides/00-presales-discovery-activities.md)
 
-[→[ Browse All Guides](./guides)
+[→ Browse All Guides](./guides)
 
 </td>
 <td width="25%" valign="top">
@@ -67,7 +67,7 @@
 - 🎯 [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
 - ✅ [Phase Checklists](./checklists)
 
-[→[ Get All Templates](./templates)
+[→ Get All Templates](./templates)
 
 </td>
 </tr>
@@ -75,7 +75,7 @@
 
 ---
 
-##  About This Methodology
+## 📖 About This Methodology
 
 ### What We're Trying to Achieve
 
@@ -94,7 +94,7 @@ Most AI projects fail not because of technology, but because of execution gaps:
 
 This methodology provides a **proven, repeatable framework** that:
 
-** Aligns Business & Technology**
+**🎯 Aligns Business & Technology**
 - Starts with business problems, not technology solutions
 - Uses the **Five Whys technique** to uncover root causes, ensuring AI addresses fundamental issues, not symptoms
 - Connects every technical decision back to measurable business outcomes
@@ -106,7 +106,7 @@ This methodology provides a **proven, repeatable framework** that:
 - Value tracking at every milestone
 - Quick wins balanced with strategic long-term transformation
 
-**? Mitigates Risk Through Governance**
+** Mitigates Risk Through Governance**
 - AI ethics and responsible AI principles built into every phase
 - Regulatory compliance (GDPR, industry-specific) addressed early
 - Risk assessment and mitigation at every gate
@@ -139,19 +139,19 @@ This methodology provides a **proven, repeatable framework** that:
 
 ### What Makes This Different
 
-**? Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
+** Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
 
-**? Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
+** Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
 
-**? Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
+** Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
 
-**? Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
+** Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
 
-**? Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
+** Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
 
-**? Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
+** Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
 
-**? Cloud-Native**: Optimized for Microsoft Azure AI services (Azure Machine Learning, Azure OpenAI, Cognitive Services)
+** Cloud-Native**: Optimized for Microsoft Azure AI services (Azure Machine Learning, Azure OpenAI, Cognitive Services)
 
 ### The Journey: Vision to Value
 
@@ -165,26 +165,26 @@ Perfect for single use cases, POCs, and rapid value delivery. Compressed timelin
 - **Scope:** Single use case
 - **Best For:** Pilots, POCs, quick wins, building momentum
 
-[**?[ See 3-Month Fast-Track Guide**](./guides/93-3-month-fast-track-guide.md)
+[** See 3-Month Fast-Track Guide**](./guides/93-3-month-fast-track-guide.md)
 
 ---
 
-#### **? Full Methodology (6-12+ Months)** - For Enterprise Solutions
+#### ** Full Methodology (6-12+ Months)** - For Enterprise Solutions
 Comprehensive approach for production systems, multiple use cases, and enterprise-wide transformation.
 
 Our methodology guides you through nine structured phases:
 
-**1. Pre-sales & Discovery** ? Qualify opportunities, understand business context, identify root causes  
-**2. Mobilise** ? Establish governance, assemble teams, set foundations  
-**3. Hackathons (Prototype)** ? Rapid validation, proof of concepts, fail fast learning  
-**4. Setup Platform** ? Infrastructure, MLOps, security, compliance foundations  
-**5. Build** ? Agile development with continuous stakeholder engagement  
-**6. Integrate** ? System integration, data pipelines, API development  
-**7. Test & Evaluate** ? Comprehensive QA, bias testing, performance validation  
-**8. Prepare & Deploy** ? Production readiness, rollout planning, training  
-**9. Operate & Care** ? Monitoring, optimization, continuous improvement  
+**1. Pre-sales & Discovery**  Qualify opportunities, understand business context, identify root causes  
+**2. Mobilise**  Establish governance, assemble teams, set foundations  
+**3. Hackathons (Prototype)**  Rapid validation, proof of concepts, fail fast learning  
+**4. Setup Platform**  Infrastructure, MLOps, security, compliance foundations  
+**5. Build**  Agile development with continuous stakeholder engagement  
+**6. Integrate**  System integration, data pipelines, API development  
+**7. Test & Evaluate**  Comprehensive QA, bias testing, performance validation  
+**8. Prepare & Deploy**  Production readiness, rollout planning, training  
+**9. Operate & Care**  Monitoring, optimization, continuous improvement  
 
-**Underpinned by**: 360� Governance | Execution Strategy | Change Management | Value Tracking
+**Underpinned by**: 360 governance | Execution Strategy | Change Management | Value Tracking
 
 ---
 
@@ -239,13 +239,13 @@ These materials help Microsoft consultants navigate organizational politics, man
 
 ---
 
-## Over[ View 
+## Overview 
 
-This repository contains comprehensive templates, guides, and documentation for delivering AI projects following Microsoft's AI Frontier delivery methodology. The methodology covers the complete lifecycle from **Vision to Value** with 360� governance, execution strategy, outcomes focus, and continuous change management.
+This repository contains comprehensive templates, guides, and documentation for delivering AI projects following Microsoft's AI Frontier delivery methodology. The methodology covers the complete lifecycle from **Vision to Value** with 360 governance, execution strategy, outcomes focus, and continuous change management.
 
 ##  Methodology Phases
 
-### **Vision to Value ? Discovery ? Prototype ? Deploy ? Scale **
+### **Vision to Value  Discovery  Prototype  Deploy  Scale**
 
 The methodology follows a structured approach with clear phase gates and outcomes-driven milestones:
 
@@ -259,7 +259,7 @@ The methodology follows a structured approach with clear phase gates and outcome
 8. **Prepare and Deploy** - Production deployment and scaling
 9. **Operate and Care** - Ongoing operations and optimization
 
-Underpinned by **360� Governance and Execution, Strategy, Ops Planning and Change Management**
+Underpinned by **360 governance and Execution, Strategy, Ops Planning and Change Management**
   
 
 ---
@@ -284,7 +284,7 @@ AI-Delivery-Methodology/
 +-- templates/          # Ready-to-use templates for all deliverables
 +-- checklists/         # Phase-specific checklists with 200+ actionable items
 +-- guides/             # Detailed implementation guides
-+-- infrastructure/     # ? Azure infrastructure-as-code (Bicep templates)
++-- infrastructure/     #  Azure infrastructure-as-code (Bicep templates)
 �   +-- bicep/         # Infrastructure modules and parameters
 �   �   +-- modules/   # AI services, compute, networking, security
 �   �   +-- main.bicep # Main deployment template
@@ -1340,7 +1340,7 @@ The methodology is built on these core principles:
 
 #### 5 **Build, Test, Deploy, Operate**
 - Follow phase-specific checklists (coming soon)
-- Maintain 360� governance
+- Maintain 360 governance
 - Track value realization
 
 ---
@@ -1500,7 +1500,7 @@ All templates follow these standards:
 
 The methodology includes built-in governance:
 
-- **360� Governance** across all phases
+- **360 governance** across all phases
 - **Phase gate reviews** with steering committee
 - **Risk management** throughout lifecycle
 - **Privacy by design** (GDPR, DPIA)
