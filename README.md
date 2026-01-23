@@ -1,4 +1,4 @@
-# AI Delivery Methodology
+﻿# AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
 🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
@@ -9,7 +9,7 @@
 
 <table>
 <tr>
-<td width="25%" valign="top">
+<td width>="25%" valign>="top">
 
 ### 📋 [Methodology Phases](./guides)
 **Complete delivery framework**
@@ -25,7 +25,7 @@
 [→ View All Guides](./guides)
 
 </td>
-<td width="25%" valign="top">
+<td width>="25%" valign>="top">
 
 ### 🏭 [Industry Use Cases](./guides/industry-use-cases)
 **Real-world AI applications**
@@ -38,7 +38,7 @@
 [→ Explore All Industries](./guides/industry-use-cases)
 
 </td>
-<td width="25%" valign="top">
+<td width>="25%" valign>="top">
 
 ### 📚 [Guides & Frameworks](./guides)
 **Expert knowledge & best practices**
@@ -54,7 +54,7 @@
 [→ Browse All Guides](./guides)
 
 </td>
-<td width="25%" valign="top">
+<td width>="25%" valign>="top">
 
 ### 📄 [Templates & Checklists](./templates)
 **Ready-to-use documents**
@@ -299,7 +299,7 @@ AI-Delivery-Methodology/
 
 ##  AI Agents for Delivery Teams
 
-### Value Analysis Agent ? **NEW!**
+### Value Analysis Agent **NEW!**
 
 **Purpose:** Automate comprehensive value analysis for AI projects with interactive CLI-based agent
 
@@ -349,7 +349,7 @@ python example_usage.py
 
 All calculators run entirely in your[ Browser�100% private, no data sent to any server.
 
-### 1. Value Analysis Chatbot  ? **NEW!**
+### 1. Value Analysis Chatbot  **NEW!**
 
 ** [Launch Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
 
@@ -377,11 +377,11 @@ Calculate comprehensive ROI metrics for your AI projects:
 - **Benefit Growth Modeling** - Compound annual growth tracking
 - **Sensitivity Analysis** - Test different scenarios
 
-**Use For:** Business cases, executive approvals, bud[ Get justification, comparing initiatives
+**Use For:** Business cases, executive approvals, budget justification, comparing initiatives
 
 ---
 
-### 3. Effort Estimator  ? **NEW!**
+### 3. Effort Estimator  **NEW!**
 
 ** [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
 
@@ -403,7 +403,7 @@ Convert project scope into accurate effort estimates:
 
 ---
 
-## ? Azure Deployment Options
+## to Azure Deployment Options
 
 ### Option 1: GitHub Pages (Free - For Static Sites)
 
@@ -463,26 +463,20 @@ az deployment subscription create \
 
 ---
 
-##  �   +-- deploy-calculators.ps1  # Azure Static Web App deployment
-�   +-- policies/      # Azure Policy definitions
-�   +-- docs/          # Infrastructure documentation
-+-- README.md          # This file
-```
-
 ---
 
-## ? Choose Your Delivery Track
+## Choose Your Delivery Track
 
 Before diving into phase details, select the right approach for your project:
 
-### **Fast-Track (3 Months)** - Rapid Value Delivery
+### Fast-Track (3 Months) - Rapid Value Delivery
 
 **Use When:**
 - Single, well-defined use case
 - Pilot or proof-of-concept
 - Quick win needed to build momentum
 - Data readily available
-- Limited bud[ Get 
+- Limited budget
 
 **Key Features:**
 - 12-week compressed timeline
@@ -490,18 +484,18 @@ Before diving into phase details, select the right approach for your project:
 - Essential activities only
 - Defer advanced features to Phase 2
 
-[** Read Full 3-Month Fast-Track Guide ?**](./guides/93-3-month-fast-track-guide.md)
+**[Read Full 3-Month Fast-Track Guide](./guides/93-3-month-fast-track-guide.md)**
 
 ---
 
-### **Full Methodology (6-12+ Months)** - Enterprise Scale
+### Full Methodology (6-12+ Months) - Enterprise Scale
 
 **Use When:**
 - Multiple use cases
 - Production-grade system
 - Enterprise-wide transformation
 - Complex integrations (5+ systems)
-- Large bud[ Get 
+- Large budget
 
 **Key Features:**
 - Comprehensive 9-phase lifecycle
@@ -509,13 +503,13 @@ Before diving into phase details, select the right approach for your project:
 - 200+ checklists, 20+ templates
 - Full MLOps, governance, scaling
 
-**Continue reading below for detailed phase-by-phase guidance ?**
+**Continue reading below for detailed phase-by-phase guidance**
 
 ---
 
-## ? Available Materials by Phase
+## Available Materials by Phase
 
-### ? **Phase 0: Pre-sales & Discovery**
+### Phase 0: Pre-sales & Discovery
 
 **Purpose**: Qualify AI opportunities and deeply understand business requirements
 
@@ -550,7 +544,7 @@ Before diving into phase details, select the right approach for your project:
 **Week 0 (Pre-Discovery)**:
 1. **Pre-sales Qualification** - Score opportunity (Business Value, Technical Feasibility, Data Readiness, Client Readiness, Commercial)
 2. **Executive Readiness Assessment** - Assess organizational and executive readiness (55-point assessment)
-3. **Go/No-Go Decision** - Must score =35/50 points (qualification) and address any critical readiness gaps
+3. **Go/No-Go Decision** - Must score >=35/50 points (qualification) and address any critical readiness gaps
 4. **Stakeholder Identification** - Map key stakeholders and decision-makers
 5. **Executive 1-on-1 Interviews** - Conduct 60-90 min interviews with C-level stakeholders
 6. **Pre-Work Distribution** - Send Business Envisioning pre-work assignment to participants
@@ -590,20 +584,20 @@ Before diving into phase details, select the right approach for your project:
 25. **Go/No-Go Decision** - Decision to proceed to Mobilisation phase
 
 **Deliverables**:
-1. ? Opportunity Qualification Report (Pre-sales)
-2. ? Business Envisioning Workshop Output (Use cases, prioritization)
-3. ? Business Requirements Document (BRD)
-4. ? Data Assessment Report
-5. ? Solution Architecture Document
-6. ? ML Approach Document
-7. ? Privacy & Compliance Assessment (GDPR/DPIA)
-8. ? Initial Business Case
-9. ? Discovery Report with recommendations
+1. Opportunity Qualification Report (Pre-sales)
+2. Business Envisioning Workshop Output (Use cases, prioritization)
+3. Business Requirements Document (BRD)
+4. Data Assessment Report
+5. Solution Architecture Document
+6. ML Approach Document
+7. Privacy & Compliance Assessment (GDPR/DPIA)
+8. Initial Business Case
+9. Discovery Report with recommendations
 
 **Exit Criteria**:
 - [ ] Business requirements documented and approved by stakeholders
 - [ ] At least one use case with clear business value identified
-- [ ] Data sufficiency confirmed (=7/10 data readiness score)
+- [ ] Data sufficiency confirmed (>=7/10 data readiness score)
 - [ ] Technical feasibility validated (architecture feasible, no blocking technical issues)
 - [ ] Risks identified and manageable (no high/critical unmitigatable risks)
 - [ ] Executive sponsorship confirmed
@@ -611,7 +605,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### ? **Phase 1: Mobilise and Initiate**
+### Phase 1: Mobilise and Initiate
 
 **Purpose**: Establish project foundation, governance, and team
 
@@ -640,10 +634,10 @@ Before diving into phase details, select the right approach for your project:
 2. **Business Case Refinement** - Detailed ROI calculations, cost-benefit analysis, financial justification
 3. **Steering Committee Formation** - Identify and engage executive sponsors and decision-makers
 4. **Project Charter Approval** - Executive approval and sign-off
-5. **Business Case Approval** - Financial approval from bud[ Get holders
+5. **Business Case Approval** - Financial approval from budget holders
 6. **RACI Matrix Development** - Define roles and responsibilities across all phases
 7. **Team Identification** - Identify required roles (Data Scientists, ML Engineers, Architects, etc.)
-8. **Resource Allocation** - Secure team members and bud[ Get 
+8. **Resource Allocation** - Secure team members and budget 
 
 **Week 2 (Planning & Setup)**:
 9. **Detailed Project Plan Creation** - Develop week-by-week plan with milestones and dependencies
@@ -668,22 +662,22 @@ Before diving into phase details, select the right approach for your project:
 26. **Sprint 0 Planning** - Prepare for first prototype sprint (backlog grooming, story definition)
 
 **Deliverables**:
-1. ? Approved Project Charter
-2. ? Approved Business Case
-3. ? RACI Matrix
-4. ? Detailed Project Plan & Roadmap
-5. ? Risk Register (with 18+ identified risks)
-6. ? Communication Plan
-7. ? Success Criteria & KPIs Dashboard
-8. ? Stakeholder Analysis
-9. ? Azure Environment (Dev, Test, UAT, Prod)
-10. ? Team onboarded and trained
-11. ? DevOps pipelines configured
-12. ? Sprint backlog for Prototype phase
+1. Approved Project Charter
+2. Approved Business Case
+3. RACI Matrix
+4. Detailed Project Plan & Roadmap
+5. Risk Register (with 18+ identified risks)
+6. Communication Plan
+7. Success Criteria & KPIs Dashboard
+8. Stakeholder Analysis
+9. Azure Environment (Dev, Test, UAT, Prod)
+10. Team onboarded and trained
+11. DevOps pipelines configured
+12. Sprint backlog for Prototype phase
 
 **Exit Criteria**:
 - [ ] Project Charter approved by executive sponsor
-- [ ] Business Case approved with bud[ Get allocated
+- [ ] Business Case approved with budget allocated
 - [ ] Full team mobilized and onboarded
 - [ ] Azure environments ready and accessible
 - [ ] Governance framework established (steering committee, RACI, communication plan)
@@ -693,7 +687,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-###  **Phase 2: Hackathons (Prototype)**
+### Phase 2: Hackathons (Prototype)
 
 **Purpose**: Rapid prototyping with high-velocity sprints to validate ML approach and build MVP
 
@@ -765,16 +759,16 @@ Before diving into phase details, select the right approach for your project:
 - Backlog grooming
 
 **Deliverables**:
-1. ? Working MVP prototype
-2. ? Trained ML models (versioned in model registry)
-3. ? APIs for model serving
-4. ? Simple UI for demonstration
-5. ? Data pipelines (ingestion, preparation, feature engineering)
-6. ? Technical documentation (architecture, code, APIs)
-7. ? Test results and model performance metrics
-8. ? Demo scenarios and user stories
-9. ? Lessons learned and technical debt backlog
-10. ? Sprint reports and velocity metrics
+1. Working MVP prototype
+2. Trained ML models (versioned in model registry)
+3. APIs for model serving
+4. Simple UI for demonstration
+5. Data pipelines (ingestion, preparation, feature engineering)
+6. Technical documentation (architecture, code, APIs)
+7. Test results and model performance metrics
+8. Demo scenarios and user stories
+9. Lessons learned and technical debt backlog
+10. Sprint reports and velocity metrics
 
 **Exit Criteria**:
 - [ ] MVP demonstrates core functionality end-to-end
@@ -789,7 +783,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### ? **Phase 3: Setup Platform**
+### Phase 3: Setup Platform
 
 **Purpose**: Set up production-grade platform, infrastructure, and MLOps foundation
 
@@ -841,7 +835,7 @@ Before diving into phase details, select the right approach for your project:
 
 **Week 4 (Integration & Validation)**:
 21. **API Gateway Setup** - Configure API Management for model serving
-22. **Integration Testing** - Test integrations with source and tar[ Get systems
+22. **Integration Testing** - Test integrations with source and target systems
 23. **Security Testing** - Penetration testing, vulnerability scanning
 24. **Performance Testing** - Load testing, stress testing, scalability validation
 25. **Documentation** - Document infrastructure, architecture, runbooks, SOPs
@@ -850,16 +844,16 @@ Before diving into phase details, select the right approach for your project:
 28. **Platform Validation** - End-to-end validation of platform readiness
 
 **Deliverables**:
-1. ? Production Azure environment (fully configured and secured)
-2. ? MLOps platform (Azure ML, model registry, feature store)
-3. ? CI/CD pipelines (automated deployment)
-4. ? Data platform (data lake, pipelines, quality framework)
-5. ? Monitoring and observability (dashboards, alerts)
-6. ? Security controls (identity, encryption, network security)
-7. ? Backup and disaster recovery plan
-8. ? Infrastructure documentation and runbooks
-9. ? Team trained on platform
-10. ? Platform validation report
+1. Production Azure environment (fully configured and secured)
+2. MLOps platform (Azure ML, model registry, feature store)
+3. CI/CD pipelines (automated deployment)
+4. Data platform (data lake, pipelines, quality framework)
+5. Monitoring and observability (dashboards, alerts)
+6. Security controls (identity, encryption, network security)
+7. Backup and disaster recovery plan
+8. Infrastructure documentation and runbooks
+9. Team trained on platform
+10. Platform validation report
 
 **Exit Criteria**:
 - [ ] Production environment fully provisioned and secured
@@ -874,7 +868,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### ? **Phase 4: Build**
+### Phase 4: Build
 
 **Purpose**: Build production-ready solution with full features and enterprise-grade quality
 
@@ -899,7 +893,7 @@ Before diving into phase details, select the right approach for your project:
 
 **Sprint 3-4 (Core Functionality)**:
 8. **Business Logic Implementation** - Implement all core business rules and logic
-9. **Integration Development** - Build integrations with all source and tar[ Get systems
+9. **Integration Development** - Build integrations with all source and target systems
 10. **User Interface Development** - Build production UI/UX (web, mobile, or both)
 11. **Workflow Automation** - Implement automated workflows and orchestration
 12. **Batch Processing** - Build batch processing capabilities for bulk operations
@@ -921,7 +915,7 @@ Before diving into phase details, select the right approach for your project:
 24. **Admin Tools** - Build administrative tools for configuration and management
 25. **Reporting & Analytics** - Implement reporting dashboards and analytics
 26. **Documentation Completion** - Complete user documentation, API docs, admin guides
-27. **Code Quality Review** - Comprehensive code re[ View and refactoring
+27. **Code Quality Review** - Comprehensive code review and refactoring
 28. **Technical Debt Resolution** - Address accumulated technical debt
 
 **Continuous Activities (Every Sprint)**:
@@ -934,18 +928,18 @@ Before diving into phase details, select the right approach for your project:
 - Risk management
 
 **Deliverables**:
-1. ? Production-ready application (all features complete)
-2. ? Production ML models (trained, validated, registered)
-3. ? Data pipelines (production-grade, monitored)
-4. ? APIs (documented, secured, tested)
-5. ? User interface (web/mobile, accessible)
-6. ? Integrations (all systems integrated and tested)
-7. ? Security controls (comprehensive, tested)
-8. ? Monitoring and alerting (configured)
-9. ? User documentation (complete, reviewed)
-10. ? Training materials (user and admin)
-11. ? Technical documentation (architecture, deployment, operations)
-12. ? Test results (unit, integration, performance)
+1. Production-ready application (all features complete)
+2. Production ML models (trained, validated, registered)
+3. Data pipelines (production-grade, monitored)
+4. APIs (documented, secured, tested)
+5. User interface (web/mobile, accessible)
+6. Integrations (all systems integrated and tested)
+7. Security controls (comprehensive, tested)
+8. Monitoring and alerting (configured)
+9. User documentation (complete, reviewed)
+10. Training materials (user and admin)
+11. Technical documentation (architecture, deployment, operations)
+12. Test results (unit, integration, performance)
 
 **Exit Criteria**:
 - [ ] All MVP features complete and tested
@@ -960,7 +954,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-###  **Phase 5: Integrate**
+### Phase 5: Integrate
 
 **Purpose**: Integrate solution with enterprise ecosystem and prepare for end-to-end testing
 
@@ -975,7 +969,7 @@ Before diving into phase details, select the right approach for your project:
 **Sequential Steps**:
 
 **Week 1 (Integration Development)**:
-1. **Integration Architecture Review** - Re[ View and finalize integration architecture
+1. **Integration Architecture Review** - review and finalize integration architecture
 2. **API Integration** - Integrate with all external APIs and services
 3. **Database Integration** - Connect to enterprise databases and data warehouses
 4. **Authentication Integration** - Integrate with enterprise SSO/identity provider (Azure AD, Okta, etc.)
@@ -1011,13 +1005,13 @@ Before diving into phase details, select the right approach for your project:
 28. **Handoff to Test Phase** - Prepare for comprehensive UAT
 
 **Deliverables**:
-1. ? All system integrations complete and tested
-2. ? Integration test results (all tests passed)
-3. ? Integration architecture documentation
-4. ? Integration specifications and data mappings
-5. ? Integration monitoring dashboards
-6. ? Integration runbooks
-7. ? Integration sign-off from stakeholders
+1. All system integrations complete and tested
+2. Integration test results (all tests passed)
+3. Integration architecture documentation
+4. Integration specifications and data mappings
+5. Integration monitoring dashboards
+6. Integration runbooks
+7. Integration sign-off from stakeholders
 
 **Exit Criteria**:
 - [ ] All planned integrations implemented and tested
@@ -1032,7 +1026,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### ? **Phase 6: Test & Evaluate**
+### Phase 6: Test & Evaluate
 
 **Purpose**: Comprehensive testing, quality assurance, and performance validation
 
@@ -1083,23 +1077,23 @@ Before diving into phase details, select the right approach for your project:
 23. **Regression Testing** - Comprehensive regression testing after all fixes
 24. **Final UAT** - Final round of UAT with key stakeholders
 25. **Performance Benchmarking** - Document final performance benchmarks
-26. **Quality Metrics Review** - Re[ View all quality metrics against targets
+26. **Quality Metrics Review** - review all quality metrics against targets
 27. **Test Report Creation** - Compile comprehensive test report
 28. **UAT Sign-off** - Obtain formal UAT sign-off from business stakeholders
 29. **Go-Live Readiness Assessment** - Assess readiness for production deployment
-30. **Phase Gate Review** - Steering committee re[ View and approval
+30. **Phase Gate Review** - Steering committee review and approval
 
 **Deliverables**:
-1. ? Comprehensive test plan
-2. ? Test cases (functional, integration, performance, security)
-3. ? UAT results with sign-off
-4. ? Performance test results and benchmarks
-5. ? Security test results (penetration test report)
-6. ? Model validation report (accuracy, fairness, explainability)
-7. ? Defect log with resolution status
-8. ? Test summary report
-9. ? Go-live readiness assessment
-10. ? Quality assurance sign-off
+1. Comprehensive test plan
+2. Test cases (functional, integration, performance, security)
+3. UAT results with sign-off
+4. Performance test results and benchmarks
+5. Security test results (penetration test report)
+6. Model validation report (accuracy, fairness, explainability)
+7. Defect log with resolution status
+8. Test summary report
+9. Go-live readiness assessment
+10. Quality assurance sign-off
 
 **Exit Criteria**:
 - [ ] UAT sign-off obtained from business stakeholders
@@ -1114,7 +1108,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-###  **Phase 7: Prepare and Deploy**
+### Phase 7: Prepare and Deploy
 
 **Purpose**: Production deployment, training delivery, and go-live preparation
 
@@ -1167,18 +1161,18 @@ Before diving into phase details, select the right approach for your project:
 30. **Daily Status Meetings** - Daily meetings during hypercare period
 
 **Deliverables**:
-1. ? Production deployment (application live in production)
-2. ? Deployment plan and runbook
-3. ? Cutover plan executed
-4. ? Training delivered (attendance records, completion certificates)
-5. ? Training materials (user guides, admin guides, videos, FAQs)
-6. ? User accounts provisioned
-7. ? Support infrastructure (helpdesk, ticketing, runbooks)
-8. ? Hypercare plan and schedule
-9. ? Monitoring dashboards operational
-10. ? Go-live communication
-11. ? Data migration completed (if applicable)
-12. ? Deployment summary report
+1. Production deployment (application live in production)
+2. Deployment plan and runbook
+3. Cutover plan executed
+4. Training delivered (attendance records, completion certificates)
+5. Training materials (user guides, admin guides, videos, FAQs)
+6. User accounts provisioned
+7. Support infrastructure (helpdesk, ticketing, runbooks)
+8. Hypercare plan and schedule
+9. Monitoring dashboards operational
+10. Go-live communication
+11. Data migration completed (if applicable)
+12. Deployment summary report
 
 **Exit Criteria**:
 - [ ] Application successfully deployed to production
@@ -1193,7 +1187,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-###  **Phase 8: Operate and Care**
+### Phase 8: Operate and Care
 
 **Purpose**: Ongoing operations, optimization, and continuous improvement
 
@@ -1212,7 +1206,7 @@ Before diving into phase details, select the right approach for your project:
 1. **24/7 Support** - Provide round-the-clock support for critical issues
 2. **Issue Resolution** - Rapid response and resolution of production issues
 3. **User Support** - Intensive user support and hand-holding
-4. **Daily Status Meetings** - Daily meetings to re[ View issues and metrics
+4. **Daily Status Meetings** - Daily meetings to review issues and metrics
 5. **Performance Monitoring** - Continuous monitoring of system performance
 6. **User Feedback Collection** - Gather user feedback and issues
 7. **Quick Fixes** - Deploy quick fixes for critical issues
@@ -1237,7 +1231,7 @@ Before diving into phase details, select the right approach for your project:
 22. **Scalability Enhancements** - Scale system based on usage growth
 23. **Cost Optimization** - Optimize Azure costs and resource usage
 24. **User Satisfaction Surveys** - Conduct periodic user satisfaction surveys
-25. **Business Re[ View Meetings** - Monthly business reviews with stakeholders
+25. **Business review Meetings** - Monthly business reviews with stakeholders
 
 **Ongoing (Continuous)**:
 26. **Incident Management** - Manage and resolve incidents per SLA
@@ -1264,52 +1258,52 @@ Before diving into phase details, select the right approach for your project:
 - **Capacity Management** - Scale resources based on demand
 
 **Deliverables**:
-1. ? Operations dashboard (real-time system health)
-2. ? Monthly performance reports (business, technical, adoption metrics)
-3. ? Incident reports and RCA (root cause analysis)
-4. ? Model performance reports (accuracy, drift, retraining)
-5. ? Value realization report (ROI, cost savings, business value)
-6. ? User adoption reports (usage, satisfaction, adoption rate)
-7. ? Continuous improvement backlog
-8. ? Quarterly business reviews
-9. ? Updated documentation and runbooks
-10. ? Compliance reports (security, privacy, regulatory)
+1. Operations dashboard (real-time system health)
+2. Monthly performance reports (business, technical, adoption metrics)
+3. Incident reports and RCA (root cause analysis)
+4. Model performance reports (accuracy, drift, retraining)
+5. Value realization report (ROI, cost savings, business value)
+6. User adoption reports (usage, satisfaction, adoption rate)
+7. Continuous improvement backlog
+8. Quarterly business reviews
+9. Updated documentation and runbooks
+10. Compliance reports (security, privacy, regulatory)
 
 **Success Criteria (Ongoing)**:
 - [ ] System uptime >99.9% (per SLA)
 - [ ] Incident resolution within SLA (>95%)
-- [ ] Model accuracy maintained (>tar[ Get threshold)
-- [ ] User adoption >tar[ Get (e.g., 80% active users)
+- [ ] Model accuracy maintained (>target threshold)
+- [ ] User adoption >target (e.g., 80% active users)
 - [ ] User satisfaction >4.0/5
 - [ ] Business KPIs achieved (ROI, cost savings, revenue)
-- [ ] Security incidents <tar[ Get (zero critical incidents)
-- [ ] Cost within bud[ Get (�10%)
+- [ ] Security incidents <target (zero critical incidents)
+- [ ] Cost within budget (�10%)
 - [ ] Continuous value delivery (quarterly enhancements)
 
 ---
 
-##  Key Principles
+## Key Principles
 
 The methodology is built on these core principles:
 
-? **Vision to Value (production Go-Live)**
+**1. Vision to Value (production Go-Live)**
 - Focus on delivering business value, not just technical solutions
 
-? **Value Drop on each phase outcomes-driven**
+**2. Value Drop on each phase outcomes-driven**
 - Each phase delivers tangible outcomes and value
 
-? **Gated on each phase with high velocity build sprint during prototype and build**
+**3. Gated on each phase with high velocity build sprint during prototype and build**
 - Clear phase gates with fast-paced development
 
-? **Pressure test hackatons with customer business stakeholders, engineers and whole Microsoft (ATU, STU, FDE, ISD and CSU)**
+**4. Pressure test hackathons with customer business stakeholders, engineers and whole Microsoft (ATU, STU, FDE, ISD and CSU)**
 - Continuous validation with stakeholders
 
-? **Hypercare to ensure full value realised and optimise**
+**5. Hypercare to ensure full value realised and optimise**
 - Post-deployment support to maximize ROI
 
 ---
 
-##  Quick Start Guide
+## Quick Start Guide
 
 ### For New Projects:
 
@@ -1345,24 +1339,24 @@ The methodology is built on these core principles:
 
 ---
 
-##  Phase Gate Criteria
+## Phase Gate Criteria
 
 Each phase has clear exit criteria that must be met before proceeding to the next phase. The steering committee reviews these criteria at formal phase gate reviews.
 
-### **Phase Gate 0: Discovery ? Mobilisation**
+### **Phase Gate 0: Discovery to Mobilisation**
 - [ ] Business requirements documented and approved by stakeholders
 - [ ] At least one use case with clear business value identified (ROI >3:1)
-- [ ] Data sufficiency confirmed (data readiness score =7/10)
+- [ ] Data sufficiency confirmed (data readiness score >=7/10)
 - [ ] Technical feasibility validated (architecture feasible, no blocking technical issues)
 - [ ] Risks identified and manageable (no high/critical unmitigatable risks)
 - [ ] Executive sponsorship confirmed
 - [ ] Initial business case approved
 - [ ] Steering committee approval to proceed
-- [ ] Bud[ Get allocated for Mobilisation phase
+- [ ] budget allocated for Mobilisation phase
 
-### **Phase Gate 1: Mobilisation ? Prototype**
+### **Phase Gate 1: Mobilisation to Prototype**
 - [ ] Project Charter approved by executive sponsor
-- [ ] Business Case approved with bud[ Get allocated for full project
+- [ ] Business Case approved with budget allocated for full project
 - [ ] Full team mobilized and onboarded (all roles filled)
 - [ ] Azure environments ready and accessible (Dev, Test)
 - [ ] Governance framework established (steering committee, RACI, communication plan active)
@@ -1371,9 +1365,9 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Sprint 0 complete and backlog ready
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 2: Prototype ? Setup Platform**
+### **Phase Gate 2: Prototype to Setup Platform**
 - [ ] MVP demonstrates core functionality end-to-end
-- [ ] ML model meets minimum accuracy/performance thresholds (=success criteria)
+- [ ] ML model meets minimum accuracy/performance thresholds (>=success criteria)
 - [ ] Stakeholders validate business value of MVP (demo sign-off)
 - [ ] Technical approach proven feasible (no critical blockers)
 - [ ] Data pipelines functional and tested
@@ -1383,7 +1377,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Prototype lessons learned documented
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 3: Setup Platform ? Build**
+### **Phase Gate 3: Setup Platform to Build**
 - [ ] Production environment fully provisioned and secured
 - [ ] MLOps platform operational (CI/CD, model registry, monitoring)
 - [ ] Data platform ready (data lake, pipelines, quality framework)
@@ -1395,7 +1389,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Platform documentation complete
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 4: Build ? Integrate**
+### **Phase Gate 4: Build to Integrate**
 - [ ] All MVP features complete and tested (100% of must-have requirements)
 - [ ] Code quality standards met (test coverage >80%, no critical code issues)
 - [ ] Security requirements met (no high/critical vulnerabilities)
@@ -1406,7 +1400,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Demo to stakeholders successful (sign-off obtained)
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 5: Integrate ? Test & Evaluate**
+### **Phase Gate 5: Integrate to Test & Evaluate**
 - [ ] All planned integrations implemented and tested
 - [ ] Integration test cases passed (>95% success rate)
 - [ ] Data flows validated end-to-end (all systems connected)
@@ -1418,7 +1412,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Integration sign-off from all system owners
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 6: Test & Evaluate ? Prepare & Deploy**
+### **Phase Gate 6: Test & Evaluate to Prepare & Deploy**
 - [ ] UAT sign-off obtained from business stakeholders
 - [ ] All critical and high-priority defects resolved (zero critical, zero high open)
 - [ ] Performance requirements met (latency, throughput, scalability validated)
@@ -1431,10 +1425,10 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Change management approval obtained
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 7: Prepare & Deploy ? Operate & Care**
+### **Phase Gate 7: Prepare & Deploy to Operate & Care**
 - [ ] Application successfully deployed to production
 - [ ] Smoke testing passed (all critical functionality working in production)
-- [ ] User training completed (>90% of tar[ Get users trained)
+- [ ] User training completed (>90% of target users trained)
 - [ ] Support infrastructure operational (helpdesk, ticketing, escalation)
 - [ ] Monitoring and alerting working (dashboards active, alerts configured)
 - [ ] Hypercare team activated and ready (schedule published, team briefed)
@@ -1445,7 +1439,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 Track success across three dimensions:
 
@@ -1470,7 +1464,7 @@ Track success across three dimensions:
 
 ---
 
-## ? Tools & Technologies
+## Tools & Technologies
 
 The methodology is designed for **Microsoft Azure** platform:
 
@@ -1484,19 +1478,19 @@ The methodology is designed for **Microsoft Azure** platform:
 
 ---
 
-##  Documentation Standards
+## Documentation Standards
 
 All templates follow these standards:
-- ? Markdown format for easy editing
-- ? Clear section headers and structure
-- ? Actionable checklists with checkboxes
-- ? Example content and guidance
-- ? Version control and approval tracking
-- ? Document control section
+- Markdown format for easy editing
+- Clear section headers and structure
+- Actionable checklists with checkboxes
+- Example content and guidance
+- Version control and approval tracking
+- Document control section
 
 ---
 
-##  Governance & Compliance
+## Governance & Compliance
 
 The methodology includes built-in governance:
 
@@ -1509,7 +1503,7 @@ The methodology includes built-in governance:
 
 ---
 
-##  Contributing
+## Contributing
 
 To contribute to this methodology:
 
@@ -1517,11 +1511,11 @@ To contribute to this methodology:
 2. Use markdown format
 3. Include actionable checklists
 4. Provide examples and guidance
-5. Submit pull requests for re[ View 
+5. Submit pull requests for review 
 
 ---
 
-##  Support
+## Support
 
 For questions, issues, or support:
 - **Project Lead**: [Your Name]
@@ -1530,7 +1524,7 @@ For questions, issues, or support:
 
 ---
 
-##  Version History
+## Version History
 
 | Version | Date | Changes | Author |
 |---------|------|---------|--------|
@@ -1539,42 +1533,42 @@ For questions, issues, or support:
 
 ---
 
-##  Roadmap
+## Roadmap
 
-**? Completed:**
+**Completed:**
 - Pre-sales & Discovery phase materials
 - Mobilisation & Initiation phase materials
 
-##  Methodology Status
+## Methodology Status
 
-**Overall Completion**: ? **100% Complete**
+**Overall Completion: 100% Complete**
 
 | Phase | Templates | Checklists | Guides | Status |
 |-------|-----------|------------|--------|--------|
-| **Phase 0: Pre-sales & Discovery** | ? 6 templates | ? 2 checklists | ? 1 guide + 5 industry use case libraries | ? Complete |
-| **Phase 1: Mobilisation** | ? 8 templates | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 2: Hackathons (Prototype)** | ? 2 templates | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 3: Setup Platform** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 4: Build** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 5: Integrate** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 6: Test & Evaluate** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 7: Prepare & Deploy** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
-| **Phase 8: Operate & Care** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 0: Pre-sales & Discovery** | 6 templates | 2 checklists | 1 guide + 5 industry use case libraries | Complete |
+| **Phase 1: Mobilisation** | 8 templates | 1 checklist | 1 guide | Complete |
+| **Phase 2: Hackathons (Prototype)** | 2 templates | 1 checklist | 1 guide | Complete |
+| **Phase 3: Setup Platform** | Included | 1 checklist | 1 guide | Complete |
+| **Phase 4: Build** | Included | 1 checklist | 1 guide | Complete |
+| **Phase 5: Integrate** | Included | 1 checklist | 1 guide | Complete |
+| **Phase 6: Test & Evaluate** | Included | 1 checklist | 1 guide | Complete |
+| **Phase 7: Prepare & Deploy** | Included | 1 checklist | 1 guide | Complete |
+| **Phase 8: Operate & Care** | Included | 1 checklist | 1 guide | Complete |
 
 **Total Deliverables**:
-- ? **2 Delivery Tracks** (3-Month Fast-Track for pilots & POCs, Full Methodology for enterprise solutions)
-- ? **20+ Templates** (Project management, business, technical, and responsible AI documentation including Model Cards & Dataset Datasheets)
-- ? **10 Phase-Specific Checklists** (200-1,200+ items each)
-- ? **15 Complete Implementation Guides** (40-170 pages each):
+- **2 Delivery Tracks** (3-Month Fast-Track for pilots & POCs, Full Methodology for enterprise solutions)
+- **20+ Templates** (Project management, business, technical, and responsible AI documentation including Model Cards & Dataset Datasheets)
+- **10 Phase-Specific Checklists** (200-1,200+ items each)
+- **15 Complete Implementation Guides** (40-170 pages each):
   - 3-Month Fast-Track Guide (rapid delivery)
   - Model Risk Management (drift detection, adversarial defenses)
   - MLOps/DevOps (CI/CD pipelines, automation)
   - AI Center of Excellence Framework (organizational scaling)
   - Scaling Patterns (enterprise patterns)
   - Phase-specific guides (10 guides)
-- ? **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
-- ? **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
-- ? **Standardized Azure Infrastructure** (Deploy production-ready AI platform in 15 minutes):
+- **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
+- **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
+- **Standardized Azure Infrastructure** (Deploy production-ready AI platform in 15 minutes):
   - Complete Bicep infrastructure-as-code templates (3,500+ lines)
   - 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance)
   - Built-in compliance for 6 frameworks (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA)
@@ -1582,17 +1576,17 @@ For questions, issues, or support:
   - PowerShell and Bash deployment scripts
   - 5 Azure Policy definitions
   - Quick Start Guide for 15-minute deployment
-- ? **1,000+ Pages of Documentation** (Guides, best practices, frameworks, code examples)
+- **1,000+ Pages of Documentation** (Guides, best practices, frameworks, code examples)
 
 ---
 
-##  Interactive Tools & Planned Enhancements
+## Interactive Tools & Planned Enhancements
 
-**? Available Now:**
-- **Interactive Web Calculators** -[ Browser-based tools hosted on GitHub Pages:
+**Available Now:**
+- **Interactive Web Calculators** - Browser-based tools hosted on GitHub Pages:
   - [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) - NPV, payback period, 5-year projections
 
-** Coming Soon:**
+**Coming Soon:**
 - **Additional Calculators**:
   - Effort Estimator (story points to hours/days conversion)
   - Azure Cost Estimator (infrastructure cost modeling)
@@ -1608,7 +1602,7 @@ For questions, issues, or support:
 
 ---
 
-##  Version History
+## Version History
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
@@ -1621,27 +1615,27 @@ For questions, issues, or support:
 | **1.6** | January 9, 2026 | Andreas Wasita | Added Prepare & Deploy Phase checklist and guide (Phase 7) |
 | **1.7** | January 10, 2026 | Andreas Wasita | **Complete methodology - All 9 phases with comprehensive materials** |
 | **1.8** | January 10, 2026 | Andreas Wasita | **Enhanced Business Envisioning materials with Five Whys root cause analysis technique** - Added comprehensive Five Whys framework, industry examples, facilitation guide, and integration into templates |
-| **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% ? 95%) and High Risk in Emerging Tech (70% ? 95%) |
-| **2.1** | January 12, 2026 | Andreas Wasita | **Added 3-Month Fast-Track Guide** - Compressed methodology for rapid AI project delivery (pilots, POCs, quick wins). Includes week-by-week timeline, simplified templates, minimum viable team (5-8 people), bud[ Get estimates ($250-450K), and pre-flight readiness checklist. Perfect for teams needing results in 3 months. |
+| **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% to 95%) and High Risk in Emerging Tech (70% to 95%) |
+| **2.1** | January 12, 2026 | Andreas Wasita | **Added 3-Month Fast-Track Guide** - Compressed methodology for rapid AI project delivery (pilots, POCs, quick wins). Includes week-by-week timeline, simplified templates, minimum viable team (5-8 people), budget estimates ($250-450K), and pre-flight readiness checklist. Perfect for teams needing results in 3 months. |
 | **2.2** | January 13, 2026 | Andreas Wasita | **Standardized Azure Infrastructure** - Added complete infrastructure-as-code templates (3,500+ lines of Bicep), 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance), built-in compliance for 6 frameworks (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA), 4 environment configurations, PowerShell/Bash deployment scripts, 5 Azure Policy definitions, and Quick Start Guide for 15-minute deployment. Cost estimates: Dev $1.5-3K, Test $3-5K, Prod $10-25K per month. |
 
 **Current Version**: 2.2 (Complete + Scalability + Responsible AI + Fast-Track + Infrastructure)
 
 ---
 
-##  License
+## License
 
 This methodology is based on Microsoft's AI Frontier best practices and is intended for use in delivering AI projects. All content is provided as-is for educational and professional use.
 
 ---
 
-## ? Acknowledgments
+## Acknowledgments
 
 Based on Microsoft's AI Frontier Delivery Methodology and best practices from successful AI implementations across industries. Special thanks to the Microsoft field delivery teams, solution architects, and data scientists who contributed their expertise and lessons learned.
 
 ---
 
-##  Contact & Support
+## Contact & Support
 
 For questions, feedback, or contributions:
 - **Repository**: https://github.com/andreaswasita/AI-Delivery-Methodology
@@ -1652,10 +1646,10 @@ For questions, feedback, or contributions:
 
 **Last Updated**: January 13, 2026  
 **Version**: 2.2  
-**Status**: ? Complete + Enhanced + Infrastructure
+**Status**: Complete + Enhanced + Infrastructure
 
 ---
 
-##  Thank You!
+## Thank You!
 
 Thank you for using the AI Delivery Methodology! We hope these materials help you deliver successful AI projects that create real business value. Remember: the journey from vision to value requires discipline, collaboration, and continuous improvement. Good luck with your AI implementations! 
