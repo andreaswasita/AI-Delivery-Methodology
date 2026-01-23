@@ -10,7 +10,8 @@ class ValueAnalysisChatbot {
             currentUseCase: {},
             costs: [],
             currentCost: {},
-            discountRate: 0.10
+            discountRate: 0.10,
+            anthropicApiKey: localStorage.getItem('anthropic_api_key') || ''
         };
         
         this.messages = [];
@@ -22,6 +23,7 @@ class ValueAnalysisChatbot {
         this.userInput = document.getElementById('userInput');
         this.sendBtn = document.getElementById('sendBtn');
         this.resetBtn = document.getElementById('resetBtn');
+        this.apiKeyBtn = document.getElementById('apiKeyBtn');
         this.quickReplies = document.getElementById('quickReplies');
         
         // Event listeners
@@ -30,9 +32,41 @@ class ValueAnalysisChatbot {
             if (e.key === 'Enter') this.handleSend();
         });
         this.resetBtn.addEventListener('click', () => this.reset());
+        this.apiKeyBtn.addEventListener('click', () => this.manageApiKey());
         
         // Start conversation
         this.showWelcome();
+    }
+
+    manageApiKey() {
+        const hasKey = !!this.state.anthropicApiKey;
+        let message = '🔑 **Anthropic API Key Settings**\n\n';
+        
+        if (hasKey) {
+            message += '✅ API key is currently saved\n\n';
+            message += 'Would you like to update or remove it?';
+            
+            this.addBotMessage(message);
+            this.showQuickReplies([
+                { label: '🔄 Update Key', value: 'update_key' },
+                { label: '🗑️ Remove Key', value: 'remove_key' },
+                { label: '❌ Cancel', value: 'cancel' }
+            ]);
+            this.state.previousStage = this.state.stage;
+            this.state.stage = 'api_key_manage';
+        } else {
+            message += '❌ No API key saved\n\n';
+            message += 'To enable AI-powered insights, add your Anthropic API key.\n\n';
+            message += 'Get one at: https://console.anthropic.com/';
+            
+            this.addBotMessage(message);
+            this.showQuickReplies([
+                { label: '➕ Add API Key', value: 'add_key' },
+                { label: '❌ Cancel', value: 'cancel' }
+            ]);
+            this.state.previousStage = this.state.stage;
+            this.state.stage = 'api_key_manage';
+        }
     }
 
     showWelcome() {
@@ -312,6 +346,78 @@ class ValueAnalysisChatbot {
                     this.generateAnalysis();
                 }
                 break;
+                
+            case 'final_actions':
+                if (input === 'ai_insights') {
+                    this.getAIInsights(this.state.analysis);
+                } else if (input === 'api_key_input_request') {
+                    this.addBotMessage(
+                        '🔑 Please paste your Anthropic API key below.\n\n' +
+                        'Get your key at: https://console.anthropic.com/\n\n' +
+                        '(Your key is stored locally and never sent anywhere except Anthropic\'s API)'
+                    );
+                    this.state.stage = 'api_key_input';
+                } else if (input === 'report') {
+                    this.showDetailedReport();
+                } else if (input === 'json') {
+                    this.exportJSON();
+                } else if (input === 'reset') {
+                    this.reset();
+                }
+                break;
+
+            case 'api_key_input':
+                if (input && input.startsWith('sk-ant-')) {
+                    this.saveApiKey(input);
+                } else {
+                    this.addBotMessage(
+                        '❌ That doesn\'t look like a valid Anthropic API key.\n\n' +
+                        'API keys start with "sk-ant-". Please try again or skip AI insights.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'api_key_input_request' },
+                        { label: '⏭️ Skip AI Insights', value: 'report' }
+                    ]);
+                    this.state.stage = 'final_actions';
+                }
+                break;
+
+            case 'api_key_manage':
+                if (input === 'add_key' || input === 'update_key') {
+                    this.addBotMessage(
+                        '🔑 Please paste your Anthropic API key:\n\n' +
+                        '(Starts with "sk-ant-")'
+                    );
+                    this.state.stage = 'api_key_input_direct';
+                } else if (input === 'remove_key') {
+                    localStorage.removeItem('anthropic_api_key');
+                    this.state.anthropicApiKey = '';
+                    this.addBotMessage('✅ API key removed from local storage.');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage('Cancelled. Continuing...');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'api_key_input_direct':
+                if (input && input.startsWith('sk-ant-')) {
+                    this.state.anthropicApiKey = input;
+                    localStorage.setItem('anthropic_api_key', input);
+                    this.addBotMessage('✅ API key saved successfully!');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage(
+                        '❌ Invalid API key format. Keys should start with "sk-ant-".\n\n' +
+                        'Please try again or cancel.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'add_key' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'api_key_manage';
+                }
+                break;
         }
     }
 
@@ -457,6 +563,204 @@ class ValueAnalysisChatbot {
         });
         
         this.addBotMessage(message);
+        
+        setTimeout(() => {
+            this.addBotMessage('Would you like AI-powered insights and recommendations?');
+            this.showQuickReplies([
+                { label: '🤖 Get AI Insights', value: 'ai_insights' },
+                { label: '📄 View Report Only', value: 'report' },
+                { label: '📥 Export JSON', value: 'json' },
+                { label: '🔄 Start Over', value: 'reset' }
+            ]);
+            this.state.stage = 'final_actions';
+            this.state.analysis = analysis;
+        }, 500);
+    }
+
+    async getAIInsights(analysis) {
+        // Check if API key is available
+        if (!this.state.anthropicApiKey) {
+            this.addBotMessage(
+                '🔑 To get AI-powered insights, you need an Anthropic API key.\n\n' +
+                'You can get one at: https://console.anthropic.com/\n\n' +
+                'Please paste your API key below (it will be stored locally in your browser):'
+            );
+            this.state.stage = 'api_key_input';
+            return;
+        }
+
+        this.addBotMessage('🤖 Analyzing your data with Claude AI... This may take a moment.');
+        
+        try {
+            const prompt = this.buildAnalysisPrompt(analysis);
+            const insights = await this.callAnthropicAPI(prompt);
+            
+            this.addBotMessage(
+                '✨ **AI-Powered Insights**\n\n' + insights
+            );
+            
+            setTimeout(() => {
+                this.addBotMessage('Would you like to do anything else?');
+                this.showQuickReplies([
+                    { label: '📄 View Full Report', value: 'report' },
+                    { label: '📥 Export JSON', value: 'json' },
+                    { label: '🔄 Start Over', value: 'reset' }
+                ]);
+                this.state.stage = 'final_actions';
+            }, 500);
+            
+        } catch (error) {
+            this.addBotMessage(
+                '❌ Error getting AI insights: ' + error.message + '\n\n' +
+                'Please check your API key and try again, or continue without AI insights.'
+            );
+            this.showQuickReplies([
+                { label: '🔑 Update API Key', value: 'api_key_input_request' },
+                { label: '📄 View Report', value: 'report' },
+                { label: '🔄 Start Over', value: 'reset' }
+            ]);
+        }
+    }
+
+    buildAnalysisPrompt(analysis) {
+        const useCasesDetails = this.state.useCases.map(uc => {
+            return `\n### ${uc.title}\n` +
+                   `- Problem: ${uc.problem}\n` +
+                   `- Impact Level: ${uc.impact}/5\n` +
+                   `- Effort: ${uc.effort} points\n` +
+                   `- Benefits: ${uc.benefits.map(b => `${b.category}: $${b.amount}/year`).join(', ')}\n` +
+                   `- Total 5-year benefit: $${uc.totalBenefit.toLocaleString()}`;
+        }).join('\n');
+
+        return `You are an expert AI strategy consultant analyzing a business case for AI implementation.
+
+**Project:** ${this.state.projectName}
+
+**Financial Summary:**
+- Total 5-Year Benefits: $${this.formatCurrency(analysis.totalBenefits)}
+- Total Investment: $${this.formatCurrency(analysis.totalCosts)}
+- Net Benefit: $${this.formatCurrency(analysis.netBenefit)}
+- ROI: ${analysis.roi.toFixed(1)}%
+- NPV (10% discount): $${this.formatCurrency(analysis.npv)}
+- Payback Period: ${analysis.payback ? `${Math.floor(analysis.payback)} years, ${Math.round((analysis.payback - Math.floor(analysis.payback)) * 12)} months` : 'Never'}
+
+**Use Cases (Prioritized):**${useCasesDetails}
+
+**Prioritization Scores:**
+${analysis.prioritized.map((uc, idx) => `${idx + 1}. ${uc.title}: ${uc.priorityScore.toFixed(1)}`).join('\n')}
+
+Please provide:
+1. **Strategic Assessment** (2-3 sentences): Overall viability and strategic fit
+2. **Key Strengths** (3-4 bullet points): What makes this compelling
+3. **Key Risks** (3-4 bullet points): What could go wrong and mitigation strategies
+4. **Recommendations** (3-4 bullet points): Specific actionable next steps
+5. **Implementation Sequence**: Suggested order and rationale for the use cases
+
+Keep your response concise, actionable, and focused on executive decision-making. Use clear formatting with markdown headings and bullets.`;
+    }
+
+    async callAnthropicAPI(prompt) {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': this.state.anthropicApiKey,
+                'anthropic-version': '2023-06-01'
+            },
+            body: JSON.stringify({
+                model: 'claude-3-5-sonnet-20241022',
+                max_tokens: 2000,
+                messages: [{
+                    role: 'user',
+                    content: prompt
+                }]
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error?.message || 'API request failed');
+        }
+
+        const data = await response.json();
+        return data.content[0].text;
+    }
+
+    saveApiKey(apiKey) {
+        this.state.anthropicApiKey = apiKey;
+        localStorage.setItem('anthropic_api_key', apiKey);
+        this.addBotMessage(
+            '✅ API key saved locally! Now let me analyze your project...'
+        );
+        // Trigger AI insights with the saved key
+        setTimeout(() => {
+            this.getAIInsights(this.state.analysis);
+        }, 500);
+    }
+
+    showDetailedReport() {
+        const analysis = this.state.analysis;
+        let report = `📊 **Detailed Analysis Report**\n\n`;
+        report += `**Project:** ${this.state.projectName}\n\n`;
+        
+        report += `**Financial Summary**\n`;
+        report += `• Total 5-Year Benefits: $${this.formatCurrency(analysis.totalBenefits)}\n`;
+        report += `• Total Investment: $${this.formatCurrency(analysis.totalCosts)}\n`;
+        report += `• Net Benefit: $${this.formatCurrency(analysis.netBenefit)}\n`;
+        report += `• ROI: ${analysis.roi.toFixed(1)}%\n`;
+        report += `• NPV: $${this.formatCurrency(analysis.npv)}\n`;
+        
+        if (analysis.payback) {
+            const years = Math.floor(analysis.payback);
+            const months = Math.round((analysis.payback - years) * 12);
+            report += `• Payback: ${years} years, ${months} months\n\n`;
+        } else {
+            report += `• Payback: Never\n\n`;
+        }
+        
+        report += `**Use Cases Detail**\n`;
+        this.state.useCases.forEach((uc, idx) => {
+            report += `\n${idx + 1}. **${uc.title}**\n`;
+            report += `   Problem: ${uc.problem}\n`;
+            report += `   Impact: ${uc.impact}/5 | Effort: ${uc.effort} points\n`;
+            report += `   Total Benefit: $${this.formatCurrency(uc.totalBenefit)}\n`;
+        });
+        
+        this.addBotMessage(report);
+        
+        setTimeout(() => {
+            this.showQuickReplies([
+                { label: '📥 Export JSON', value: 'json' },
+                { label: '🔄 Start Over', value: 'reset' }
+            ]);
+        }, 500);
+    }
+
+    exportJSON() {
+        const exportData = {
+            projectName: this.state.projectName,
+            analysis: this.state.analysis,
+            useCases: this.state.useCases,
+            costs: this.state.costs,
+            generatedAt: new Date().toISOString()
+        };
+        
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${this.state.projectName.replace(/\s+/g, '-')}-analysis.json`;
+        link.click();
+        
+        this.addBotMessage('✅ Analysis exported to JSON file!');
+        
+        setTimeout(() => {
+            this.showQuickReplies([
+                { label: '🔄 Start New Analysis', value: 'reset' }
+            ]);
+        }, 500);
+    }
         
         setTimeout(() => {
             this.addBotMessage('Would you like to view the detailed report or export the data?');
