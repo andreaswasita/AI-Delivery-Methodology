@@ -9,7 +9,7 @@
 
 <table>
 <tr>
-<td width>="25%" valign>="top">
+<td width="25%" valign="top">
 
 ### 📋 [Methodology Phases](./guides)
 **Complete delivery framework**
@@ -25,7 +25,7 @@
 [→ View All Guides](./guides)
 
 </td>
-<td width>="25%" valign>="top">
+<td width="25%" valign="top">
 
 ### 🏭 [Industry Use Cases](./guides/industry-use-cases)
 **Real-world AI applications**
@@ -38,7 +38,7 @@
 [→ Explore All Industries](./guides/industry-use-cases)
 
 </td>
-<td width>="25%" valign>="top">
+<td width="25%" valign="top">
 
 ### 📚 [Guides & Frameworks](./guides)
 **Expert knowledge & best practices**
@@ -54,7 +54,7 @@
 [→ Browse All Guides](./guides)
 
 </td>
-<td width>="25%" valign>="top">
+<td width="25%" valign="top">
 
 ### 📄 [Templates & Checklists](./templates)
 **Ready-to-use documents**
