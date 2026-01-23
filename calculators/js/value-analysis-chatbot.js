@@ -11,7 +11,9 @@ class ValueAnalysisChatbot {
             costs: [],
             currentCost: {},
             discountRate: 0.10,
-            anthropicApiKey: localStorage.getItem('anthropic_api_key') || ''
+            anthropicApiKey: localStorage.getItem('anthropic_api_key') || '',
+            copilotEndpoint: localStorage.getItem('copilot_endpoint') || '',
+            aiProvider: localStorage.getItem('ai_provider') || '' // 'anthropic' or 'copilot'
         };
         
         this.messages = [];
@@ -34,39 +36,56 @@ class ValueAnalysisChatbot {
         this.resetBtn.addEventListener('click', () => this.reset());
         this.apiKeyBtn.addEventListener('click', () => this.manageApiKey());
         
+        // Update button visual if provider is configured
+        this.updateProviderIndicator();
+        
         // Start conversation
         this.showWelcome();
     }
 
-    manageApiKey() {
-        const hasKey = !!this.state.anthropicApiKey;
-        let message = '🔑 **Anthropic API Key Settings**\n\n';
-        
-        if (hasKey) {
-            message += '✅ API key is currently saved\n\n';
-            message += 'Would you like to update or remove it?';
-            
-            this.addBotMessage(message);
-            this.showQuickReplies([
-                { label: '🔄 Update Key', value: 'update_key' },
-                { label: '🗑️ Remove Key', value: 'remove_key' },
-                { label: '❌ Cancel', value: 'cancel' }
-            ]);
-            this.state.previousStage = this.state.stage;
-            this.state.stage = 'api_key_manage';
+    updateProviderIndicator() {
+        if (this.state.aiProvider) {
+            this.apiKeyBtn.classList.add('has-provider');
+            this.apiKeyBtn.title = `AI Provider: ${this.state.aiProvider === 'anthropic' ? 'Anthropic Claude' : 'Microsoft Copilot Studio'}`;
         } else {
-            message += '❌ No API key saved\n\n';
-            message += 'To enable AI-powered insights, add your Anthropic API key.\n\n';
-            message += 'Get one at: https://console.anthropic.com/';
+            this.apiKeyBtn.classList.remove('has-provider');
+            this.apiKeyBtn.title = 'AI Provider Settings';
+        }
+    }
+
+    manageApiKey() {
+        const hasAnthropicKey = !!this.state.anthropicApiKey;
+        const hasCopilotEndpoint = !!this.state.copilotEndpoint;
+        const hasAnyProvider = hasAnthropicKey || hasCopilotEndpoint;
+        
+        let message = '🤖 **AI Provider Settings**\n\n';
+        
+        if (hasAnyProvider) {
+            message += '**Current Configuration:**\n';
+            if (hasAnthropicKey) message += '✅ Anthropic Claude: Configured\n';
+            if (hasCopilotEndpoint) message += '✅ Microsoft Copilot Studio: Configured\n';
+            message += `\n**Active Provider:** ${this.state.aiProvider || 'None selected'}\n\n`;
+            message += 'What would you like to do?';
             
             this.addBotMessage(message);
             this.showQuickReplies([
-                { label: '➕ Add API Key', value: 'add_key' },
+                { label: '🔄 Change Provider', value: 'select_provider' },
+                { label: '🔑 Manage Keys', value: 'manage_keys' },
                 { label: '❌ Cancel', value: 'cancel' }
             ]);
-            this.state.previousStage = this.state.stage;
-            this.state.stage = 'api_key_manage';
+        } else {
+            message += '❌ No AI providers configured\n\n';
+            message += 'Choose an AI provider to enable insights:';
+            
+            this.addBotMessage(message);
+            this.showQuickReplies([
+                { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                { label: '❌ Cancel', value: 'cancel' }
+            ]);
         }
+        this.state.previousStage = this.state.stage;
+        this.state.stage = 'ai_provider_menu';
     }
 
     showWelcome() {
@@ -349,7 +368,18 @@ class ValueAnalysisChatbot {
                 
             case 'final_actions':
                 if (input === 'ai_insights') {
-                    this.getAIInsights(this.state.analysis);
+                    // Check if any provider is configured
+                    if (!this.state.aiProvider) {
+                        this.addBotMessage('🤖 Choose your AI provider:');
+                        this.showQuickReplies([
+                            { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                            { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                            { label: '⏭️ Skip AI Insights', value: 'report' }
+                        ]);
+                        this.state.stage = 'ai_provider_menu';
+                    } else {
+                        this.getAIInsights(this.state.analysis);
+                    }
                 } else if (input === 'api_key_input_request') {
                     this.addBotMessage(
                         '🔑 Please paste your Anthropic API key below.\n\n' +
@@ -379,6 +409,201 @@ class ValueAnalysisChatbot {
                         { label: '⏭️ Skip AI Insights', value: 'report' }
                     ]);
                     this.state.stage = 'final_actions';
+                }
+                break;
+
+            case 'ai_provider_menu':
+                if (input === 'setup_anthropic') {
+                    this.addBotMessage(
+                        '🔵 **Anthropic Claude Setup**\n\n' +
+                        'Please paste your Anthropic API key:\n' +
+                        '(Starts with "sk-ant-")\n\n' +
+                        'Get one at: https://console.anthropic.com/'
+                    );
+                    this.state.stage = 'anthropic_key_input';
+                } else if (input === 'setup_copilot') {
+                    this.addBotMessage(
+                        '🟢 **Microsoft Copilot Studio Setup**\n\n' +
+                        'Please paste your Copilot Studio endpoint URL:\n' +
+                        '(Example: https://your-bot.azurewebsites.net/api/messages)\n\n' +
+                        'Get this from your Copilot Studio bot settings.'
+                    );
+                    this.state.stage = 'copilot_endpoint_input';
+                } else if (input === 'select_provider') {
+                    this.addBotMessage('Which provider would you like to use?');
+                    const options = [];
+                    if (this.state.anthropicApiKey) {
+                        options.push({ label: '🔵 Anthropic Claude', value: 'use_anthropic' });
+                    }
+                    if (this.state.copilotEndpoint) {
+                        options.push({ label: '🟢 Microsoft Copilot Studio', value: 'use_copilot' });
+                    }
+                    options.push({ label: '❌ Cancel', value: 'cancel' });
+                    this.showQuickReplies(options);
+                    this.state.stage = 'provider_selection';
+                } else if (input === 'manage_keys') {
+                    this.addBotMessage('Which provider credentials would you like to manage?');
+                    this.showQuickReplies([
+                        { label: '🔵 Anthropic Claude', value: 'manage_anthropic' },
+                        { label: '🟢 Microsoft Copilot Studio', value: 'manage_copilot' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'key_management';
+                } else {
+                    this.addBotMessage('Cancelled.');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'provider_selection':
+                if (input === 'use_anthropic') {
+                    this.state.aiProvider = 'anthropic';
+                    localStorage.setItem('ai_provider', 'anthropic');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Switched to Anthropic Claude!');
+                    this.state.stage = this.state.previousStage;
+                } else if (input === 'use_copilot') {
+                    this.state.aiProvider = 'copilot';
+                    localStorage.setItem('ai_provider', 'copilot');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Switched to Microsoft Copilot Studio!');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage('Cancelled.');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'key_management':
+                if (input === 'manage_anthropic') {
+                    const hasKey = !!this.state.anthropicApiKey;
+                    if (hasKey) {
+                        this.addBotMessage('Anthropic API Key: Configured\n\nWhat would you like to do?');
+                        this.showQuickReplies([
+                            { label: '🔄 Update Key', value: 'update_anthropic' },
+                            { label: '🗑️ Remove Key', value: 'remove_anthropic' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    } else {
+                        this.addBotMessage('No Anthropic API key configured. Would you like to add one?');
+                        this.showQuickReplies([
+                            { label: '➕ Add Key', value: 'setup_anthropic' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    }
+                    this.state.stage = 'ai_provider_menu';
+                } else if (input === 'manage_copilot') {
+                    const hasEndpoint = !!this.state.copilotEndpoint;
+                    if (hasEndpoint) {
+                        this.addBotMessage('Microsoft Copilot Studio: Configured\n\nWhat would you like to do?');
+                        this.showQuickReplies([
+                            { label: '🔄 Update Endpoint', value: 'update_copilot' },
+                            { label: '🗑️ Remove Endpoint', value: 'remove_copilot' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    } else {
+                        this.addBotMessage('No Copilot Studio endpoint configured. Would you like to add one?');
+                        this.showQuickReplies([
+                            { label: '➕ Add Endpoint', value: 'setup_copilot' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    }
+                    this.state.stage = 'ai_provider_menu';
+                } else if (input === 'update_anthropic') {
+                    this.addBotMessage('Please paste your new Anthropic API key:');
+                    this.state.stage = 'anthropic_key_input';
+                } else if (input === 'remove_anthropic') {
+                    localStorage.removeItem('anthropic_api_key');
+                    this.state.anthropicApiKey = '';
+                    if (this.state.aiProvider === 'anthropic') {
+                        this.state.aiProvider = '';
+                        localStorage.removeItem('ai_provider');
+                        this.updateProviderIndicator();
+                    }
+                    this.addBotMessage('✅ Anthropic API key removed.');
+                    this.state.stage = this.state.previousStage;
+                } else if (input === 'update_copilot') {
+                    this.addBotMessage('Please paste your new Copilot Studio endpoint URL:');
+                    this.state.stage = 'copilot_endpoint_input';
+                } else if (input === 'remove_copilot') {
+                    localStorage.removeItem('copilot_endpoint');
+                    this.state.copilotEndpoint = '';
+                    if (this.state.aiProvider === 'copilot') {
+                        this.state.aiProvider = '';
+                        localStorage.removeItem('ai_provider');
+                        this.updateProviderIndicator();
+                    }
+                    this.addBotMessage('✅ Copilot Studio endpoint removed.');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage('Cancelled.');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'anthropic_key_input':
+                if (input && input.startsWith('sk-ant-')) {
+                    this.state.anthropicApiKey = input;
+                    localStorage.setItem('anthropic_api_key', input);
+                    this.state.aiProvider = 'anthropic';
+                    localStorage.setItem('ai_provider', 'anthropic');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Anthropic Claude configured successfully!');
+                    this.state.stage = this.state.previousStage;
+                    // If we have analysis ready, offer to run insights
+                    if (this.state.analysis) {
+                        setTimeout(() => {
+                            this.addBotMessage('Would you like to get AI insights now?');
+                            this.showQuickReplies([
+                                { label: '🤖 Get AI Insights', value: 'ai_insights' },
+                                { label: '⏭️ Skip', value: 'report' }
+                            ]);
+                            this.state.stage = 'final_actions';
+                        }, 500);
+                    }
+                } else {
+                    this.addBotMessage(
+                        '❌ Invalid API key format. Keys should start with "sk-ant-".\n\n' +
+                        'Please try again or cancel.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'setup_anthropic' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'ai_provider_menu';
+                }
+                break;
+
+            case 'copilot_endpoint_input':
+                if (input && (input.startsWith('http://') || input.startsWith('https://'))) {
+                    this.state.copilotEndpoint = input;
+                    localStorage.setItem('copilot_endpoint', input);
+                    this.state.aiProvider = 'copilot';
+                    localStorage.setItem('ai_provider', 'copilot');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Microsoft Copilot Studio configured successfully!');
+                    this.state.stage = this.state.previousStage;
+                    // If we have analysis ready, offer to run insights
+                    if (this.state.analysis) {
+                        setTimeout(() => {
+                            this.addBotMessage('Would you like to get AI insights now?');
+                            this.showQuickReplies([
+                                { label: '🤖 Get AI Insights', value: 'ai_insights' },
+                                { label: '⏭️ Skip', value: 'report' }
+                            ]);
+                            this.state.stage = 'final_actions';
+                        }, 500);
+                    }
+                } else {
+                    this.addBotMessage(
+                        '❌ Invalid endpoint URL. It should start with "http://" or "https://".\n\n' +
+                        'Please try again or cancel.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'setup_copilot' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'ai_provider_menu';
                 }
                 break;
 
@@ -578,22 +803,30 @@ class ValueAnalysisChatbot {
     }
 
     async getAIInsights(analysis) {
-        // Check if API key is available
-        if (!this.state.anthropicApiKey) {
-            this.addBotMessage(
-                '🔑 To get AI-powered insights, you need an Anthropic API key.\n\n' +
-                'You can get one at: https://console.anthropic.com/\n\n' +
-                'Please paste your API key below (it will be stored locally in your browser):'
-            );
-            this.state.stage = 'api_key_input';
+        // Check if provider is configured
+        if (!this.state.aiProvider) {
+            this.addBotMessage('🤖 Please select an AI provider first.');
+            this.showQuickReplies([
+                { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                { label: '⏭️ Skip AI Insights', value: 'report' }
+            ]);
+            this.state.stage = 'ai_provider_menu';
             return;
         }
 
-        this.addBotMessage('🤖 Analyzing your data with Claude AI... This may take a moment.');
+        const providerName = this.state.aiProvider === 'anthropic' ? 'Claude AI' : 'Microsoft Copilot Studio';
+        this.addBotMessage(`🤖 Analyzing your data with ${providerName}... This may take a moment.`);
         
         try {
             const prompt = this.buildAnalysisPrompt(analysis);
-            const insights = await this.callAnthropicAPI(prompt);
+            let insights;
+            
+            if (this.state.aiProvider === 'anthropic') {
+                insights = await this.callAnthropicAPI(prompt);
+            } else if (this.state.aiProvider === 'copilot') {
+                insights = await this.callCopilotStudioAPI(prompt);
+            }
             
             this.addBotMessage(
                 '✨ **AI-Powered Insights**\n\n' + insights
@@ -612,13 +845,14 @@ class ValueAnalysisChatbot {
         } catch (error) {
             this.addBotMessage(
                 '❌ Error getting AI insights: ' + error.message + '\n\n' +
-                'Please check your API key and try again, or continue without AI insights.'
+                'Please check your configuration and try again, or continue without AI insights.'
             );
             this.showQuickReplies([
-                { label: '🔑 Update API Key', value: 'api_key_input_request' },
+                { label: '🔑 Update Configuration', value: 'manage_keys' },
                 { label: '📄 View Report', value: 'report' },
                 { label: '🔄 Start Over', value: 'reset' }
             ]);
+            this.state.stage = 'final_actions';
         }
     }
 
@@ -684,6 +918,43 @@ Keep your response concise, actionable, and focused on executive decision-making
 
         const data = await response.json();
         return data.content[0].text;
+    }
+
+    async callCopilotStudioAPI(prompt) {
+        // Copilot Studio uses Direct Line API protocol
+        const response = await fetch(this.state.copilotEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                type: 'message',
+                from: { id: 'user' },
+                text: prompt
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Copilot Studio API error: ${response.status} - ${errorText}`);
+        }
+
+        const data = await response.json();
+        
+        // Handle Copilot Studio response format
+        if (data.activities && data.activities.length > 0) {
+            // Get the last bot response
+            const botMessages = data.activities.filter(a => a.from.role === 'bot');
+            if (botMessages.length > 0) {
+                return botMessages[botMessages.length - 1].text;
+            }
+        }
+        
+        // Fallback for different response formats
+        if (data.text) return data.text;
+        if (data.response) return data.response;
+        
+        throw new Error('Unexpected response format from Copilot Studio');
     }
 
     saveApiKey(apiKey) {

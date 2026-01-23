@@ -423,7 +423,7 @@
     gap: 0.5rem;
 }
 
-.api-key-btn {
+.api-key-btn, .icon-btn {
     background: rgba(255, 255, 255, 0.2);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -437,13 +437,13 @@
     gap: 0.3rem;
 }
 
-.api-key-btn:hover {
+.api-key-btn:hover, .icon-btn:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.api-key-btn.has-key {
+.api-key-btn.has-key, .icon-btn.has-provider {
     background: rgba(76, 175, 80, 0.3);
     border-color: rgba(76, 175, 80, 0.5);
 }
