@@ -100,25 +100,25 @@ This methodology provides a **proven, repeatable framework** that:
 - Connects every technical decision back to measurable business outcomes
 - Speaks both executive and technical languages fluently
 
-** Delivers Measurable Value**
+**💰 Delivers Measurable Value**
 - ROI-focused from day one with clear financial projections
 - Success metrics defined before writing code
 - Value tracking at every milestone
 - Quick wins balanced with strategic long-term transformation
 
-** Mitigates Risk Through Governance**
+**🛡️ Mitigates Risk Through Governance**
 - AI ethics and responsible AI principles built into every phase
 - Regulatory compliance (GDPR, industry-specific) addressed early
 - Risk assessment and mitigation at every gate
 - Change management integrated throughout, not bolted on
 
-** Accelerates Time to Production**
+**🚀 Accelerates Time to Production**
 - Structured phases prevent common pitfalls and rework
 - 200+ pre-built checklists ensure nothing is missed
 - Ready-to-use templates eliminate starting from scratch
 - Clear decision gates prevent projects from drifting
 
-** Engages C-Level Stakeholders**
+**👔 Engages C-Level Stakeholders**
 - **Executive coaching guide** with 5 persona-based strategies (Visionary, Steward, Realist, People Leader, Compliance Guardian)
 - **55-point readiness assessment** to evaluate organizational preparedness
 - Executive decision frameworks for investment approval with ROI scenarios
@@ -127,64 +127,64 @@ This methodology provides a **proven, repeatable framework** that:
 - Strategic options evaluation (build vs. buy vs. partner)
 - Objection handling for 7 common executive concerns
 
-### Who This Is For
+### 🎭 Who This Is For
 
-**AI Delivery Teams**: Project managers, technical architects, data scientists, and ML engineers executing AI initiatives
+**👨‍💼 AI Delivery Teams**: Project managers, technical architects, data scientists, and ML engineers executing AI initiatives
 
-**Microsoft Partners & SIs**: Organizations delivering AI solutions to clients using Microsoft Azure AI platform
+**🤝 Microsoft Partners & SIs**: Organizations delivering AI solutions to clients using Microsoft Azure AI platform
 
-**Enterprise Leaders**: CIOs, CTOs, and business executives sponsoring AI transformation programs
+**👔 Enterprise Leaders**: CIOs, CTOs, and business executives sponsoring AI transformation programs
 
-**Consultants & Advisors**: Professionals guiding organizations through AI adoption and implementation
+**💼 Consultants & Advisors**: Professionals guiding organizations through AI adoption and implementation
 
-### What Makes This Different
+### 🌟 What Makes This Different
 
-** Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
+**📚 Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
 
-** Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
+**📝 Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
 
-** Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
+**✅ Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
 
-** Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
+**🏆 Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
 
-** Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
+**👔 Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
 
-** Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
+**❓ Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
 
-** Cloud-Native**: Optimized for Microsoft Azure AI services (Azure Machine Learning, Azure OpenAI, Cognitive Services)
+**☁️ Cloud-Native**: Optimized for Microsoft Azure AI services (Azure Machine Learning, Azure OpenAI, Cognitive Services)
 
-### The Journey: Vision to Value
+### 🎯 The Journey: Vision to Value
 
 We offer **two delivery tracks** to match your project needs:
 
-#### ** Fast-Track (3 Months)** - For Pilots & Quick Wins
+#### ⚡ **Fast-Track (3 Months)** - For Pilots & Quick Wins
 Perfect for single use cases, POCs, and rapid value delivery. Compressed timeline with essential activities only.
 
-- **Timeline:** 12 weeks
-- **Team:** 5-8 people
-- **Scope:** Single use case
-- **Best For:** Pilots, POCs, quick wins, building momentum
+- **⏱️ Timeline:** 12 weeks
+- **👥 Team:** 5-8 people
+- **🎯 Scope:** Single use case
+- **💡 Best For:** Pilots, POCs, quick wins, building momentum
 
-[** See 3-Month Fast-Track Guide**](./guides/93-3-month-fast-track-guide.md)
+[**📖 See 3-Month Fast-Track Guide**](./guides/93-3-month-fast-track-guide.md)
 
 ---
 
-#### ** Full Methodology (6-12+ Months)** - For Enterprise Solutions
+#### 🏢 **Full Methodology (6-12+ Months)** - For Enterprise Solutions
 Comprehensive approach for production systems, multiple use cases, and enterprise-wide transformation.
 
 Our methodology guides you through nine structured phases:
 
-**1. Pre-sales & Discovery**  Qualify opportunities, understand business context, identify root causes  
-**2. Mobilise**  Establish governance, assemble teams, set foundations  
-**3. Hackathons (Prototype)**  Rapid validation, proof of concepts, fail fast learning  
-**4. Setup Platform**  Infrastructure, MLOps, security, compliance foundations  
-**5. Build**  Agile development with continuous stakeholder engagement  
-**6. Integrate**  System integration, data pipelines, API development  
-**7. Test & Evaluate**  Comprehensive QA, bias testing, performance validation  
-**8. Prepare & Deploy**  Production readiness, rollout planning, training  
-**9. Operate & Care**  Monitoring, optimization, continuous improvement  
+**1. 🔍 Pre-sales & Discovery** → Qualify opportunities, understand business context, identify root causes  
+**2. 🚀 Mobilise** → Establish governance, assemble teams, set foundations  
+**3. ⚡ Hackathons (Prototype)** → Rapid validation, proof of concepts, fail fast learning  
+**4. 🏗️ Setup Platform** → Infrastructure, MLOps, security, compliance foundations  
+**5. 🔨 Build** → Agile development with continuous stakeholder engagement  
+**6. 🔗 Integrate** → System integration, data pipelines, API development  
+**7. ✅ Test & Evaluate** → Comprehensive QA, bias testing, performance validation  
+**8. 🚢 Prepare & Deploy** → Production readiness, rollout planning, training  
+**9. 🔧 Operate & Care** → Monitoring, optimization, continuous improvement  
 
-**Underpinned by**: 360 governance | Execution Strategy | Change Management | Value Tracking
+**🔄 Underpinned by**: 360° governance | Execution Strategy | Change Management | Value Tracking
 
 ---
 
@@ -197,74 +197,74 @@ Our methodology guides you through nine structured phases:
 | **Team** | 5-8 people | 10-20 people |
 | **Best For** | Pilots, POCs | Production systems |
 
-### Our Commitment
+### 🤝 Our Commitment
 
 This is a **living methodology** that evolves with:
-- Emerging AI technologies and capabilities
-- Lessons learned from real implementations
-- Industry best practices and standards
-- Community feedback and contributions
+- 🚀 Emerging AI technologies and capabilities
+- 📚 Lessons learned from real implementations
+- ⭐ Industry best practices and standards
+- 💬 Community feedback and contributions
 
 We believe AI should be **ethical, explainable, and valuable**�not just technically impressive.
 
 ---
 
-##  Executive Coaching & Business Alignment
+## 👔 Executive Coaching & Business Alignment
 
-### Bridging the Business-IT Gap
+### 🤝 Bridging the Business-IT Gap
 
 One of the most critical success factors for AI initiatives is **executive engagement and alignment**. Our methodology includes comprehensive coaching materials to help consultants build trusted advisor relationships with C-level stakeholders.
 
-**Executive Coaching Guide** - A complete framework covering:
-- **5 Executive Personas** with tailored coaching strategies for each stakeholder type
-- **7-Phase Journey Coaching** from initial engagement through scaling
-- **Objection Handling** for 7 common executive concerns with proven responses
-- **Trust-Building Techniques** using The Trust Equation
-- **Communication Templates** for status updates, escalations, and presentations
+**📘 Executive Coaching Guide** - A complete framework covering:
+- 👥 **5 Executive Personas** with tailored coaching strategies for each stakeholder type
+- 🗺️ **7-Phase Journey Coaching** from initial engagement through scaling
+- ⚠️ **Objection Handling** for 7 common executive concerns with proven responses
+- 🤝 **Trust-Building Techniques** using The Trust Equation
+- 📧 **Communication Templates** for status updates, escalations, and presentations
 
-**Executive Readiness Assessment** - A 55-point assessment tool evaluating:
-- **Strategic Clarity** - Vision alignment and problem articulation (15 points)
-- **Executive Commitment** - Leadership engagement and support (10 points)
-- **Decision-Making Readiness** - AI understanding and decision pace (10 points)
-- **Risk Tolerance & Governance** - Comfort with experimentation and ethics (10 points)
-- **Change Leadership** - Change management capability and track record (10 points)
+**📊 Executive Readiness Assessment** - A 55-point assessment tool evaluating:
+- 🎯 **Strategic Clarity** - Vision alignment and problem articulation (15 points)
+- 💪 **Executive Commitment** - Leadership engagement and support (10 points)
+- 🧠 **Decision-Making Readiness** - AI understanding and decision pace (10 points)
+- ⚖️ **Risk Tolerance & Governance** - Comfort with experimentation and ethics (10 points)
+- 🔄 **Change Leadership** - Change management capability and track record (10 points)
 
-**Assessment Outcomes:**
-- **45-55 points**: Strong readiness - proceed with confidence
-- **35-44 points**: Moderate readiness - address gaps before scaling
-- **25-34 points**: Low readiness - significant preparation needed
-- **<25 points**: Not ready - defer until fundamentals addressed
+**📈 Assessment Outcomes:**
+- ✅ **45-55 points**: Strong readiness - proceed with confidence
+- ⚠️ **35-44 points**: Moderate readiness - address gaps before scaling
+- 🔴 **25-34 points**: Low readiness - significant preparation needed
+- ❌ **<25 points**: Not ready - defer until fundamentals addressed
 
 These materials help Microsoft consultants navigate organizational politics, manage executive expectations, and ensure AI initiatives have the sustained leadership support required for success.
 
 ---
 
-## Overview 
+## 📋 Overview 
 
 This repository contains comprehensive templates, guides, and documentation for delivering AI projects following Microsoft's AI Frontier delivery methodology. The methodology covers the complete lifecycle from **Vision to Value** with 360 governance, execution strategy, outcomes focus, and continuous change management.
 
-##  Methodology Phases
+## 🔄 Methodology Phases
 
-### **Vision to Value  Discovery  Prototype  Deploy  Scale**
+### **🎯 Vision to Value  Discovery  Prototype  Deploy  Scale**
 
 The methodology follows a structured approach with clear phase gates and outcomes-driven milestones:
 
-1. **Pre-sales & Discovery** - Qualify opportunities and understand requirements
-2. **Mobilise and Initiate** - Set up the project foundation
-3. **Hackathons (Prototype)** - Rapid prototyping and validation
-4. **Setup Platform** - Set the platform, infrastructure components for build
-5. **Build** - Build the solution
-6. **Integrate** - Integrate the solution with the rest of ecosystem
-7. **Test & Evaluate** - Comprehensive testing and quality assurance
-8. **Prepare and Deploy** - Production deployment and scaling
-9. **Operate and Care** - Ongoing operations and optimization
+1. 🔍 **Pre-sales & Discovery** - Qualify opportunities and understand requirements
+2. 🚀 **Mobilise and Initiate** - Set up the project foundation
+3. ⚡ **Hackathons (Prototype)** - Rapid prototyping and validation
+4. 🏗️ **Setup Platform** - Set the platform, infrastructure components for build
+5. 🔨 **Build** - Build the solution
+6. 🔗 **Integrate** - Integrate the solution with the rest of ecosystem
+7. ✅ **Test & Evaluate** - Comprehensive testing and quality assurance
+8. 🚢 **Prepare and Deploy** - Production deployment and scaling
+9. 🔧 **Operate and Care** - Ongoing operations and optimization
 
 Underpinned by **360 governance and Execution, Strategy, Ops Planning and Change Management**
   
 
 ---
 
-##  Repository Structure
+## 📁 Repository Structure
 
 ```
 AI-Delivery-Methodology/
@@ -297,21 +297,21 @@ AI-Delivery-Methodology/
 
 ---
 
-##  AI Agents for Delivery Teams
+## 🤖 AI Agents for Delivery Teams
 
-### Value Analysis Agent **NEW!**
+### 💎 Value Analysis Agent **NEW!**
 
 **Purpose:** Automate comprehensive value analysis for AI projects with interactive CLI-based agent
 
 ** [Quick Start Guide](./agents/QUICKSTART.md) |  [Full Documentation](./agents/README.md)**
 
 **Key Features:**
-- **Interactive Value Analysis** - Guided CLI interface for use case evaluation
-- **ROI Calculation** - NPV, IRR, payback period, profitability metrics
-- **Use Case Prioritization** - Value vs. effort scoring with recommendations
-- **Five Whys Analysis** - Interactive root cause analysis technique
-- **Risk-Adjusted Modeling** - Confidence weighting and sensitivity analysis
-- **Comprehensive Reporting** - JSON exports and stakeholder-ready reports
+- 💬 **Interactive Value Analysis** - Guided CLI interface for use case evaluation
+- 💰 **ROI Calculation** - NPV, IRR, payback period, profitability metrics
+- 📊 **Use Case Prioritization** - Value vs. effort scoring with recommendations
+- ❓ **Five Whys Analysis** - Interactive root cause analysis technique
+- ⚖️ **Risk-Adjusted Modeling** - Confidence weighting and sensitivity analysis
+- 📄 **Comprehensive Reporting** - JSON exports and stakeholder-ready reports
 
 **Quick Start:**
 ```powershell
@@ -329,23 +329,23 @@ python example_usage.py
 ```
 
 **Use Cases:**
-- Business Envisioning Workshops - Prioritize use cases by value
-- Business Case Development - Quantify financial benefits
-- Portfolio Management - Rank initiatives for roadmap planning
-- Benefit Tracking - Monitor value realization vs. projections
+- 🎯 Business Envisioning Workshops - Prioritize use cases by value
+- 💼 Business Case Development - Quantify financial benefits
+- 📊 Portfolio Management - Rank initiatives for roadmap planning
+- 📈 Benefit Tracking - Monitor value realization vs. projections
 
 **Integration:**
-- Complements [Business Case Template](./templates/02-business-case.md)
-- Supports [Business Envisioning Workshop](./guides/01-business-envisioning-workshop-guide.md)
-- Aligns with [Use Case Template](./templates/14-business-envisioning-use-case-template.md)
-- Works with [Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html) for conversational analysis
-- Pairs with [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) for quick single-use-case analysis
+- 📝 Complements [Business Case Template](./templates/02-business-case.md)
+- 🤝 Supports [Business Envisioning Workshop](./guides/01-business-envisioning-workshop-guide.md)
+- 🎯 Aligns with [Use Case Template](./templates/14-business-envisioning-use-case-template.md)
+- 💬 Works with [Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html) for conversational analysis
+- 🔗 Pairs with [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) for quick single-use-case analysis
 
 ---
 
-##  Interactive Tools & Calculators
+## 🧮 Interactive Tools & Calculators
 
-###  [ View All Calculators](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/)
+### 🌐  [ View All Calculators](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/)
 
 All calculators run entirely in your[ Browser�100% private, no data sent to any server.
 
@@ -354,14 +354,14 @@ All calculators run entirely in your[ Browser�100% private, no data sent to an
 ** [Launch Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
 
 Interactive AI assistant that guides you through comprehensive value analysis:
-- **Conversational Interface** - Natural chat flow for use case analysis
-- **Multi-Use Case Analysis** - Analyze multiple initiatives in one session
-- **Five Whys Root Cause** - Interactive problem exploration technique
-- **Real-Time ROI Calculations** - NPV, IRR, payback period
-- **Value Matrix Prioritization** - Visual 2x2 matrix with recommendations
-- **JSON Export** - Download complete analysis for documentation
+- 💬 **Conversational Interface** - Natural chat flow for use case analysis
+- 📋 **Multi-Use Case Analysis** - Analyze multiple initiatives in one session
+- ❓ **Five Whys Root Cause** - Interactive problem exploration technique
+- 💵 **Real-Time ROI Calculations** - NPV, IRR, payback period
+- 📈 **Value Matrix Prioritization** - Visual 2x2 matrix with recommendations
+- 💾 **JSON Export** - Download complete analysis for documentation
 
-**Use For:** Business envisioning workshops, use case prioritization, stakeholder alignment
+** Use For:** Business envisioning workshops, use case prioritization, stakeholder alignment
 
 ---
 
@@ -370,14 +370,14 @@ Interactive AI assistant that guides you through comprehensive value analysis:
 ** [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)**
 
 Calculate comprehensive ROI metrics for your AI projects:
-- **Net Present Value (NPV)** - Time-value adjusted returns
-- **ROI Percentage** - Return on investment calculation
-- **Payback Period** - Time to break even
-- **5-Year Projections** - Long-term financial forecasting
-- **Benefit Growth Modeling** - Compound annual growth tracking
-- **Sensitivity Analysis** - Test different scenarios
+- 💰 **Net Present Value (NPV)** - Time-value adjusted returns
+- 📈 **ROI Percentage** - Return on investment calculation
+- ⏱️ **Payback Period** - Time to break even
+- 📅 **5-Year Projections** - Long-term financial forecasting
+- 📊 **Benefit Growth Modeling** - Compound annual growth tracking
+- 🔬 **Sensitivity Analysis** - Test different scenarios
 
-**Use For:** Business cases, executive approvals, budget justification, comparing initiatives
+** Use For:** Business cases, executive approvals, budget justification, comparing initiatives
 
 ---
 
@@ -386,16 +386,16 @@ Calculate comprehensive ROI metrics for your AI projects:
 ** [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
 
 Convert project scope into accurate effort estimates:
-- **Journey Phase Selection** - Discovery, MVP, Pilot, Production, Enterprise
-- **Industry-Standard Story Points** - Auto-calculated by complexity (3-13 points)
-- **Team Velocity Calculation** - Based on FTE and complexity (4-8 points/sprint/FTE)
-- **Fixed 2-Week Sprints** - Industry standard sprint duration
-- **Risk-Adjusted Estimates** - Low (4%), Medium (7%), High (15%) buffers
-- **Phase Breakdown** - Discovery, Development, Testing, Deployment
-- **Team Composition** - Suggested roles and sizing
-- **Sprint Timeline** - Total sprints, weeks, and months
+- 🗺️ **Journey Phase Selection** - Discovery, MVP, Pilot, Production, Enterprise
+- 📏 **Industry-Standard Story Points** - Auto-calculated by complexity (3-13 points)
+- ⚡ **Team Velocity Calculation** - Based on FTE and complexity (4-8 points/sprint/FTE)
+- 📅 **Fixed 2-Week Sprints** - Industry standard sprint duration
+- ⚠️ **Risk-Adjusted Estimates** - Low (4%), Medium (7%), High (15%) buffers
+- 📊 **Phase Breakdown** - Discovery, Development, Testing, Deployment
+- 👥 **Team Composition** - Suggested roles and sizing
+- ⏰ **Sprint Timeline** - Total sprints, weeks, and months
 
-**Use For:** Project planning, sprint planning, resource allocation, timeline estimation
+** Use For:** Project planning, sprint planning, resource allocation, timeline estimation
 
 ---
 
@@ -403,31 +403,31 @@ Convert project scope into accurate effort estimates:
 
 ---
 
-## to Azure Deployment Options
+## ☁️ Azure Deployment Options
 
-### Option 1: GitHub Pages (Free - For Static Sites)
+### 🌐 Option 1: GitHub Pages (Free - For Static Sites)
 
 The calculators are already deployed on GitHub Pages at no cost. Perfect for static HTML/CSS/JS tools.
 
 **Quick Setup:**
-1. Enable GitHub Pages in repository settings
-2. Push to main branch
-3. Auto-deploys via GitHub Actions
+1. ⚙️ Enable GitHub Pages in repository settings
+2. 🚀 Push to main branch
+3. ✅ Auto-deploys via GitHub Actions
 
 [ See GitHub Pages Setup Guide ?](./calculators/GITHUB-PAGES-SETUP.md)
 
 ---
 
-### Option 2: Azure Static Web Apps (For Enhanced Features)
+### ⚡ Option 2: Azure Static Web Apps (For Enhanced Features)
 
 Deploy to Azure for advanced capabilities like authentication, APIs, and custom domains.
 
 **Features:**
-- Free tier available ($0/month)
-- Custom domains with automatic SSL
-- Global CDN distribution
-- Staging environments for testing
-- Integration with Azure services
+- 🆓 Free tier available ($0/month)
+- 🌍 Custom domains with automatic SSL
+- 🚀 Global CDN distribution
+- 📦 Staging environments for testing
+- 🔗 Integration with Azure services
 
 **Quick Deploy:**
 ```powershell
@@ -439,17 +439,17 @@ cd infrastructure/scripts
 
 ---
 
-### Option 3: Full Azure AI Platform (For Production AI Projects)
+### 🏗️ Option 3: Full Azure AI Platform (For Production AI Projects)
 
 Enterprise-grade infrastructure with compliance, security, and MLOps built-in.
 
 **Includes:**
-- Azure Machine Learning workspaces
-- Azure OpenAI Service
-- Compute clusters for training
-- Private networking and security
-- Compliance controls (GDPR, SOC 2, ISO 27001)
-- Monitoring and observability
+- 🤖 Azure Machine Learning workspaces
+- 🧠 Azure OpenAI Service
+- 💻 Compute clusters for training
+- 🔒 Private networking and security
+- ✅ Compliance controls (GDPR, SOC 2, ISO 27001)
+- 📊 Monitoring and observability
 
 **Deploy with Bicep:**
 ```powershell
@@ -465,57 +465,57 @@ az deployment subscription create \
 
 ---
 
-## Choose Your Delivery Track
+## 🛵 Choose Your Delivery Track
 
 Before diving into phase details, select the right approach for your project:
 
-### Fast-Track (3 Months) - Rapid Value Delivery
+### ⚡ Fast-Track (3 Months) - Rapid Value Delivery
 
 **Use When:**
-- Single, well-defined use case
-- Pilot or proof-of-concept
-- Quick win needed to build momentum
-- Data readily available
-- Limited budget
+- 🎯 Single, well-defined use case
+- 💡 Pilot or proof-of-concept
+- 🚀 Quick win needed to build momentum
+- 📊 Data readily available
+- 💵 Limited budget
 
 **Key Features:**
-- 12-week compressed timeline
-- 5-8 person team
-- Essential activities only
-- Defer advanced features to Phase 2
+- ⏱️ 12-week compressed timeline
+- 👥 5-8 person team
+- ✅ Essential activities only
+- 🔄 Defer advanced features to Phase 2
 
 **[Read Full 3-Month Fast-Track Guide](./guides/93-3-month-fast-track-guide.md)**
 
 ---
 
-### Full Methodology (6-12+ Months) - Enterprise Scale
+### 🏛️ Full Methodology (6-12+ Months) - Enterprise Scale
 
 **Use When:**
-- Multiple use cases
-- Production-grade system
-- Enterprise-wide transformation
-- Complex integrations (5+ systems)
-- Large budget
+- 📈 Multiple use cases
+- 🏭 Production-grade system
+- 🌐 Enterprise-wide transformation
+- 🔗 Complex integrations (5+ systems)
+- 💰 Large budget
 
 **Key Features:**
-- Comprehensive 9-phase lifecycle
-- 10-20 person team
-- 200+ checklists, 20+ templates
-- Full MLOps, governance, scaling
+- 🔄 Comprehensive 9-phase lifecycle
+- 👥 10-20 person team
+- ✅ 200+ checklists, 20+ templates
+- 🔒 Full MLOps, governance, scaling
 
 **Continue reading below for detailed phase-by-phase guidance**
 
 ---
 
-## Available Materials by Phase
+## 📚 Available Materials by Phase
 
-### Phase 0: Pre-sales & Discovery
+### 🔍 Phase 0: Pre-sales & Discovery
 
-**Purpose**: Qualify AI opportunities and deeply understand business requirements
+**🎯 Purpose**: Qualify AI opportunities and deeply understand business requirements
 
-**Duration**: 2-4 weeks
+**⏱️ Duration**: 2-4 weeks
 
-**Templates**:
+**📝 Templates**:
 - [Pre-sales Qualification Framework](./templates/11-presales-qualification.md) - 5-dimensional scoring system (50 points)
 - [Business Requirements Document (BRD)](./templates/09-business-requirements-document.md) - Comprehensive requirements capture
 - [Data Assessment Report](./templates/10-data-assessment-report.md) - Complete data quality & readiness assessment
@@ -524,24 +524,24 @@ Before diving into phase details, select the right approach for your project:
 - [Executive Decision Memo](./templates/15-executive-decision-memo.md) - Board-ready investment decision template with ROI, risks, and governance
 - [Executive Readiness Assessment](./templates/16-executive-readiness-assessment.md) - 55-point assessment across 5 dimensions of organizational readiness
 
-**Checklists**:
+**✅ Checklists**:
 - [Discovery Phase Checklist](./checklists/discovery-checklist.md) - 200+ items covering 4 weeks of activities
 - [Business Envisioning Workshop Checklist](./checklists/business-envisioning-workshop-checklist.md) - Complete workshop preparation and execution guide
 
-**Guides**:
+**📘 Guides**:
 - [Business Envisioning Workshop Guide](./guides/01-business-envisioning-workshop-guide.md) - Full-day workshop facilitation guide with detailed activities, **now includes Five Whys root cause analysis technique**
 - [Executive Coaching Guide](./guides/90-executive-coaching-guide.md) - **NEW!** Comprehensive guide for coaching C-level stakeholders through AI transformation
 
-**Industry Use Case Libraries**:
+**🏭 Industry Use Case Libraries**:
 - [Financial Services Use Cases](./guides/industry-use-cases/financial-services-use-cases.md) - 24 use cases across customer experience, risk, fraud, trading
 - [Energy & Mining Use Cases](./guides/industry-use-cases/energy-mining-use-cases.md) - 25 use cases across operations, safety, exploration, trading
 - [Retail Use Cases](./guides/industry-use-cases/retail-use-cases.md) - 20 use cases across personalization, inventory, pricing, store ops
 - [Defense Use Cases](./guides/industry-use-cases/defense-use-cases.md) - 16 use cases across ISR, mission planning, logistics, cybersecurity
 - [Public Sector Use Cases](./guides/industry-use-cases/public-sector-use-cases.md) - 22 use cases across citizen services, public safety, infrastructure, education
 
-**Sequential Steps**:
+**🔄 Sequential Steps**:
 
-**Week 0 (Pre-Discovery)**:
+**📅 Week 0 (Pre-Discovery)**:
 1. **Pre-sales Qualification** - Score opportunity (Business Value, Technical Feasibility, Data Readiness, Client Readiness, Commercial)
 2. **Executive Readiness Assessment** - Assess organizational and executive readiness (55-point assessment)
 3. **Go/No-Go Decision** - Must score >=35/50 points (qualification) and address any critical readiness gaps
@@ -549,7 +549,7 @@ Before diving into phase details, select the right approach for your project:
 5. **Executive 1-on-1 Interviews** - Conduct 60-90 min interviews with C-level stakeholders
 6. **Pre-Work Distribution** - Send Business Envisioning pre-work assignment to participants
 
-**Week 1 (Business Alignment)**:
+**📅 Week 1 (Business Alignment)**:
 5. **Business Envisioning Workshop** - Full-day workshop with executives and business stakeholders
    - Strategic context and vision alignment
    - Business problem exploration with **Five Whys root cause analysis**
@@ -561,7 +561,7 @@ Before diving into phase details, select the right approach for your project:
 8. **Business Requirements Workshops** - Facilitate detailed requirements gathering sessions
 9. **Complete Business Requirements Document** - Document functional and non-functional requirements
 
-**Week 2 (Technical Validation)**:
+**📅 Week 2 (Technical Validation)**:
 10. **Data Discovery** - Identify and catalog available data sources
 11. **Data Quality Assessment** - Evaluate data across 6 dimensions (availability, quality, volume, variety, velocity, veracity)
 12. **Complete Data Assessment Report** - Document findings with data readiness scores
@@ -569,21 +569,21 @@ Before diving into phase details, select the right approach for your project:
 14. **Solution Architecture Workshop** - Design technical architecture with technical stakeholders
 15. **Integration Requirements** - Identify integration points with existing systems
 
-**Week 3 (Feasibility & Design)**:
+**📅 Week 3 (Feasibility & Design)**:
 16. **Technical Feasibility POC** (Optional) - Build quick proof-of-concept to validate approach
 17. **Solution Architecture Documentation** - Document detailed architecture (infrastructure, security, data flow)
 18. **Privacy & Compliance Assessment** - Conduct GDPR/DPIA assessment, identify compliance requirements
 19. **Risk Identification** - Identify technical, data, and business risks
 20. **Initial Business Case Development** - Preliminary ROI and cost-benefit analysis
 
-**Week 4 (Synthesis & Recommendation)**:
+**📅 Week 4 (Synthesis & Recommendation)**:
 21. **Discovery Report Compilation** - Synthesize all findings and recommendations
 22. **Executive Readout** - Present findings to executive sponsors
 23. **Refinement Based on Feedback** - Incorporate feedback from executives
 24. **Phase Gate Review** - Steering committee reviews all deliverables
 25. **Go/No-Go Decision** - Decision to proceed to Mobilisation phase
 
-**Deliverables**:
+** Deliverables**:
 1. Opportunity Qualification Report (Pre-sales)
 2. Business Envisioning Workshop Output (Use cases, prioritization)
 3. Business Requirements Document (BRD)
@@ -594,7 +594,7 @@ Before diving into phase details, select the right approach for your project:
 8. Initial Business Case
 9. Discovery Report with recommendations
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] Business requirements documented and approved by stakeholders
 - [ ] At least one use case with clear business value identified
 - [ ] Data sufficiency confirmed (>=7/10 data readiness score)
@@ -605,13 +605,13 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 1: Mobilise and Initiate
+### 🚀 Phase 1: Mobilise and Initiate
 
-**Purpose**: Establish project foundation, governance, and team
+**🎯 Purpose**: Establish project foundation, governance, and team
 
-**Duration**: 2-3 weeks
+**⏱️ Duration**: 2-3 weeks
 
-**Templates**:
+**📝 Templates**:
 - [Project Charter](./templates/01-project-charter.md) - Project authorization and scope
 - [Business Case](./templates/02-business-case.md) - Financial justification with ROI calculations
 - [RACI Matrix](./templates/03-raci-matrix.md) - Roles and responsibilities across all phases
@@ -621,15 +621,15 @@ Before diving into phase details, select the right approach for your project:
 - [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md) - Business, technical, and adoption metrics
 - [Stakeholder Analysis](./templates/08-stakeholder-analysis.md) - Stakeholder mapping and engagement
 
-**Checklists**:
+**✅ Checklists**:
 - [Mobilisation Checklist](./checklists/mobilisation-checklist.md) - 200+ items organized by week
 
-**Guides**:
+**📘 Guides**:
 - [Mobilisation Complete Guide](./guides/01-mobilisation-complete-guide.md) - 60+ page comprehensive implementation guide
 
-**Sequential Steps**:
+**🔄 Sequential Steps**:
 
-**Week 1 (Foundation Setup)**:
+**📅 Week 1 (Foundation Setup)**:
 1. **Project Charter Development** - Draft charter with scope, objectives, success criteria, governance
 2. **Business Case Refinement** - Detailed ROI calculations, cost-benefit analysis, financial justification
 3. **Steering Committee Formation** - Identify and engage executive sponsors and decision-makers
@@ -639,14 +639,14 @@ Before diving into phase details, select the right approach for your project:
 7. **Team Identification** - Identify required roles (Data Scientists, ML Engineers, Architects, etc.)
 8. **Resource Allocation** - Secure team members and budget 
 
-**Week 2 (Planning & Setup)**:
+**📅 Week 2 (Planning & Setup)**:
 9. **Detailed Project Plan Creation** - Develop week-by-week plan with milestones and dependencies
 10. **Sprint Planning** - Plan sprints for prototype phase (typically 3-4 x 2-week sprints)
 11. **Risk Assessment Workshop** - Identify and assess risks across all categories
 12. **Risk Register Creation** - Document risks with mitigation plans and owners
 13. **Communication Plan Development** - Define stakeholder communication cadence and channels
 14. **Stakeholder Analysis** - Map stakeholders by power/interest and define engagement approach
-15. **Success Criteria & KPIs Definition** - Define measurable business, technical, and adoption metrics
+15. ** Success Criteria & KPIs Definition** - Define measurable business, technical, and adoption metrics
 16. **Azure Subscription Setup** - Provision Azure subscriptions and configure access
 17. **Environment Planning** - Plan Dev, Test, UAT, and Production environments
 
@@ -661,7 +661,7 @@ Before diving into phase details, select the right approach for your project:
 25. **Communication Plan Activation** - Start regular communications (status reports, steering committee meetings)
 26. **Sprint 0 Planning** - Prepare for first prototype sprint (backlog grooming, story definition)
 
-**Deliverables**:
+** Deliverables**:
 1. Approved Project Charter
 2. Approved Business Case
 3. RACI Matrix
@@ -675,7 +675,7 @@ Before diving into phase details, select the right approach for your project:
 11. DevOps pipelines configured
 12. Sprint backlog for Prototype phase
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] Project Charter approved by executive sponsor
 - [ ] Business Case approved with budget allocated
 - [ ] Full team mobilized and onboarded
@@ -687,22 +687,22 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 2: Hackathons (Prototype)
+###  Phase 2: Hackathons (Prototype)
 
-**Purpose**: Rapid prototyping with high-velocity sprints to validate ML approach and build MVP
+** Purpose**: Rapid prototyping with high-velocity sprints to validate ML approach and build MVP
 
-**Duration**: 4-8 weeks (typically 3-4 x 2-week sprints)
+** Duration**: 4-8 weeks (typically 3-4 x 2-week sprints)
 
-**Checklists**:
+** Checklists**:
 - [Hackathons/Prototype Checklist](./checklists/hackathons-prototype-checklist.md) - Sprint-by-sprint activities
 
-**Guides**:
+** Guides**:
 - [Hackathons Complete Guide](./guides/02-hackathons-complete-guide.md) - Comprehensive prototyping guide
 
-**Templates**:
+** Templates**:
 - [Sprint Planning Template](./templates/12-sprint-planning-template.md) - Sprint planning and retrospectives
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Sprint 0 (1 week - Preparation)**:
 1. **Backlog Refinement** - Prioritize user stories for MVP
@@ -750,7 +750,7 @@ Before diving into phase details, select the right approach for your project:
 35. **Final Sprint Demo** - Final prototype demonstration
 36. **Sprint Retrospective** - Comprehensive retrospective for entire prototype phase
 
-**Continuous Activities (Every Sprint)**:
+** Continuous Activities (Every Sprint)**:
 - Daily standups (15 min)
 - Continuous integration (automated builds and tests)
 - Code reviews and pair programming
@@ -758,7 +758,7 @@ Before diving into phase details, select the right approach for your project:
 - Risk and issue management
 - Backlog grooming
 
-**Deliverables**:
+** Deliverables**:
 1. Working MVP prototype
 2. Trained ML models (versioned in model registry)
 3. APIs for model serving
@@ -770,7 +770,7 @@ Before diving into phase details, select the right approach for your project:
 9. Lessons learned and technical debt backlog
 10. Sprint reports and velocity metrics
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] MVP demonstrates core functionality end-to-end
 - [ ] ML model meets minimum accuracy/performance thresholds
 - [ ] Stakeholders validate business value of MVP
@@ -783,29 +783,29 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 3: Setup Platform
+###  Phase 3: Setup Platform
 
-**Purpose**: Set up production-grade platform, infrastructure, and MLOps foundation
+** Purpose**: Set up production-grade platform, infrastructure, and MLOps foundation
 
-**Duration**: 2-4 weeks
+** Duration**: 2-4 weeks
 
-**Checklists**:
+** Checklists**:
 - [Setup Platform Checklist](./checklists/setup-platform-checklist.md) - Infrastructure and platform setup
 
-**Guides**:
+** Guides**:
 - [Setup Platform Complete Guide](./guides/03-setup-platform-complete-guide.md) - Production platform setup guide
 - [MLOps/DevOps Complete Guide](./guides/03-mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines (Azure DevOps & GitHub Actions), model registry, automated testing, monitoring
 - [AI Center of Excellence Framework](./guides/91-ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise (3 CoE models: Centralized, Federated, Hub-and-Spoke)
 - [AI Scaling Patterns Guide](./guides/95-ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio - component reuse, multi-tenancy, portfolio management
 
-**Infrastructure** (Deploy in 15 minutes):
+** Infrastructure** (Deploy in 15 minutes):
 - [Standardized Azure Infrastructure README](./infrastructure/README.md) - **NEW!** Complete infrastructure-as-code guide with compliance built-in (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA)
 - [Quick Start Guide](./infrastructure/docs/QUICKSTART.md) - **NEW!** Deploy production-ready AI platform in 15 minutes
 - [Bicep Templates](./infrastructure/bicep/) - **NEW!** 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance)
 - [Deployment Scripts](./infrastructure/scripts/) - **NEW!** PowerShell and Bash deployment automation
 - [Azure Policies](./infrastructure/policies/) - **NEW!** 5 compliance policy definitions
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Week 1 (Infrastructure Foundation)**:
 1. **Production Environment Planning** - Design production infrastructure architecture
@@ -843,7 +843,7 @@ Before diving into phase details, select the right approach for your project:
 27. **Runbook Creation** - Create operational runbooks for common scenarios
 28. **Platform Validation** - End-to-end validation of platform readiness
 
-**Deliverables**:
+** Deliverables**:
 1. Production Azure environment (fully configured and secured)
 2. MLOps platform (Azure ML, model registry, feature store)
 3. CI/CD pipelines (automated deployment)
@@ -855,7 +855,7 @@ Before diving into phase details, select the right approach for your project:
 9. Team trained on platform
 10. Platform validation report
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] Production environment fully provisioned and secured
 - [ ] MLOps platform operational (CI/CD, model registry, monitoring)
 - [ ] Data pipelines tested and validated
@@ -868,19 +868,19 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 4: Build
+###  Phase 4: Build
 
-**Purpose**: Build production-ready solution with full features and enterprise-grade quality
+** Purpose**: Build production-ready solution with full features and enterprise-grade quality
 
-**Duration**: 8-16 weeks (typically 4-8 x 2-week sprints)
+** Duration**: 8-16 weeks (typically 4-8 x 2-week sprints)
 
-**Checklists**:
+** Checklists**:
 - [Build Phase Checklist](./checklists/build-phase-checklist.md) - Comprehensive build activities
 
-**Guides**:
+** Guides**:
 - [Build Phase Complete Guide](./guides/04-build-phase-complete-guide.md) - Full build phase guide
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Sprint 1-2 (Foundation Build)**:
 1. **Architecture Finalization** - Finalize production architecture based on platform setup
@@ -918,7 +918,7 @@ Before diving into phase details, select the right approach for your project:
 27. **Code Quality Review** - Comprehensive code review and refactoring
 28. **Technical Debt Resolution** - Address accumulated technical debt
 
-**Continuous Activities (Every Sprint)**:
+** Continuous Activities (Every Sprint)**:
 - Daily standups
 - Sprint planning and retrospectives
 - Continuous integration and deployment
@@ -927,7 +927,7 @@ Before diving into phase details, select the right approach for your project:
 - Stakeholder demos
 - Risk management
 
-**Deliverables**:
+** Deliverables**:
 1. Production-ready application (all features complete)
 2. Production ML models (trained, validated, registered)
 3. Data pipelines (production-grade, monitored)
@@ -941,7 +941,7 @@ Before diving into phase details, select the right approach for your project:
 11. Technical documentation (architecture, deployment, operations)
 12. Test results (unit, integration, performance)
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] All MVP features complete and tested
 - [ ] Code quality standards met (test coverage >80%, no critical issues)
 - [ ] Security requirements met (no high/critical vulnerabilities)
@@ -954,19 +954,19 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 5: Integrate
+###  Phase 5: Integrate
 
-**Purpose**: Integrate solution with enterprise ecosystem and prepare for end-to-end testing
+** Purpose**: Integrate solution with enterprise ecosystem and prepare for end-to-end testing
 
-**Duration**: 2-4 weeks
+** Duration**: 2-4 weeks
 
-**Checklists**:
+** Checklists**:
 - [Integrate Phase Checklist](./checklists/integrate-phase-checklist.md) - Integration activities
 
-**Guides**:
+** Guides**:
 - [Integrate Phase Complete Guide](./guides/05-integrate-phase-complete-guide.md) - Integration guide
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Week 1 (Integration Development)**:
 1. **Integration Architecture Review** - review and finalize integration architecture
@@ -1004,7 +1004,7 @@ Before diving into phase details, select the right approach for your project:
 27. **Integration Acceptance** - Obtain sign-off from integration stakeholders
 28. **Handoff to Test Phase** - Prepare for comprehensive UAT
 
-**Deliverables**:
+** Deliverables**:
 1. All system integrations complete and tested
 2. Integration test results (all tests passed)
 3. Integration architecture documentation
@@ -1013,7 +1013,7 @@ Before diving into phase details, select the right approach for your project:
 6. Integration runbooks
 7. Integration sign-off from stakeholders
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] All planned integrations implemented and tested
 - [ ] Integration test cases passed (>95% success rate)
 - [ ] Data flows validated end-to-end
@@ -1026,24 +1026,24 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 6: Test & Evaluate
+###  Phase 6: Test & Evaluate
 
-**Purpose**: Comprehensive testing, quality assurance, and performance validation
+** Purpose**: Comprehensive testing, quality assurance, and performance validation
 
-**Duration**: 4-6 weeks
+** Duration**: 4-6 weeks
 
-**Templates**:
+** Templates**:
 - [Model Card Template](./templates/17-model-card-template.md) - **NEW!** Comprehensive model documentation for responsible AI (13 sections including model overview, performance, fairness, explainability, limitations)
 - [Dataset Datasheet Template](./templates/18-dataset-datasheet-template.md) - **NEW!** Dataset documentation for transparency (12 sections covering composition, collection, privacy, ethics)
 
-**Checklists**:
+** Checklists**:
 - [Test & Evaluate Phase Checklist](./checklists/test-evaluate-phase-checklist.md) - Comprehensive testing activities
 
-**Guides**:
+** Guides**:
 - [Test & Evaluate Phase Complete Guide](./guides/06-test-evaluate-phase-complete-guide.md) - Complete testing guide with best practices
 - [AI Model Risk Management Guide](./guides/96-ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense with Python code
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Week 1 (Test Preparation)**:
 1. **UAT Environment Setup** - Prepare UAT environment with production-like data
@@ -1083,7 +1083,7 @@ Before diving into phase details, select the right approach for your project:
 29. **Go-Live Readiness Assessment** - Assess readiness for production deployment
 30. **Phase Gate Review** - Steering committee review and approval
 
-**Deliverables**:
+** Deliverables**:
 1. Comprehensive test plan
 2. Test cases (functional, integration, performance, security)
 3. UAT results with sign-off
@@ -1095,7 +1095,7 @@ Before diving into phase details, select the right approach for your project:
 9. Go-live readiness assessment
 10. Quality assurance sign-off
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] UAT sign-off obtained from business stakeholders
 - [ ] All critical and high-priority defects resolved
 - [ ] Performance requirements met (latency, throughput, scalability)
@@ -1108,19 +1108,19 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 7: Prepare and Deploy
+###  Phase 7: Prepare and Deploy
 
-**Purpose**: Production deployment, training delivery, and go-live preparation
+** Purpose**: Production deployment, training delivery, and go-live preparation
 
-**Duration**: 2-4 weeks (plus 30-day hypercare)
+** Duration**: 2-4 weeks (plus 30-day hypercare)
 
-**Checklists**:
+** Checklists**:
 - [Prepare & Deploy Phase Checklist](./checklists/prepare-deploy-phase-checklist.md) - Complete deployment activities
 
-**Guides**:
+** Guides**:
 - [Prepare & Deploy Phase Complete Guide](./guides/07-prepare-deploy-phase-complete-guide.md) - Comprehensive deployment guide
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Week 1 (Deployment Preparation)**:
 1. **Production Environment Final Check** - Validate production environment readiness
@@ -1160,7 +1160,7 @@ Before diving into phase details, select the right approach for your project:
 29. **Issue Triage** - Real-time issue triage and resolution
 30. **Daily Status Meetings** - Daily meetings during hypercare period
 
-**Deliverables**:
+** Deliverables**:
 1. Production deployment (application live in production)
 2. Deployment plan and runbook
 3. Cutover plan executed
@@ -1174,7 +1174,7 @@ Before diving into phase details, select the right approach for your project:
 11. Data migration completed (if applicable)
 12. Deployment summary report
 
-**Exit Criteria**:
+** Exit Criteria**:
 - [ ] Application successfully deployed to production
 - [ ] Smoke testing passed (all critical functionality working)
 - [ ] User training completed (>90% of users trained)
@@ -1187,20 +1187,20 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### Phase 8: Operate and Care
+###  Phase 8: Operate and Care
 
-**Purpose**: Ongoing operations, optimization, and continuous improvement
+** Purpose**: Ongoing operations, optimization, and continuous improvement
 
-**Duration**: Ongoing (continuous)
+** Duration**: Ongoing (continuous)
 
-**Checklists**:
+** Checklists**:
 - [Operate & Care Phase Checklist](./checklists/operate-care-phase-checklist.md) - Ongoing operations
 
-**Guides**:
+** Guides**:
 - [Operate & Care Phase Complete Guide](./guides/08-operate-care-phase-complete-guide.md) - Operations guide
 - [AI Model Risk Management Guide](./guides/96-ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense
 
-**Sequential Steps**:
+** Sequential Steps**:
 
 **Days 1-30 (Hypercare)**:
 1. **24/7 Support** - Provide round-the-clock support for critical issues
@@ -1245,7 +1245,7 @@ Before diving into phase details, select the right approach for your project:
 34. **Knowledge Management** - Maintain knowledge base and documentation
 35. **Vendor Management** - Manage third-party vendors and dependencies
 
-**Key Activities**:
+** Key Activities**:
 - **Production Monitoring** - 24/7 monitoring of system health, performance, and security
 - **Incident Management** - Rapid response to incidents per SLA (P1: 15 min, P2: 1 hour, P3: 4 hours, P4: 24 hours)
 - **Model Performance Tracking** - Monitor model accuracy, drift, data quality
@@ -1257,7 +1257,7 @@ Before diving into phase details, select the right approach for your project:
 - **Security & Compliance** - Maintain security posture and compliance
 - **Capacity Management** - Scale resources based on demand
 
-**Deliverables**:
+** Deliverables**:
 1. Operations dashboard (real-time system health)
 2. Monthly performance reports (business, technical, adoption metrics)
 3. Incident reports and RCA (root cause analysis)
@@ -1269,7 +1269,7 @@ Before diving into phase details, select the right approach for your project:
 9. Updated documentation and runbooks
 10. Compliance reports (security, privacy, regulatory)
 
-**Success Criteria (Ongoing)**:
+** Success Criteria (Ongoing)**:
 - [ ] System uptime >99.9% (per SLA)
 - [ ] Incident resolution within SLA (>95%)
 - [ ] Model accuracy maintained (>target threshold)
@@ -1305,7 +1305,7 @@ The methodology is built on these core principles:
 
 ## Quick Start Guide
 
-### For New Projects:
+###  For New Projects:
 
 #### 1 **Pre-sales Stage**
 - Use [Pre-sales Qualification](./templates/11-presales-qualification.md) to assess opportunity
@@ -1343,7 +1343,7 @@ The methodology is built on these core principles:
 
 Each phase has clear exit criteria that must be met before proceeding to the next phase. The steering committee reviews these criteria at formal phase gate reviews.
 
-### **Phase Gate 0: Discovery to Mobilisation**
+###  **Phase Gate 0: Discovery to Mobilisation**
 - [ ] Business requirements documented and approved by stakeholders
 - [ ] At least one use case with clear business value identified (ROI >3:1)
 - [ ] Data sufficiency confirmed (data readiness score >=7/10)
@@ -1354,7 +1354,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Steering committee approval to proceed
 - [ ] budget allocated for Mobilisation phase
 
-### **Phase Gate 1: Mobilisation to Prototype**
+###  **Phase Gate 1: Mobilisation to Prototype**
 - [ ] Project Charter approved by executive sponsor
 - [ ] Business Case approved with budget allocated for full project
 - [ ] Full team mobilized and onboarded (all roles filled)
@@ -1365,7 +1365,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Sprint 0 complete and backlog ready
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 2: Prototype to Setup Platform**
+###  **Phase Gate 2: Prototype to Setup Platform**
 - [ ] MVP demonstrates core functionality end-to-end
 - [ ] ML model meets minimum accuracy/performance thresholds (>=success criteria)
 - [ ] Stakeholders validate business value of MVP (demo sign-off)
@@ -1377,7 +1377,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Prototype lessons learned documented
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 3: Setup Platform to Build**
+###  **Phase Gate 3: Setup Platform to Build**
 - [ ] Production environment fully provisioned and secured
 - [ ] MLOps platform operational (CI/CD, model registry, monitoring)
 - [ ] Data platform ready (data lake, pipelines, quality framework)
@@ -1389,7 +1389,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Platform documentation complete
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 4: Build to Integrate**
+###  **Phase Gate 4: Build to Integrate**
 - [ ] All MVP features complete and tested (100% of must-have requirements)
 - [ ] Code quality standards met (test coverage >80%, no critical code issues)
 - [ ] Security requirements met (no high/critical vulnerabilities)
@@ -1400,7 +1400,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Demo to stakeholders successful (sign-off obtained)
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 5: Integrate to Test & Evaluate**
+###  **Phase Gate 5: Integrate to Test & Evaluate**
 - [ ] All planned integrations implemented and tested
 - [ ] Integration test cases passed (>95% success rate)
 - [ ] Data flows validated end-to-end (all systems connected)
@@ -1412,7 +1412,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Integration sign-off from all system owners
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 6: Test & Evaluate to Prepare & Deploy**
+###  **Phase Gate 6: Test & Evaluate to Prepare & Deploy**
 - [ ] UAT sign-off obtained from business stakeholders
 - [ ] All critical and high-priority defects resolved (zero critical, zero high open)
 - [ ] Performance requirements met (latency, throughput, scalability validated)
@@ -1425,7 +1425,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Change management approval obtained
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 7: Prepare & Deploy to Operate & Care**
+###  **Phase Gate 7: Prepare & Deploy to Operate & Care**
 - [ ] Application successfully deployed to production
 - [ ] Smoke testing passed (all critical functionality working in production)
 - [ ] User training completed (>90% of target users trained)
@@ -1443,20 +1443,20 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 
 Track success across three dimensions:
 
-### **Business Metrics**
+###  **Business Metrics**
 - ROI achievement
 - Cost reduction
 - Revenue increase
 - Time savings
 - Customer satisfaction (NPS/CSAT)
 
-### **Technical Metrics**
+###  **Technical Metrics**
 - Model accuracy/performance
 - System uptime
 - API response times
 - Data quality scores
 
-### **Adoption Metrics**
+###  **Adoption Metrics**
 - User adoption rate
 - Active users
 - Feature usage
