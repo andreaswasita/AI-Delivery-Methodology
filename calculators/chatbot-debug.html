@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-item { margin: 10px 0; padding: 10px; border: 1px solid #ddd; }
+        .pass { background: #d4edda; }
+        .fail { background: #f8d7da; }
+        pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Value Analysis Chatbot - Debug Test</h1>
+    <div id="tests"></div>
+    
+    <script>
+        const tests = [];
+        
+        function addTest(name, passed, details) {
+            tests.push({ name, passed, details });
+        }
+        
+        function runTests() {
+            // Test 1: Check if chatbot script loads
+            addTest(
+                'Chatbot script loaded',
+                typeof ValueAnalysisChatbot !== 'undefined',
+                typeof ValueAnalysisChatbot !== 'undefined' ? 'Class definition found' : 'Class not found'
+            );
+            
+            // Test 2: Check if chatbot instance exists
+            addTest(
+                'Chatbot instance created',
+                typeof window.chatbot !== 'undefined',
+                window.chatbot ? 'Instance exists' : 'Instance not created'
+            );
+            
+            // Test 3: Check DOM elements
+            const elements = {
+                chatMessages: document.getElementById('chatMessages'),
+                userInput: document.getElementById('userInput'),
+                sendBtn: document.getElementById('sendBtn'),
+                resetBtn: document.getElementById('resetBtn'),
+                apiKeyBtn: document.getElementById('apiKeyBtn'),
+                quickReplies: document.getElementById('quickReplies')
+            };
+            
+            const missingElements = Object.entries(elements)
+                .filter(([name, el]) => !el)
+                .map(([name]) => name);
+            
+            addTest(
+                'All DOM elements present',
+                missingElements.length === 0,
+                missingElements.length === 0 ? 'All elements found' : `Missing: ${missingElements.join(', ')}`
+            );
+            
+            // Test 4: Check localStorage
+            const hasAnthropicKey = !!localStorage.getItem('anthropic_api_key');
+            const hasCopilotEndpoint = !!localStorage.getItem('copilot_endpoint');
+            const hasProvider = !!localStorage.getItem('ai_provider');
+            
+            addTest(
+                'LocalStorage accessible',
+                true,
+                `Anthropic: ${hasAnthropicKey}, Copilot: ${hasCopilotEndpoint}, Provider: ${hasProvider ? localStorage.getItem('ai_provider') : 'none'}`
+            );
+            
+            // Test 5: Check if event listeners work
+            let buttonClickWorks = false;
+            if (elements.sendBtn) {
+                try {
+                    const testFn = () => { buttonClickWorks = true; };
+                    elements.sendBtn.addEventListener('click', testFn);
+                    elements.sendBtn.click();
+                    elements.sendBtn.removeEventListener('click', testFn);
+                } catch (e) {
+                    addTest('Event listeners work', false, e.message);
+                }
+                addTest('Event listeners work', buttonClickWorks, 'Button click triggered successfully');
+            } else {
+                addTest('Event listeners work', false, 'Send button not found');
+            }
+            
+            // Test 6: Check console for errors
+            addTest(
+                'Check browser console',
+                true,
+                'Open browser DevTools (F12) and check Console tab for errors'
+            );
+            
+            // Display results
+            displayTests();
+        }
+        
+        function displayTests() {
+            const container = document.getElementById('tests');
+            let html = '';
+            
+            tests.forEach(test => {
+                html += `
+                    <div class="test-item ${test.passed ? 'pass' : 'fail'}">
+                        <strong>${test.passed ? '✅' : '❌'} ${test.name}</strong><br>
+                        <small>${test.details}</small>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Log to console as well
+            console.log('=== Chatbot Debug Tests ===');
+            tests.forEach(test => {
+                console.log(`${test.passed ? '✅' : '❌'} ${test.name}: ${test.details}`);
+            });
+        }
+        
+        // Run tests after page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(runTests, 1000); // Wait 1 second for chatbot to initialize
+            });
+        } else {
+            setTimeout(runTests, 1000);
+        }
+    </script>
+    
+    <!-- Load the actual chatbot page in an iframe to test -->
+    <h2>Chatbot Instance</h2>
+    <iframe src="value-analysis-chatbot.html" width="100%" height="800" style="border: 1px solid #ddd;"></iframe>
+</body>
+</html>
