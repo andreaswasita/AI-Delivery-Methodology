@@ -1,0 +1,596 @@
+# Intelligent Virtual Banking Assistant
+# Based on UC-FS-001 from Financial Services Use Cases
+# Microsoft Copilot Studio Template
+
+name: Banking Virtual Assistant
+description: AI-powered conversational assistant for banking customer service - handles account inquiries, transactions, and product information 24/7
+language: en-US
+version: 1.0
+use_case_id: UC-FS-001
+industry: Financial Services
+estimated_containment_rate: 70-85%
+target_cost_per_interaction: $0.50
+
+# Business Value Metrics
+business_value:
+  cost_savings: 60-80% reduction in call center volume
+  customer_satisfaction: 24/7 availability with <2 second response time
+  annual_value: $5M-20M for mid-size banks
+  roi: 300-500% within first year
+
+# Topics (Intent Categories)
+topics:
+  - name: Greeting
+    id: greeting
+    trigger_phrases:
+      - Hi
+      - Hello
+      - Good morning
+      - Hey there
+      - I need help
+    nodes:
+      - type: message
+        content: |
+          Hello! 👋 I'm your virtual banking assistant. I can help you with:
+          
+          💰 Account balances and transactions
+          💳 Card services and payments
+          🏦 Product information
+          📍 Branch and ATM locations
+          🔒 Security and fraud alerts
+          
+          What would you like help with today?
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: ActionSet
+              actions:
+                - type: Action.Submit
+                  title: Check Balance
+                  data:
+                    intent: check_balance
+                - type: Action.Submit
+                  title: Recent Transactions
+                  data:
+                    intent: transactions
+                - type: Action.Submit
+                  title: Transfer Money
+                  data:
+                    intent: transfer
+                - type: Action.Submit
+                  title: Report Lost Card
+                  data:
+                    intent: lost_card
+
+  - name: Check Balance
+    id: check_balance
+    trigger_phrases:
+      - What's my balance
+      - How much money do I have
+      - Check my account balance
+      - Show me my balance
+      - Account balance
+    authentication_required: true
+    entities:
+      - name: AccountType
+        type: list
+        values:
+          - checking
+          - savings
+          - credit card
+    nodes:
+      - type: message
+        content: I'll check your account balance for you.
+      - type: question
+        variable: AccountType
+        prompt: Which account would you like to check?
+        suggestions:
+          - Checking Account
+          - Savings Account
+          - Credit Card
+      - type: action
+        action_type: power_automate
+        flow_name: GetAccountBalance
+        inputs:
+          customer_id: ${System.User.Id}
+          account_type: ${AccountType}
+        outputs:
+          balance: Balance
+          account_number: AccountNumber
+          last_transaction_date: LastTransactionDate
+      - type: message
+        content: |
+          **Account Balance Summary** 💰
+          
+          Account: ${AccountType} (...${AccountNumber})
+          Available Balance: ${Balance}
+          Last Transaction: ${LastTransactionDate}
+          
+          Would you like to see recent transactions?
+      - type: question
+        variable: ShowTransactions
+        prompt: Would you like to see recent transactions?
+        suggestions:
+          - Yes, show transactions
+          - No, I'm done
+      - type: condition
+        conditions:
+          - value: ${ShowTransactions}
+            equals: Yes, show transactions
+            actions:
+              - type: redirect
+                target_topic: recent_transactions
+
+  - name: Recent Transactions
+    id: transactions
+    trigger_phrases:
+      - Show my transactions
+      - Recent transactions
+      - Transaction history
+      - What did I spend money on
+      - Show me my purchases
+    authentication_required: true
+    entities:
+      - name: AccountType
+        type: list
+        values: [checking, savings, credit card]
+      - name: TimeRange
+        type: list
+        values: [last 7 days, last 30 days, last 90 days]
+    nodes:
+      - type: question
+        variable: AccountType
+        prompt: Which account would you like to view?
+        suggestions:
+          - Checking Account
+          - Savings Account
+          - Credit Card
+      - type: question
+        variable: TimeRange
+        prompt: What time period?
+        suggestions:
+          - Last 7 days
+          - Last 30 days
+          - Last 90 days
+      - type: action
+        action_type: power_automate
+        flow_name: GetTransactionHistory
+        inputs:
+          customer_id: ${System.User.Id}
+          account_type: ${AccountType}
+          time_range: ${TimeRange}
+        outputs:
+          transactions: Transactions
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: TextBlock
+              text: Recent Transactions
+              weight: bolder
+              size: large
+            - type: FactSet
+              facts: ${Transactions}
+      - type: message
+        content: |
+          I've displayed your recent transactions. 
+          
+          Would you like to:
+          • Download as PDF
+          • Report a suspicious transaction
+          • See more details
+      - type: question
+        variable: NextAction
+        prompt: What would you like to do?
+        suggestions:
+          - Download PDF
+          - Report Suspicious Transaction
+          - Nothing, I'm done
+
+  - name: Transfer Money
+    id: transfer
+    trigger_phrases:
+      - Transfer money
+      - Send money
+      - Move money between accounts
+      - Pay someone
+      - Make a transfer
+    authentication_required: true
+    high_security: true
+    entities:
+      - name: FromAccount
+        type: custom
+      - name: ToAccount
+        type: custom
+      - name: Amount
+        type: currency
+      - name: TransferType
+        type: list
+        values: [between_my_accounts, to_another_person, bill_payment]
+    nodes:
+      - type: message
+        content: I can help you transfer money. Let me gather the details.
+      - type: question
+        variable: TransferType
+        prompt: What type of transfer?
+        suggestions:
+          - Between my accounts
+          - To another person
+          - Bill payment
+      - type: question
+        variable: FromAccount
+        prompt: From which account?
+        action:
+          type: get_user_accounts
+          filter: eligible_for_transfer
+      - type: question
+        variable: ToAccount
+        prompt: To which account?
+        depends_on: ${TransferType}
+      - type: question
+        variable: Amount
+        prompt: How much would you like to transfer?
+        validation:
+          type: currency
+          min: 0.01
+          max: 10000
+      - type: message
+        content: |
+          **Please Review Your Transfer** 🔍
+          
+          From: ${FromAccount}
+          To: ${ToAccount}
+          Amount: ${Amount}
+          
+          ⚠️ This action cannot be undone. Please confirm to proceed.
+      - type: question
+        variable: Confirm
+        prompt: Do you want to proceed with this transfer?
+        suggestions:
+          - Yes, transfer now
+          - No, cancel
+      - type: condition
+        conditions:
+          - value: ${Confirm}
+            equals: Yes, transfer now
+            actions:
+              - type: action
+                action_type: power_automate
+                flow_name: ProcessTransfer
+                inputs:
+                  customer_id: ${System.User.Id}
+                  from_account: ${FromAccount}
+                  to_account: ${ToAccount}
+                  amount: ${Amount}
+                  transfer_type: ${TransferType}
+                outputs:
+                  confirmation_number: ConfirmationNumber
+                  status: Status
+              - type: message
+                content: |
+                  ✅ **Transfer Successful!**
+                  
+                  Confirmation #: ${ConfirmationNumber}
+                  Amount: ${Amount}
+                  From: ${FromAccount}
+                  To: ${ToAccount}
+                  
+                  You'll receive an email confirmation shortly.
+
+  - name: Report Lost or Stolen Card
+    id: lost_card
+    trigger_phrases:
+      - Lost my card
+      - Stolen card
+      - Report lost card
+      - My card is missing
+      - Someone stole my card
+      - Block my card
+    authentication_required: true
+    priority: high
+    entities:
+      - name: CardType
+        type: list
+        values: [debit, credit]
+      - name: LastFourDigits
+        type: regex
+        pattern: \d{4}
+    nodes:
+      - type: message
+        content: |
+          ⚠️ **Card Security Alert**
+          
+          I'm sorry to hear about your card. Let me help you secure your account immediately.
+      - type: question
+        variable: CardType
+        prompt: Which type of card?
+        suggestions:
+          - Debit Card
+          - Credit Card
+      - type: action
+        action_type: power_automate
+        flow_name: GetUserCards
+        inputs:
+          customer_id: ${System.User.Id}
+          card_type: ${CardType}
+        outputs:
+          cards: UserCards
+      - type: question
+        variable: CardToBlock
+        prompt: Which card needs to be blocked?
+        suggestions: ${UserCards}
+      - type: question
+        variable: ReportType
+        prompt: Is your card lost or stolen?
+        suggestions:
+          - Lost (I misplaced it)
+          - Stolen (Someone took it)
+      - type: condition
+        conditions:
+          - value: ${ReportType}
+            equals: Stolen (Someone took it)
+            actions:
+              - type: question
+                variable: FraudulentTransactions
+                prompt: Have you noticed any unauthorized transactions?
+                suggestions:
+                  - Yes, there are fraudulent charges
+                  - No, I just realized it's missing
+      - type: message
+        content: |
+          I'm blocking your card immediately for your security. This will:
+          
+          🔒 Block all future transactions
+          💳 Cancel the physical card
+          📧 Send you a confirmation email
+          🚚 Order a replacement card (arrives in 3-5 days)
+          
+          Your card will be blocked in the next 60 seconds.
+      - type: question
+        variable: Confirm
+        prompt: Do you want to proceed?
+        suggestions:
+          - Yes, block my card now
+          - No, I found it
+      - type: condition
+        conditions:
+          - value: ${Confirm}
+            equals: Yes, block my card now
+            actions:
+              - type: action
+                action_type: power_automate
+                flow_name: BlockCardAndOrderReplacement
+                inputs:
+                  customer_id: ${System.User.Id}
+                  card_id: ${CardToBlock}
+                  reason: ${ReportType}
+                  fraud_suspected: ${FraudulentTransactions}
+                outputs:
+                  confirmation_number: ConfirmationNumber
+                  replacement_eta: ReplacementETA
+              - type: message
+                content: |
+                  ✅ **Card Blocked Successfully**
+                  
+                  Case #: ${ConfirmationNumber}
+                  Status: Card blocked and canceled
+                  Replacement ETA: ${ReplacementETA}
+                  
+                  Next Steps:
+                  1. Review your transactions in mobile app
+                  2. Update any recurring payments
+                  3. Watch for your replacement card
+                  
+                  Is there anything else I can help with?
+
+  - name: Product Information
+    id: product_info
+    trigger_phrases:
+      - Tell me about your products
+      - What accounts do you offer
+      - Credit card options
+      - Loan information
+      - Mortgage rates
+      - What services do you provide
+    generative_ai: true
+    nodes:
+      - type: message
+        content: I can provide information about our banking products. What are you interested in?
+      - type: question
+        variable: ProductCategory
+        prompt: Which product category?
+        suggestions:
+          - Checking & Savings Accounts
+          - Credit Cards
+          - Loans & Mortgages
+          - Investment Products
+          - Business Banking
+      - type: action
+        action_type: generative_answers
+        data_sources:
+          - type: website
+            url: https://www.yourbank.com/products
+          - type: sharepoint
+            site: ProductKnowledgeBase
+        boost_content:
+          - Product brochures
+          - Rate sheets
+          - Comparison guides
+      - type: message
+        content: |
+          Based on your interest in ${ProductCategory}, here's what we offer:
+          
+          ${GenerativeAnswer}
+          
+          Would you like to:
+          • Speak with a specialist
+          • Apply online
+          • Schedule a branch appointment
+      - type: question
+        variable: NextStep
+        prompt: How would you like to proceed?
+        suggestions:
+          - Speak with a specialist
+          - Apply online
+          - Schedule appointment
+          - Just browsing
+
+  - name: Escalate to Human Agent
+    id: escalate
+    trigger_phrases:
+      - Talk to a person
+      - Human agent
+      - Speak to someone
+      - This isn't helping
+      - I want to talk to a representative
+    nodes:
+      - type: message
+        content: |
+          I understand you'd like to speak with one of our banking specialists. 
+          
+          Let me transfer you now. Please hold for a moment.
+      - type: action
+        action_type: transfer_to_agent
+        queue: Customer Service
+        context:
+          conversation_history: ${System.ConversationHistory}
+          customer_id: ${System.User.Id}
+          priority: normal
+
+  - name: Fallback
+    id: fallback
+    is_system_topic: true
+    nodes:
+      - type: message
+        content: |
+          I didn't quite understand that. I can help you with:
+          
+          • Account balances and transactions
+          • Money transfers
+          • Card services
+          • Product information
+          • Branch locations
+          
+          You can also say "talk to a person" to reach a specialist.
+      - type: question
+        variable: TryAgain
+        prompt: Would you like to try again or speak with a representative?
+        suggestions:
+          - Try again
+          - Speak with a representative
+
+# AI Plugins and Skills
+plugins:
+  - name: Azure OpenAI
+    type: generative_answers
+    model: gpt-4
+    temperature: 0.3
+    use_for:
+      - Product information
+      - General banking questions
+      - Knowledge base queries
+  
+  - name: Sentiment Analysis
+    type: cognitive_services
+    use_for:
+      - Detect frustration for escalation
+      - Measure satisfaction
+      - Prioritize urgent issues
+
+# Knowledge Sources
+knowledge_sources:
+  - type: website
+    url: https://www.yourbank.com
+    crawl_depth: 3
+    
+  - type: sharepoint
+    site: Internal Knowledge Base
+    libraries:
+      - Product Documentation
+      - FAQs
+      - Policies
+  
+  - type: custom
+    name: Core Banking API
+    description: Real-time account and transaction data
+
+# Security & Compliance
+security:
+  authentication:
+    type: azure_ad
+    required_for:
+      - check_balance
+      - transactions
+      - transfer
+      - lost_card
+  
+  data_classification: PII
+  
+  compliance:
+    - GDPR
+    - SOC 2
+    - PCI-DSS (for card data)
+  
+  audit_logging: enabled
+  
+  sensitive_information_masking:
+    - account_numbers
+    - card_numbers
+    - ssn
+
+# Analytics & Monitoring
+analytics:
+  track_metrics:
+    - containment_rate
+    - csat_score
+    - average_response_time
+    - escalation_rate
+    - top_intents
+    - conversation_length
+  
+  alerts:
+    - type: low_containment
+      threshold: 60%
+    - type: high_escalation
+      threshold: 30%
+    - type: low_csat
+      threshold: 3.5
+
+# Integration Requirements
+integrations:
+  required:
+    - name: Core Banking System
+      purpose: Account data and transactions
+      
+    - name: CRM
+      purpose: Customer profile and history
+      
+    - name: Card Management System
+      purpose: Card blocking and replacement
+      
+    - name: Payment Gateway
+      purpose: Transfer processing
+  
+  optional:
+    - name: Fraud Detection
+      purpose: Real-time fraud alerts
+    
+    - name: Marketing Automation
+      purpose: Product recommendations
+
+# Deployment Channels
+channels:
+  - website_embed
+  - mobile_app
+  - microsoft_teams
+  - sms
+  - voice (IVR integration)
+
+# Success Metrics (Targets)
+success_metrics:
+  containment_rate: ">75%"
+  csat_score: ">4.2/5"
+  average_response_time: "<2 seconds"
+  cost_per_interaction: "<$0.50"
+  uptime: ">99.9%"

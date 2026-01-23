@@ -1085,9 +1085,9 @@
 
 ---
 
-**Next Phase**: [Operate & Care Phase](../guides/operate-care-phase-complete-guide.md)
+**Next Phase**: [Operate & Care Phase](../guides/08-operate-care-phase-complete-guide.md)
 
 **Related Documents**:
-- [Prepare & Deploy Phase Complete Guide](../guides/prepare-deploy-phase-complete-guide.md)
+- [Prepare & Deploy Phase Complete Guide](../guides/07-prepare-deploy-phase-complete-guide.md)
 - [Deployment Runbook Template](../templates/deployment-runbook-template.md)
 - [Hypercare Plan Template](../templates/hypercare-plan-template.md)

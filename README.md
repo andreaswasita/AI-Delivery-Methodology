@@ -1,73 +1,73 @@
-﻿# AI Delivery Methodology
+# AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
+?? **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | ?? **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | ?? **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ?? **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | ?? **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ?? **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
 
 ---
 
-## 🧭 Quick Navigation
+## ?? Quick Navigation
 
 <table>
 <tr>
 <td width="25%" valign="top">
 
-### 📋 [Methodology Phases](./guides)
+### ?? [Methodology Phases](./guides)
 **Complete delivery framework**
-- 🎯 [Business Envisioning](./guides/business-envisioning-workshop-guide.md)
-- 🔍 [Discovery & Planning](./guides/mobilisation-complete-guide.md)
-- 🏗️ [Build & Development](./guides/build-phase-complete-guide.md)
-- 🧪 [Test & Evaluate](./guides/test-evaluate-phase-complete-guide.md)
-- 🚀 [Deploy & Integrate](./guides/prepare-deploy-phase-complete-guide.md)
-- 🔧 [Operate & Care](./guides/operate-care-phase-complete-guide.md)
-- ⚙️ [MLOps & DevOps](./guides/mlops-devops-complete-guide.md)
-- 🎨 [Hackathons & Prototyping](./guides/hackathons-complete-guide.md)
+- ?? [Business Envisioning](./guides/01-business-envisioning-workshop-guide.md)
+- ?? [Discovery & Planning](./guides/01-mobilisation-complete-guide.md)
+- ??? [Build & Development](./guides/04-build-phase-complete-guide.md)
+- ?? [Test & Evaluate](./guides/06-test-evaluate-phase-complete-guide.md)
+- ?? [Deploy & Integrate](./guides/07-prepare-deploy-phase-complete-guide.md)
+- ?? [Operate & Care](./guides/08-operate-care-phase-complete-guide.md)
+- ?? [MLOps & DevOps](./guides/03-mlops-devops-complete-guide.md)
+- ?? [Hackathons & Prototyping](./guides/02-hackathons-complete-guide.md)
 
-[→ View All Guides](./guides)
+[? View All Guides](./guides)
 
 </td>
 <td width="25%" valign="top">
 
-### 🏭 [Industry Use Cases](./guides/industry-use-cases)
+### ?? [Industry Use Cases](./guides/industry-use-cases)
 **Real-world AI applications**
-- 💼 [Financial Services](./guides/industry-use-cases/financial-services-use-cases.md) - Fraud detection, credit risk, trading
-- ⚡ [Energy & Mining](./guides/industry-use-cases/energy-mining-use-cases.md) - Predictive maintenance, exploration
-- 🛒 [Retail & Consumer](./guides/industry-use-cases/retail-consumer-use-cases.md) - Demand forecasting, personalization
-- 🏛️ [Public Sector](./guides/industry-use-cases/public-sector-use-cases.md) - Citizen services, infrastructure
-- 🛡️ [Defense](./guides/industry-use-cases/defense-security-use-cases.md) - Intelligence, logistics optimization
+- ?? [Financial Services](./guides/industry-use-cases/financial-services-use-cases.md) - Fraud detection, credit risk, trading
+- ? [Energy & Mining](./guides/industry-use-cases/energy-mining-use-cases.md) - Predictive maintenance, exploration
+- ?? [Retail & Consumer](./guides/industry-use-cases/retail-consumer-use-cases.md) - Demand forecasting, personalization
+- ??? [Public Sector](./guides/industry-use-cases/public-sector-use-cases.md) - Citizen services, infrastructure
+- ??? [Defense](./guides/industry-use-cases/defense-security-use-cases.md) - Intelligence, logistics optimization
 
-[→ Explore All Industries](./guides/industry-use-cases)
+[? Explore All Industries](./guides/industry-use-cases)
 
 </td>
 <td width="25%" valign="top">
 
-### 📚 [Guides & Frameworks](./guides)
+### ?? [Guides & Frameworks](./guides)
 **Expert knowledge & best practices**
-- 🎯 [Executive Coaching Guide](./guides/executive-coaching-guide.md)
-- 🏢 [AI Center of Excellence](./guides/ai-center-of-excellence-framework.md)
-- 📊 [Story Points Estimation](./guides/story-points-estimation-guide.md)
-- 🔄 [AI Scaling Patterns](./guides/ai-scaling-patterns-guide.md)
-- ⚖️ [AI Model Risk Management](./guides/ai-model-risk-management-guide.md)
-- 🤝 [Engagement Modes](./guides/engagement-modes-framework.md)
-- 🏃 [3-Month Fast Track](./guides/3-month-fast-track-guide.md)
-- 🎤 [Presales Activities](./guides/presales-discovery-activities-for-presentations.md)
+- ?? [Executive Coaching Guide](./guides/90-executive-coaching-guide.md)
+- ?? [AI Center of Excellence](./guides/91-ai-center-of-excellence-framework.md)
+- ?? [Story Points Estimation](./guides/94-story-points-estimation-guide.md)
+- ?? [AI Scaling Patterns](./guides/95-ai-scaling-patterns-guide.md)
+- ?? [AI Model Risk Management](./guides/96-ai-model-risk-management-guide.md)
+- ?? [Engagement Modes](./guides/92-engagement-modes-framework.md)
+- ?? [3-Month Fast Track](./guides/93-3-month-fast-track-guide.md)
+- ?? [Presales Activities](./guides/00-presales-discovery-activities.md)
 
-[→ Browse All Guides](./guides)
+[? Browse All Guides](./guides)
 
 </td>
 <td width="25%" valign="top">
 
-### 📄 [Templates & Checklists](./templates)
+### ?? [Templates & Checklists](./templates)
 **Ready-to-use documents**
-- 📋 [Project Charter](./templates/01-project-charter.md)
-- 💼 [Business Case](./templates/02-business-case.md)
-- 👥 [RACI Matrix](./templates/03-raci-matrix.md)
-- 📅 [Project Plan](./templates/04-project-plan-roadmap.md)
-- ⚠️ [Risk Register](./templates/05-risk-register.md)
-- 📢 [Communication Plan](./templates/06-communication-plan.md)
-- 🎯 [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
-- ✅ [Phase Checklists](./checklists)
+- ?? [Project Charter](./templates/01-project-charter.md)
+- ?? [Business Case](./templates/02-business-case.md)
+- ?? [RACI Matrix](./templates/03-raci-matrix.md)
+- ?? [Project Plan](./templates/04-project-plan-roadmap.md)
+- ?? [Risk Register](./templates/05-risk-register.md)
+- ?? [Communication Plan](./templates/06-communication-plan.md)
+- ?? [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
+- ? [Phase Checklists](./checklists)
 
-[→ Get All Templates](./templates)
+[? Get All Templates](./templates)
 
 </td>
 </tr>
@@ -75,7 +75,7 @@
 
 ---
 
-## 📖 About This Methodology
+## ?? About This Methodology
 
 ### What We're Trying to Achieve
 
@@ -94,31 +94,31 @@ Most AI projects fail not because of technology, but because of execution gaps:
 
 This methodology provides a **proven, repeatable framework** that:
 
-**🎯 Aligns Business & Technology**
+**?? Aligns Business & Technology**
 - Starts with business problems, not technology solutions
 - Uses the **Five Whys technique** to uncover root causes, ensuring AI addresses fundamental issues, not symptoms
 - Connects every technical decision back to measurable business outcomes
 - Speaks both executive and technical languages fluently
 
-**📊 Delivers Measurable Value**
+**?? Delivers Measurable Value**
 - ROI-focused from day one with clear financial projections
 - Success metrics defined before writing code
 - Value tracking at every milestone
 - Quick wins balanced with strategic long-term transformation
 
-**🛡️ Mitigates Risk Through Governance**
+**??? Mitigates Risk Through Governance**
 - AI ethics and responsible AI principles built into every phase
 - Regulatory compliance (GDPR, industry-specific) addressed early
 - Risk assessment and mitigation at every gate
 - Change management integrated throughout, not bolted on
 
-**🚀 Accelerates Time to Production**
+**?? Accelerates Time to Production**
 - Structured phases prevent common pitfalls and rework
 - 200+ pre-built checklists ensure nothing is missed
 - Ready-to-use templates eliminate starting from scratch
 - Clear decision gates prevent projects from drifting
 
-**👥 Engages C-Level Stakeholders**
+**?? Engages C-Level Stakeholders**
 - **Executive coaching guide** with 5 persona-based strategies (Visionary, Steward, Realist, People Leader, Compliance Guardian)
 - **55-point readiness assessment** to evaluate organizational preparedness
 - Executive decision frameworks for investment approval with ROI scenarios
@@ -139,25 +139,25 @@ This methodology provides a **proven, repeatable framework** that:
 
 ### What Makes This Different
 
-**✅ Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
+**? Comprehensive Yet Practical**: Covers the complete lifecycle without overwhelming teams with unnecessary process
 
-**✅ Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
+**? Template-Driven**: 17+ ready-to-use templates eliminate guesswork and accelerate delivery
 
-**✅ Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
+**? Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
 
-**✅ Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
+**? Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
 
-**✅ Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
+**? Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
 
-**✅ Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
+**? Root Cause-Oriented**: Five Whys analysis ensures solutions address fundamental problems, not just symptoms
 
-**✅ Cloud-Native**: Optimized for Microsoft Azure AI services (Azure Machine Learning, Azure OpenAI, Cognitive Services)
+**? Cloud-Native**: Optimized for Microsoft Azure AI services (Azure Machine Learning, Azure OpenAI, Cognitive Services)
 
 ### The Journey: Vision to Value
 
 We offer **two delivery tracks** to match your project needs:
 
-#### **🚀 Fast-Track (3 Months)** - For Pilots & Quick Wins
+#### **?? Fast-Track (3 Months)** - For Pilots & Quick Wins
 Perfect for single use cases, POCs, and rapid value delivery. Compressed timeline with essential activities only.
 
 - **Timeline:** 12 weeks
@@ -165,26 +165,26 @@ Perfect for single use cases, POCs, and rapid value delivery. Compressed timelin
 - **Scope:** Single use case
 - **Best For:** Pilots, POCs, quick wins, building momentum
 
-[**→ See 3-Month Fast-Track Guide**](./guides/3-month-fast-track-guide.md)
+[**? See 3-Month Fast-Track Guide**](./guides/93-3-month-fast-track-guide.md)
 
 ---
 
-#### **🏗️ Full Methodology (6-12+ Months)** - For Enterprise Solutions
+#### **??? Full Methodology (6-12+ Months)** - For Enterprise Solutions
 Comprehensive approach for production systems, multiple use cases, and enterprise-wide transformation.
 
 Our methodology guides you through nine structured phases:
 
-**1. Pre-sales & Discovery** → Qualify opportunities, understand business context, identify root causes  
-**2. Mobilise** → Establish governance, assemble teams, set foundations  
-**3. Hackathons (Prototype)** → Rapid validation, proof of concepts, fail fast learning  
-**4. Setup Platform** → Infrastructure, MLOps, security, compliance foundations  
-**5. Build** → Agile development with continuous stakeholder engagement  
-**6. Integrate** → System integration, data pipelines, API development  
-**7. Test & Evaluate** → Comprehensive QA, bias testing, performance validation  
-**8. Prepare & Deploy** → Production readiness, rollout planning, training  
-**9. Operate & Care** → Monitoring, optimization, continuous improvement  
+**1. Pre-sales & Discovery** ? Qualify opportunities, understand business context, identify root causes  
+**2. Mobilise** ? Establish governance, assemble teams, set foundations  
+**3. Hackathons (Prototype)** ? Rapid validation, proof of concepts, fail fast learning  
+**4. Setup Platform** ? Infrastructure, MLOps, security, compliance foundations  
+**5. Build** ? Agile development with continuous stakeholder engagement  
+**6. Integrate** ? System integration, data pipelines, API development  
+**7. Test & Evaluate** ? Comprehensive QA, bias testing, performance validation  
+**8. Prepare & Deploy** ? Production readiness, rollout planning, training  
+**9. Operate & Care** ? Monitoring, optimization, continuous improvement  
 
-**Underpinned by**: 360° Governance | Execution Strategy | Change Management | Value Tracking
+**Underpinned by**: 360� Governance | Execution Strategy | Change Management | Value Tracking
 
 ---
 
@@ -205,11 +205,11 @@ This is a **living methodology** that evolves with:
 - Industry best practices and standards
 - Community feedback and contributions
 
-We believe AI should be **ethical, explainable, and valuable**—not just technically impressive.
+We believe AI should be **ethical, explainable, and valuable**�not just technically impressive.
 
 ---
 
-## 🤝 Executive Coaching & Business Alignment
+## ?? Executive Coaching & Business Alignment
 
 ### Bridging the Business-IT Gap
 
@@ -241,11 +241,11 @@ These materials help Microsoft consultants navigate organizational politics, man
 
 ## Overview
 
-This repository contains comprehensive templates, guides, and documentation for delivering AI projects following Microsoft's AI Frontier delivery methodology. The methodology covers the complete lifecycle from **Vision to Value** with 360° governance, execution strategy, outcomes focus, and continuous change management.
+This repository contains comprehensive templates, guides, and documentation for delivering AI projects following Microsoft's AI Frontier delivery methodology. The methodology covers the complete lifecycle from **Vision to Value** with 360� governance, execution strategy, outcomes focus, and continuous change management.
 
-## 🎯 Methodology Phases
+## ?? Methodology Phases
 
-### **Vision to Value → Discovery → Prototype → Deploy → Scale **
+### **Vision to Value ? Discovery ? Prototype ? Deploy ? Scale **
 
 The methodology follows a structured approach with clear phase gates and outcomes-driven milestones:
 
@@ -259,47 +259,51 @@ The methodology follows a structured approach with clear phase gates and outcome
 8. **Prepare and Deploy** - Production deployment and scaling
 9. **Operate and Care** - Ongoing operations and optimization
 
-Underpinned by **360° Governance and Execution, Strategy, Ops Planning and Change Management**
+Underpinned by **360� Governance and Execution, Strategy, Ops Planning and Change Management**
   
 
 ---
 
-## 📁 Repository Structure
+## ?? Repository Structure
 
 ```
 AI-Delivery-Methodology/
-├── agents/             # 🤖 AI agents for delivery methodology tasks
-│   ├── value_analysis_agent.py  # Value analysis and ROI agent
-│   ├── value_calculator.py      # Advanced financial calculations
-│   ├── example_usage.py         # Pre-built industry examples
-│   ├── README.md               # Comprehensive documentation
-│   └── QUICKSTART.md           # 5-minute quick start guide
-├── calculators/        # 🧮 Interactive web calculators (hosted on GitHub Pages)
-│   ├── value-analysis-chatbot.html  # AI-powered value analysis chatbot
-│   ├── roi-calculator.html          # ROI, NPV, and payback analysis tool
-│   ├── effort-estimator.html        # Effort estimation with story points
-│   ├── css/                         # Styling for calculators
-│   ├── js/                          # Calculator logic
-│   └── GITHUB-PAGES-SETUP.md        # Deployment guide
-├── templates/          # Ready-to-use templates for all deliverables
-├── checklists/         # Phase-specific checklists with 200+ actionable items
-├── guides/             # Detailed implementation guides
-├── infrastructure/     # 🏗️ Azure infrastructure-as-code (Bicep templates)
-│   ├── bicep/         # Infrastructure modules and parameters
-│   │   ├── modules/   # Static Web Apps, AI services, compute, data, security
-│   │   └── main.bicep # Main deployment template
-│   ├── scripts/       # Deployment automation (PowerShell/Bash)
++-- agents/             # ?? AI agents for delivery methodology tasks
+�   +-- value_analysis_agent.py  # Value analysis and ROI agent
+�   +-- value_calculator.py      # Advanced financial calculations
+�   +-- example_usage.py         # Pre-built industry examples
+�   +-- README.md               # Comprehensive documentation
+�   +-- QUICKSTART.md           # 5-minute quick start guide
++-- calculators/        # ?? Interactive web calculators (hosted on GitHub Pages)
+�   +-- value-analysis-chatbot.html  # AI-powered value analysis chatbot
+�   +-- roi-calculator.html          # ROI, NPV, and payback analysis tool
+�   +-- effort-estimator.html        # Effort estimation with story points
+�   +-- css/                         # Styling for calculators
+�   +-- js/                          # Calculator logic
+�   +-- GITHUB-PAGES-SETUP.md        # Deployment guide
++-- templates/          # Ready-to-use templates for all deliverables
++-- checklists/         # Phase-specific checklists with 200+ actionable items
++-- guides/             # Detailed implementation guides
++-- infrastructure/     # ??? Azure infrastructure-as-code (Bicep templates)
+�   +-- bicep/         # Infrastructure modules and parameters
+�   �   +-- modules/   # AI services, compute, networking, security
+�   �   +-- main.bicep # Main deployment template
+�   +-- scripts/       # Deployment automation (PowerShell/Bash)
+�   +-- docs/          # Infrastructure documentation
++-- data/              # ?? Data platform components (Microsoft Fabric)
+�   +-- FABRIC-LANDING-ZONE.md  # Fabric landing zone guide
+�   +-- fabric/        # Fabric infrastructure (scripts, terraform)
 ```
 
 ---
 
-## 🤖 AI Agents for Delivery Teams
+## ?? AI Agents for Delivery Teams
 
-### Value Analysis Agent ✨ **NEW!**
+### Value Analysis Agent ? **NEW!**
 
 **Purpose:** Automate comprehensive value analysis for AI projects with interactive CLI-based agent
 
-**🚀 [Quick Start Guide](./agents/QUICKSTART.md) | 📖 [Full Documentation](./agents/README.md)**
+**?? [Quick Start Guide](./agents/QUICKSTART.md) | ?? [Full Documentation](./agents/README.md)**
 
 **Key Features:**
 - **Interactive Value Analysis** - Guided CLI interface for use case evaluation
@@ -332,22 +336,22 @@ python example_usage.py
 
 **Integration:**
 - Complements [Business Case Template](./templates/02-business-case.md)
-- Supports [Business Envisioning Workshop](./guides/business-envisioning-workshop-guide.md)
+- Supports [Business Envisioning Workshop](./guides/01-business-envisioning-workshop-guide.md)
 - Aligns with [Use Case Template](./templates/14-business-envisioning-use-case-template.md)
 - Works with [Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html) for conversational analysis
 - Pairs with [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) for quick single-use-case analysis
 
 ---
 
-## 🧮 Interactive Tools & Calculators
+## ?? Interactive Tools & Calculators
 
-### 🌐 [View All Calculators](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/)
+### ?? [View All Calculators](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/)
 
-All calculators run entirely in your browser—100% private, no data sent to any server.
+All calculators run entirely in your browser�100% private, no data sent to any server.
 
-### 1. Value Analysis Chatbot 🤖 ✨ **NEW!**
+### 1. Value Analysis Chatbot ?? ? **NEW!**
 
-**🌐 [Launch Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
+**?? [Launch Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**
 
 Interactive AI assistant that guides you through comprehensive value analysis:
 - **Conversational Interface** - Natural chat flow for use case analysis
@@ -361,9 +365,9 @@ Interactive AI assistant that guides you through comprehensive value analysis:
 
 ---
 
-### 2. AI Project ROI Calculator 📊
+### 2. AI Project ROI Calculator ??
 
-**🌐 [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)**
+**?? [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)**
 
 Calculate comprehensive ROI metrics for your AI projects:
 - **Net Present Value (NPV)** - Time-value adjusted returns
@@ -377,9 +381,9 @@ Calculate comprehensive ROI metrics for your AI projects:
 
 ---
 
-### 3. Effort Estimator ⏱️ ✨ **NEW!**
+### 3. Effort Estimator ?? ? **NEW!**
 
-**🌐 [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
+**?? [Launch Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**
 
 Convert project scope into accurate effort estimates:
 - **Journey Phase Selection** - Discovery, MVP, Pilot, Production, Enterprise
@@ -395,11 +399,11 @@ Convert project scope into accurate effort estimates:
 
 ---
 
-[View Calculator Documentation →](./calculators/README.md)
+[View Calculator Documentation ?](./calculators/README.md)
 
 ---
 
-## 🏗️ Azure Deployment Options
+## ??? Azure Deployment Options
 
 ### Option 1: GitHub Pages (Free - For Static Sites)
 
@@ -410,7 +414,7 @@ The calculators are already deployed on GitHub Pages at no cost. Perfect for sta
 2. Push to main branch
 3. Auto-deploys via GitHub Actions
 
-[See GitHub Pages Setup Guide →](./calculators/GITHUB-PAGES-SETUP.md)
+[See GitHub Pages Setup Guide ?](./calculators/GITHUB-PAGES-SETUP.md)
 
 ---
 
@@ -431,7 +435,7 @@ cd infrastructure/scripts
 .\deploy-calculators.ps1
 ```
 
-[See Azure Deployment Guide →](./calculators/DEPLOYMENT.md)
+[See Azure Deployment Guide ?](./calculators/DEPLOYMENT.md)
 
 ---
 
@@ -455,19 +459,19 @@ az deployment subscription create \
   --parameters @parameters/prod.json
 ```
 
-[See Infrastructure Documentation →](./infrastructure/README.md)
+[See Infrastructure Documentation ?](./infrastructure/README.md)
 
 ---
 
-##  │   └── deploy-calculators.ps1  # Azure Static Web App deployment
-│   ├── policies/      # Azure Policy definitions
-│   └── docs/          # Infrastructure documentation
-└── README.md          # This file
+##  �   +-- deploy-calculators.ps1  # Azure Static Web App deployment
+�   +-- policies/      # Azure Policy definitions
+�   +-- docs/          # Infrastructure documentation
++-- README.md          # This file
 ```
 
 ---
 
-## � Choose Your Delivery Track
+## ? Choose Your Delivery Track
 
 Before diving into phase details, select the right approach for your project:
 
@@ -486,7 +490,7 @@ Before diving into phase details, select the right approach for your project:
 - Essential activities only
 - Defer advanced features to Phase 2
 
-[**📖 Read Full 3-Month Fast-Track Guide →**](./guides/3-month-fast-track-guide.md)
+[**?? Read Full 3-Month Fast-Track Guide ?**](./guides/93-3-month-fast-track-guide.md)
 
 ---
 
@@ -505,13 +509,13 @@ Before diving into phase details, select the right approach for your project:
 - 200+ checklists, 20+ templates
 - Full MLOps, governance, scaling
 
-**Continue reading below for detailed phase-by-phase guidance →**
+**Continue reading below for detailed phase-by-phase guidance ?**
 
 ---
 
-## �📋 Available Materials by Phase
+## ??? Available Materials by Phase
 
-### � **Phase 0: Pre-sales & Discovery**
+### ? **Phase 0: Pre-sales & Discovery**
 
 **Purpose**: Qualify AI opportunities and deeply understand business requirements
 
@@ -531,8 +535,8 @@ Before diving into phase details, select the right approach for your project:
 - [Business Envisioning Workshop Checklist](./checklists/business-envisioning-workshop-checklist.md) - Complete workshop preparation and execution guide
 
 **Guides**:
-- [Business Envisioning Workshop Guide](./guides/business-envisioning-workshop-guide.md) - Full-day workshop facilitation guide with detailed activities, **now includes Five Whys root cause analysis technique**
-- [Executive Coaching Guide](./guides/executive-coaching-guide.md) - **NEW!** Comprehensive guide for coaching C-level stakeholders through AI transformation
+- [Business Envisioning Workshop Guide](./guides/01-business-envisioning-workshop-guide.md) - Full-day workshop facilitation guide with detailed activities, **now includes Five Whys root cause analysis technique**
+- [Executive Coaching Guide](./guides/90-executive-coaching-guide.md) - **NEW!** Comprehensive guide for coaching C-level stakeholders through AI transformation
 
 **Industry Use Case Libraries**:
 - [Financial Services Use Cases](./guides/industry-use-cases/financial-services-use-cases.md) - 24 use cases across customer experience, risk, fraud, trading
@@ -546,7 +550,7 @@ Before diving into phase details, select the right approach for your project:
 **Week 0 (Pre-Discovery)**:
 1. **Pre-sales Qualification** - Score opportunity (Business Value, Technical Feasibility, Data Readiness, Client Readiness, Commercial)
 2. **Executive Readiness Assessment** - Assess organizational and executive readiness (55-point assessment)
-3. **Go/No-Go Decision** - Must score ≥35/50 points (qualification) and address any critical readiness gaps
+3. **Go/No-Go Decision** - Must score =35/50 points (qualification) and address any critical readiness gaps
 4. **Stakeholder Identification** - Map key stakeholders and decision-makers
 5. **Executive 1-on-1 Interviews** - Conduct 60-90 min interviews with C-level stakeholders
 6. **Pre-Work Distribution** - Send Business Envisioning pre-work assignment to participants
@@ -586,20 +590,20 @@ Before diving into phase details, select the right approach for your project:
 25. **Go/No-Go Decision** - Decision to proceed to Mobilisation phase
 
 **Deliverables**:
-1. ✅ Opportunity Qualification Report (Pre-sales)
-2. ✅ Business Envisioning Workshop Output (Use cases, prioritization)
-3. ✅ Business Requirements Document (BRD)
-4. ✅ Data Assessment Report
-5. ✅ Solution Architecture Document
-6. ✅ ML Approach Document
-7. ✅ Privacy & Compliance Assessment (GDPR/DPIA)
-8. ✅ Initial Business Case
-9. ✅ Discovery Report with recommendations
+1. ? Opportunity Qualification Report (Pre-sales)
+2. ? Business Envisioning Workshop Output (Use cases, prioritization)
+3. ? Business Requirements Document (BRD)
+4. ? Data Assessment Report
+5. ? Solution Architecture Document
+6. ? ML Approach Document
+7. ? Privacy & Compliance Assessment (GDPR/DPIA)
+8. ? Initial Business Case
+9. ? Discovery Report with recommendations
 
 **Exit Criteria**:
 - [ ] Business requirements documented and approved by stakeholders
 - [ ] At least one use case with clear business value identified
-- [ ] Data sufficiency confirmed (≥7/10 data readiness score)
+- [ ] Data sufficiency confirmed (=7/10 data readiness score)
 - [ ] Technical feasibility validated (architecture feasible, no blocking technical issues)
 - [ ] Risks identified and manageable (no high/critical unmitigatable risks)
 - [ ] Executive sponsorship confirmed
@@ -607,7 +611,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### � **Phase 1: Mobilise and Initiate**
+### ? **Phase 1: Mobilise and Initiate**
 
 **Purpose**: Establish project foundation, governance, and team
 
@@ -627,7 +631,7 @@ Before diving into phase details, select the right approach for your project:
 - [Mobilisation Checklist](./checklists/mobilisation-checklist.md) - 200+ items organized by week
 
 **Guides**:
-- [Mobilisation Complete Guide](./guides/mobilisation-complete-guide.md) - 60+ page comprehensive implementation guide
+- [Mobilisation Complete Guide](./guides/01-mobilisation-complete-guide.md) - 60+ page comprehensive implementation guide
 
 **Sequential Steps**:
 
@@ -664,18 +668,18 @@ Before diving into phase details, select the right approach for your project:
 26. **Sprint 0 Planning** - Prepare for first prototype sprint (backlog grooming, story definition)
 
 **Deliverables**:
-1. ✅ Approved Project Charter
-2. ✅ Approved Business Case
-3. ✅ RACI Matrix
-4. ✅ Detailed Project Plan & Roadmap
-5. ✅ Risk Register (with 18+ identified risks)
-6. ✅ Communication Plan
-7. ✅ Success Criteria & KPIs Dashboard
-8. ✅ Stakeholder Analysis
-9. ✅ Azure Environment (Dev, Test, UAT, Prod)
-10. ✅ Team onboarded and trained
-11. ✅ DevOps pipelines configured
-12. ✅ Sprint backlog for Prototype phase
+1. ? Approved Project Charter
+2. ? Approved Business Case
+3. ? RACI Matrix
+4. ? Detailed Project Plan & Roadmap
+5. ? Risk Register (with 18+ identified risks)
+6. ? Communication Plan
+7. ? Success Criteria & KPIs Dashboard
+8. ? Stakeholder Analysis
+9. ? Azure Environment (Dev, Test, UAT, Prod)
+10. ? Team onboarded and trained
+11. ? DevOps pipelines configured
+12. ? Sprint backlog for Prototype phase
 
 **Exit Criteria**:
 - [ ] Project Charter approved by executive sponsor
@@ -689,7 +693,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### 🔧 **Phase 2: Hackathons (Prototype)**
+### ?? **Phase 2: Hackathons (Prototype)**
 
 **Purpose**: Rapid prototyping with high-velocity sprints to validate ML approach and build MVP
 
@@ -699,7 +703,7 @@ Before diving into phase details, select the right approach for your project:
 - [Hackathons/Prototype Checklist](./checklists/hackathons-prototype-checklist.md) - Sprint-by-sprint activities
 
 **Guides**:
-- [Hackathons Complete Guide](./guides/hackathons-complete-guide.md) - Comprehensive prototyping guide
+- [Hackathons Complete Guide](./guides/02-hackathons-complete-guide.md) - Comprehensive prototyping guide
 
 **Templates**:
 - [Sprint Planning Template](./templates/12-sprint-planning-template.md) - Sprint planning and retrospectives
@@ -761,16 +765,16 @@ Before diving into phase details, select the right approach for your project:
 - Backlog grooming
 
 **Deliverables**:
-1. ✅ Working MVP prototype
-2. ✅ Trained ML models (versioned in model registry)
-3. ✅ APIs for model serving
-4. ✅ Simple UI for demonstration
-5. ✅ Data pipelines (ingestion, preparation, feature engineering)
-6. ✅ Technical documentation (architecture, code, APIs)
-7. ✅ Test results and model performance metrics
-8. ✅ Demo scenarios and user stories
-9. ✅ Lessons learned and technical debt backlog
-10. ✅ Sprint reports and velocity metrics
+1. ? Working MVP prototype
+2. ? Trained ML models (versioned in model registry)
+3. ? APIs for model serving
+4. ? Simple UI for demonstration
+5. ? Data pipelines (ingestion, preparation, feature engineering)
+6. ? Technical documentation (architecture, code, APIs)
+7. ? Test results and model performance metrics
+8. ? Demo scenarios and user stories
+9. ? Lessons learned and technical debt backlog
+10. ? Sprint reports and velocity metrics
 
 **Exit Criteria**:
 - [ ] MVP demonstrates core functionality end-to-end
@@ -785,7 +789,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### 🏗️ **Phase 3: Setup Platform**
+### ??? **Phase 3: Setup Platform**
 
 **Purpose**: Set up production-grade platform, infrastructure, and MLOps foundation
 
@@ -795,10 +799,10 @@ Before diving into phase details, select the right approach for your project:
 - [Setup Platform Checklist](./checklists/setup-platform-checklist.md) - Infrastructure and platform setup
 
 **Guides**:
-- [Setup Platform Complete Guide](./guides/setup-platform-complete-guide.md) - Production platform setup guide
-- [MLOps/DevOps Complete Guide](./guides/mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines (Azure DevOps & GitHub Actions), model registry, automated testing, monitoring
-- [AI Center of Excellence Framework](./guides/ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise (3 CoE models: Centralized, Federated, Hub-and-Spoke)
-- [AI Scaling Patterns Guide](./guides/ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio - component reuse, multi-tenancy, portfolio management
+- [Setup Platform Complete Guide](./guides/03-setup-platform-complete-guide.md) - Production platform setup guide
+- [MLOps/DevOps Complete Guide](./guides/03-mlops-devops-complete-guide.md) - **NEW!** Production ML engineering with CI/CD pipelines (Azure DevOps & GitHub Actions), model registry, automated testing, monitoring
+- [AI Center of Excellence Framework](./guides/91-ai-center-of-excellence-framework.md) - **NEW!** Organizational structure, governance, and shared services for scaling AI across the enterprise (3 CoE models: Centralized, Federated, Hub-and-Spoke)
+- [AI Scaling Patterns Guide](./guides/95-ai-scaling-patterns-guide.md) - **NEW!** Enterprise patterns for scaling from pilots to portfolio - component reuse, multi-tenancy, portfolio management
 
 **Infrastructure** (Deploy in 15 minutes):
 - [Standardized Azure Infrastructure README](./infrastructure/README.md) - **NEW!** Complete infrastructure-as-code guide with compliance built-in (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA)
@@ -846,16 +850,16 @@ Before diving into phase details, select the right approach for your project:
 28. **Platform Validation** - End-to-end validation of platform readiness
 
 **Deliverables**:
-1. ✅ Production Azure environment (fully configured and secured)
-2. ✅ MLOps platform (Azure ML, model registry, feature store)
-3. ✅ CI/CD pipelines (automated deployment)
-4. ✅ Data platform (data lake, pipelines, quality framework)
-5. ✅ Monitoring and observability (dashboards, alerts)
-6. ✅ Security controls (identity, encryption, network security)
-7. ✅ Backup and disaster recovery plan
-8. ✅ Infrastructure documentation and runbooks
-9. ✅ Team trained on platform
-10. ✅ Platform validation report
+1. ? Production Azure environment (fully configured and secured)
+2. ? MLOps platform (Azure ML, model registry, feature store)
+3. ? CI/CD pipelines (automated deployment)
+4. ? Data platform (data lake, pipelines, quality framework)
+5. ? Monitoring and observability (dashboards, alerts)
+6. ? Security controls (identity, encryption, network security)
+7. ? Backup and disaster recovery plan
+8. ? Infrastructure documentation and runbooks
+9. ? Team trained on platform
+10. ? Platform validation report
 
 **Exit Criteria**:
 - [ ] Production environment fully provisioned and secured
@@ -870,7 +874,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### 🏗️ **Phase 4: Build**
+### ??? **Phase 4: Build**
 
 **Purpose**: Build production-ready solution with full features and enterprise-grade quality
 
@@ -880,7 +884,7 @@ Before diving into phase details, select the right approach for your project:
 - [Build Phase Checklist](./checklists/build-phase-checklist.md) - Comprehensive build activities
 
 **Guides**:
-- [Build Phase Complete Guide](./guides/build-phase-complete-guide.md) - Full build phase guide
+- [Build Phase Complete Guide](./guides/04-build-phase-complete-guide.md) - Full build phase guide
 
 **Sequential Steps**:
 
@@ -930,18 +934,18 @@ Before diving into phase details, select the right approach for your project:
 - Risk management
 
 **Deliverables**:
-1. ✅ Production-ready application (all features complete)
-2. ✅ Production ML models (trained, validated, registered)
-3. ✅ Data pipelines (production-grade, monitored)
-4. ✅ APIs (documented, secured, tested)
-5. ✅ User interface (web/mobile, accessible)
-6. ✅ Integrations (all systems integrated and tested)
-7. ✅ Security controls (comprehensive, tested)
-8. ✅ Monitoring and alerting (configured)
-9. ✅ User documentation (complete, reviewed)
-10. ✅ Training materials (user and admin)
-11. ✅ Technical documentation (architecture, deployment, operations)
-12. ✅ Test results (unit, integration, performance)
+1. ? Production-ready application (all features complete)
+2. ? Production ML models (trained, validated, registered)
+3. ? Data pipelines (production-grade, monitored)
+4. ? APIs (documented, secured, tested)
+5. ? User interface (web/mobile, accessible)
+6. ? Integrations (all systems integrated and tested)
+7. ? Security controls (comprehensive, tested)
+8. ? Monitoring and alerting (configured)
+9. ? User documentation (complete, reviewed)
+10. ? Training materials (user and admin)
+11. ? Technical documentation (architecture, deployment, operations)
+12. ? Test results (unit, integration, performance)
 
 **Exit Criteria**:
 - [ ] All MVP features complete and tested
@@ -956,7 +960,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### 🔗 **Phase 5: Integrate**
+### ?? **Phase 5: Integrate**
 
 **Purpose**: Integrate solution with enterprise ecosystem and prepare for end-to-end testing
 
@@ -966,7 +970,7 @@ Before diving into phase details, select the right approach for your project:
 - [Integrate Phase Checklist](./checklists/integrate-phase-checklist.md) - Integration activities
 
 **Guides**:
-- [Integrate Phase Complete Guide](./guides/integrate-phase-complete-guide.md) - Integration guide
+- [Integrate Phase Complete Guide](./guides/05-integrate-phase-complete-guide.md) - Integration guide
 
 **Sequential Steps**:
 
@@ -1007,13 +1011,13 @@ Before diving into phase details, select the right approach for your project:
 28. **Handoff to Test Phase** - Prepare for comprehensive UAT
 
 **Deliverables**:
-1. ✅ All system integrations complete and tested
-2. ✅ Integration test results (all tests passed)
-3. ✅ Integration architecture documentation
-4. ✅ Integration specifications and data mappings
-5. ✅ Integration monitoring dashboards
-6. ✅ Integration runbooks
-7. ✅ Integration sign-off from stakeholders
+1. ? All system integrations complete and tested
+2. ? Integration test results (all tests passed)
+3. ? Integration architecture documentation
+4. ? Integration specifications and data mappings
+5. ? Integration monitoring dashboards
+6. ? Integration runbooks
+7. ? Integration sign-off from stakeholders
 
 **Exit Criteria**:
 - [ ] All planned integrations implemented and tested
@@ -1028,7 +1032,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### ✅ **Phase 6: Test & Evaluate**
+### ? **Phase 6: Test & Evaluate**
 
 **Purpose**: Comprehensive testing, quality assurance, and performance validation
 
@@ -1042,8 +1046,8 @@ Before diving into phase details, select the right approach for your project:
 - [Test & Evaluate Phase Checklist](./checklists/test-evaluate-phase-checklist.md) - Comprehensive testing activities
 
 **Guides**:
-- [Test & Evaluate Phase Complete Guide](./guides/test-evaluate-phase-complete-guide.md) - Complete testing guide with best practices
-- [AI Model Risk Management Guide](./guides/ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense with Python code
+- [Test & Evaluate Phase Complete Guide](./guides/06-test-evaluate-phase-complete-guide.md) - Complete testing guide with best practices
+- [AI Model Risk Management Guide](./guides/96-ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense with Python code
 
 **Sequential Steps**:
 
@@ -1086,16 +1090,16 @@ Before diving into phase details, select the right approach for your project:
 30. **Phase Gate Review** - Steering committee review and approval
 
 **Deliverables**:
-1. ✅ Comprehensive test plan
-2. ✅ Test cases (functional, integration, performance, security)
-3. ✅ UAT results with sign-off
-4. ✅ Performance test results and benchmarks
-5. ✅ Security test results (penetration test report)
-6. ✅ Model validation report (accuracy, fairness, explainability)
-7. ✅ Defect log with resolution status
-8. ✅ Test summary report
-9. ✅ Go-live readiness assessment
-10. ✅ Quality assurance sign-off
+1. ? Comprehensive test plan
+2. ? Test cases (functional, integration, performance, security)
+3. ? UAT results with sign-off
+4. ? Performance test results and benchmarks
+5. ? Security test results (penetration test report)
+6. ? Model validation report (accuracy, fairness, explainability)
+7. ? Defect log with resolution status
+8. ? Test summary report
+9. ? Go-live readiness assessment
+10. ? Quality assurance sign-off
 
 **Exit Criteria**:
 - [ ] UAT sign-off obtained from business stakeholders
@@ -1110,7 +1114,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### 📦 **Phase 7: Prepare and Deploy**
+### ?? **Phase 7: Prepare and Deploy**
 
 **Purpose**: Production deployment, training delivery, and go-live preparation
 
@@ -1120,7 +1124,7 @@ Before diving into phase details, select the right approach for your project:
 - [Prepare & Deploy Phase Checklist](./checklists/prepare-deploy-phase-checklist.md) - Complete deployment activities
 
 **Guides**:
-- [Prepare & Deploy Phase Complete Guide](./guides/prepare-deploy-phase-complete-guide.md) - Comprehensive deployment guide
+- [Prepare & Deploy Phase Complete Guide](./guides/07-prepare-deploy-phase-complete-guide.md) - Comprehensive deployment guide
 
 **Sequential Steps**:
 
@@ -1163,18 +1167,18 @@ Before diving into phase details, select the right approach for your project:
 30. **Daily Status Meetings** - Daily meetings during hypercare period
 
 **Deliverables**:
-1. ✅ Production deployment (application live in production)
-2. ✅ Deployment plan and runbook
-3. ✅ Cutover plan executed
-4. ✅ Training delivered (attendance records, completion certificates)
-5. ✅ Training materials (user guides, admin guides, videos, FAQs)
-6. ✅ User accounts provisioned
-7. ✅ Support infrastructure (helpdesk, ticketing, runbooks)
-8. ✅ Hypercare plan and schedule
-9. ✅ Monitoring dashboards operational
-10. ✅ Go-live communication
-11. ✅ Data migration completed (if applicable)
-12. ✅ Deployment summary report
+1. ? Production deployment (application live in production)
+2. ? Deployment plan and runbook
+3. ? Cutover plan executed
+4. ? Training delivered (attendance records, completion certificates)
+5. ? Training materials (user guides, admin guides, videos, FAQs)
+6. ? User accounts provisioned
+7. ? Support infrastructure (helpdesk, ticketing, runbooks)
+8. ? Hypercare plan and schedule
+9. ? Monitoring dashboards operational
+10. ? Go-live communication
+11. ? Data migration completed (if applicable)
+12. ? Deployment summary report
 
 **Exit Criteria**:
 - [ ] Application successfully deployed to production
@@ -1189,7 +1193,7 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### 🔄 **Phase 8: Operate and Care**
+### ?? **Phase 8: Operate and Care**
 
 **Purpose**: Ongoing operations, optimization, and continuous improvement
 
@@ -1199,8 +1203,8 @@ Before diving into phase details, select the right approach for your project:
 - [Operate & Care Phase Checklist](./checklists/operate-care-phase-checklist.md) - Ongoing operations
 
 **Guides**:
-- [Operate & Care Phase Complete Guide](./guides/operate-care-phase-complete-guide.md) - Operations guide
-- [AI Model Risk Management Guide](./guides/ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense
+- [Operate & Care Phase Complete Guide](./guides/08-operate-care-phase-complete-guide.md) - Operations guide
+- [AI Model Risk Management Guide](./guides/96-ai-model-risk-management-guide.md) - **NEW!** Model monitoring, drift detection & adversarial AI defense
 
 **Sequential Steps**:
 
@@ -1260,16 +1264,16 @@ Before diving into phase details, select the right approach for your project:
 - **Capacity Management** - Scale resources based on demand
 
 **Deliverables**:
-1. ✅ Operations dashboard (real-time system health)
-2. ✅ Monthly performance reports (business, technical, adoption metrics)
-3. ✅ Incident reports and RCA (root cause analysis)
-4. ✅ Model performance reports (accuracy, drift, retraining)
-5. ✅ Value realization report (ROI, cost savings, business value)
-6. ✅ User adoption reports (usage, satisfaction, adoption rate)
-7. ✅ Continuous improvement backlog
-8. ✅ Quarterly business reviews
-9. ✅ Updated documentation and runbooks
-10. ✅ Compliance reports (security, privacy, regulatory)
+1. ? Operations dashboard (real-time system health)
+2. ? Monthly performance reports (business, technical, adoption metrics)
+3. ? Incident reports and RCA (root cause analysis)
+4. ? Model performance reports (accuracy, drift, retraining)
+5. ? Value realization report (ROI, cost savings, business value)
+6. ? User adoption reports (usage, satisfaction, adoption rate)
+7. ? Continuous improvement backlog
+8. ? Quarterly business reviews
+9. ? Updated documentation and runbooks
+10. ? Compliance reports (security, privacy, regulatory)
 
 **Success Criteria (Ongoing)**:
 - [ ] System uptime >99.9% (per SLA)
@@ -1279,76 +1283,76 @@ Before diving into phase details, select the right approach for your project:
 - [ ] User satisfaction >4.0/5
 - [ ] Business KPIs achieved (ROI, cost savings, revenue)
 - [ ] Security incidents <target (zero critical incidents)
-- [ ] Cost within budget (±10%)
+- [ ] Cost within budget (�10%)
 - [ ] Continuous value delivery (quarterly enhancements)
 
 ---
 
-## 🎓 Key Principles
+## ?? Key Principles
 
 The methodology is built on these core principles:
 
-✅ **Vision to Value (production Go-Live)**
+? **Vision to Value (production Go-Live)**
 - Focus on delivering business value, not just technical solutions
 
-✅ **Value Drop on each phase outcomes-driven**
+? **Value Drop on each phase outcomes-driven**
 - Each phase delivers tangible outcomes and value
 
-✅ **Gated on each phase with high velocity build sprint during prototype and build**
+? **Gated on each phase with high velocity build sprint during prototype and build**
 - Clear phase gates with fast-paced development
 
-✅ **Pressure test hackatons with customer business stakeholders, engineers and whole Microsoft (ATU, STU, FDE, ISD and CSU)**
+? **Pressure test hackatons with customer business stakeholders, engineers and whole Microsoft (ATU, STU, FDE, ISD and CSU)**
 - Continuous validation with stakeholders
 
-✅ **Hypercare to ensure full value realised and optimise**
+? **Hypercare to ensure full value realised and optimise**
 - Post-deployment support to maximize ROI
 
 ---
 
-## 🚀 Quick Start Guide
+## ?? Quick Start Guide
 
 ### For New Projects:
 
-#### 1️⃣ **Pre-sales Stage**
+#### 1?? **Pre-sales Stage**
 - Use [Pre-sales Qualification](./templates/11-presales-qualification.md) to assess opportunity
 - Score across 5 dimensions (Business Value, Technical Feasibility, Data Readiness, Client Readiness, Commercial)
 - Make Go/No-Go decision
 
-#### 2️⃣ **Discovery Stage** (2-4 weeks)
+#### 2?? **Discovery Stage** (2-4 weeks)
 - Follow [Discovery Checklist](./checklists/discovery-checklist.md)
 - Complete [Business Requirements Document](./templates/09-business-requirements-document.md)
 - Conduct [Data Assessment](./templates/10-data-assessment-report.md)
 - Design solution architecture
 - Validate with POC (optional but recommended)
 
-#### 3️⃣ **Mobilisation Stage** (2-3 weeks)
+#### 3?? **Mobilisation Stage** (2-3 weeks)
 - Follow [Mobilisation Checklist](./checklists/mobilisation-checklist.md)
 - Complete [Project Charter](./templates/01-project-charter.md)
 - Develop [Business Case](./templates/02-business-case.md)
 - Set up [RACI Matrix](./templates/03-raci-matrix.md)
 - Create [Project Plan](./templates/04-project-plan-roadmap.md)
 
-#### 4️⃣ **Prototype Stage** (4-6 weeks)
+#### 4?? **Prototype Stage** (4-6 weeks)
 - 3-4 x 2-week sprints
 - Daily standups
 - Sprint demos
 - Continuous stakeholder engagement
 
-#### 5️⃣ **Build, Test, Deploy, Operate**
+#### 5?? **Build, Test, Deploy, Operate**
 - Follow phase-specific checklists (coming soon)
-- Maintain 360° governance
+- Maintain 360� governance
 - Track value realization
 
 ---
 
-## 📊 Phase Gate Criteria
+## ?? Phase Gate Criteria
 
 Each phase has clear exit criteria that must be met before proceeding to the next phase. The steering committee reviews these criteria at formal phase gate reviews.
 
-### **Phase Gate 0: Discovery → Mobilisation**
+### **Phase Gate 0: Discovery ? Mobilisation**
 - [ ] Business requirements documented and approved by stakeholders
 - [ ] At least one use case with clear business value identified (ROI >3:1)
-- [ ] Data sufficiency confirmed (data readiness score ≥7/10)
+- [ ] Data sufficiency confirmed (data readiness score =7/10)
 - [ ] Technical feasibility validated (architecture feasible, no blocking technical issues)
 - [ ] Risks identified and manageable (no high/critical unmitigatable risks)
 - [ ] Executive sponsorship confirmed
@@ -1356,7 +1360,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Steering committee approval to proceed
 - [ ] Budget allocated for Mobilisation phase
 
-### **Phase Gate 1: Mobilisation → Prototype**
+### **Phase Gate 1: Mobilisation ? Prototype**
 - [ ] Project Charter approved by executive sponsor
 - [ ] Business Case approved with budget allocated for full project
 - [ ] Full team mobilized and onboarded (all roles filled)
@@ -1367,9 +1371,9 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Sprint 0 complete and backlog ready
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 2: Prototype → Setup Platform**
+### **Phase Gate 2: Prototype ? Setup Platform**
 - [ ] MVP demonstrates core functionality end-to-end
-- [ ] ML model meets minimum accuracy/performance thresholds (≥success criteria)
+- [ ] ML model meets minimum accuracy/performance thresholds (=success criteria)
 - [ ] Stakeholders validate business value of MVP (demo sign-off)
 - [ ] Technical approach proven feasible (no critical blockers)
 - [ ] Data pipelines functional and tested
@@ -1379,7 +1383,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Prototype lessons learned documented
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 3: Setup Platform → Build**
+### **Phase Gate 3: Setup Platform ? Build**
 - [ ] Production environment fully provisioned and secured
 - [ ] MLOps platform operational (CI/CD, model registry, monitoring)
 - [ ] Data platform ready (data lake, pipelines, quality framework)
@@ -1391,7 +1395,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Platform documentation complete
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 4: Build → Integrate**
+### **Phase Gate 4: Build ? Integrate**
 - [ ] All MVP features complete and tested (100% of must-have requirements)
 - [ ] Code quality standards met (test coverage >80%, no critical code issues)
 - [ ] Security requirements met (no high/critical vulnerabilities)
@@ -1402,7 +1406,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Demo to stakeholders successful (sign-off obtained)
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 5: Integrate → Test & Evaluate**
+### **Phase Gate 5: Integrate ? Test & Evaluate**
 - [ ] All planned integrations implemented and tested
 - [ ] Integration test cases passed (>95% success rate)
 - [ ] Data flows validated end-to-end (all systems connected)
@@ -1414,7 +1418,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Integration sign-off from all system owners
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 6: Test & Evaluate → Prepare & Deploy**
+### **Phase Gate 6: Test & Evaluate ? Prepare & Deploy**
 - [ ] UAT sign-off obtained from business stakeholders
 - [ ] All critical and high-priority defects resolved (zero critical, zero high open)
 - [ ] Performance requirements met (latency, throughput, scalability validated)
@@ -1427,7 +1431,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 - [ ] Change management approval obtained
 - [ ] Steering committee approval to proceed
 
-### **Phase Gate 7: Prepare & Deploy → Operate & Care**
+### **Phase Gate 7: Prepare & Deploy ? Operate & Care**
 - [ ] Application successfully deployed to production
 - [ ] Smoke testing passed (all critical functionality working in production)
 - [ ] User training completed (>90% of target users trained)
@@ -1441,7 +1445,7 @@ Each phase has clear exit criteria that must be met before proceeding to the nex
 
 ---
 
-## 📈 Success Metrics
+## ?? Success Metrics
 
 Track success across three dimensions:
 
@@ -1466,7 +1470,7 @@ Track success across three dimensions:
 
 ---
 
-## 🛠️ Tools & Technologies
+## ??? Tools & Technologies
 
 The methodology is designed for **Microsoft Azure** platform:
 
@@ -1480,23 +1484,23 @@ The methodology is designed for **Microsoft Azure** platform:
 
 ---
 
-## 📚 Documentation Standards
+## ?? Documentation Standards
 
 All templates follow these standards:
-- ✅ Markdown format for easy editing
-- ✅ Clear section headers and structure
-- ✅ Actionable checklists with checkboxes
-- ✅ Example content and guidance
-- ✅ Version control and approval tracking
-- ✅ Document control section
+- ? Markdown format for easy editing
+- ? Clear section headers and structure
+- ? Actionable checklists with checkboxes
+- ? Example content and guidance
+- ? Version control and approval tracking
+- ? Document control section
 
 ---
 
-## 🔐 Governance & Compliance
+## ?? Governance & Compliance
 
 The methodology includes built-in governance:
 
-- **360° Governance** across all phases
+- **360� Governance** across all phases
 - **Phase gate reviews** with steering committee
 - **Risk management** throughout lifecycle
 - **Privacy by design** (GDPR, DPIA)
@@ -1505,7 +1509,7 @@ The methodology includes built-in governance:
 
 ---
 
-## 🤝 Contributing
+## ?? Contributing
 
 To contribute to this methodology:
 
@@ -1517,7 +1521,7 @@ To contribute to this methodology:
 
 ---
 
-## 📞 Support
+## ?? Support
 
 For questions, issues, or support:
 - **Project Lead**: [Your Name]
@@ -1526,7 +1530,7 @@ For questions, issues, or support:
 
 ---
 
-## 📝 Version History
+## ?? Version History
 
 | Version | Date | Changes | Author |
 |---------|------|---------|--------|
@@ -1535,42 +1539,42 @@ For questions, issues, or support:
 
 ---
 
-## 🎯 Roadmap
+## ?? Roadmap
 
-**✅ Completed:**
+**? Completed:**
 - Pre-sales & Discovery phase materials
 - Mobilisation & Initiation phase materials
 
-## 📊 Methodology Status
+## ?? Methodology Status
 
-**Overall Completion**: ✅ **100% Complete**
+**Overall Completion**: ? **100% Complete**
 
 | Phase | Templates | Checklists | Guides | Status |
 |-------|-----------|------------|--------|--------|
-| **Phase 0: Pre-sales & Discovery** | ✅ 6 templates | ✅ 2 checklists | ✅ 1 guide + 5 industry use case libraries | ✅ Complete |
-| **Phase 1: Mobilisation** | ✅ 8 templates | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 2: Hackathons (Prototype)** | ✅ 2 templates | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 3: Setup Platform** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 4: Build** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 5: Integrate** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 6: Test & Evaluate** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 7: Prepare & Deploy** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
-| **Phase 8: Operate & Care** | ✅ Included | ✅ 1 checklist | ✅ 1 guide | ✅ Complete |
+| **Phase 0: Pre-sales & Discovery** | ? 6 templates | ? 2 checklists | ? 1 guide + 5 industry use case libraries | ? Complete |
+| **Phase 1: Mobilisation** | ? 8 templates | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 2: Hackathons (Prototype)** | ? 2 templates | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 3: Setup Platform** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 4: Build** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 5: Integrate** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 6: Test & Evaluate** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 7: Prepare & Deploy** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
+| **Phase 8: Operate & Care** | ? Included | ? 1 checklist | ? 1 guide | ? Complete |
 
 **Total Deliverables**:
-- ✅ **2 Delivery Tracks** (3-Month Fast-Track for pilots & POCs, Full Methodology for enterprise solutions)
-- ✅ **20+ Templates** (Project management, business, technical, and responsible AI documentation including Model Cards & Dataset Datasheets)
-- ✅ **10 Phase-Specific Checklists** (200-1,200+ items each)
-- ✅ **15 Complete Implementation Guides** (40-170 pages each):
+- ? **2 Delivery Tracks** (3-Month Fast-Track for pilots & POCs, Full Methodology for enterprise solutions)
+- ? **20+ Templates** (Project management, business, technical, and responsible AI documentation including Model Cards & Dataset Datasheets)
+- ? **10 Phase-Specific Checklists** (200-1,200+ items each)
+- ? **15 Complete Implementation Guides** (40-170 pages each):
   - 3-Month Fast-Track Guide (rapid delivery)
   - Model Risk Management (drift detection, adversarial defenses)
   - MLOps/DevOps (CI/CD pipelines, automation)
   - AI Center of Excellence Framework (organizational scaling)
   - Scaling Patterns (enterprise patterns)
   - Phase-specific guides (10 guides)
-- ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
-- ✅ **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
-- ✅ **Standardized Azure Infrastructure** (Deploy production-ready AI platform in 15 minutes):
+- ? **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
+- ? **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
+- ? **Standardized Azure Infrastructure** (Deploy production-ready AI platform in 15 minutes):
   - Complete Bicep infrastructure-as-code templates (3,500+ lines)
   - 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance)
   - Built-in compliance for 6 frameworks (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA)
@@ -1578,17 +1582,17 @@ For questions, issues, or support:
   - PowerShell and Bash deployment scripts
   - 5 Azure Policy definitions
   - Quick Start Guide for 15-minute deployment
-- ✅ **1,000+ Pages of Documentation** (Guides, best practices, frameworks, code examples)
+- ? **1,000+ Pages of Documentation** (Guides, best practices, frameworks, code examples)
 
 ---
 
-## 📋 Interactive Tools & Planned Enhancements
+## ?? Interactive Tools & Planned Enhancements
 
-**✅ Available Now:**
+**? Available Now:**
 - **Interactive Web Calculators** - Browser-based tools hosted on GitHub Pages:
   - [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) - NPV, payback period, 5-year projections
 
-**🔄 Coming Soon:**
+**?? Coming Soon:**
 - **Additional Calculators**:
   - Effort Estimator (story points to hours/days conversion)
   - Azure Cost Estimator (infrastructure cost modeling)
@@ -1604,7 +1608,7 @@ For questions, issues, or support:
 
 ---
 
-## 📝 Version History
+## ?? Version History
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
@@ -1617,7 +1621,7 @@ For questions, issues, or support:
 | **1.6** | January 9, 2026 | Andreas Wasita | Added Prepare & Deploy Phase checklist and guide (Phase 7) |
 | **1.7** | January 10, 2026 | Andreas Wasita | **Complete methodology - All 9 phases with comprehensive materials** |
 | **1.8** | January 10, 2026 | Andreas Wasita | **Enhanced Business Envisioning materials with Five Whys root cause analysis technique** - Added comprehensive Five Whys framework, industry examples, facilitation guide, and integration into templates |
-| **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% → 95%) and High Risk in Emerging Tech (70% → 95%) |
+| **2.0** | January 12, 2026 | Andreas Wasita | **Major Enhancement: Scalability & Responsible AI** - Added AI Model Risk Management Guide (170 pages, drift detection, adversarial defenses with Python), MLOps/DevOps Complete Guide (CI/CD pipelines), AI Center of Excellence Framework (3 CoE models), AI Scaling Patterns Guide (enterprise scaling patterns), Model Card Template, Dataset Datasheet Template. Addresses Limited Scalability (70% ? 95%) and High Risk in Emerging Tech (70% ? 95%) |
 | **2.1** | January 12, 2026 | Andreas Wasita | **Added 3-Month Fast-Track Guide** - Compressed methodology for rapid AI project delivery (pilots, POCs, quick wins). Includes week-by-week timeline, simplified templates, minimum viable team (5-8 people), budget estimates ($250-450K), and pre-flight readiness checklist. Perfect for teams needing results in 3 months. |
 | **2.2** | January 13, 2026 | Andreas Wasita | **Standardized Azure Infrastructure** - Added complete infrastructure-as-code templates (3,500+ lines of Bicep), 7 infrastructure modules (networking, security, monitoring, data, AI services, compute, governance), built-in compliance for 6 frameworks (GDPR, SOC 2, ISO 27001, PCI-DSS, APRA CPS 234, HIPAA), 4 environment configurations, PowerShell/Bash deployment scripts, 5 Azure Policy definitions, and Quick Start Guide for 15-minute deployment. Cost estimates: Dev $1.5-3K, Test $3-5K, Prod $10-25K per month. |
 
@@ -1625,19 +1629,19 @@ For questions, issues, or support:
 
 ---
 
-## 📄 License
+## ?? License
 
 This methodology is based on Microsoft's AI Frontier best practices and is intended for use in delivering AI projects. All content is provided as-is for educational and professional use.
 
 ---
 
-## ⭐ Acknowledgments
+## ? Acknowledgments
 
 Based on Microsoft's AI Frontier Delivery Methodology and best practices from successful AI implementations across industries. Special thanks to the Microsoft field delivery teams, solution architects, and data scientists who contributed their expertise and lessons learned.
 
 ---
 
-## 📞 Contact & Support
+## ?? Contact & Support
 
 For questions, feedback, or contributions:
 - **Repository**: https://github.com/andreaswasita/AI-Delivery-Methodology
@@ -1648,10 +1652,10 @@ For questions, feedback, or contributions:
 
 **Last Updated**: January 13, 2026  
 **Version**: 2.2  
-**Status**: ✅ Complete + Enhanced + Infrastructure
+**Status**: ? Complete + Enhanced + Infrastructure
 
 ---
 
-## 🎉 Thank You!
+## ?? Thank You!
 
-Thank you for using the AI Delivery Methodology! We hope these materials help you deliver successful AI projects that create real business value. Remember: the journey from vision to value requires discipline, collaboration, and continuous improvement. Good luck with your AI implementations! 🚀
+Thank you for using the AI Delivery Methodology! We hope these materials help you deliver successful AI projects that create real business value. Remember: the journey from vision to value requires discipline, collaboration, and continuous improvement. Good luck with your AI implementations! ??

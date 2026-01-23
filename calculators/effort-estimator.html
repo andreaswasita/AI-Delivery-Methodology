@@ -302,6 +302,59 @@
                     </label>
                 </div>
 
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="customAllocations" onchange="toggleAllocations()">
+                        Customize Role Allocations (Part-Time)
+                    </label>
+                    <small>Adjust team member allocations (e.g., Product Owner at 50%, QA at 25% initially)</small>
+                </div>
+
+                <div id="allocationControls" style="display: none; background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4 style="margin-top: 0; color: #333; font-size: 0.95rem;">Role Allocations (% FTE)</h4>
+                    <small style="display: block; margin-bottom: 1rem; color: #666;">These apply to the team composition breakdown below</small>
+                    
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>Product Manager</span>
+                            <span class="allocation-value"><span id="pmAllocationValue">50</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="pmAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>Architect / Tech Lead</span>
+                            <span class="allocation-value"><span id="architectAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="architectAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>ML Engineers / Developers</span>
+                            <span class="allocation-value"><span id="mlAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="mlAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>QA Engineers</span>
+                            <span class="allocation-value"><span id="qaAllocationValue">25</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="25" step="5" class="slider" id="qaAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>DevOps Engineer</span>
+                            <span class="allocation-value"><span id="devopsAllocationValue">50</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="devopsAllocation">
+                    </div>
+                </div>
+
                 <button class="calculate-btn" onclick="calculateEffort()">📊 Calculate Effort</button>
             </div>
 
@@ -369,6 +422,33 @@
                 velocityPerFTE: 4  // story points per sprint per FTE
             }
         };
+
+        function toggleAllocations() {
+            const checkbox = document.getElementById('customAllocations');
+            const controls = document.getElementById('allocationControls');
+            controls.style.display = checkbox.checked ? 'block' : 'none';
+        }
+
+        // Setup allocation sliders
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliders = [
+                { slider: 'pmAllocation', display: 'pmAllocationValue' },
+                { slider: 'architectAllocation', display: 'architectAllocationValue' },
+                { slider: 'mlAllocation', display: 'mlAllocationValue' },
+                { slider: 'qaAllocation', display: 'qaAllocationValue' },
+                { slider: 'devopsAllocation', display: 'devopsAllocationValue' }
+            ];
+
+            sliders.forEach(item => {
+                const slider = document.getElementById(item.slider);
+                const display = document.getElementById(item.display);
+                if (slider && display) {
+                    slider.addEventListener('input', function() {
+                        display.textContent = this.value;
+                    });
+                }
+            });
+        });
 
         function calculateStoryPoints() {
             const complexity = document.getElementById('complexity').value;
@@ -545,9 +625,11 @@
             roles.forEach(role => {
                 const roleDiv = document.createElement('div');
                 roleDiv.className = 'role-item';
+                const allocationText = role.allocation < 1.0 ? ` @ ${Math.round(role.allocation * 100)}%` : '';
+                const fteDisplay = role.fte ? role.fte.toFixed(2) : role.count;
                 roleDiv.innerHTML = `
                     <span><strong>${role.title}</strong></span>
-                    <span>${role.count} FTE (${role.percentage}%)</span>
+                    <span>${fteDisplay} FTE${allocationText} (${role.percentage})</span>
                 `;
                 teamCompositionDiv.appendChild(roleDiv);
             });
@@ -593,40 +675,65 @@
         }
 
         function calculateTeamComposition(teamSize, complexity) {
+            // Check if custom allocations are enabled
+            const customAllocations = document.getElementById('customAllocations').checked;
+            
+            // Get custom allocation percentages
+            const allocations = customAllocations ? {
+                pm: parseInt(document.getElementById('pmAllocation').value) / 100,
+                architect: parseInt(document.getElementById('architectAllocation').value) / 100,
+                ml: parseInt(document.getElementById('mlAllocation').value) / 100,
+                qa: parseInt(document.getElementById('qaAllocation').value) / 100,
+                devops: parseInt(document.getElementById('devopsAllocation').value) / 100
+            } : null;
+
             // Base percentages
             let roles = [];
 
             if (teamSize <= 3) {
                 // Small team
+                const architectCount = 1;
+                const mlCount = Math.max(1, teamSize - 2);
+                const qaDevopsCount = 1;
+
                 roles = [
-                    { title: 'Tech Lead / Architect', count: 1, percentage: '33%' },
-                    { title: 'ML Engineers / Developers', count: Math.max(1, teamSize - 2), percentage: `${Math.round((teamSize-2)/teamSize*100)}%` },
-                    { title: 'QA / DevOps', count: 1, percentage: '33%' }
+                    { title: 'Tech Lead / Architect', count: architectCount, fte: customAllocations ? architectCount * allocations.architect : architectCount, allocation: customAllocations ? allocations.architect : 1.0, percentage: '33%' },
+                    { title: 'ML Engineers / Developers', count: mlCount, fte: customAllocations ? mlCount * allocations.ml : mlCount, allocation: customAllocations ? allocations.ml : 1.0, percentage: `${Math.round((teamSize-2)/teamSize*100)}%` },
+                    { title: 'QA / DevOps', count: qaDevopsCount, fte: customAllocations ? qaDevopsCount * ((allocations.qa + allocations.devops) / 2) : qaDevopsCount, allocation: customAllocations ? (allocations.qa + allocations.devops) / 2 : 1.0, percentage: '33%' }
                 ];
             } else if (teamSize <= 8) {
                 // Medium team
                 const mlEngineers = Math.ceil(teamSize * 0.5);
-                const qaDevOps = Math.ceil(teamSize * 0.2);
+                const qaCount = Math.max(1, Math.floor(teamSize * 0.2 / 2));
+                const devopsCount = Math.max(1, Math.ceil(teamSize * 0.2 / 2));
                 const architect = 1;
                 const pm = 1;
                 
                 roles = [
-                    { title: 'Product Manager', count: pm, percentage: '12%' },
-                    { title: 'Solution Architect', count: architect, percentage: '12%' },
-                    { title: 'ML Engineers / Developers', count: mlEngineers, percentage: '50%' },
-                    { title: 'QA Engineers', count: Math.max(1, Math.floor(qaDevOps/2)), percentage: '13%' },
-                    { title: 'DevOps Engineer', count: Math.max(1, Math.ceil(qaDevOps/2)), percentage: '13%' }
+                    { title: 'Product Manager', count: pm, fte: customAllocations ? pm * allocations.pm : pm, allocation: customAllocations ? allocations.pm : 1.0, percentage: '12%' },
+                    { title: 'Solution Architect', count: architect, fte: customAllocations ? architect * allocations.architect : architect, allocation: customAllocations ? allocations.architect : 1.0, percentage: '12%' },
+                    { title: 'ML Engineers / Developers', count: mlEngineers, fte: customAllocations ? mlEngineers * allocations.ml : mlEngineers, allocation: customAllocations ? allocations.ml : 1.0, percentage: '50%' },
+                    { title: 'QA Engineers', count: qaCount, fte: customAllocations ? qaCount * allocations.qa : qaCount, allocation: customAllocations ? allocations.qa : 1.0, percentage: '13%' },
+                    { title: 'DevOps Engineer', count: devopsCount, fte: customAllocations ? devopsCount * allocations.devops : devopsCount, allocation: customAllocations ? allocations.devops : 1.0, percentage: '13%' }
                 ];
             } else {
                 // Large team
+                const pmCount = 1;
+                const architectCount = 1;
+                const techLeadCount = 1;
+                const mlCount = Math.ceil(teamSize * 0.4);
+                const devCount = Math.ceil(teamSize * 0.2);
+                const qaCount = Math.ceil(teamSize * 0.08);
+                const devopsCount = Math.ceil(teamSize * 0.08);
+
                 roles = [
-                    { title: 'Product Manager', count: 1, percentage: '8%' },
-                    { title: 'Solution Architect', count: 1, percentage: '8%' },
-                    { title: 'Tech Lead', count: 1, percentage: '8%' },
-                    { title: 'ML Engineers / Data Scientists', count: Math.ceil(teamSize * 0.4), percentage: '40%' },
-                    { title: 'Software Engineers', count: Math.ceil(teamSize * 0.2), percentage: '20%' },
-                    { title: 'QA Engineers', count: Math.ceil(teamSize * 0.08), percentage: '8%' },
-                    { title: 'DevOps Engineer', count: Math.ceil(teamSize * 0.08), percentage: '8%' }
+                    { title: 'Product Manager', count: pmCount, fte: customAllocations ? pmCount * allocations.pm : pmCount, allocation: customAllocations ? allocations.pm : 1.0, percentage: '8%' },
+                    { title: 'Solution Architect', count: architectCount, fte: customAllocations ? architectCount * allocations.architect : architectCount, allocation: customAllocations ? allocations.architect : 1.0, percentage: '8%' },
+                    { title: 'Tech Lead', count: techLeadCount, fte: customAllocations ? techLeadCount * allocations.architect : techLeadCount, allocation: customAllocations ? allocations.architect : 1.0, percentage: '8%' },
+                    { title: 'ML Engineers / Data Scientists', count: mlCount, fte: customAllocations ? mlCount * allocations.ml : mlCount, allocation: customAllocations ? allocations.ml : 1.0, percentage: '40%' },
+                    { title: 'Software Engineers', count: devCount, fte: customAllocations ? devCount * allocations.ml : devCount, allocation: customAllocations ? allocations.ml : 1.0, percentage: '20%' },
+                    { title: 'QA Engineers', count: qaCount, fte: customAllocations ? qaCount * allocations.qa : qaCount, allocation: customAllocations ? allocations.qa : 1.0, percentage: '8%' },
+                    { title: 'DevOps Engineer', count: devopsCount, fte: customAllocations ? devopsCount * allocations.devops : devopsCount, allocation: customAllocations ? allocations.devops : 1.0, percentage: '8%' }
                 ];
             }
 
@@ -669,7 +776,11 @@ PHASE BREAKDOWN:
 ${data.phases.map(p => `- ${p.name}: ${p.hours.toLocaleString()} hrs (${p.percentage}%)`).join('\n')}
 
 TEAM COMPOSITION:
-${data.teamComposition.map(r => `- ${r.title}: ${r.count} FTE (${r.percentage})`).join('\n')}
+${data.teamComposition.map(r => {
+                const fte = r.fte || r.count;
+                const allocationText = r.allocation && r.allocation < 1.0 ? ` @ ${Math.round(r.allocation * 100)}%` : '';
+                return `- ${r.title}: ${typeof fte === 'number' ? fte.toFixed(2) : fte} FTE${allocationText} (${r.percentage})`;
+            }).join('\n')}
             `.trim();
 
             navigator.clipboard.writeText(summary).then(() => {

@@ -72,19 +72,6 @@ infrastructure/
 │       ├── uat.parameters.json
 │       └── prod.parameters.json
 │
-├── terraform/                         # Terraform alternative
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-│   └── modules/
-│       ├── networking/
-│       ├── compute/
-│       ├── ai-services/
-│       ├── data/
-│       ├── security/
-│       ├── monitoring/
-│       └── governance/
-│
 ├── scripts/                           # Deployment and setup scripts
 │   ├── deploy.ps1                     # PowerShell deployment
 │   ├── deploy.sh                      # Bash deployment
@@ -104,6 +91,8 @@ infrastructure/
     ├── compliance-mapping.md          # Compliance controls mapping
     ├── security-baseline.md           # Security configuration
     └── runbook.md                     # Operations guide
+
+**Note:** Microsoft Fabric components (landing zones, scripts, terraform) have been moved to the `../data/` directory for better organization of data platform resources.
 ```
 
 ---
@@ -163,12 +152,11 @@ $environment = "prod"
 | | Azure Machine Learning | ML model training and deployment | SOC 2, ISO 27001 |
 | | Azure OpenAI | GPT-4, embeddings, chat | GDPR, SOC 2 |
 | | Cognitive Services | Vision, Speech, Language | GDPR, HIPAA |
-| **Data Layer** | Microsoft Fabric | Unified analytics: Lakehouse, Data Factory, Synapse, Power BI (recommended) | GDPR, SOC 2, ISO 27001 |
-| | Dataverse | Low-code data platform with security roles (Power Platform) | GDPR, SOC 2 |
-| | Azure Data Lake Gen2 | Data storage with hierarchical namespace | GDPR, PCI-DSS |
+| **Data Layer** | Azure Data Lake Gen2 | Data storage with hierarchical namespace | GDPR, PCI-DSS |
 | | Azure SQL Database | Relational data with TDE | PCI-DSS, SOC 2 |
 | | Cosmos DB | NoSQL for low-latency scenarios | GDPR, SOC 2 |
 | | Azure Synapse | Data warehousing and analytics | GDPR, ISO 27001 |
+| | *For Microsoft Fabric*, see `../data/` directory | Unified analytics platform | GDPR, SOC 2, ISO 27001 |
 | **Compute** | Azure Kubernetes Service | Container orchestration | SOC 2, ISO 27001 |
 | | GPU VM Scale Sets | High-performance model training | ISO 27001 |
 | **Security** | Azure Key Vault | Secrets, keys, certificates management | PCI-DSS, SOC 2 |

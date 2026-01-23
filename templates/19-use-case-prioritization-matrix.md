@@ -680,7 +680,7 @@ Rank by ROI % (Metric 5) only:
    - [Data Assessment](10-data-assessment-report.md)
    - [Risk Register](05-risk-register.md)
    - [Project Charter](01-project-charter.md)
-3. ✅ **Platform planning** - If shared platform needed, start [Setup Platform phase](../guides/setup-platform-complete-guide.md)
+3. ✅ **Platform planning** - If shared platform needed, start [Setup Platform phase](../guides/03-setup-platform-complete-guide.md)
 4. ✅ **Kickoff Wave 1** - Formal project kickoff for first use case
 
 ### 9.3 Medium-term (Months 2-3)

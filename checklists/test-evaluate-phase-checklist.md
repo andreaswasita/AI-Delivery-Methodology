@@ -1257,9 +1257,9 @@
 
 ---
 
-**Next Phase**: [Prepare & Deploy Phase](../guides/prepare-deploy-phase-complete-guide.md)
+**Next Phase**: [Prepare & Deploy Phase](../guides/07-prepare-deploy-phase-complete-guide.md)
 
 **Related Documents**:
-- [Test & Evaluate Phase Complete Guide](../guides/test-evaluate-phase-complete-guide.md)
+- [Test & Evaluate Phase Complete Guide](../guides/06-test-evaluate-phase-complete-guide.md)
 - [Master Test Plan Template](../templates/test-plan-template.md)
 - [UAT Sign-Off Template](../templates/uat-sign-off-template.md)

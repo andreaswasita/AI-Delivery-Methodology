@@ -215,7 +215,7 @@ A: The agent will show "Never" for payback period. Review if this is strategic (
 
 - **Documentation**: See [agents/README.md](README.md) for full guide
 - **Templates**: Check [../templates/](../templates/) for integration examples
-- **Methodology**: Review [../guides/business-envisioning-workshop-guide.md](../guides/business-envisioning-workshop-guide.md)
+- **Methodology**: Review [../guides/01-business-envisioning-workshop-guide.md](../guides/01-business-envisioning-workshop-guide.md)
 
 ---
 

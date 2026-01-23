@@ -455,4 +455,4 @@ Your responses will be shared with the workshop facilitation team and may be sum
 
 **Document Version:** 1.0  
 **Last Updated:** January 9, 2026  
-**Part of:** [AI Delivery Methodology - Business Envisioning Workshop](../guides/business-envisioning-workshop-guide.md)
+**Part of:** [AI Delivery Methodology - Business Envisioning Workshop](../guides/01-business-envisioning-workshop-guide.md)
