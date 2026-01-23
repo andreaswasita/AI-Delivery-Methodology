@@ -28,6 +28,12 @@ class ValueAnalysisChatbot {
         this.apiKeyBtn = document.getElementById('apiKeyBtn');
         this.quickReplies = document.getElementById('quickReplies');
         
+        // Check if all elements exist
+        if (!this.chatMessages || !this.userInput || !this.sendBtn || !this.resetBtn || !this.apiKeyBtn || !this.quickReplies) {
+            console.error('One or more required DOM elements not found');
+            return;
+        }
+        
         // Event listeners
         this.sendBtn.addEventListener('click', () => this.handleSend());
         this.userInput.addEventListener('keypress', (e) => {
@@ -44,6 +50,8 @@ class ValueAnalysisChatbot {
     }
 
     updateProviderIndicator() {
+        if (!this.apiKeyBtn) return;
+        
         if (this.state.aiProvider) {
             this.apiKeyBtn.classList.add('has-provider');
             this.apiKeyBtn.title = `AI Provider: ${this.state.aiProvider === 'anthropic' ? 'Anthropic Claude' : 'Microsoft Copilot Studio'}`;
@@ -1124,7 +1132,10 @@ Keep your response concise, actionable, and focused on executive decision-making
                 currentUseCase: {},
                 costs: [],
                 currentCost: {},
-                discountRate: 0.10
+                discountRate: 0.10,
+                anthropicApiKey: localStorage.getItem('anthropic_api_key') || '',
+                copilotEndpoint: localStorage.getItem('copilot_endpoint') || '',
+                aiProvider: localStorage.getItem('ai_provider') || ''
             };
             this.messages = [];
             this.chatMessages.innerHTML = '';
