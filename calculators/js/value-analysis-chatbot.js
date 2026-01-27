@@ -1176,18 +1176,6 @@ Keep your response concise, actionable, and focused on executive decision-making
             ]);
         }, 500);
     }
-        
-        setTimeout(() => {
-            this.addBotMessage('Would you like to view the detailed report or export the data?');
-            this.showQuickReplies([
-                { label: '📄 View Full Report', value: 'report' },
-                { label: '📥 Export JSON', value: 'json' },
-                { label: '🔄 Start Over', value: 'reset' }
-            ]);
-            this.state.stage = 'final_actions';
-            this.state.analysis = analysis;
-        }, 500);
-    }
 
     addBotMessage(text, callback, delay = 300) {
         setTimeout(() => {
