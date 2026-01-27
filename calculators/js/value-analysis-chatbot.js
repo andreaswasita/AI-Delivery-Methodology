@@ -3,6 +3,10 @@
 
 class ValueAnalysisChatbot {
     constructor() {
+        // OPTION: Hardcode your API key here for testing (remove before committing to git!)
+        const HARDCODED_ANTHROPIC_KEY = ''; // Set your key here like: 'sk-ant-...'
+        const HARDCODED_COPILOT_ENDPOINT = ''; // Set your endpoint here
+        
         this.state = {
             stage: 'welcome',
             projectName: '',
@@ -11,9 +15,9 @@ class ValueAnalysisChatbot {
             costs: [],
             currentCost: {},
             discountRate: 0.10,
-            anthropicApiKey: localStorage.getItem('anthropic_api_key') || '',
-            copilotEndpoint: localStorage.getItem('copilot_endpoint') || '',
-            aiProvider: localStorage.getItem('ai_provider') || '' // 'anthropic' or 'copilot'
+            anthropicApiKey: HARDCODED_ANTHROPIC_KEY || localStorage.getItem('anthropic_api_key') || '',
+            copilotEndpoint: HARDCODED_COPILOT_ENDPOINT || localStorage.getItem('copilot_endpoint') || '',
+            aiProvider: localStorage.getItem('ai_provider') || (HARDCODED_ANTHROPIC_KEY ? 'anthropic' : (HARDCODED_COPILOT_ENDPOINT ? 'copilot' : ''))
         };
         
         this.messages = [];
@@ -21,6 +25,8 @@ class ValueAnalysisChatbot {
     }
 
     init() {
+        console.log('🤖 Initializing Value Analysis Chatbot...');
+        
         this.chatMessages = document.getElementById('chatMessages');
         this.userInput = document.getElementById('userInput');
         this.sendBtn = document.getElementById('sendBtn');
@@ -29,23 +35,56 @@ class ValueAnalysisChatbot {
         this.quickReplies = document.getElementById('quickReplies');
         
         // Check if all elements exist
-        if (!this.chatMessages || !this.userInput || !this.sendBtn || !this.resetBtn || !this.apiKeyBtn || !this.quickReplies) {
-            console.error('One or more required DOM elements not found');
+        const missingElements = [];
+        if (!this.chatMessages) missingElements.push('chatMessages');
+        if (!this.userInput) missingElements.push('userInput');
+        if (!this.sendBtn) missingElements.push('sendBtn');
+        if (!this.resetBtn) missingElements.push('resetBtn');
+        if (!this.apiKeyBtn) missingElements.push('apiKeyBtn');
+        if (!this.quickReplies) missingElements.push('quickReplies');
+        
+        if (missingElements.length > 0) {
+            console.error('❌ Missing DOM elements:', missingElements.join(', '));
+            alert('Chatbot initialization failed. Missing elements: ' + missingElements.join(', '));
             return;
         }
         
+        console.log('✅ All DOM elements found');
+        
         // Event listeners
-        this.sendBtn.addEventListener('click', () => this.handleSend());
-        this.userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.handleSend();
+        this.sendBtn.addEventListener('click', () => {
+            console.log('📤 Send button clicked');
+            this.handleSend();
         });
-        this.resetBtn.addEventListener('click', () => this.reset());
-        this.apiKeyBtn.addEventListener('click', () => this.manageApiKey());
+        this.userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                console.log('⌨️ Enter key pressed');
+                this.handleSend();
+            }
+        });
+        this.resetBtn.addEventListener('click', () => {
+            console.log('🔄 Reset button clicked');
+            this.reset();
+        });
+        this.apiKeyBtn.addEventListener('click', () => {
+            console.log('🔑 API Key button clicked');
+            this.manageApiKey();
+        });
+        
+        console.log('✅ Event listeners attached');
         
         // Update button visual if provider is configured
         this.updateProviderIndicator();
         
+        // Log current state
+        console.log('📊 Current state:', {
+            hasAnthropicKey: !!this.state.anthropicApiKey,
+            hasCopilotEndpoint: !!this.state.copilotEndpoint,
+            aiProvider: this.state.aiProvider
+        });
+        
         // Start conversation
+        console.log('🚀 Starting conversation...');
         this.showWelcome();
     }
 
@@ -116,17 +155,24 @@ class ValueAnalysisChatbot {
 
     handleSend() {
         const message = this.userInput.value.trim();
-        if (!message) return;
+        console.log('📨 handleSend called, message:', message);
+        
+        if (!message) {
+            console.log('⚠️ Empty message, ignoring');
+            return;
+        }
         
         this.addUserMessage(message);
         this.userInput.value = '';
         
         // Process based on current stage
+        console.log('🔄 Processing input for stage:', this.state.stage);
         this.processInput(message);
     }
 
     processInput(input) {
         const stage = this.state.stage;
+        console.log(`🎯 processInput - Stage: ${stage}, Input: ${input}`);
         
         switch(stage) {
             case 'project_name':
@@ -1083,16 +1129,19 @@ Keep your response concise, actionable, and focused on executive decision-making
     }
 
     showQuickReplies(replies) {
+        console.log('💬 Showing quick replies:', replies.length, 'buttons');
         this.clearQuickReplies();
-        replies.forEach(reply => {
+        replies.forEach((reply, index) => {
             const btn = document.createElement('button');
             btn.className = 'quick-reply-btn';
             btn.textContent = reply.label;
             btn.addEventListener('click', () => {
+                console.log(`🖱️ Quick reply clicked: ${reply.label} (value: ${reply.value})`);
                 this.addUserMessage(reply.label);
                 this.processInput(reply.value);
             });
             this.quickReplies.appendChild(btn);
+            console.log(`  ✅ Button ${index + 1}: ${reply.label}`);
         });
     }
 
