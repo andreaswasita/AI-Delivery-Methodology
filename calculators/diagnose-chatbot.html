@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Live Diagnostics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .panel {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .panel h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .status {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #eventLog {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Value Analysis Chatbot - Live Diagnostics</h1>
+    
+    <div class="panel">
+        <h2>Quick Tests</h2>
+        <button onclick="runAllTests()">🔄 Run All Tests</button>
+        <button onclick="testSendButton()">📤 Test Send Button</button>
+        <button onclick="testEventListeners()">🎧 Test Event Listeners</button>
+        <button onclick="simulateUserInput()">⌨️ Simulate User Input</button>
+        <button onclick="checkChatbotState()">📊 Check State</button>
+        <button onclick="clearLog()">🗑️ Clear Log</button>
+    </div>
+    
+    <div class="panel">
+        <h2>Live Event Log</h2>
+        <div id="eventLog">Waiting for events...</div>
+    </div>
+    
+    <div class="panel">
+        <h2>Test Results</h2>
+        <div id="testResults"></div>
+    </div>
+    
+    <div class="panel">
+        <h2>Chatbot Instance</h2>
+        <iframe id="chatbotFrame" src="value-analysis-chatbot.html"></iframe>
+    </div>
+    
+    <script>
+        const eventLog = [];
+        
+        function logEvent(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}`;
+            eventLog.push(logEntry);
+            updateLog();
+        }
+        
+        function updateLog() {
+            const logDiv = document.getElementById('eventLog');
+            if (eventLog.length === 0) {
+                logDiv.textContent = 'No events logged yet...';
+            } else {
+                logDiv.textContent = eventLog.slice(-100).join('\n');
+                logDiv.scrollTop = logDiv.scrollHeight;
+            }
+        }
+        
+        function clearLog() {
+            eventLog.length = 0;
+            updateLog();
+            logEvent('✅ Log cleared');
+        }
+        
+        function addTestResult(title, passed, details) {
+            const resultsDiv = document.getElementById('testResults');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'test-result';
+            resultDiv.style.borderLeftColor = passed ? '#28a745' : '#dc3545';
+            resultDiv.innerHTML = `
+                <strong>${passed ? '✅' : '❌'} ${title}</strong><br>
+                <small>${details}</small>
+            `;
+            resultsDiv.appendChild(resultDiv);
+        }
+        
+        function getChatbot() {
+            const iframe = document.getElementById('chatbotFrame');
+            try {
+                return iframe.contentWindow.chatbot;
+            } catch (e) {
+                logEvent('❌ Cannot access iframe: ' + e.message, 'error');
+                return null;
+            }
+        }
+        
+        function testSendButton() {
+            logEvent('🧪 Testing Send Button...');
+            const chatbot = getChatbot();
+            
+            if (!chatbot) {
+                addTestResult('Send Button Test', false, 'Cannot access chatbot instance');
+                return;
+            }
+            
+            const sendBtn = chatbot.sendBtn;
+            logEvent('  - Send button element: ' + (sendBtn ? 'Found' : 'Not found'));
+            
+            if (sendBtn) {
+                logEvent('  - Attempting to click send button...');
+                try {
+                    sendBtn.click();
+                    logEvent('  ✅ Click executed successfully');
+                    addTestResult('Send Button Test', true, 'Button clicked successfully');
+                } catch (e) {
+                    logEvent('  ❌ Click failed: ' + e.message);
+                    addTestResult('Send Button Test', false, 'Click error: ' + e.message);
+                }
+            } else {
+                addTestResult('Send Button Test', false, 'Send button not found');
+            }
+        }
+        
+        function testEventListeners() {
+            logEvent('🧪 Testing Event Listeners...');
+            const chatbot = getChatbot();
+            
+            if (!chatbot) {
+                addTestResult('Event Listeners Test', false, 'Cannot access chatbot');
+                return;
+            }
+            
+            const elements = {
+                sendBtn: chatbot.sendBtn,
+                userInput: chatbot.userInput,
+                resetBtn: chatbot.resetBtn,
+                apiKeyBtn: chatbot.apiKeyBtn
+            };
+            
+            let allFound = true;
+            for (const [name, element] of Object.entries(elements)) {
+                const found = !!element;
+                logEvent(`  - ${name}: ${found ? '✅' : '❌'}`);
+                if (!found) allFound = false;
+            }
+            
+            addTestResult('Event Listeners Test', allFound, 
+                allFound ? 'All elements found and accessible' : 'Some elements missing');
+        }
+        
+        function simulateUserInput() {
+            logEvent('🧪 Simulating User Input...');
+            const chatbot = getChatbot();
+            
+            if (!chatbot) {
+                addTestResult('User Input Simulation', false, 'Cannot access chatbot');
+                return;
+            }
+            
+            const userInput = chatbot.userInput;
+            const sendBtn = chatbot.sendBtn;
+            
+            if (!userInput || !sendBtn) {
+                logEvent('  ❌ Missing input or button');
+                addTestResult('User Input Simulation', false, 'Missing elements');
+                return;
+            }
+            
+            logEvent('  - Setting input value to "Test Message"');
+            userInput.value = 'Test Message';
+            
+            logEvent('  - Triggering handleSend()...');
+            try {
+                chatbot.handleSend();
+                logEvent('  ✅ handleSend() executed');
+                addTestResult('User Input Simulation', true, 'Input processed successfully');
+            } catch (e) {
+                logEvent('  ❌ Error: ' + e.message);
+                addTestResult('User Input Simulation', false, 'Error: ' + e.message);
+            }
+        }
+        
+        function checkChatbotState() {
+            logEvent('🧪 Checking Chatbot State...');
+            const chatbot = getChatbot();
+            
+            if (!chatbot) {
+                addTestResult('State Check', false, 'Cannot access chatbot');
+                return;
+            }
+            
+            const state = chatbot.state;
+            logEvent('  - Current stage: ' + state.stage);
+            logEvent('  - Project name: ' + (state.projectName || '(not set)'));
+            logEvent('  - Has Anthropic key: ' + (state.anthropicApiKey ? 'Yes' : 'No'));
+            logEvent('  - Has Copilot endpoint: ' + (state.copilotEndpoint ? 'Yes' : 'No'));
+            logEvent('  - AI Provider: ' + (state.aiProvider || '(none)'));
+            logEvent('  - Use cases count: ' + state.useCases.length);
+            
+            addTestResult('State Check', true, 
+                `Stage: ${state.stage}, Provider: ${state.aiProvider || 'none'}`);
+        }
+        
+        function runAllTests() {
+            logEvent('🚀 Running All Tests...');
+            document.getElementById('testResults').innerHTML = '';
+            
+            setTimeout(() => testEventListeners(), 100);
+            setTimeout(() => checkChatbotState(), 200);
+            setTimeout(() => testSendButton(), 300);
+            setTimeout(() => {
+                logEvent('✅ All tests completed');
+            }, 400);
+        }
+        
+        // Monitor iframe loading
+        window.addEventListener('load', () => {
+            logEvent('✅ Diagnostic page loaded');
+            
+            const iframe = document.getElementById('chatbotFrame');
+            iframe.addEventListener('load', () => {
+                logEvent('✅ Chatbot iframe loaded');
+                setTimeout(() => {
+                    logEvent('🔄 Running initial tests...');
+                    runAllTests();
+                }, 1000);
+            });
+        });
+        
+        // Intercept console messages from iframe
+        const originalConsole = console.log;
+        console.log = function(...args) {
+            originalConsole.apply(console, args);
+            logEvent('📝 Console: ' + args.join(' '));
+        };
+    </script>
+</body>
+</html>

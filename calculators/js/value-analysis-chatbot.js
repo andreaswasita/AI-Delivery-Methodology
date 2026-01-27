@@ -55,25 +55,57 @@ class ValueAnalysisChatbot {
         
         console.log('✅ All DOM elements found');
         
-        // Event listeners
-        this.sendBtn.addEventListener('click', () => {
-            console.log('📤 Send button clicked');
-            this.handleSend();
-        });
-        this.userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                console.log('⌨️ Enter key pressed');
-                this.handleSend();
-            }
-        });
-        this.resetBtn.addEventListener('click', () => {
-            console.log('🔄 Reset button clicked');
-            this.reset();
-        });
-        this.apiKeyBtn.addEventListener('click', () => {
-            console.log('🔑 API Key button clicked');
-            this.manageApiKey();
-        });
+        // Event listeners with detailed error handling
+        try {
+            this.sendBtn.addEventListener('click', () => {
+                console.log('📤 Send button clicked');
+                try {
+                    this.handleSend();
+                } catch (error) {
+                    console.error('❌ Error in handleSend:', error);
+                    alert('Error processing message: ' + error.message);
+                }
+            });
+            console.log('✅ Send button listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach send button listener:', error);
+        }
+        
+        try {
+            this.userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    console.log('⌨️ Enter key pressed');
+                    try {
+                        this.handleSend();
+                    } catch (error) {
+                        console.error('❌ Error in handleSend from Enter key:', error);
+                    }
+                }
+            });
+            console.log('✅ Input keypress listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach keypress listener:', error);
+        }
+        
+        try {
+            this.resetBtn.addEventListener('click', () => {
+                console.log('🔄 Reset button clicked');
+                this.reset();
+            });
+            console.log('✅ Reset button listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach reset button listener:', error);
+        }
+        
+        try {
+            this.apiKeyBtn.addEventListener('click', () => {
+                console.log('🔑 API Key button clicked');
+                this.manageApiKey();
+            });
+            console.log('✅ API Key button listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach API key button listener:', error);
+        }
         
         console.log('✅ Event listeners attached');
         
