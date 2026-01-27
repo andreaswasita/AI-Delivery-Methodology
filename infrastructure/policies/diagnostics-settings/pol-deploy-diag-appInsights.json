@@ -1,0 +1,184 @@
+{
+  "name": "pol-deploy-diag-appInsights",
+  "properties": {
+    "displayName": "Configure Diagnostic Settings for AppInsights to Log Analytics workspace",
+    "description": "This policy automatically deploys and enable diagnostic settings to Log Analytics",
+    "metadata": {
+      "category": "Logging and monitoring",
+      "version": "1.0.0",
+      "preview": false,
+      "deprecated": false
+    },
+    "mode": "All",
+    "parameters": {
+      "profileName": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Profile name",
+          "description": "The diagnostic settings profile name"
+        },
+        "defaultValue": "setByPolicy"
+      },
+      "evaluationDelay": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Evaluation Delay",
+          "description": "Specifies when the existence of the related resources should be evaluated. The delay is only used for evaluations that are a result of a create or update resource request. Allowed values are AfterProvisioning, AfterProvisioningSuccess, AfterProvisioningFailure, or an ISO 8601 duration between 0 and 360 minutes."
+        },
+        "defaultValue": "AfterProvisioning"
+      },
+      "effect": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "metricsEnabled": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Enable metrics",
+          "description": "Whether to enable metrics stream to the Log Analytics workspace - True or False"
+        },
+        "allowedValues": [
+          "True",
+          "False"
+        ],
+        "defaultValue": "True"
+      },
+      "logsToEnable": {
+        "type": "array",
+        "metadata": {
+          "displayName": "Logs to be enable",
+          "description": "Diagnostic logs to be enabled"
+        },
+        "defaultValue": [
+          "AppSystemEvents",
+          "OTelResources"
+        ]
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Insights/Components"
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "evaluationDelay": "[parameters('evaluationDelay')]",
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+            "/providers/microsoft.authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293"
+          ],
+          "existenceCondition": {
+            "allOf": [
+              {
+                "count": {
+                  "field": "Microsoft.Insights/diagnosticSettings/logs[*]",
+                  "where": {
+                    "field": "Microsoft.Insights/diagnosticSettings/logs[*].category",
+                    "in": "[parameters('logsToEnable')]"
+                  }
+                },
+                "equals": "[length(parameters('logsToEnable'))]"
+              },
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/metrics[*].enabled",
+                "equals": "[parameters('metricsEnabled')]"
+              },
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/workspaceId",
+                "matchInsensitively": "[field('Microsoft.Insights/Components/WorkspaceResourceId')]"
+              }
+            ]
+          },
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "profileName": {
+                    "type": "string"
+                  },
+                  "resourceName": {
+                    "type": "string"
+                  },
+                  "metricsEnabled": {
+                    "type": "string"
+                  },
+                  "logsToEnable": {
+                    "type": "array"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                },
+                "variables": {},
+                "resources": [
+                  {
+                    "type": "Microsoft.Insights/Components/providers/diagnosticSettings",
+                    "apiVersion": "2021-05-01-preview",
+                    "name": "[concat(parameters('resourceName'), '/', 'Microsoft.Insights/', parameters('profileName'))]",
+                    "location": "[parameters('location')]",
+                    "dependsOn": [],
+                    "properties": {
+                      "workspaceId": "[reference(resourceId('Microsoft.Insights/Components', parameters('resourceName')), '2020-02-02', 'Full').properties.WorkspaceResourceId]",
+                      "metrics": [
+                        {
+                          "category": "AllMetrics",
+                          "enabled": "[parameters('metricsEnabled')]",
+                          "retentionPolicy": {
+                            "days": 0,
+                            "enabled": false
+                          },
+                          "timeGrain": null
+                        }
+                      ],
+                      "copy": [
+                        {
+                          "name": "logs",
+                          "count": "[length(parameters('logsToEnable'))]",
+                          "input": {
+                            "category": "[parameters('logsToEnable')[copyIndex('logs')]]",
+                            "enabled": "True"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "outputs": {}
+              },
+              "parameters": {
+                "profileName": {
+                  "value": "[parameters('profileName')]"
+                },
+                "metricsEnabled": {
+                  "value": "[parameters('metricsEnabled')]"
+                },
+                "logsToEnable": {
+                  "value": "[parameters('logsToEnable')]"
+                },
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "resourceName": {
+                  "value": "[field('name')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
