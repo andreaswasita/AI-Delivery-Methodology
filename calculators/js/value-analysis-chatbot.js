@@ -21,7 +21,9 @@ class ValueAnalysisChatbot {
             discountRate: 0.10,
             anthropicApiKey: HARDCODED_ANTHROPIC_KEY || localStorage.getItem('anthropic_api_key') || '',
             copilotEndpoint: HARDCODED_COPILOT_ENDPOINT || localStorage.getItem('copilot_endpoint') || '',
-            aiProvider: localStorage.getItem('ai_provider') || (HARDCODED_ANTHROPIC_KEY ? 'anthropic' : (HARDCODED_COPILOT_ENDPOINT ? 'copilot' : ''))
+            aiProvider: localStorage.getItem('ai_provider') || (HARDCODED_ANTHROPIC_KEY ? 'anthropic' : (HARDCODED_COPILOT_ENDPOINT ? 'copilot' : '')),
+            conversationHistory: [],
+            conversationalMode: true
         };
         
         this.messages = [];
@@ -171,22 +173,43 @@ class ValueAnalysisChatbot {
         this.state.stage = 'ai_provider_menu';
     }
 
-    showWelcome() {
-        this.addBotMessage(
-            "👋 Hi! I'm your AI Value Analysis Assistant. I'll help you analyze the business value of your AI initiatives.",
-            () => {
-                this.addBotMessage(
-                    "I'll guide you through:\n\n" +
-                    "• 📊 Quantifying business benefits\n" +
-                    "• 💰 Calculating ROI and NPV\n" +
-                    "• 🎯 Prioritizing use cases\n" +
-                    "• 🔍 Conducting root cause analysis\n\n" +
-                    "Let's get started! What's your project name?"
-                );
-            },
-            500
-        );
-        this.state.stage = 'project_name';
+    async showWelcome() {
+        // Check if Claude AI is available for conversational mode
+        if (this.state.anthropicApiKey || this.state.copilotEndpoint) {
+            this.addBotMessage(
+                "👋 Hi! I'm your AI Delivery Methodology consultant, powered by Claude AI. I'm here to guide your delivery team through value analysis using the Microsoft AI Frontier methodology.",
+                () => {
+                    this.addBotMessage(
+                        "I combine conversational guidance with proven best practices from:\n\n" +
+                        "• 🎯 9-phase delivery methodology (Envisioning → Production)\n" +
+                        "• 💰 ROI and NPV financial analysis\n" +
+                        "• 📊 Use case prioritization frameworks\n" +
+                        "• ⚡ Real-world delivery patterns\n\n" +
+                        "Tell me about your AI initiative - what are you trying to achieve? Feel free to describe it naturally, and I'll help you structure the analysis."
+                    );
+                },
+                500
+            );
+            this.state.stage = 'conversational';
+            this.state.conversationHistory = [];
+        } else {
+            // Fallback to structured mode if no AI provider
+            this.addBotMessage(
+                "👋 Hi! I'm your AI Value Analysis Assistant. I'll help you analyze the business value of your AI initiatives.",
+                () => {
+                    this.addBotMessage(
+                        "💡 **Tip:** For a more conversational experience, click the 🤖 icon to configure Claude AI.\n\n" +
+                        "For now, I'll guide you through a structured analysis:\n\n" +
+                        "• 📊 Quantifying business benefits\n" +
+                        "• 💰 Calculating ROI and NPV\n" +
+                        "• 🎯 Prioritizing use cases\n\n" +
+                        "Let's get started! What's your project name?"
+                    );
+                },
+                500
+            );
+            this.state.stage = 'project_name';
+        }
     }
 
     handleSend() {
@@ -209,6 +232,18 @@ class ValueAnalysisChatbot {
     processInput(input) {
         const stage = this.state.stage;
         console.log(`🎯 processInput - Stage: ${stage}, Input: ${input}`);
+        
+        // Handle conversational mode with Claude AI
+        if (stage === 'conversational') {
+            if (input === 'generate_analysis') {
+                this.generateAnalysis();
+            } else if (input === 'continue') {
+                this.addBotMessage("Great! What else would you like to discuss about your AI initiative?");
+            } else {
+                this.handleConversationalInput(input);
+            }
+            return;
+        }
         
         switch(stage) {
             case 'project_name':
@@ -734,6 +769,197 @@ class ValueAnalysisChatbot {
                 }
                 break;
         }
+    }
+
+    async handleConversationalInput(userMessage) {
+        console.log('💬 Conversational mode - processing:', userMessage);
+        
+        // Add to conversation history
+        this.state.conversationHistory.push({
+            role: 'user',
+            content: userMessage
+        });
+        
+        // Show typing indicator
+        this.addBotMessage('💭 Thinking...');
+        
+        try {
+            // Build conversational prompt with methodology context
+            const response = await this.getConversationalResponse(userMessage);
+            
+            // Remove typing indicator
+            const messages = this.chatMessages.querySelectorAll('.message');
+            if (messages.length > 0) {
+                const lastMessage = messages[messages.length - 1];
+                if (lastMessage.textContent.includes('💭 Thinking...')) {
+                    lastMessage.remove();
+                }
+            }
+            
+            // Add Claude's response
+            this.addBotMessage(response.message);
+            
+            // Store in history
+            this.state.conversationHistory.push({
+                role: 'assistant',
+                content: response.message
+            });
+            
+            // If Claude has extracted structured data, update state
+            if (response.extractedData) {
+                this.updateStateFromExtraction(response.extractedData);
+            }
+            
+            // Check if we have enough data to generate analysis
+            if (response.readyForAnalysis) {
+                setTimeout(() => {
+                    this.showQuickReplies([
+                        { label: '📊 Generate Analysis Now', value: 'generate_analysis' },
+                        { label: '💬 Continue Discussion', value: 'continue' }
+                    ]);
+                }, 500);
+            }
+            
+        } catch (error) {
+            console.error('❌ Conversational error:', error);
+            
+            // Remove typing indicator
+            const messages = this.chatMessages.querySelectorAll('.message');
+            if (messages.length > 0) {
+                const lastMessage = messages[messages.length - 1];
+                if (lastMessage.textContent.includes('💭 Thinking...')) {
+                    lastMessage.remove();
+                }
+            }
+            
+            this.addBotMessage(
+                `❌ I encountered an error: ${error.message}\n\n` +
+                `Let's continue our discussion. What else would you like to tell me about your AI initiative?`
+            );
+        }
+    }
+
+    async getConversationalResponse(userMessage) {
+        const systemPrompt = this.buildConversationalSystemPrompt();
+        const conversationContext = this.buildConversationContext();
+        
+        const fullPrompt = `${systemPrompt}\n\n${conversationContext}\n\nUser: ${userMessage}\n\nRespond naturally as an AI delivery consultant. Extract any relevant information about the project, use cases, benefits, or costs. If you have enough information for analysis, indicate readiness.`;
+        
+        let responseText;
+        
+        if (this.state.aiProvider === 'anthropic') {
+            responseText = await this.callAnthropicAPI(fullPrompt);
+        } else if (this.state.aiProvider === 'copilot') {
+            responseText = await this.callCopilotStudioAPI(fullPrompt);
+        }
+        
+        // Parse response for structured data
+        const extractedData = this.extractStructuredData(responseText);
+        const readyForAnalysis = this.checkIfReadyForAnalysis();
+        
+        return {
+            message: responseText,
+            extractedData: extractedData,
+            readyForAnalysis: readyForAnalysis
+        };
+    }
+
+    buildConversationalSystemPrompt() {
+        return `You are an expert AI delivery consultant with deep knowledge of the Microsoft AI Frontier "Vision to Value" methodology. You guide delivery teams through value analysis in a natural, conversational way.
+
+**YOUR ROLE:**
+- Have natural, flowing conversations about AI initiatives
+- Guide teams through value analysis using the methodology
+- Ask clarifying questions when needed
+- Extract structured information (use cases, benefits, costs) from natural language
+- Provide insights based on delivery best practices
+
+**MICROSOFT AI FRONTIER METHODOLOGY (9 Phases):**
+1. **Business Envisioning** - Align stakeholders, define vision, identify high-value use cases
+2. **Mobilization** - Establish governance, form teams, create project charter
+3. **Hackathons & Prototyping** - Rapid experimentation, proof of concept
+4. **Setup Platform** - Azure infrastructure, MLOps foundation, security
+5. **Build** - Model development, feature engineering, iterative improvement
+6. **Integrate** - API development, system integration, data pipelines
+7. **Test & Evaluate** - Model validation, bias testing, performance benchmarking
+8. **Prepare & Deploy** - Staging deployment, monitoring setup, rollout planning
+9. **Operate & Care** - Production monitoring, continuous improvement, scaling
+
+**BEST PRACTICES:**
+- Prioritize by Value Score (Benefit/Effort ratio) and Business Impact
+- Plan 3-6 month MVP cycles per use case
+- Allocate 20-30% effort for MLOps, governance, platform
+- Story points: 1 point = 1 person-day typically
+- Factor in Azure costs (compute, storage, AI services)
+- 40% of effort goes to data preparation
+- Executive sponsorship is critical
+
+**CONVERSATION GUIDELINES:**
+- Be warm, professional, and consultative
+- Ask one question at a time
+- Acknowledge what you've learned
+- Guide toward key information: project goals, use cases, benefits (quantified), costs, timeline
+- Reference methodology phases when relevant
+- Provide insights based on delivery patterns
+- Keep responses concise (2-3 paragraphs max)
+
+**INFORMATION TO GATHER:**
+- Project name and vision
+- Business problems being solved
+- Specific use cases
+- Expected benefits (with $ amounts when possible)
+- Estimated effort (story points or person-days)
+- Cost estimates (development, infrastructure, operations)
+- Timeline expectations
+- Stakeholder context
+
+**CURRENT STATE:**
+${this.state.projectName ? `Project: ${this.state.projectName}` : 'No project name yet'}
+${this.state.useCases.length > 0 ? `Use cases identified: ${this.state.useCases.length}` : 'No use cases yet'}
+${this.state.costs.length > 0 ? `Cost categories: ${this.state.costs.length}` : 'No costs captured yet'}
+
+Respond naturally and guide the conversation forward.`;
+    }
+
+    buildConversationContext() {
+        if (this.state.conversationHistory.length === 0) {
+            return "This is the start of the conversation.";
+        }
+        
+        return this.state.conversationHistory
+            .slice(-10) // Last 10 messages for context
+            .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
+            .join('\n\n');
+    }
+
+    extractStructuredData(responseText) {
+        // This is a simple extraction - in production, you'd use more sophisticated NLP
+        // or have Claude return JSON alongside the conversational response
+        const data = {};
+        
+        // Look for project name hints
+        const projectMatch = responseText.match(/project.*?"([^"]+)"/i) || 
+                           responseText.match(/initiative.*?"([^"]+)"/i);
+        if (projectMatch && !this.state.projectName) {
+            data.projectName = projectMatch[1];
+        }
+        
+        return data;
+    }
+
+    updateStateFromExtraction(extractedData) {
+        if (extractedData.projectName) {
+            this.state.projectName = extractedData.projectName;
+            console.log('📝 Extracted project name:', extractedData.projectName);
+        }
+        // Add more extraction logic as needed
+    }
+
+    checkIfReadyForAnalysis() {
+        // Check if we have minimum information for analysis
+        return this.state.projectName && 
+               this.state.useCases.length > 0 && 
+               this.state.useCases.some(uc => uc.benefits && uc.benefits.length > 0);
     }
 
     finishUseCase() {
@@ -1262,7 +1488,9 @@ Keep your response concise, actionable, and focused on executive decision-making
                 discountRate: 0.10,
                 anthropicApiKey: localStorage.getItem('anthropic_api_key') || '',
                 copilotEndpoint: localStorage.getItem('copilot_endpoint') || '',
-                aiProvider: localStorage.getItem('ai_provider') || ''
+                aiProvider: localStorage.getItem('ai_provider') || '',
+                conversationHistory: [],
+                conversationalMode: true
             };
             this.messages = [];
             this.chatMessages.innerHTML = '';
