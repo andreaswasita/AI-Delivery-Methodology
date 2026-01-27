@@ -19,6 +19,9 @@ Thumbs.db
 *-FILLED.md
 *-CONFIDENTIAL.md
 
+# Local configuration with API keys (DO NOT COMMIT)
+calculators/js/config.local.js
+
 # Office temporary files
 ~$*.docx
 ~$*.xlsx

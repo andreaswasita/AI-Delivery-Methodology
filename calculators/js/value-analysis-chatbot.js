@@ -3,9 +3,13 @@
 
 class ValueAnalysisChatbot {
     constructor() {
-        // OPTION: Hardcode your API key here for testing (remove before committing to git!)
-        const HARDCODED_ANTHROPIC_KEY = ''; // Set your key here like: 'sk-ant-...'
-        const HARDCODED_COPILOT_ENDPOINT = ''; // Set your endpoint here
+        // Try to load from local config file (if it exists)
+        const localConfig = (typeof window !== 'undefined' && window.CHATBOT_CONFIG) || {};
+        
+        // OPTION: Hardcode your API key here for LOCAL TESTING ONLY (not recommended)
+        // Better: Use js/config.local.js file (see instructions below)
+        const HARDCODED_ANTHROPIC_KEY = localConfig.ANTHROPIC_API_KEY || ''; // Leave empty for git commits
+        const HARDCODED_COPILOT_ENDPOINT = localConfig.COPILOT_ENDPOINT || ''; // Leave empty for git commits
         
         this.state = {
             stage: 'welcome',
@@ -920,7 +924,40 @@ class ValueAnalysisChatbot {
                    `- Total 5-year benefit: $${uc.totalBenefit.toLocaleString()}`;
         }).join('\n');
 
-        return `You are an expert AI strategy consultant analyzing a business case for AI implementation.
+        return `You are an expert AI strategy consultant with deep knowledge of the Microsoft AI Frontier "Vision to Value" delivery methodology. This proven framework transforms AI initiatives from executive vision to measurable business value through structured phases.
+
+**AI DELIVERY METHODOLOGY CONTEXT:**
+
+The Microsoft AI Frontier methodology follows these key phases:
+1. **Business Envisioning** - Align stakeholders, define vision, identify high-value use cases
+2. **Mobilization** - Establish governance, form teams, create project charter
+3. **Hackathons & Prototyping** - Rapid experimentation, proof of concept development
+4. **Setup Platform** - Azure infrastructure, MLOps foundation, security framework
+5. **Build Phase** - Model development, feature engineering, iterative improvement
+6. **Integrate** - API development, system integration, data pipelines
+7. **Test & Evaluate** - Model validation, bias testing, performance benchmarking
+8. **Prepare & Deploy** - Staging deployment, monitoring setup, rollout planning
+9. **Operate & Care** - Production monitoring, continuous improvement, scaling
+
+**VALUE ANALYSIS BEST PRACTICES:**
+- Prioritize use cases by Value Score (Benefit/Effort ratio) and Business Impact
+- Consider technical feasibility, data readiness, and organizational change management
+- Plan for 3-6 month MVP delivery cycles for each use case
+- Allocate 20-30% of effort for MLOps, governance, and platform setup
+- Use story point estimation: 1 point = 1 person-day typically
+- Factor in Azure infrastructure costs (compute, storage, AI services)
+- Build executive buy-in with clear ROI and quick wins
+
+**RISK MITIGATION STRATEGIES:**
+- Data Quality: Allocate 40% of effort to data preparation
+- Skills Gap: Plan for upskilling or external expertise
+- Change Management: Executive sponsorship and user adoption programs
+- Technical Debt: Invest in MLOps from day one
+- Compliance: Embed governance, ethics, and security throughout
+
+---
+
+**PROJECT ANALYSIS:**
 
 **Project:** ${this.state.projectName}
 
@@ -937,14 +974,35 @@ class ValueAnalysisChatbot {
 **Prioritization Scores:**
 ${analysis.prioritized.map((uc, idx) => `${idx + 1}. ${uc.title}: ${uc.priorityScore.toFixed(1)}`).join('\n')}
 
-Please provide:
-1. **Strategic Assessment** (2-3 sentences): Overall viability and strategic fit
-2. **Key Strengths** (3-4 bullet points): What makes this compelling
-3. **Key Risks** (3-4 bullet points): What could go wrong and mitigation strategies
-4. **Recommendations** (3-4 bullet points): Specific actionable next steps
-5. **Implementation Sequence**: Suggested order and rationale for the use cases
+---
 
-Keep your response concise, actionable, and focused on executive decision-making. Use clear formatting with markdown headings and bullets.`;
+**ANALYSIS REQUEST:**
+
+Using your expertise in the AI Delivery Methodology and the project data above, provide:
+
+1. **Strategic Assessment** (2-3 sentences)
+   - Overall viability and alignment with Microsoft AI Frontier best practices
+   - Strategic fit for the organization
+
+2. **Key Strengths** (3-4 bullet points)
+   - What makes this compelling from a business and technical perspective
+   - Alignment with proven delivery patterns
+
+3. **Key Risks & Mitigations** (3-4 bullet points)
+   - What could go wrong based on methodology experience
+   - Specific mitigation strategies from the AI Delivery playbook
+
+4. **Delivery Recommendations** (3-4 bullet points)
+   - Specific actionable next steps aligned to methodology phases
+   - Resource allocation and timeline guidance
+   - Platform and governance considerations
+
+5. **Implementation Sequence**
+   - Recommended order for use cases based on value, risk, and dependencies
+   - Suggested phase mapping (which methodology phases apply to each use case)
+   - Timeline estimates based on effort and complexity
+
+Keep your response concise, actionable, and focused on executive decision-making. Use clear formatting with markdown headings and bullets. Reference specific methodology phases where relevant.`;
     }
 
     async callAnthropicAPI(prompt) {
@@ -1196,5 +1254,27 @@ Keep your response concise, actionable, and focused on executive decision-making
 
 // Initialize chatbot when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    window.chatbot = new ValueAnalysisChatbot();
+    console.log('🚀 DOM Content Loaded - Initializing chatbot...');
+    try {
+        window.chatbot = new ValueAnalysisChatbot();
+        console.log('✅ Chatbot initialized successfully');
+    } catch (error) {
+        console.error('❌ Failed to initialize chatbot:', error);
+        alert('Failed to initialize chatbot. Please refresh the page. Error: ' + error.message);
+    }
 });
+
+// Fallback initialization if DOMContentLoaded already fired
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log('🔄 DOM already loaded, initializing immediately...');
+    setTimeout(() => {
+        if (!window.chatbot) {
+            try {
+                window.chatbot = new ValueAnalysisChatbot();
+                console.log('✅ Chatbot initialized via fallback');
+            } catch (error) {
+                console.error('❌ Fallback initialization failed:', error);
+            }
+        }
+    }, 100);
+}

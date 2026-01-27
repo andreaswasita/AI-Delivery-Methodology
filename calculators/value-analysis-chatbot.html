@@ -90,6 +90,40 @@
         </div>
     </footer>
 
+    <script>
+        // Pre-initialization check
+        console.log('🔍 Pre-check: Document ready state:', document.readyState);
+        console.log('🔍 Pre-check: Script loading...');
+    </script>
+    <!-- Optional: Load local config file (only exists on your local machine, not in git) -->
+    <script src="js/config.local.js" onerror="console.log('ℹ️ No local config file found (this is normal)')"></script>
     <script src="js/value-analysis-chatbot.js"></script>
+    <script>
+        // Post-initialization check
+        console.log('📦 Script loaded');
+        console.log('🔍 Post-check: ValueAnalysisChatbot class:', typeof ValueAnalysisChatbot);
+        console.log('🔍 Post-check: window.chatbot instance:', typeof window.chatbot);
+        console.log('🔍 Post-check: Local config:', window.CHATBOT_CONFIG ? 'Loaded ✅' : 'Not found (users will enter keys via UI)');
+        
+        // Force initialization after a short delay if needed
+        setTimeout(() => {
+            if (typeof window.chatbot === 'undefined') {
+                console.warn('⚠️ Chatbot not initialized, forcing initialization...');
+                if (typeof ValueAnalysisChatbot !== 'undefined') {
+                    try {
+                        window.chatbot = new ValueAnalysisChatbot();
+                        console.log('✅ Force initialization successful');
+                    } catch (error) {
+                        console.error('❌ Force initialization failed:', error);
+                        alert('Chatbot failed to initialize. Please check console for errors.');
+                    }
+                } else {
+                    console.error('❌ ValueAnalysisChatbot class not found!');
+                }
+            } else {
+                console.log('✅ Chatbot already initialized');
+            }
+        }, 500);
+    </script>
 </body>
 </html>
