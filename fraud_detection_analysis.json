@@ -1,0 +1,119 @@
+{
+  "project_name": "Financial Services AI Initiative",
+  "generated_date": "2026-01-13T21:22:44.651586",
+  "discount_rate": 0.1,
+  "use_cases": [
+    {
+      "id": "UC-001",
+      "title": "Real-time Fraud Detection System",
+      "description": "ML-powered fraud detection for credit card transactions",
+      "business_problem": "$3.5M annual fraud losses, 2.1% false positive rate causing customer friction",
+      "impact_level": "CRITICAL",
+      "effort_estimate": 55,
+      "total_benefit": 20950000,
+      "value_score": 380909.0909090909,
+      "priority_score": 1904545.4545454544,
+      "benefits": [
+        {
+          "category": "ValueCategory.COST_REDUCTION",
+          "description": "Reduced fraud losses (85% detection improvement)",
+          "year_0": 0.0,
+          "year_1": 2000000,
+          "year_2": 2400000,
+          "year_3": 2700000,
+          "year_4": 3000000,
+          "year_5": 3300000,
+          "confidence_level": 0.85
+        },
+        {
+          "category": "ValueCategory.COST_AVOIDANCE",
+          "description": "Avoided regulatory fines and penalties",
+          "year_0": 0.0,
+          "year_1": 300000,
+          "year_2": 350000,
+          "year_3": 400000,
+          "year_4": 450000,
+          "year_5": 500000,
+          "confidence_level": 0.75
+        },
+        {
+          "category": "ValueCategory.CUSTOMER_EXPERIENCE",
+          "description": "Reduced false positives - customer retention",
+          "year_0": 0.0,
+          "year_1": 500000,
+          "year_2": 600000,
+          "year_3": 700000,
+          "year_4": 750000,
+          "year_5": 800000,
+          "confidence_level": 0.7
+        },
+        {
+          "category": "ValueCategory.EFFICIENCY_IMPROVEMENT",
+          "description": "Automated review process - labor savings",
+          "year_0": 0.0,
+          "year_1": 400000,
+          "year_2": 420000,
+          "year_3": 440000,
+          "year_4": 460000,
+          "year_5": 480000,
+          "confidence_level": 0.9
+        }
+      ],
+      "root_causes": [
+        "Rule-based system cannot adapt to new fraud patterns",
+        "No real-time risk scoring",
+        "Manual review of all suspicious transactions (18 hours/day)",
+        "False positives damage customer experience"
+      ],
+      "stakeholders": [
+        "Chief Risk Officer",
+        "Head of Fraud Prevention",
+        "CIO",
+        "CFO"
+      ],
+      "dependencies": []
+    }
+  ],
+  "costs": [
+    {
+      "category": "Development",
+      "description": "ML model development, integration, testing",
+      "year_0": 800000,
+      "year_1": 200000,
+      "year_2": 0,
+      "year_3": 0,
+      "year_4": 0,
+      "year_5": 0
+    },
+    {
+      "category": "Infrastructure",
+      "description": "Azure ML, compute, storage",
+      "year_0": 50000,
+      "year_1": 180000,
+      "year_2": 190000,
+      "year_3": 200000,
+      "year_4": 210000,
+      "year_5": 220000
+    },
+    {
+      "category": "Operations",
+      "description": "ML Ops team, monitoring, maintenance",
+      "year_0": 0,
+      "year_1": 150000,
+      "year_2": 160000,
+      "year_3": 170000,
+      "year_4": 180000,
+      "year_5": 190000
+    },
+    {
+      "category": "Training & Change Management",
+      "description": "User training, process changes",
+      "year_0": 100000,
+      "year_1": 50000,
+      "year_2": 0,
+      "year_3": 0,
+      "year_4": 0,
+      "year_5": 0
+    }
+  ]
+}

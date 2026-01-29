@@ -1,77 +1,7 @@
-﻿# AI Delivery Methodology
+# AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
-
----
-
-## 🧭 Quick Navigation
-
-<table>
-<tr>
-<td width="25%" valign="top">
-
-### 📋 [Methodology Phases](./guides)
-**Complete delivery framework**
-- 🎯 [Business Envisioning](./guides/business-envisioning-workshop-guide.md)
-- 🔍 [Discovery & Planning](./guides/mobilisation-complete-guide.md)
-- 🏗️ [Build & Development](./guides/build-phase-complete-guide.md)
-- 🧪 [Test & Evaluate](./guides/test-evaluate-phase-complete-guide.md)
-- 🚀 [Deploy & Integrate](./guides/prepare-deploy-phase-complete-guide.md)
-- 🔧 [Operate & Care](./guides/operate-care-phase-complete-guide.md)
-- ⚙️ [MLOps & DevOps](./guides/mlops-devops-complete-guide.md)
-- 🎨 [Hackathons & Prototyping](./guides/hackathons-complete-guide.md)
-
-[→ View All Guides](./guides)
-
-</td>
-<td width="25%" valign="top">
-
-### 🏭 [Industry Use Cases](./guides/industry-use-cases)
-**Real-world AI applications**
-- 💼 [Financial Services](./guides/industry-use-cases/financial-services-use-cases.md) - Fraud detection, credit risk, trading
-- ⚡ [Energy & Mining](./guides/industry-use-cases/energy-mining-use-cases.md) - Predictive maintenance, exploration
-- 🛒 [Retail & Consumer](./guides/industry-use-cases/retail-consumer-use-cases.md) - Demand forecasting, personalization
-- 🏛️ [Public Sector](./guides/industry-use-cases/public-sector-use-cases.md) - Citizen services, infrastructure
-- 🛡️ [Defense](./guides/industry-use-cases/defense-security-use-cases.md) - Intelligence, logistics optimization
-
-[→ Explore All Industries](./guides/industry-use-cases)
-
-</td>
-<td width="25%" valign="top">
-
-### 📚 [Guides & Frameworks](./guides)
-**Expert knowledge & best practices**
-- 🎯 [Executive Coaching Guide](./guides/executive-coaching-guide.md)
-- 🏢 [AI Center of Excellence](./guides/ai-center-of-excellence-framework.md)
-- 📊 [Story Points Estimation](./guides/story-points-estimation-guide.md)
-- 🔄 [AI Scaling Patterns](./guides/ai-scaling-patterns-guide.md)
-- ⚖️ [AI Model Risk Management](./guides/ai-model-risk-management-guide.md)
-- 🤝 [Engagement Modes](./guides/engagement-modes-framework.md)
-- 🏃 [3-Month Fast Track](./guides/3-month-fast-track-guide.md)
-- 🎤 [Presales Activities](./guides/presales-discovery-activities-for-presentations.md)
-
-[→ Browse All Guides](./guides)
-
-</td>
-<td width="25%" valign="top">
-
-### 📄 [Templates & Checklists](./templates)
-**Ready-to-use documents**
-- 📋 [Project Charter](./templates/01-project-charter.md)
-- 💼 [Business Case](./templates/02-business-case.md)
-- 👥 [RACI Matrix](./templates/03-raci-matrix.md)
-- 📅 [Project Plan](./templates/04-project-plan-roadmap.md)
-- ⚠️ [Risk Register](./templates/05-risk-register.md)
-- 📢 [Communication Plan](./templates/06-communication-plan.md)
-- 🎯 [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
-- ✅ [Phase Checklists](./checklists)
-
-[→ Get All Templates](./templates)
-
-</td>
-</tr>
-</table>
+🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 📊 **[Executive Presentations](./presentations/)**
 
 ---
 
@@ -145,7 +75,7 @@ This methodology provides a **proven, repeatable framework** that:
 
 **✅ Checklist-Powered**: 200+ actionable items ensure disciplined execution without micromanagement
 
-**✅ Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, and Public Sector
+**✅ Industry-Proven**: Includes 100+ real-world use cases across Financial Services, Energy & Mining, Retail, Defense, Public Sector, plus cross-industry AI Workforce automation with Agent365
 
 **✅ Executive-Focused**: Comprehensive coaching materials, readiness assessments, and C-level engagement frameworks
 
@@ -165,12 +95,14 @@ Perfect for single use cases, POCs, and rapid value delivery. Compressed timelin
 - **Scope:** Single use case
 - **Best For:** Pilots, POCs, quick wins, building momentum
 
-[**→ See 3-Month Fast-Track Guide**](./guides/3-month-fast-track-guide.md)
+[**→ See 3-Month Fast-Track Guide**](./guides/3-month-fast-track-guide.md) | [**→ View in Delivery Flow Diagram**](./diagrams/end-to-end-delivery-flow.md)
 
 ---
 
 #### **🏗️ Full Methodology (6-12+ Months)** - For Enterprise Solutions
 Comprehensive approach for production systems, multiple use cases, and enterprise-wide transformation.
+
+[**→ View Complete Delivery Flow Diagram**](./diagrams/end-to-end-delivery-flow.md)
 
 Our methodology guides you through nine structured phases:
 
@@ -197,6 +129,178 @@ Our methodology guides you through nine structured phases:
 | **Team** | 5-8 people | 10-20 people |
 | **Best For** | Pilots, POCs | Production systems |
 
+---
+
+## 📅 90-Day Objectives & Long-Range Planning
+
+### 🎯 90-Day Quick Win Objectives
+
+The first 90 days are critical for establishing momentum, demonstrating value, and building stakeholder confidence. Our methodology focuses on tangible milestones within this timeframe.
+
+#### **Fast-Track 90-Day Deliverables**
+
+**Month 1: Foundation & Prototype (Weeks 1-4)**
+- ✅ **Week 1**: Business envisioning complete, use case selected, executive alignment secured
+- ✅ **Week 2**: Team mobilized, governance established, environments provisioned
+- ✅ **Week 3**: Platform setup complete, data pipelines operational
+- ✅ **Week 4**: Initial prototype demonstrating core functionality
+
+**Month 2: Build & Integrate (Weeks 5-8)**
+- ✅ **Week 5-6**: MVP with key features built and trained models operational
+- ✅ **Week 7**: Integration with enterprise systems complete
+- ✅ **Week 8**: End-to-end testing passed, performance validated
+
+**Month 3: Deploy & Stabilize (Weeks 9-12)**
+- ✅ **Week 9**: UAT sign-off obtained from business stakeholders
+- ✅ **Week 10**: Production environment ready, deployment rehearsed
+- ✅ **Week 11**: Go-live successful, users trained
+- ✅ **Week 12**: Hypercare complete, value metrics being tracked
+
+**Key Success Metrics at 90 Days:**
+- 🎯 Working solution deployed to production
+- 💰 Initial ROI metrics validated (10-20% of annual target achieved)
+- 👥 Users trained and actively using the solution (>80% adoption)
+- 📊 Success criteria met (accuracy, performance, business KPIs)
+- 🚀 Business case validated for scaling to additional use cases
+
+#### **Full Methodology 90-Day Milestones**
+
+For enterprise projects using the full methodology, the first 90 days focus on de-risking and validation:
+
+**Month 1: Discovery & Strategy (Weeks 1-4)**
+- ✅ **Week 1-2**: Pre-sales qualification, opportunity scoring, executive readiness assessment
+- ✅ **Week 3**: Business envisioning workshop, use case portfolio prioritized (3-5 use cases)
+- ✅ **Week 4**: Detailed discovery complete, business requirements documented, data assessment complete
+
+**Month 2: Mobilize & Prototype (Weeks 5-8)**
+- ✅ **Week 5-6**: Project governance established, full team mobilized, platform setup initiated
+- ✅ **Week 7-8**: Hackathon/prototype phase delivering proof-of-concept for primary use case
+
+**Month 3: Platform & Early Build (Weeks 9-12)**
+- ✅ **Week 9-10**: Production platform infrastructure deployed with MLOps foundations
+- ✅ **Week 11-12**: First sprint of build phase, foundational models training
+
+**Key Success Metrics at 90 Days:**
+- 🎯 Working proof-of-concept validated technical feasibility
+- 💼 Full business case approved with multi-year roadmap
+- 🏗️ Production-grade platform operational
+- 📋 4-6 sprints of backlog ready for build phase
+- ✅ Executive steering committee engaged and supporting
+
+---
+
+### 🗓️ Long-Range Planning (6-24+ Months)
+
+#### **6-Month Horizon: Production & Initial Scaling**
+
+**Months 4-6: Production Deployment**
+- Full build phase completion with enterprise-grade features
+- Comprehensive integration with 3-5 enterprise systems
+- Production deployment with change management
+- Initial value realization: 30-50% of annual ROI target
+
+**Success Criteria at 6 Months:**
+- Production system serving real users at scale
+- 60-80% of target users adopted the solution
+- First ROI validation cycle complete
+- Lessons learned documented for next use cases
+
+---
+
+#### **12-Month Horizon: Optimization & Portfolio Expansion**
+
+**Months 7-9: Optimization & Stabilization**
+- Model retraining and continuous improvement
+- Performance optimization based on production data
+- Advanced features deployment (Phase 2)
+- 70-90% of annual ROI target achieved
+
+**Months 10-12: Second Use Case Delivery**
+- Leverage reusable platform and components
+- Second use case deployed (30-40% faster delivery)
+- Portfolio roadmap refined based on learnings
+- 100%+ of annual ROI target achieved
+
+**Success Criteria at 12 Months:**
+- 2-3 use cases in production delivering measurable value
+- Platform proven and reusable for additional use cases
+- AI Center of Excellence (CoE) framework established
+- Executive sponsorship for multi-year AI program secured
+
+---
+
+#### **18-24 Month Horizon: Enterprise Transformation**
+
+**Months 13-18: Scale Across Business Units**
+- 5-8 use cases in production across multiple departments
+- Shared AI platform serving enterprise-wide needs
+- Mature MLOps practices with automated model lifecycle
+- AI governance and ethics framework operational
+- Estimated portfolio value: 3-5x initial ROI
+
+**Months 19-24: Advanced AI Capabilities & Innovation**
+- Advanced AI scenarios (multi-modal AI, autonomous agents, GenAI)
+- Cross-functional use cases combining multiple AI capabilities
+- Data mesh architecture for distributed data management
+- AI embedded into core business processes
+- Estimated portfolio value: 5-10x initial ROI
+
+**Success Criteria at 24 Months:**
+- 10-15 AI use cases in production
+- AI as a strategic competitive advantage
+- Mature AI operating model and governance
+- Portfolio delivering $5M-$50M+ in annual value (depending on organization size)
+- Recognition as an AI-driven organization
+
+---
+
+#### **Long-Range Planning Framework**
+
+**Quarter-by-Quarter Planning Cadence:**
+
+| Quarter | Focus | Key Activities | Governance |
+|---------|-------|---------------|------------|
+| **Q1** | Foundation & Quick Wins | Discovery, mobilization, first POC/pilot | Weekly steering committee |
+| **Q2** | Production & Validation | Deploy first use case, validate ROI | Bi-weekly steering + monthly exec review |
+| **Q3** | Optimization & Scaling | Optimize UC1, deploy UC2, platform hardening | Monthly steering + quarterly exec review |
+| **Q4** | Portfolio Growth | 3-4 use cases live, CoE established, roadmap 2.0 | Quarterly portfolio review |
+| **Q5-Q6** | Enterprise Scaling | 5-8 use cases, cross-BU initiatives, advanced AI | Quarterly portfolio review + annual planning |
+| **Q7-Q8** | Transformation | 10-15 use cases, AI-first culture, competitive advantage | Annual strategic review |
+
+**Investment Scaling Pattern:**
+
+- **Year 1**: $500K-$2M (1-2 use cases, platform setup, team building)
+- **Year 2**: $1M-$4M (3-5 use cases, platform scaling, CoE operationalization)
+- **Year 3+**: $2M-$8M+ (8-15 use cases, advanced AI, enterprise transformation)
+
+**Value Realization Pattern:**
+
+- **Year 1**: Break-even to 1.5x return (pilot value + platform investment)
+- **Year 2**: 3-5x return (multiple use cases + platform leverage)
+- **Year 3+**: 5-10x return (portfolio effects + competitive advantage)
+
+---
+
+### 📈 Planning Tools & Templates
+
+**For 90-Day Planning:**
+- [3-Month Fast-Track Guide](./guides/3-month-fast-track-guide.md) - Week-by-week execution plan
+- [Sprint Planning Template](./templates/12-sprint-planning-template.md) - 2-week sprint cycles
+- [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md) - 90-day milestone tracking
+
+**For Long-Range Planning:**
+- [Project Plan & Roadmap](./templates/04-project-plan-roadmap.md) - Multi-year program roadmap
+- [Business Case](./templates/02-business-case.md) - Multi-year financial projections
+- [AI Center of Excellence Framework](./guides/ai-center-of-excellence-framework.md) - Enterprise scaling structure
+- [AI Scaling Patterns Guide](./guides/ai-scaling-patterns-guide.md) - Portfolio management patterns
+
+**For Ongoing Tracking:**
+- [ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html) - 5-year financial modeling
+- [Value Analysis Agent](./agents/value_analysis_agent.py) - Portfolio prioritization
+- [Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html) - Interactive value planning
+
+---
+
 ### Our Commitment
 
 This is a **living methodology** that evolves with:
@@ -209,11 +313,126 @@ We believe AI should be **ethical, explainable, and valuable**—not just techni
 
 ---
 
+## 📊 End-to-End Delivery Flow
+
+**[→ View Complete Interactive Diagram with Full Details](./diagrams/end-to-end-delivery-flow.md)**
+
+Our methodology follows a structured end-to-end flow from customer business needs through delivery and operations. The diagram below shows the complete journey including pre-sales qualification, business-to-AI strategy translation, business envisioning workshops, delivery tracks, and operations:
+
+```mermaid
+flowchart TD
+    Start([Customer Business Need]) --> PreSales[🔍 PRE-SALES & DISCOVERY<br/>1-2 weeks<br/>• Opportunity Qualification<br/>• Business Value Analysis<br/>• Technical Feasibility]
+    
+    PreSales -->|Go/No-Go| GoNoGo{Qualified?}
+    GoNoGo -->|No| Stop([End - Not Qualified])
+    GoNoGo -->|Yes| Strategy[📊 BUSINESS STRATEGY → AI STRATEGY<br/>• Executive Coaching<br/>• 55-Point Readiness Assessment<br/>• ROI & Value Analysis]
+    
+    Strategy --> Envisioning[💡 BUSINESS ENVISIONING WORKSHOP<br/>Full Day<br/>• Define Strategic Vision<br/>• Identify & Prioritize Use Cases<br/>• Success Criteria<br/>• Roadmap Creation]
+    
+    Envisioning --> Gate1{Gate 1:<br/>Business<br/>Approval?}
+    Gate1 -->|No| Refine[Refine Strategy]
+    Refine --> Envisioning
+    Gate1 -->|Yes| Track{Delivery<br/>Track?}
+    
+    Track -->|Fast Track<br/>3 months| FastTrack[🚀 FAST-TRACK DELIVERY<br/>Single Use Case / POC<br/>Compressed Phases]
+    Track -->|Full Methodology<br/>6-12+ months| Phase1[🎯 PHASE 1-8<br/>Enterprise Production<br/>Multiple Use Cases]
+    
+    FastTrack --> Ops[📊 OPERATE & CARE<br/>Ongoing<br/>• Monitoring & Support<br/>• Continuous Improvement]
+    Phase1 --> Ops
+    
+    Ops --> Scale{Scale to<br/>More Use<br/>Cases?}
+    Scale -->|Yes| Envisioning
+    Scale -->|No| Sustain[✅ Sustained Operations]
+    
+    Governance[🛡️ 360° GOVERNANCE<br/>• AI Ethics & Responsible AI<br/>• Risk Management<br/>• Compliance] -.-> PreSales
+    Governance -.-> Phase1
+    Governance -.-> Ops
+    
+    Change[👥 CHANGE MANAGEMENT<br/>• Stakeholder Engagement<br/>• Training & Enablement] -.-> Strategy
+    Change -.-> Envisioning
+    Change -.-> Ops
+    
+    Value[💰 VALUE TRACKING<br/>• KPI Monitoring<br/>• ROI Measurement] -.-> Strategy
+    Value -.-> Phase1
+    Value -.-> Ops
+    
+    style Start fill:#e1f5ff
+    style PreSales fill:#fff4e6
+    style Strategy fill:#f3e5f5
+    style Envisioning fill:#e8f5e9
+    style Phase1 fill:#fff9c4
+    style FastTrack fill:#ffccbc
+    style Ops fill:#c8e6c9
+    style Sustain fill:#a5d6a7
+    style Governance fill:#ffebee
+    style Change fill:#e3f2fd
+    style Value fill:#fff3e0
+    style GoNoGo fill:#ffe0b2
+    style Gate1 fill:#ffe0b2
+    style Track fill:#ffe0b2
+```
+
+### Key Flow Elements:
+
+#### 🎯 Entry Point: Customer Business Need
+The methodology begins when a customer identifies a business challenge or opportunity that AI might address.
+
+#### 📍 Pre-Sales & Discovery (1-2 weeks)
+- **50-point opportunity qualification** across 5 dimensions (Business Value, Technical Feasibility, Data Readiness, Client Readiness, Commercial Viability)
+- Business value analysis with ROI estimation
+- Technical feasibility and data assessment
+- **Gate: Go/No-Go Decision** - Must score ≥35/50 to proceed
+
+#### 🔄 Business Strategy → AI Strategy Translation
+- **Executive coaching** using 5 persona strategies (Visionary, Steward, Realist, People Leader, Compliance Guardian)
+- **55-point readiness assessment** evaluating strategic clarity, executive commitment, decision-making, risk tolerance, and change leadership
+- ROI and value analysis with financial projections
+- **Five Whys root cause analysis** to ensure AI addresses fundamental problems, not symptoms
+
+#### 💡 Business Envisioning Workshop (Full Day)
+- Collaborative session with 8-15 stakeholders
+- Define strategic vision and business objectives
+- Identify and prioritize AI use cases
+- Establish success criteria and expected outcomes
+- Create roadmap from vision to value
+- **Gate 1: Business Approval** - Executive sign-off required
+
+#### ⚡ Two Delivery Tracks
+
+**Fast-Track (3 months):**
+- Single use case or POC
+- 5-8 person team
+- Compressed phases
+- Ideal for pilots and quick wins
+
+**Full Methodology (6-12+ months):**
+- Enterprise production systems
+- 10-20 person team
+- 8 comprehensive phases
+- Multiple use cases
+- **6 Quality Gates** throughout delivery
+
+#### 🔁 Continuous Underpinning Elements (shown with dotted lines)
+- **🛡️ 360° Governance**: AI ethics, risk management, compliance across all phases
+- **👥 Change Management**: Stakeholder engagement from strategy through operations  
+- **💰 Value Tracking**: KPI and ROI measurement at key milestones
+
+#### ♻️ Iterative Loops
+- **Refine Loop**: Return to envisioning if business approval not obtained
+- **Scale Loop**: Return to envisioning for additional use cases after success
+- **Sustained Operations**: Ongoing monitoring and continuous improvement
+
+**[→ See Full Detailed Diagram with 8 Phases, 6 Gates, and Complete Workflow](./diagrams/end-to-end-delivery-flow.md)**
+
+---
+
 ## 🤝 Executive Coaching & Business Alignment
 
 ### Bridging the Business-IT Gap
 
 One of the most critical success factors for AI initiatives is **executive engagement and alignment**. Our methodology includes comprehensive coaching materials to help consultants build trusted advisor relationships with C-level stakeholders.
+
+**[→ See how Executive Coaching fits in the Delivery Flow](./diagrams/end-to-end-delivery-flow.md)**
 
 **Executive Coaching Guide** - A complete framework covering:
 - **5 Executive Personas** with tailored coaching strategies for each stakeholder type
@@ -239,27 +458,34 @@ These materials help Microsoft consultants navigate organizational politics, man
 
 ---
 
-## Overview
+## 🎯 Methodology Overview
 
 This repository contains comprehensive templates, guides, and documentation for delivering AI projects following Microsoft's AI Frontier delivery methodology. The methodology covers the complete lifecycle from **Vision to Value** with 360° governance, execution strategy, outcomes focus, and continuous change management.
 
-## 🎯 Methodology Phases
+**[→ View Complete Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
 
-### **Vision to Value → Discovery → Prototype → Deploy → Scale **
+### **Vision to Value → Discovery → Prototype → Deploy → Scale**
 
 The methodology follows a structured approach with clear phase gates and outcomes-driven milestones:
 
-1. **Pre-sales & Discovery** - Qualify opportunities and understand requirements
-2. **Mobilise and Initiate** - Set up the project foundation
-3. **Hackathons (Prototype)** - Rapid prototyping and validation
-4. **Setup Platform** - Set the platform, infrastructure components for build
-5. **Build** - Build the solution
-6. **Integrate** - Integrate the solution with the rest of ecosystem
-7. **Test & Evaluate** - Comprehensive testing and quality assurance
-8. **Prepare and Deploy** - Production deployment and scaling
-9. **Operate and Care** - Ongoing operations and optimization
+**Pre-Sales & Strategy Phase:**
+1. **Pre-sales & Discovery** - Qualify opportunities, translate business strategy to AI strategy, conduct business envisioning
 
-Underpinned by **360° Governance and Execution, Strategy, Ops Planning and Change Management**
+**Delivery Phases (Full Methodology):**
+2. **Mobilise and Initiate** - Set up project foundation with governance and teams
+3. **Hackathons (Prototype)** - Rapid prototyping and validation with fail-fast learning
+4. **Setup Platform** - Establish infrastructure, MLOps, security, and compliance foundations
+5. **Build** - Agile development with model training and feature engineering
+6. **Integrate** - System integration with APIs, data pipelines, and end-to-end testing
+7. **Test & Evaluate** - Comprehensive QA, bias testing, and performance validation
+8. **Prepare and Deploy** - Production deployment, rollout planning, and user training
+9. **Operate and Care** - Ongoing monitoring, model retraining, and continuous improvement
+
+**Continuous Underpinning:**
+- **360° Governance**: AI ethics, responsible AI, risk management, and compliance
+- **Execution Strategy**: Agile delivery with clear milestones and decision gates
+- **Change Management**: Stakeholder engagement, training, and adoption tracking
+- **Value Tracking**: KPI monitoring, ROI measurement, and business impact assessment
   
 
 ---
@@ -281,6 +507,8 @@ AI-Delivery-Methodology/
 │   ├── css/                         # Styling for calculators
 │   ├── js/                          # Calculator logic
 │   └── GITHUB-PAGES-SETUP.md        # Deployment guide
+├── diagrams/           # 📊 Visual diagrams and flowcharts
+│   └── end-to-end-delivery-flow.md  # Complete methodology flow diagram
 ├── templates/          # Ready-to-use templates for all deliverables
 ├── checklists/         # Phase-specific checklists with 200+ actionable items
 ├── guides/             # Detailed implementation guides
@@ -511,9 +739,11 @@ Before diving into phase details, select the right approach for your project:
 
 ## �📋 Available Materials by Phase
 
-### � **Phase 0: Pre-sales & Discovery**
+### 🔍 **Phase 0: Pre-sales & Discovery**
 
-**Purpose**: Qualify AI opportunities and deeply understand business requirements
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
+
+**Purpose**: Qualify AI opportunities, translate business strategy to AI strategy, and deeply understand business requirements through envisioning workshops
 
 **Duration**: 2-4 weeks
 
@@ -535,6 +765,7 @@ Before diving into phase details, select the right approach for your project:
 - [Executive Coaching Guide](./guides/executive-coaching-guide.md) - **NEW!** Comprehensive guide for coaching C-level stakeholders through AI transformation
 
 **Industry Use Case Libraries**:
+- **[AI Workforce (Agent365)](./guides/industry-use-cases/ai-workforce-agent365-use-case.md)** - **NEW!** Cross-industry AI agent orchestration - 10 specialized agents for delivery teams, 50-70% productivity gains
 - [Financial Services Use Cases](./guides/industry-use-cases/financial-services-use-cases.md) - 24 use cases across customer experience, risk, fraud, trading
 - [Energy & Mining Use Cases](./guides/industry-use-cases/energy-mining-use-cases.md) - 25 use cases across operations, safety, exploration, trading
 - [Retail Use Cases](./guides/industry-use-cases/retail-use-cases.md) - 20 use cases across personalization, inventory, pricing, store ops
@@ -607,7 +838,9 @@ Before diving into phase details, select the right approach for your project:
 
 ---
 
-### � **Phase 1: Mobilise and Initiate**
+### 🎯 **Phase 1: Mobilise and Initiate**
+
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
 
 **Purpose**: Establish project foundation, governance, and team
 
@@ -690,6 +923,8 @@ Before diving into phase details, select the right approach for your project:
 ---
 
 ### 🔧 **Phase 2: Hackathons (Prototype)**
+
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
 
 **Purpose**: Rapid prototyping with high-velocity sprints to validate ML approach and build MVP
 
@@ -787,6 +1022,8 @@ Before diving into phase details, select the right approach for your project:
 
 ### 🏗️ **Phase 3: Setup Platform**
 
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
+
 **Purpose**: Set up production-grade platform, infrastructure, and MLOps foundation
 
 **Duration**: 2-4 weeks
@@ -871,6 +1108,8 @@ Before diving into phase details, select the right approach for your project:
 ---
 
 ### 🏗️ **Phase 4: Build**
+
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
 
 **Purpose**: Build production-ready solution with full features and enterprise-grade quality
 
@@ -958,6 +1197,8 @@ Before diving into phase details, select the right approach for your project:
 
 ### 🔗 **Phase 5: Integrate**
 
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
+
 **Purpose**: Integrate solution with enterprise ecosystem and prepare for end-to-end testing
 
 **Duration**: 2-4 weeks
@@ -1029,6 +1270,8 @@ Before diving into phase details, select the right approach for your project:
 ---
 
 ### ✅ **Phase 6: Test & Evaluate**
+
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
 
 **Purpose**: Comprehensive testing, quality assurance, and performance validation
 
@@ -1112,6 +1355,8 @@ Before diving into phase details, select the right approach for your project:
 
 ### 📦 **Phase 7: Prepare and Deploy**
 
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
+
 **Purpose**: Production deployment, training delivery, and go-live preparation
 
 **Duration**: 2-4 weeks (plus 30-day hypercare)
@@ -1190,6 +1435,8 @@ Before diving into phase details, select the right approach for your project:
 ---
 
 ### 🔄 **Phase 8: Operate and Care**
+
+**[→ View this phase in the Delivery Flow Diagram](./diagrams/end-to-end-delivery-flow.md)**
 
 **Purpose**: Ongoing operations, optimization, and continuous improvement
 
@@ -1568,7 +1815,7 @@ For questions, issues, or support:
   - AI Center of Excellence Framework (organizational scaling)
   - Scaling Patterns (enterprise patterns)
   - Phase-specific guides (10 guides)
-- ✅ **5 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector - 100+ use cases)
+- ✅ **6 Industry Use Case Libraries** (Financial Services, Energy & Mining, Retail, Defense, Public Sector, AI Workforce - 110+ use cases)
 - ✅ **1 Stakeholder Presentation** (Complete slide deck with presenter notes)
 - ✅ **Standardized Azure Infrastructure** (Deploy production-ready AI platform in 15 minutes):
   - Complete Bicep infrastructure-as-code templates (3,500+ lines)
