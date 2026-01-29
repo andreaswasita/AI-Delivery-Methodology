@@ -300,7 +300,7 @@ The Value Analysis Agent supports all methodology phases:
    - Quantify business opportunity assessment
 
 2. **Business Envisioning Workshop**
-   - Use agent during [Business Envisioning Workshop](../guides/business-envisioning-workshop-guide.md)
+   - Use agent during [Business Envisioning Workshop](../guides/01-business-envisioning-workshop-guide.md)
    - Add use cases identified in workshop
    - Generate prioritization for roadmap decisions
 
@@ -573,7 +573,7 @@ To enhance the Value Analysis Agent:
 
 For questions or issues:
 - Review [AI Delivery Methodology README](../README.md)
-- Check [Business Envisioning Workshop Guide](../guides/business-envisioning-workshop-guide.md)
+- Check [Business Envisioning Workshop Guide](../guides/01-business-envisioning-workshop-guide.md)
 - Reference [Templates](../templates/) for integration examples
 
 ---

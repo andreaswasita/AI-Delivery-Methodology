@@ -112,7 +112,7 @@ PRESALES_DISCOVERY = PhaseInfo(
     ],
     guides=[
         "presales-discovery-activities-for-presentations.md",
-        "business-envisioning-workshop-guide.md",
+        "01-business-envisioning-workshop-guide.md",
         "solution-envisioning-workshop-guide.md"
     ],
     checklists=[
@@ -191,7 +191,7 @@ MOBILISE = PhaseInfo(
         "08-stakeholder-analysis.md"
     ],
     guides=[
-        "mobilisation-complete-guide.md"
+        "01-mobilisation-complete-guide.md"
     ],
     checklists=[
         "mobilisation-checklist.md"
@@ -257,7 +257,7 @@ HACKATHONS = PhaseInfo(
         "Business Owner"
     ],
     guides=[
-        "hackathons-complete-guide.md"
+        "02-hackathons-complete-guide.md"
     ],
     checklists=[
         "hackathons-prototype-checklist.md"
@@ -323,8 +323,8 @@ SETUP_PLATFORM = PhaseInfo(
         "AI/ML Lead"
     ],
     guides=[
-        "setup-platform-complete-guide.md",
-        "mlops-devops-complete-guide.md"
+        "03-setup-platform-complete-guide.md",
+        "03-mlops-devops-complete-guide.md"
     ],
     checklists=[
         "setup-platform-checklist.md"
@@ -397,7 +397,7 @@ BUILD = PhaseInfo(
         "Technical Writer"
     ],
     guides=[
-        "build-phase-complete-guide.md",
+        "04-build-phase-complete-guide.md",
         "story-points-estimation-guide.md"
     ],
     checklists=[
@@ -460,7 +460,7 @@ INTEGRATE = PhaseInfo(
         "DevOps Engineer"
     ],
     guides=[
-        "integrate-phase-complete-guide.md"
+        "05-integrate-phase-complete-guide.md"
     ],
     checklists=[
         "integrate-phase-checklist.md"
@@ -533,7 +533,7 @@ TEST_EVALUATE = PhaseInfo(
         "Data Scientists"
     ],
     guides=[
-        "test-evaluate-phase-complete-guide.md"
+        "06-test-evaluate-phase-complete-guide.md"
     ],
     checklists=[
         "test-evaluate-phase-checklist.md"
@@ -605,7 +605,7 @@ PREPARE_DEPLOY = PhaseInfo(
         "Business Users"
     ],
     guides=[
-        "prepare-deploy-phase-complete-guide.md"
+        "07-prepare-deploy-phase-complete-guide.md"
     ],
     checklists=[
         "prepare-deploy-phase-checklist.md"
@@ -673,7 +673,7 @@ OPERATE_CARE = PhaseInfo(
         "Security Team"
     ],
     guides=[
-        "operate-care-phase-complete-guide.md",
+        "08-operate-care-phase-complete-guide.md",
         "ai-model-risk-management-guide.md"
     ],
     checklists=[

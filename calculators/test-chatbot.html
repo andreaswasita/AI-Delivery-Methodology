@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-panel {
+            background: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .test-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-btn:hover {
+            background: #0056b3;
+        }
+        #console-log {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        iframe {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 Value Analysis Chatbot - Test Page</h1>
+    
+    <div class="test-panel">
+        <h2>Test Controls</h2>
+        <button class="test-btn" onclick="testInit()">🔄 Reload Chatbot</button>
+        <button class="test-btn" onclick="clearConsole()">🗑️ Clear Console</button>
+        <button class="test-btn" onclick="testLocalStorage()">💾 Check LocalStorage</button>
+        <button class="test-btn" onclick="testButtons()">🖱️ Test Buttons</button>
+        <button class="test-btn" onclick="setTestKey()">🔑 Set Test API Key</button>
+        <button class="test-btn" onclick="clearKeys()">❌ Clear All Keys</button>
+    </div>
+    
+    <div class="test-panel">
+        <h3>Console Output</h3>
+        <div id="console-log">Waiting for console messages...</div>
+    </div>
+    
+    <h2>Chatbot Instance</h2>
+    <iframe id="chatbot-frame" src="value-analysis-chatbot.html"></iframe>
+    
+    <script>
+        let consoleMessages = [];
+        
+        // Capture console messages
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+        
+        function addToConsole(type, ...args) {
+            const message = `[${type}] ${args.map(a => 
+                typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a)
+            ).join(' ')}`;
+            consoleMessages.push(message);
+            updateConsoleDisplay();
+        }
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            addToConsole('LOG', ...args);
+        };
+        
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            addToConsole('ERROR', ...args);
+        };
+        
+        console.warn = function(...args) {
+            originalConsoleWarn.apply(console, args);
+            addToConsole('WARN', ...args);
+        };
+        
+        function updateConsoleDisplay() {
+            const consoleDiv = document.getElementById('console-log');
+            if (consoleMessages.length === 0) {
+                consoleDiv.textContent = 'No console messages yet...';
+            } else {
+                consoleDiv.textContent = consoleMessages.slice(-50).join('\n');
+                consoleDiv.scrollTop = consoleDiv.scrollHeight;
+            }
+        }
+        
+        function clearConsole() {
+            consoleMessages = [];
+            updateConsoleDisplay();
+            console.log('✅ Console cleared');
+        }
+        
+        function testInit() {
+            console.log('🔄 Reloading chatbot iframe...');
+            document.getElementById('chatbot-frame').src = document.getElementById('chatbot-frame').src;
+        }
+        
+        function testLocalStorage() {
+            console.log('💾 LocalStorage contents:');
+            console.log('  - anthropic_api_key:', localStorage.getItem('anthropic_api_key') ? '✅ Set' : '❌ Not set');
+            console.log('  - copilot_endpoint:', localStorage.getItem('copilot_endpoint') ? '✅ Set' : '❌ Not set');
+            console.log('  - ai_provider:', localStorage.getItem('ai_provider') || '❌ Not set');
+        }
+        
+        function testButtons() {
+            console.log('🖱️ Attempting to access iframe chatbot...');
+            try {
+                const iframe = document.getElementById('chatbot-frame');
+                const iframeWindow = iframe.contentWindow;
+                console.log('  - Iframe window:', iframeWindow ? '✅ Accessible' : '❌ Not accessible');
+                console.log('  - Chatbot instance:', iframeWindow.chatbot ? '✅ Found' : '❌ Not found');
+                
+                if (iframeWindow.chatbot) {
+                    console.log('  - Current stage:', iframeWindow.chatbot.state.stage);
+                    console.log('  - Send button:', iframeWindow.chatbot.sendBtn ? '✅ Found' : '❌ Not found');
+                    console.log('  - API Key button:', iframeWindow.chatbot.apiKeyBtn ? '✅ Found' : '❌ Not found');
+                }
+            } catch (e) {
+                console.error('❌ Error accessing iframe:', e.message);
+            }
+        }
+        
+        function setTestKey() {
+            const key = prompt('Enter your Anthropic API key (or leave blank to skip):');
+            if (key) {
+                localStorage.setItem('anthropic_api_key', key);
+                localStorage.setItem('ai_provider', 'anthropic');
+                console.log('✅ API key set in localStorage');
+                console.log('🔄 Please reload the chatbot to apply changes');
+            }
+        }
+        
+        function clearKeys() {
+            localStorage.removeItem('anthropic_api_key');
+            localStorage.removeItem('copilot_endpoint');
+            localStorage.removeItem('ai_provider');
+            console.log('✅ All API keys cleared');
+            console.log('🔄 Please reload the chatbot to apply changes');
+        }
+        
+        // Initial log
+        console.log('🚀 Test page loaded');
+        console.log('📍 Current URL:', window.location.href);
+        testLocalStorage();
+        
+        // Listen for messages from iframe
+        window.addEventListener('message', (event) => {
+            console.log('📨 Message from iframe:', event.data);
+        });
+    </script>
+</body>
+</html>

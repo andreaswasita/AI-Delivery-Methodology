@@ -931,6 +931,6 @@ ___________________________________________
 ---
 
 *This checklist is part of the AI Delivery Methodology. For related materials, see:*
-- *[Business Envisioning Workshop Guide](../guides/business-envisioning-workshop-guide.md)*
+- *[Business Envisioning Workshop Guide](../guides/01-business-envisioning-workshop-guide.md)*
 - *[Pre-Work Assignment Template](../templates/13-business-envisioning-pre-work.md)*
 - *[Use Case Template](../templates/14-business-envisioning-use-case-template.md)*

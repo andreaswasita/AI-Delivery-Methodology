@@ -822,6 +822,6 @@ MILESTONE FOR REASSESSMENT:
 **Part of:** AI Delivery Methodology - Executive Coaching Materials
 
 *Related documents:*
-- *[Executive Coaching Guide](../guides/executive-coaching-guide.md)*
-- *[Business Envisioning Workshop Guide](../guides/business-envisioning-workshop-guide.md)*
+- *[Executive Coaching Guide](../guides/90-executive-coaching-guide.md)*
+- *[Business Envisioning Workshop Guide](../guides/01-business-envisioning-workshop-guide.md)*
 - *[Stakeholder Analysis Template](08-stakeholder-analysis.md)*

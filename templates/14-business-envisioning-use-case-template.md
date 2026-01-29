@@ -632,5 +632,5 @@ Example: "By implementing an AI-powered integration layer that intelligently agg
 ---
 
 *This template is part of the AI Delivery Methodology. For related materials, see:*
-- *[Business Envisioning Workshop Guide](../guides/business-envisioning-workshop-guide.md)*
+- *[Business Envisioning Workshop Guide](../guides/01-business-envisioning-workshop-guide.md)*
 - *[Discovery Phase Checklist](../checklists/discovery-checklist.md)*

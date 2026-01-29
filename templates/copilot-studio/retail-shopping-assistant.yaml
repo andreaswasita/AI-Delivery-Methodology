@@ -1,0 +1,803 @@
+# Retail Shopping Assistant
+# Based on UC-RT-002 from Retail Use Cases
+# Microsoft Copilot Studio Template
+
+name: Retail Shopping Assistant
+description: AI-powered conversational shopping assistant for e-commerce - helps with product discovery, recommendations, order tracking, and customer service 24/7
+language: en-US
+version: 1.0
+use_case_id: UC-RT-002
+industry: Retail & E-commerce
+estimated_containment_rate: 70-85%
+target_cost_per_interaction: $1.00
+
+# Business Value Metrics
+business_value:
+  conversion_rate_improvement: 20-40% for bot-assisted sessions
+  cost_savings: 60-80% reduction in chat costs
+  customer_satisfaction: 24/7 availability
+  containment_rate: 70-85% of inquiries resolved
+  annual_value: $5M-30M+
+
+# Topics (Intent Categories)
+topics:
+  - name: Greeting and Welcome
+    id: greeting
+    trigger_phrases:
+      - Hi
+      - Hello
+      - Hey
+      - Help me shop
+      - I'm looking for
+    nodes:
+      - type: message
+        content: |
+          Welcome! 👋 I'm your personal shopping assistant! 
+          
+          I can help you with:
+          🔍 Find the perfect products
+          👗 Style recommendations
+          📦 Track your orders
+          💳 Checkout assistance
+          🎁 Gift ideas
+          
+          What brings you here today?
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: ActionSet
+              actions:
+                - type: Action.Submit
+                  title: 🛍️ Browse Products
+                  data:
+                    intent: browse_products
+                - type: Action.Submit
+                  title: 📷 Visual Search
+                  data:
+                    intent: visual_search
+                - type: Action.Submit
+                  title: 📦 Track Order
+                  data:
+                    intent: track_order
+                - type: Action.Submit
+                  title: 💬 Customer Service
+                  data:
+                    intent: customer_service
+
+  - name: Product Search and Discovery
+    id: product_search
+    trigger_phrases:
+      - I'm looking for
+      - Show me
+      - Find me
+      - Do you have
+      - I need
+      - Search for
+    generative_ai: true
+    entities:
+      - name: ProductCategory
+        type: list
+        values: [clothing, shoes, accessories, electronics, home, beauty]
+      - name: ProductAttributes
+        type: composite
+        entities: [size, color, brand, price_range, style]
+    nodes:
+      - type: question
+        variable: SearchQuery
+        prompt: What are you looking for today?
+        examples:
+          - "A black dress for a wedding"
+          - "Running shoes under $100"
+          - "Wireless headphones"
+      - type: action
+        action_type: power_automate
+        flow_name: ProductSearch
+        inputs:
+          query: ${SearchQuery}
+          use_semantic_search: true
+        outputs:
+          products: Products
+          total_results: TotalResults
+      - type: condition
+        conditions:
+          - value: ${TotalResults}
+            greater_than: 0
+            actions:
+              - type: adaptive_card
+                card:
+                  type: AdaptiveCard
+                  body:
+                    - type: TextBlock
+                      text: "I found ${TotalResults} products for you! 🎉"
+                      weight: bolder
+                    - type: Container
+                      items: ${Products}
+                      style: default
+              - type: message
+                content: |
+                  Would you like me to:
+                  • Narrow down the results
+                  • Show similar items
+                  • Get style advice
+                  • Add to cart
+          - value: ${TotalResults}
+            equals: 0
+            actions:
+              - type: message
+                content: |
+                  I couldn't find exactly what you're looking for, but let me show you some alternatives.
+              - type: action
+                action_type: generative_answers
+                prompt: |
+                  Based on "${SearchQuery}", suggest 3-5 alternative products 
+                  from our catalog that might interest the customer.
+      - type: question
+        variable: NextAction
+        prompt: What would you like to do next?
+        suggestions:
+          - View product details
+          - Refine search
+          - Add to cart
+          - Continue shopping
+
+  - name: Visual Search
+    id: visual_search
+    trigger_phrases:
+      - Upload image
+      - Search by image
+      - Find similar
+      - I have a picture
+      - Visual search
+    entities:
+      - name: UploadedImage
+        type: attachment
+        allowed_types: [image/jpeg, image/png]
+    nodes:
+      - type: message
+        content: |
+          📷 **Visual Search**
+          
+          Upload a photo of what you're looking for, and I'll find similar items in our store!
+      - type: question
+        variable: UploadedImage
+        prompt: Please upload an image
+        input_type: attachment
+      - type: action
+        action_type: cognitive_services
+        service: computer_vision
+        operation: analyze_image
+        inputs:
+          image: ${UploadedImage}
+        outputs:
+          tags: ImageTags
+          colors: DominantColors
+          category: ImageCategory
+      - type: action
+        action_type: power_automate
+        flow_name: VisualProductSearch
+        inputs:
+          tags: ${ImageTags}
+          colors: ${DominantColors}
+          category: ${ImageCategory}
+        outputs:
+          similar_products: SimilarProducts
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: TextBlock
+              text: "Here are similar items I found! 🎯"
+              weight: bolder
+            - type: Container
+              items: ${SimilarProducts}
+
+  - name: Style Recommendations
+    id: style_recommendations
+    trigger_phrases:
+      - What goes with this
+      - Style advice
+      - Complete the look
+      - Outfit ideas
+      - What should I wear with
+    generative_ai: true
+    entities:
+      - name: BaseProduct
+        type: custom
+      - name: Occasion
+        type: list
+        values: [casual, work, formal, party, workout, weekend]
+    nodes:
+      - type: question
+        variable: BaseProduct
+        prompt: Which item would you like styling advice for?
+        allow_browse_cart: true
+      - type: question
+        variable: Occasion
+        prompt: What's the occasion?
+        suggestions:
+          - Casual everyday
+          - Work/Office
+          - Formal event
+          - Party/Night out
+          - Weekend brunch
+      - type: action
+        action_type: azure_openai
+        model: gpt-4
+        system_prompt: |
+          You are a professional fashion stylist. Provide personalized 
+          outfit recommendations that complement the customer's base item.
+          Consider occasion, season, and current trends.
+        user_prompt: |
+          Customer has: ${BaseProduct}
+          Occasion: ${Occasion}
+          
+          Suggest 3 complementary items from our catalog to complete the outfit.
+          For each item, explain why it works well together.
+        outputs:
+          recommendations: StyleRecommendations
+      - type: message
+        content: |
+          **Style Recommendations for ${Occasion}** ✨
+          
+          ${StyleRecommendations}
+      - type: action
+        action_type: power_automate
+        flow_name: GetMatchingProducts
+        inputs:
+          base_product: ${BaseProduct}
+          recommendations: ${StyleRecommendations}
+        outputs:
+          matching_products: MatchingProducts
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: Container
+              items: ${MatchingProducts}
+      - type: question
+        variable: AddToCart
+        prompt: Would you like to add any of these to your cart?
+        suggestions:
+          - Yes, add all
+          - Let me choose
+          - No thanks
+
+  - name: Size Recommendation
+    id: size_recommendation
+    trigger_phrases:
+      - What size
+      - Size guide
+      - Will this fit
+      - Size recommendation
+      - Help me with sizing
+    entities:
+      - name: Product
+        type: custom
+      - name: Height
+        type: dimension
+      - name: Weight
+        type: dimension
+      - name: CurrentSize
+        type: string
+    nodes:
+      - type: message
+        content: |
+          👕 **Size Recommendation**
+          
+          I'll help you find the perfect size! I need a few measurements.
+      - type: question
+        variable: Product
+        prompt: Which product do you need sizing help for?
+      - type: question
+        variable: Height
+        prompt: What's your height? (e.g., 5'8" or 170cm)
+      - type: question
+        variable: Weight
+        prompt: What's your weight? (e.g., 150 lbs or 68 kg)
+      - type: question
+        variable: CurrentSize
+        prompt: What size do you typically wear in similar items?
+        suggestions:
+          - XS
+          - S
+          - M
+          - L
+          - XL
+          - XXL
+      - type: question
+        variable: Fit Preference
+        prompt: How do you prefer your clothes to fit?
+        suggestions:
+          - Tight/Fitted
+          - Regular/True to size
+          - Loose/Relaxed
+      - type: action
+        action_type: ml_model
+        model: size_recommendation_model
+        inputs:
+          product_id: ${Product}
+          height: ${Height}
+          weight: ${Weight}
+          current_size: ${CurrentSize}
+          fit_preference: ${FitPreference}
+        outputs:
+          recommended_size: RecommendedSize
+          confidence: Confidence
+          alternative_sizes: AlternativeSizes
+      - type: message
+        content: |
+          **Size Recommendation** 📏
+          
+          Based on your measurements, I recommend: **${RecommendedSize}**
+          Confidence: ${Confidence}%
+          
+          Alternative sizes to consider: ${AlternativeSizes}
+          
+          💡 Tip: ${SizingTip}
+      - type: question
+        variable: AddToCart
+        prompt: Ready to add this to your cart?
+        suggestions:
+          - Yes, add ${RecommendedSize}
+          - Show me other sizes
+          - Read customer reviews first
+
+  - name: Track Order
+    id: track_order
+    trigger_phrases:
+      - Where is my order
+      - Track my order
+      - Order status
+      - Track package
+      - Delivery status
+    authentication_required: true
+    entities:
+      - name: OrderNumber
+        type: regex
+        pattern: "[A-Z]{2}[0-9]{8}"
+    nodes:
+      - type: message
+        content: I'll help you track your order! 📦
+      - type: question
+        variable: OrderLookup
+        prompt: How would you like to find your order?
+        suggestions:
+          - Show my recent orders
+          - Enter order number
+      - type: condition
+        conditions:
+          - value: ${OrderLookup}
+            equals: Show my recent orders
+            actions:
+              - type: action
+                action_type: power_automate
+                flow_name: GetCustomerOrders
+                inputs:
+                  customer_id: ${System.User.Id}
+                  limit: 5
+                outputs:
+                  orders: RecentOrders
+              - type: question
+                variable: SelectedOrder
+                prompt: Which order would you like to track?
+                suggestions: ${RecentOrders}
+          - value: ${OrderLookup}
+            equals: Enter order number
+            actions:
+              - type: question
+                variable: OrderNumber
+                prompt: Please enter your order number (e.g., AB12345678)
+              - type: action
+                action_type: power_automate
+                flow_name: GetOrderByNumber
+                inputs:
+                  order_number: ${OrderNumber}
+                outputs:
+                  order: SelectedOrder
+      - type: action
+        action_type: power_automate
+        flow_name: GetOrderTracking
+        inputs:
+          order_id: ${SelectedOrder}
+        outputs:
+          tracking_info: TrackingInfo
+          estimated_delivery: EstimatedDelivery
+          current_location: CurrentLocation
+          status: OrderStatus
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: TextBlock
+              text: "Order Tracking"
+              weight: bolder
+              size: large
+            - type: FactSet
+              facts:
+                - title: Order Number
+                  value: ${OrderNumber}
+                - title: Status
+                  value: ${OrderStatus}
+                - title: Current Location
+                  value: ${CurrentLocation}
+                - title: Estimated Delivery
+                  value: ${EstimatedDelivery}
+            - type: Image
+              url: ${TrackingInfo.MapUrl}
+              size: stretch
+      - type: message
+        content: |
+          Your order is **${OrderStatus}** 
+          
+          Estimated delivery: ${EstimatedDelivery}
+          
+          Would you like me to:
+          • Send updates to your email
+          • Change delivery instructions
+          • Report an issue
+      - type: question
+        variable: NextAction
+        prompt: What would you like to do?
+        suggestions:
+          - Email me updates
+          - Change delivery address
+          - Report a problem
+          - Nothing, thanks
+
+  - name: Cart and Checkout Assistance
+    id: checkout_help
+    trigger_phrases:
+      - Checkout help
+      - Problem with cart
+      - Can't checkout
+      - Apply coupon
+      - Payment issue
+    entities:
+      - name: IssueType
+        type: list
+        values: [coupon, payment, shipping, cart_error]
+    nodes:
+      - type: message
+        content: I'm here to help with your checkout! What seems to be the issue?
+      - type: question
+        variable: IssueType
+        prompt: What do you need help with?
+        suggestions:
+          - Applying a coupon/promo code
+          - Payment method issues
+          - Shipping options
+          - Cart not working
+          - Other
+      - type: condition
+        conditions:
+          - value: ${IssueType}
+            equals: Applying a coupon/promo code
+            actions:
+              - type: question
+                variable: CouponCode
+                prompt: Please enter your coupon code
+              - type: action
+                action_type: power_automate
+                flow_name: ValidateAndApplyCoupon
+                inputs:
+                  coupon_code: ${CouponCode}
+                  cart_id: ${System.User.CartId}
+                outputs:
+                  valid: IsValid
+                  discount: DiscountAmount
+                  error_message: ErrorMessage
+              - type: condition
+                conditions:
+                  - value: ${IsValid}
+                    equals: true
+                    actions:
+                      - type: message
+                        content: |
+                          ✅ Coupon applied successfully!
+                          You're saving: ${DiscountAmount}
+                  - value: ${IsValid}
+                    equals: false
+                    actions:
+                      - type: message
+                        content: |
+                          ❌ ${ErrorMessage}
+                          
+                          Let me find valid promotions for you...
+                      - type: action
+                        action_type: power_automate
+                        flow_name: GetAvailablePromotions
+                        inputs:
+                          cart_id: ${System.User.CartId}
+                        outputs:
+                          promotions: AvailablePromotions
+
+  - name: Returns and Exchanges
+    id: returns
+    trigger_phrases:
+      - Return item
+      - Exchange
+      - Product defective
+      - Wrong size
+      - Return policy
+      - Start a return
+    authentication_required: true
+    entities:
+      - name: OrderNumber
+        type: string
+      - name: ReturnReason
+        type: list
+        values: [wrong_size, defective, changed_mind, wrong_item]
+    nodes:
+      - type: message
+        content: |
+          I'm sorry you need to return something. Let me make this easy for you.
+          
+          📝 Our return policy:
+          • 30-day return window
+          • Free return shipping
+          • Full refund or exchange
+      - type: question
+        variable: OrderNumber
+        prompt: Which order is this for?
+        allow_lookup: recent_orders
+      - type: action
+        action_type: power_automate
+        flow_name: GetOrderItems
+        inputs:
+          order_number: ${OrderNumber}
+        outputs:
+          items: OrderItems
+      - type: question
+        variable: ItemToReturn
+        prompt: Which item would you like to return?
+        suggestions: ${OrderItems}
+      - type: question
+        variable: ReturnReason
+        prompt: What's the reason for the return?
+        suggestions:
+          - Wrong size
+          - Defective/damaged
+          - Changed my mind
+          - Received wrong item
+          - Quality issues
+      - type: question
+        variable: ReturnType
+        prompt: Would you like a refund or exchange?
+        suggestions:
+          - Refund to original payment
+          - Exchange for different size
+          - Exchange for different item
+          - Store credit
+      - type: action
+        action_type: power_automate
+        flow_name: InitiateReturn
+        inputs:
+          order_number: ${OrderNumber}
+          item: ${ItemToReturn}
+          reason: ${ReturnReason}
+          type: ${ReturnType}
+        outputs:
+          return_label: ReturnLabel
+          return_number: ReturnNumber
+          instructions: ReturnInstructions
+      - type: message
+        content: |
+          ✅ **Return Authorized**
+          
+          Return #: ${ReturnNumber}
+          
+          📬 Next Steps:
+          1. Download and print your return label
+          2. Package the item securely
+          3. Drop off at any carrier location
+          
+          ${ReturnInstructions}
+          
+          You'll receive your refund within 5-7 business days after we receive the item.
+      - type: adaptive_card
+        card:
+          type: AdaptiveCard
+          body:
+            - type: ActionSet
+              actions:
+                - type: Action.OpenUrl
+                  title: Download Return Label
+                  url: ${ReturnLabel}
+
+  - name: Customer Service
+    id: customer_service
+    trigger_phrases:
+      - Customer service
+      - I have a question
+      - Help
+      - Issue with
+      - Complaint
+    generative_ai: true
+    nodes:
+      - type: message
+        content: I'm here to help! What can I assist you with?
+      - type: question
+        variable: Question
+        prompt: Please describe your question or issue
+      - type: action
+        action_type: generative_answers
+        data_sources:
+          - type: website
+            url: https://www.yourstore.com/help
+          - type: sharepoint
+            site: CustomerServiceKnowledgeBase
+        inputs:
+          question: ${Question}
+        outputs:
+          answer: GeneratedAnswer
+          confidence: AnswerConfidence
+      - type: condition
+        conditions:
+          - value: ${AnswerConfidence}
+            greater_than: 0.7
+            actions:
+              - type: message
+                content: ${GeneratedAnswer}
+              - type: question
+                variable: Helpful
+                prompt: Did this answer your question?
+                suggestions:
+                  - Yes, that helped!
+                  - No, I need more help
+          - value: ${AnswerConfidence}
+            less_than: 0.7
+            actions:
+              - type: message
+                content: |
+                  I want to make sure you get the best help possible. 
+                  Let me connect you with a specialist who can assist you better.
+              - type: redirect
+                target_topic: escalate_to_agent
+
+  - name: Escalate to Human Agent
+    id: escalate
+    trigger_phrases:
+      - Talk to a person
+      - Human agent
+      - Live chat
+      - Speak to representative
+    nodes:
+      - type: message
+        content: |
+          I'll connect you with one of our shopping specialists right away! 
+          
+          Current wait time: ~2 minutes
+      - type: action
+        action_type: transfer_to_agent
+        queue: Customer Service
+        context:
+          conversation_history: ${System.ConversationHistory}
+          customer_id: ${System.User.Id}
+          cart_items: ${System.User.Cart}
+          priority: normal
+
+# AI Plugins and Skills
+plugins:
+  - name: Azure OpenAI GPT-4
+    type: generative_answers
+    model: gpt-4-turbo
+    temperature: 0.7
+    use_for:
+      - Style recommendations
+      - Product descriptions
+      - General questions
+      
+  - name: Computer Vision
+    type: cognitive_services
+    use_for:
+      - Visual search
+      - Image analysis
+      - Style matching
+  
+  - name: Sentiment Analysis
+    type: cognitive_services
+    use_for:
+      - Detect customer frustration
+      - Prioritize escalations
+
+# Knowledge Sources
+knowledge_sources:
+  - type: website
+    url: https://www.yourstore.com
+    pages:
+      - /help
+      - /faq
+      - /sizing-guide
+      - /shipping-policy
+      - /return-policy
+  
+  - type: product_catalog
+    source: e-commerce_database
+    include:
+      - product_descriptions
+      - reviews
+      - specifications
+      - availability
+  
+  - type: sharepoint
+    site: Customer Service KB
+    libraries:
+      - FAQs
+      - Policies
+      - Troubleshooting
+
+# Security & Compliance
+security:
+  authentication:
+    type: optional
+    required_for:
+      - track_order
+      - view_order_history
+      - returns
+  
+  data_classification: customer_data
+  
+  compliance:
+    - GDPR
+    - CCPA
+    - PCI-DSS (for payment data)
+  
+  pii_handling:
+    - mask_credit_cards
+    - mask_addresses
+    - encrypt_personal_data
+
+# Analytics & Monitoring
+analytics:
+  track_metrics:
+    - containment_rate
+    - conversion_rate
+    - average_order_value
+    - cart_abandonment_rate
+    - escalation_rate
+    - csat_score
+    - top_search_queries
+  
+  ab_testing:
+    - recommendation_algorithms
+    - conversation_flows
+    - upsell_strategies
+
+# Integration Requirements
+integrations:
+  required:
+    - name: E-commerce Platform
+      purpose: Product catalog, inventory, orders
+      
+    - name: Payment Gateway
+      purpose: Checkout processing
+      
+    - name: Shipping Provider
+      purpose: Order tracking
+      
+    - name: CRM
+      purpose: Customer history
+  
+  optional:
+    - name: Recommendation Engine
+      purpose: Personalized suggestions
+    
+    - name: Inventory Management
+      purpose: Real-time stock levels
+
+# Deployment Channels
+channels:
+  - website_embed
+  - mobile_app
+  - facebook_messenger
+  - instagram
+  - whatsapp
+
+# Success Metrics (Targets)
+success_metrics:
+  containment_rate: ">75%"
+  conversion_rate: "+20-40% vs non-assisted"
+  csat_score: ">4.2/5"
+  average_response_time: "<2 seconds"
+  cost_per_interaction: "<$1.00"

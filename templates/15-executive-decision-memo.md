@@ -597,6 +597,6 @@ Q4 [Year]: Scale & Operate
 ---
 
 *This executive decision memo is part of the AI Delivery Methodology. Related documents:*
-- *[Business Envisioning Workshop Summary](../guides/business-envisioning-workshop-guide.md)*
+- *[Business Envisioning Workshop Summary](../guides/01-business-envisioning-workshop-guide.md)*
 - *[Project Charter Template](01-project-charter.md)*
 - *[Business Case Template](02-business-case.md)*

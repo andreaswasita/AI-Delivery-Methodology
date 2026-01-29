@@ -169,7 +169,7 @@ Payback Period: 1.2 years
 - Conduct Five Whys during discovery
 
 **Business Envisioning Workshop**
-- Use during [Business Envisioning Workshop](../guides/business-envisioning-workshop-guide.md)
+- Use during [Business Envisioning Workshop](../guides/01-business-envisioning-workshop-guide.md)
 - Add identified use cases in real-time
 - Generate prioritization for roadmap
 
@@ -331,7 +331,7 @@ Total: ~2,900 lines of Python code + 900 lines of documentation
 4. Reference [README.md](README.md) for detailed documentation
 
 ### Support Resources
-- [Business Envisioning Workshop Guide](../guides/business-envisioning-workshop-guide.md)
+- [Business Envisioning Workshop Guide](../guides/01-business-envisioning-workshop-guide.md)
 - [Business Case Template](../templates/02-business-case.md)
 - [Use Case Template](../templates/14-business-envisioning-use-case-template.md)
 - [ROI Calculator (Web)](https://andreaswasita.github.io/AI-Delivery-Methodology/)

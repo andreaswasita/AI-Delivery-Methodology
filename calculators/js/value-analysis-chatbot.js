@@ -3,6 +3,14 @@
 
 class ValueAnalysisChatbot {
     constructor() {
+        // Try to load from local config file (if it exists)
+        const localConfig = (typeof window !== 'undefined' && window.CHATBOT_CONFIG) || {};
+        
+        // OPTION: Hardcode your API key here for LOCAL TESTING ONLY (not recommended)
+        // Better: Use js/config.local.js file (see instructions below)
+        const HARDCODED_ANTHROPIC_KEY = localConfig.ANTHROPIC_API_KEY || ''; // Leave empty for git commits
+        const HARDCODED_COPILOT_ENDPOINT = localConfig.COPILOT_ENDPOINT || ''; // Leave empty for git commits
+        
         this.state = {
             stage: 'welcome',
             projectName: '',
@@ -10,7 +18,12 @@ class ValueAnalysisChatbot {
             currentUseCase: {},
             costs: [],
             currentCost: {},
-            discountRate: 0.10
+            discountRate: 0.10,
+            anthropicApiKey: HARDCODED_ANTHROPIC_KEY || localStorage.getItem('anthropic_api_key') || '',
+            copilotEndpoint: HARDCODED_COPILOT_ENDPOINT || localStorage.getItem('copilot_endpoint') || '',
+            aiProvider: localStorage.getItem('ai_provider') || (HARDCODED_ANTHROPIC_KEY ? 'anthropic' : (HARDCODED_COPILOT_ENDPOINT ? 'copilot' : '')),
+            conversationHistory: [],
+            conversationalMode: true
         };
         
         this.messages = [];
@@ -18,54 +31,219 @@ class ValueAnalysisChatbot {
     }
 
     init() {
+        console.log('🤖 Initializing Value Analysis Chatbot...');
+        
         this.chatMessages = document.getElementById('chatMessages');
         this.userInput = document.getElementById('userInput');
         this.sendBtn = document.getElementById('sendBtn');
         this.resetBtn = document.getElementById('resetBtn');
+        this.apiKeyBtn = document.getElementById('apiKeyBtn');
         this.quickReplies = document.getElementById('quickReplies');
         
-        // Event listeners
-        this.sendBtn.addEventListener('click', () => this.handleSend());
-        this.userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.handleSend();
+        // Check if all elements exist
+        const missingElements = [];
+        if (!this.chatMessages) missingElements.push('chatMessages');
+        if (!this.userInput) missingElements.push('userInput');
+        if (!this.sendBtn) missingElements.push('sendBtn');
+        if (!this.resetBtn) missingElements.push('resetBtn');
+        if (!this.apiKeyBtn) missingElements.push('apiKeyBtn');
+        if (!this.quickReplies) missingElements.push('quickReplies');
+        
+        if (missingElements.length > 0) {
+            console.error('❌ Missing DOM elements:', missingElements.join(', '));
+            alert('Chatbot initialization failed. Missing elements: ' + missingElements.join(', '));
+            return;
+        }
+        
+        console.log('✅ All DOM elements found');
+        
+        // Event listeners with detailed error handling
+        try {
+            this.sendBtn.addEventListener('click', () => {
+                console.log('📤 Send button clicked');
+                try {
+                    this.handleSend();
+                } catch (error) {
+                    console.error('❌ Error in handleSend:', error);
+                    alert('Error processing message: ' + error.message);
+                }
+            });
+            console.log('✅ Send button listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach send button listener:', error);
+        }
+        
+        try {
+            this.userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    console.log('⌨️ Enter key pressed');
+                    try {
+                        this.handleSend();
+                    } catch (error) {
+                        console.error('❌ Error in handleSend from Enter key:', error);
+                    }
+                }
+            });
+            console.log('✅ Input keypress listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach keypress listener:', error);
+        }
+        
+        try {
+            this.resetBtn.addEventListener('click', () => {
+                console.log('🔄 Reset button clicked');
+                this.reset();
+            });
+            console.log('✅ Reset button listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach reset button listener:', error);
+        }
+        
+        try {
+            this.apiKeyBtn.addEventListener('click', () => {
+                console.log('🔑 API Key button clicked');
+                this.manageApiKey();
+            });
+            console.log('✅ API Key button listener attached');
+        } catch (error) {
+            console.error('❌ Failed to attach API key button listener:', error);
+        }
+        
+        console.log('✅ Event listeners attached');
+        
+        // Update button visual if provider is configured
+        this.updateProviderIndicator();
+        
+        // Log current state
+        console.log('📊 Current state:', {
+            hasAnthropicKey: !!this.state.anthropicApiKey,
+            hasCopilotEndpoint: !!this.state.copilotEndpoint,
+            aiProvider: this.state.aiProvider
         });
-        this.resetBtn.addEventListener('click', () => this.reset());
         
         // Start conversation
+        console.log('🚀 Starting conversation...');
         this.showWelcome();
     }
 
-    showWelcome() {
-        this.addBotMessage(
-            "👋 Hi! I'm your AI Value Analysis Assistant. I'll help you analyze the business value of your AI initiatives.",
-            () => {
-                this.addBotMessage(
-                    "I'll guide you through:\n\n" +
-                    "• 📊 Quantifying business benefits\n" +
-                    "• 💰 Calculating ROI and NPV\n" +
-                    "• 🎯 Prioritizing use cases\n" +
-                    "• 🔍 Conducting root cause analysis\n\n" +
-                    "Let's get started! What's your project name?"
-                );
-            },
-            500
-        );
-        this.state.stage = 'project_name';
+    updateProviderIndicator() {
+        if (!this.apiKeyBtn) return;
+        
+        if (this.state.aiProvider) {
+            this.apiKeyBtn.classList.add('has-provider');
+            this.apiKeyBtn.title = `AI Provider: ${this.state.aiProvider === 'anthropic' ? 'Anthropic Claude' : 'Microsoft Copilot Studio'}`;
+        } else {
+            this.apiKeyBtn.classList.remove('has-provider');
+            this.apiKeyBtn.title = 'AI Provider Settings';
+        }
+    }
+
+    manageApiKey() {
+        const hasAnthropicKey = !!this.state.anthropicApiKey;
+        const hasCopilotEndpoint = !!this.state.copilotEndpoint;
+        const hasAnyProvider = hasAnthropicKey || hasCopilotEndpoint;
+        
+        let message = '🤖 **AI Provider Settings**\n\n';
+        
+        if (hasAnyProvider) {
+            message += '**Current Configuration:**\n';
+            if (hasAnthropicKey) message += '✅ Anthropic Claude: Configured\n';
+            if (hasCopilotEndpoint) message += '✅ Microsoft Copilot Studio: Configured\n';
+            message += `\n**Active Provider:** ${this.state.aiProvider || 'None selected'}\n\n`;
+            message += 'What would you like to do?';
+            
+            this.addBotMessage(message);
+            this.showQuickReplies([
+                { label: '🔄 Change Provider', value: 'select_provider' },
+                { label: '🔑 Manage Keys', value: 'manage_keys' },
+                { label: '❌ Cancel', value: 'cancel' }
+            ]);
+        } else {
+            message += '❌ No AI providers configured\n\n';
+            message += 'Choose an AI provider to enable insights:';
+            
+            this.addBotMessage(message);
+            this.showQuickReplies([
+                { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                { label: '❌ Cancel', value: 'cancel' }
+            ]);
+        }
+        this.state.previousStage = this.state.stage;
+        this.state.stage = 'ai_provider_menu';
+    }
+
+    async showWelcome() {
+        // Check if Claude AI is available for conversational mode
+        if (this.state.anthropicApiKey || this.state.copilotEndpoint) {
+            this.addBotMessage(
+                "👋 Hi! I'm your AI Delivery Methodology consultant, powered by Claude AI. I'm here to guide your delivery team through value analysis using the Microsoft AI Frontier methodology.",
+                () => {
+                    this.addBotMessage(
+                        "I combine conversational guidance with proven best practices from:\n\n" +
+                        "• 🎯 9-phase delivery methodology (Envisioning → Production)\n" +
+                        "• 💰 ROI and NPV financial analysis\n" +
+                        "• 📊 Use case prioritization frameworks\n" +
+                        "• ⚡ Real-world delivery patterns\n\n" +
+                        "Tell me about your AI initiative - what are you trying to achieve? Feel free to describe it naturally, and I'll help you structure the analysis."
+                    );
+                },
+                500
+            );
+            this.state.stage = 'conversational';
+            this.state.conversationHistory = [];
+        } else {
+            // Fallback to structured mode if no AI provider
+            this.addBotMessage(
+                "👋 Hi! I'm your AI Value Analysis Assistant. I'll help you analyze the business value of your AI initiatives.",
+                () => {
+                    this.addBotMessage(
+                        "💡 **Tip:** For a more conversational experience, click the 🤖 icon to configure Claude AI.\n\n" +
+                        "For now, I'll guide you through a structured analysis:\n\n" +
+                        "• 📊 Quantifying business benefits\n" +
+                        "• 💰 Calculating ROI and NPV\n" +
+                        "• 🎯 Prioritizing use cases\n\n" +
+                        "Let's get started! What's your project name?"
+                    );
+                },
+                500
+            );
+            this.state.stage = 'project_name';
+        }
     }
 
     handleSend() {
         const message = this.userInput.value.trim();
-        if (!message) return;
+        console.log('📨 handleSend called, message:', message);
+        
+        if (!message) {
+            console.log('⚠️ Empty message, ignoring');
+            return;
+        }
         
         this.addUserMessage(message);
         this.userInput.value = '';
         
         // Process based on current stage
+        console.log('🔄 Processing input for stage:', this.state.stage);
         this.processInput(message);
     }
 
     processInput(input) {
         const stage = this.state.stage;
+        console.log(`🎯 processInput - Stage: ${stage}, Input: ${input}`);
+        
+        // Handle conversational mode with Claude AI
+        if (stage === 'conversational') {
+            if (input === 'generate_analysis') {
+                this.generateAnalysis();
+            } else if (input === 'continue') {
+                this.addBotMessage("Great! What else would you like to discuss about your AI initiative?");
+            } else {
+                this.handleConversationalInput(input);
+            }
+            return;
+        }
         
         switch(stage) {
             case 'project_name':
@@ -312,7 +490,476 @@ class ValueAnalysisChatbot {
                     this.generateAnalysis();
                 }
                 break;
+                
+            case 'final_actions':
+                if (input === 'ai_insights') {
+                    // Check if any provider is configured
+                    if (!this.state.aiProvider) {
+                        this.addBotMessage('🤖 Choose your AI provider:');
+                        this.showQuickReplies([
+                            { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                            { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                            { label: '⏭️ Skip AI Insights', value: 'report' }
+                        ]);
+                        this.state.stage = 'ai_provider_menu';
+                    } else {
+                        this.getAIInsights(this.state.analysis);
+                    }
+                } else if (input === 'api_key_input_request') {
+                    this.addBotMessage(
+                        '🔑 Please paste your Anthropic API key below.\n\n' +
+                        'Get your key at: https://console.anthropic.com/\n\n' +
+                        '(Your key is stored locally and never sent anywhere except Anthropic\'s API)'
+                    );
+                    this.state.stage = 'api_key_input';
+                } else if (input === 'report') {
+                    this.showDetailedReport();
+                } else if (input === 'json') {
+                    this.exportJSON();
+                } else if (input === 'reset') {
+                    this.reset();
+                }
+                break;
+
+            case 'api_key_input':
+                if (input && input.startsWith('sk-ant-')) {
+                    this.saveApiKey(input);
+                } else {
+                    this.addBotMessage(
+                        '❌ That doesn\'t look like a valid Anthropic API key.\n\n' +
+                        'API keys start with "sk-ant-". Please try again or skip AI insights.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'api_key_input_request' },
+                        { label: '⏭️ Skip AI Insights', value: 'report' }
+                    ]);
+                    this.state.stage = 'final_actions';
+                }
+                break;
+
+            case 'ai_provider_menu':
+                if (input === 'setup_anthropic') {
+                    this.addBotMessage(
+                        '🔵 **Anthropic Claude Setup**\n\n' +
+                        'Please paste your Anthropic API key:\n' +
+                        '(Starts with "sk-ant-")\n\n' +
+                        'Get one at: https://console.anthropic.com/'
+                    );
+                    this.state.stage = 'anthropic_key_input';
+                } else if (input === 'setup_copilot') {
+                    this.addBotMessage(
+                        '🟢 **Microsoft Copilot Studio Setup**\n\n' +
+                        'Please paste your Copilot Studio endpoint URL:\n' +
+                        '(Example: https://your-bot.azurewebsites.net/api/messages)\n\n' +
+                        'Get this from your Copilot Studio bot settings.'
+                    );
+                    this.state.stage = 'copilot_endpoint_input';
+                } else if (input === 'select_provider') {
+                    this.addBotMessage('Which provider would you like to use?');
+                    const options = [];
+                    if (this.state.anthropicApiKey) {
+                        options.push({ label: '🔵 Anthropic Claude', value: 'use_anthropic' });
+                    }
+                    if (this.state.copilotEndpoint) {
+                        options.push({ label: '🟢 Microsoft Copilot Studio', value: 'use_copilot' });
+                    }
+                    options.push({ label: '❌ Cancel', value: 'cancel' });
+                    this.showQuickReplies(options);
+                    this.state.stage = 'provider_selection';
+                } else if (input === 'manage_keys') {
+                    this.addBotMessage('Which provider credentials would you like to manage?');
+                    this.showQuickReplies([
+                        { label: '🔵 Anthropic Claude', value: 'manage_anthropic' },
+                        { label: '🟢 Microsoft Copilot Studio', value: 'manage_copilot' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'key_management';
+                } else {
+                    this.addBotMessage('Cancelled.');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'provider_selection':
+                if (input === 'use_anthropic') {
+                    this.state.aiProvider = 'anthropic';
+                    localStorage.setItem('ai_provider', 'anthropic');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Switched to Anthropic Claude!');
+                    this.state.stage = this.state.previousStage;
+                } else if (input === 'use_copilot') {
+                    this.state.aiProvider = 'copilot';
+                    localStorage.setItem('ai_provider', 'copilot');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Switched to Microsoft Copilot Studio!');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage('Cancelled.');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'key_management':
+                if (input === 'manage_anthropic') {
+                    const hasKey = !!this.state.anthropicApiKey;
+                    if (hasKey) {
+                        this.addBotMessage('Anthropic API Key: Configured\n\nWhat would you like to do?');
+                        this.showQuickReplies([
+                            { label: '🔄 Update Key', value: 'update_anthropic' },
+                            { label: '🗑️ Remove Key', value: 'remove_anthropic' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    } else {
+                        this.addBotMessage('No Anthropic API key configured. Would you like to add one?');
+                        this.showQuickReplies([
+                            { label: '➕ Add Key', value: 'setup_anthropic' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    }
+                    this.state.stage = 'ai_provider_menu';
+                } else if (input === 'manage_copilot') {
+                    const hasEndpoint = !!this.state.copilotEndpoint;
+                    if (hasEndpoint) {
+                        this.addBotMessage('Microsoft Copilot Studio: Configured\n\nWhat would you like to do?');
+                        this.showQuickReplies([
+                            { label: '🔄 Update Endpoint', value: 'update_copilot' },
+                            { label: '🗑️ Remove Endpoint', value: 'remove_copilot' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    } else {
+                        this.addBotMessage('No Copilot Studio endpoint configured. Would you like to add one?');
+                        this.showQuickReplies([
+                            { label: '➕ Add Endpoint', value: 'setup_copilot' },
+                            { label: '❌ Cancel', value: 'cancel' }
+                        ]);
+                    }
+                    this.state.stage = 'ai_provider_menu';
+                } else if (input === 'update_anthropic') {
+                    this.addBotMessage('Please paste your new Anthropic API key:');
+                    this.state.stage = 'anthropic_key_input';
+                } else if (input === 'remove_anthropic') {
+                    localStorage.removeItem('anthropic_api_key');
+                    this.state.anthropicApiKey = '';
+                    if (this.state.aiProvider === 'anthropic') {
+                        this.state.aiProvider = '';
+                        localStorage.removeItem('ai_provider');
+                        this.updateProviderIndicator();
+                    }
+                    this.addBotMessage('✅ Anthropic API key removed.');
+                    this.state.stage = this.state.previousStage;
+                } else if (input === 'update_copilot') {
+                    this.addBotMessage('Please paste your new Copilot Studio endpoint URL:');
+                    this.state.stage = 'copilot_endpoint_input';
+                } else if (input === 'remove_copilot') {
+                    localStorage.removeItem('copilot_endpoint');
+                    this.state.copilotEndpoint = '';
+                    if (this.state.aiProvider === 'copilot') {
+                        this.state.aiProvider = '';
+                        localStorage.removeItem('ai_provider');
+                        this.updateProviderIndicator();
+                    }
+                    this.addBotMessage('✅ Copilot Studio endpoint removed.');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage('Cancelled.');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'anthropic_key_input':
+                if (input && input.startsWith('sk-ant-')) {
+                    this.state.anthropicApiKey = input;
+                    localStorage.setItem('anthropic_api_key', input);
+                    this.state.aiProvider = 'anthropic';
+                    localStorage.setItem('ai_provider', 'anthropic');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Anthropic Claude configured successfully!');
+                    this.state.stage = this.state.previousStage;
+                    // If we have analysis ready, offer to run insights
+                    if (this.state.analysis) {
+                        setTimeout(() => {
+                            this.addBotMessage('Would you like to get AI insights now?');
+                            this.showQuickReplies([
+                                { label: '🤖 Get AI Insights', value: 'ai_insights' },
+                                { label: '⏭️ Skip', value: 'report' }
+                            ]);
+                            this.state.stage = 'final_actions';
+                        }, 500);
+                    }
+                } else {
+                    this.addBotMessage(
+                        '❌ Invalid API key format. Keys should start with "sk-ant-".\n\n' +
+                        'Please try again or cancel.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'setup_anthropic' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'ai_provider_menu';
+                }
+                break;
+
+            case 'copilot_endpoint_input':
+                if (input && (input.startsWith('http://') || input.startsWith('https://'))) {
+                    this.state.copilotEndpoint = input;
+                    localStorage.setItem('copilot_endpoint', input);
+                    this.state.aiProvider = 'copilot';
+                    localStorage.setItem('ai_provider', 'copilot');
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ Microsoft Copilot Studio configured successfully!');
+                    this.state.stage = this.state.previousStage;
+                    // If we have analysis ready, offer to run insights
+                    if (this.state.analysis) {
+                        setTimeout(() => {
+                            this.addBotMessage('Would you like to get AI insights now?');
+                            this.showQuickReplies([
+                                { label: '🤖 Get AI Insights', value: 'ai_insights' },
+                                { label: '⏭️ Skip', value: 'report' }
+                            ]);
+                            this.state.stage = 'final_actions';
+                        }, 500);
+                    }
+                } else {
+                    this.addBotMessage(
+                        '❌ Invalid endpoint URL. It should start with "http://" or "https://".\n\n' +
+                        'Please try again or cancel.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'setup_copilot' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'ai_provider_menu';
+                }
+                break;
+
+            case 'api_key_manage':
+                if (input === 'add_key' || input === 'update_key') {
+                    this.addBotMessage(
+                        '🔑 Please paste your Anthropic API key:\n\n' +
+                        '(Starts with "sk-ant-")'
+                    );
+                    this.state.stage = 'api_key_input_direct';
+                } else if (input === 'remove_key') {
+                    localStorage.removeItem('anthropic_api_key');
+                    this.state.anthropicApiKey = '';
+                    this.addBotMessage('✅ API key removed from local storage.');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage('Cancelled. Continuing...');
+                    this.state.stage = this.state.previousStage;
+                }
+                break;
+
+            case 'api_key_input_direct':
+                if (input && input.startsWith('sk-ant-')) {
+                    this.state.anthropicApiKey = input;
+                    localStorage.setItem('anthropic_api_key', input);
+                    this.addBotMessage('✅ API key saved successfully!');
+                    this.state.stage = this.state.previousStage;
+                } else {
+                    this.addBotMessage(
+                        '❌ Invalid API key format. Keys should start with "sk-ant-".\n\n' +
+                        'Please try again or cancel.'
+                    );
+                    this.showQuickReplies([
+                        { label: '🔄 Try Again', value: 'add_key' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'api_key_manage';
+                }
+                break;
         }
+    }
+
+    async handleConversationalInput(userMessage) {
+        console.log('💬 Conversational mode - processing:', userMessage);
+        
+        // Add to conversation history
+        this.state.conversationHistory.push({
+            role: 'user',
+            content: userMessage
+        });
+        
+        // Show typing indicator
+        this.addBotMessage('💭 Thinking...');
+        
+        try {
+            // Build conversational prompt with methodology context
+            const response = await this.getConversationalResponse(userMessage);
+            
+            // Remove typing indicator
+            const messages = this.chatMessages.querySelectorAll('.message');
+            if (messages.length > 0) {
+                const lastMessage = messages[messages.length - 1];
+                if (lastMessage.textContent.includes('💭 Thinking...')) {
+                    lastMessage.remove();
+                }
+            }
+            
+            // Add Claude's response
+            this.addBotMessage(response.message);
+            
+            // Store in history
+            this.state.conversationHistory.push({
+                role: 'assistant',
+                content: response.message
+            });
+            
+            // If Claude has extracted structured data, update state
+            if (response.extractedData) {
+                this.updateStateFromExtraction(response.extractedData);
+            }
+            
+            // Check if we have enough data to generate analysis
+            if (response.readyForAnalysis) {
+                setTimeout(() => {
+                    this.showQuickReplies([
+                        { label: '📊 Generate Analysis Now', value: 'generate_analysis' },
+                        { label: '💬 Continue Discussion', value: 'continue' }
+                    ]);
+                }, 500);
+            }
+            
+        } catch (error) {
+            console.error('❌ Conversational error:', error);
+            
+            // Remove typing indicator
+            const messages = this.chatMessages.querySelectorAll('.message');
+            if (messages.length > 0) {
+                const lastMessage = messages[messages.length - 1];
+                if (lastMessage.textContent.includes('💭 Thinking...')) {
+                    lastMessage.remove();
+                }
+            }
+            
+            this.addBotMessage(
+                `❌ I encountered an error: ${error.message}\n\n` +
+                `Let's continue our discussion. What else would you like to tell me about your AI initiative?`
+            );
+        }
+    }
+
+    async getConversationalResponse(userMessage) {
+        const systemPrompt = this.buildConversationalSystemPrompt();
+        const conversationContext = this.buildConversationContext();
+        
+        const fullPrompt = `${systemPrompt}\n\n${conversationContext}\n\nUser: ${userMessage}\n\nRespond naturally as an AI delivery consultant. Extract any relevant information about the project, use cases, benefits, or costs. If you have enough information for analysis, indicate readiness.`;
+        
+        let responseText;
+        
+        if (this.state.aiProvider === 'anthropic') {
+            responseText = await this.callAnthropicAPI(fullPrompt);
+        } else if (this.state.aiProvider === 'copilot') {
+            responseText = await this.callCopilotStudioAPI(fullPrompt);
+        }
+        
+        // Parse response for structured data
+        const extractedData = this.extractStructuredData(responseText);
+        const readyForAnalysis = this.checkIfReadyForAnalysis();
+        
+        return {
+            message: responseText,
+            extractedData: extractedData,
+            readyForAnalysis: readyForAnalysis
+        };
+    }
+
+    buildConversationalSystemPrompt() {
+        return `You are an expert AI delivery consultant with deep knowledge of the Microsoft AI Frontier "Vision to Value" methodology. You guide delivery teams through value analysis in a natural, conversational way.
+
+**YOUR ROLE:**
+- Have natural, flowing conversations about AI initiatives
+- Guide teams through value analysis using the methodology
+- Ask clarifying questions when needed
+- Extract structured information (use cases, benefits, costs) from natural language
+- Provide insights based on delivery best practices
+
+**MICROSOFT AI FRONTIER METHODOLOGY (9 Phases):**
+1. **Business Envisioning** - Align stakeholders, define vision, identify high-value use cases
+2. **Mobilization** - Establish governance, form teams, create project charter
+3. **Hackathons & Prototyping** - Rapid experimentation, proof of concept
+4. **Setup Platform** - Azure infrastructure, MLOps foundation, security
+5. **Build** - Model development, feature engineering, iterative improvement
+6. **Integrate** - API development, system integration, data pipelines
+7. **Test & Evaluate** - Model validation, bias testing, performance benchmarking
+8. **Prepare & Deploy** - Staging deployment, monitoring setup, rollout planning
+9. **Operate & Care** - Production monitoring, continuous improvement, scaling
+
+**BEST PRACTICES:**
+- Prioritize by Value Score (Benefit/Effort ratio) and Business Impact
+- Plan 3-6 month MVP cycles per use case
+- Allocate 20-30% effort for MLOps, governance, platform
+- Story points: 1 point = 1 person-day typically
+- Factor in Azure costs (compute, storage, AI services)
+- 40% of effort goes to data preparation
+- Executive sponsorship is critical
+
+**CONVERSATION GUIDELINES:**
+- Be warm, professional, and consultative
+- Ask one question at a time
+- Acknowledge what you've learned
+- Guide toward key information: project goals, use cases, benefits (quantified), costs, timeline
+- Reference methodology phases when relevant
+- Provide insights based on delivery patterns
+- Keep responses concise (2-3 paragraphs max)
+
+**INFORMATION TO GATHER:**
+- Project name and vision
+- Business problems being solved
+- Specific use cases
+- Expected benefits (with $ amounts when possible)
+- Estimated effort (story points or person-days)
+- Cost estimates (development, infrastructure, operations)
+- Timeline expectations
+- Stakeholder context
+
+**CURRENT STATE:**
+${this.state.projectName ? `Project: ${this.state.projectName}` : 'No project name yet'}
+${this.state.useCases.length > 0 ? `Use cases identified: ${this.state.useCases.length}` : 'No use cases yet'}
+${this.state.costs.length > 0 ? `Cost categories: ${this.state.costs.length}` : 'No costs captured yet'}
+
+Respond naturally and guide the conversation forward.`;
+    }
+
+    buildConversationContext() {
+        if (this.state.conversationHistory.length === 0) {
+            return "This is the start of the conversation.";
+        }
+        
+        return this.state.conversationHistory
+            .slice(-10) // Last 10 messages for context
+            .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
+            .join('\n\n');
+    }
+
+    extractStructuredData(responseText) {
+        // This is a simple extraction - in production, you'd use more sophisticated NLP
+        // or have Claude return JSON alongside the conversational response
+        const data = {};
+        
+        // Look for project name hints
+        const projectMatch = responseText.match(/project.*?"([^"]+)"/i) || 
+                           responseText.match(/initiative.*?"([^"]+)"/i);
+        if (projectMatch && !this.state.projectName) {
+            data.projectName = projectMatch[1];
+        }
+        
+        return data;
+    }
+
+    updateStateFromExtraction(extractedData) {
+        if (extractedData.projectName) {
+            this.state.projectName = extractedData.projectName;
+            console.log('📝 Extracted project name:', extractedData.projectName);
+        }
+        // Add more extraction logic as needed
+    }
+
+    checkIfReadyForAnalysis() {
+        // Check if we have minimum information for analysis
+        return this.state.projectName && 
+               this.state.useCases.length > 0 && 
+               this.state.useCases.some(uc => uc.benefits && uc.benefits.length > 0);
     }
 
     finishUseCase() {
@@ -459,14 +1106,300 @@ class ValueAnalysisChatbot {
         this.addBotMessage(message);
         
         setTimeout(() => {
-            this.addBotMessage('Would you like to view the detailed report or export the data?');
+            this.addBotMessage('Would you like AI-powered insights and recommendations?');
             this.showQuickReplies([
-                { label: '📄 View Full Report', value: 'report' },
+                { label: '🤖 Get AI Insights', value: 'ai_insights' },
+                { label: '📄 View Report Only', value: 'report' },
                 { label: '📥 Export JSON', value: 'json' },
                 { label: '🔄 Start Over', value: 'reset' }
             ]);
             this.state.stage = 'final_actions';
             this.state.analysis = analysis;
+        }, 500);
+    }
+
+    async getAIInsights(analysis) {
+        // Check if provider is configured
+        if (!this.state.aiProvider) {
+            this.addBotMessage('🤖 Please select an AI provider first.');
+            this.showQuickReplies([
+                { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                { label: '⏭️ Skip AI Insights', value: 'report' }
+            ]);
+            this.state.stage = 'ai_provider_menu';
+            return;
+        }
+
+        const providerName = this.state.aiProvider === 'anthropic' ? 'Claude AI' : 'Microsoft Copilot Studio';
+        this.addBotMessage(`🤖 Analyzing your data with ${providerName}... This may take a moment.`);
+        
+        try {
+            const prompt = this.buildAnalysisPrompt(analysis);
+            let insights;
+            
+            if (this.state.aiProvider === 'anthropic') {
+                insights = await this.callAnthropicAPI(prompt);
+            } else if (this.state.aiProvider === 'copilot') {
+                insights = await this.callCopilotStudioAPI(prompt);
+            }
+            
+            this.addBotMessage(
+                '✨ **AI-Powered Insights**\n\n' + insights
+            );
+            
+            setTimeout(() => {
+                this.addBotMessage('Would you like to do anything else?');
+                this.showQuickReplies([
+                    { label: '📄 View Full Report', value: 'report' },
+                    { label: '📥 Export JSON', value: 'json' },
+                    { label: '🔄 Start Over', value: 'reset' }
+                ]);
+                this.state.stage = 'final_actions';
+            }, 500);
+            
+        } catch (error) {
+            this.addBotMessage(
+                '❌ Error getting AI insights: ' + error.message + '\n\n' +
+                'Please check your configuration and try again, or continue without AI insights.'
+            );
+            this.showQuickReplies([
+                { label: '🔑 Update Configuration', value: 'manage_keys' },
+                { label: '📄 View Report', value: 'report' },
+                { label: '🔄 Start Over', value: 'reset' }
+            ]);
+            this.state.stage = 'final_actions';
+        }
+    }
+
+    buildAnalysisPrompt(analysis) {
+        const useCasesDetails = this.state.useCases.map(uc => {
+            return `\n### ${uc.title}\n` +
+                   `- Problem: ${uc.problem}\n` +
+                   `- Impact Level: ${uc.impact}/5\n` +
+                   `- Effort: ${uc.effort} points\n` +
+                   `- Benefits: ${uc.benefits.map(b => `${b.category}: $${b.amount}/year`).join(', ')}\n` +
+                   `- Total 5-year benefit: $${uc.totalBenefit.toLocaleString()}`;
+        }).join('\n');
+
+        return `You are an expert AI strategy consultant with deep knowledge of the Microsoft AI Frontier "Vision to Value" delivery methodology. This proven framework transforms AI initiatives from executive vision to measurable business value through structured phases.
+
+**AI DELIVERY METHODOLOGY CONTEXT:**
+
+The Microsoft AI Frontier methodology follows these key phases:
+1. **Business Envisioning** - Align stakeholders, define vision, identify high-value use cases
+2. **Mobilization** - Establish governance, form teams, create project charter
+3. **Hackathons & Prototyping** - Rapid experimentation, proof of concept development
+4. **Setup Platform** - Azure infrastructure, MLOps foundation, security framework
+5. **Build Phase** - Model development, feature engineering, iterative improvement
+6. **Integrate** - API development, system integration, data pipelines
+7. **Test & Evaluate** - Model validation, bias testing, performance benchmarking
+8. **Prepare & Deploy** - Staging deployment, monitoring setup, rollout planning
+9. **Operate & Care** - Production monitoring, continuous improvement, scaling
+
+**VALUE ANALYSIS BEST PRACTICES:**
+- Prioritize use cases by Value Score (Benefit/Effort ratio) and Business Impact
+- Consider technical feasibility, data readiness, and organizational change management
+- Plan for 3-6 month MVP delivery cycles for each use case
+- Allocate 20-30% of effort for MLOps, governance, and platform setup
+- Use story point estimation: 1 point = 1 person-day typically
+- Factor in Azure infrastructure costs (compute, storage, AI services)
+- Build executive buy-in with clear ROI and quick wins
+
+**RISK MITIGATION STRATEGIES:**
+- Data Quality: Allocate 40% of effort to data preparation
+- Skills Gap: Plan for upskilling or external expertise
+- Change Management: Executive sponsorship and user adoption programs
+- Technical Debt: Invest in MLOps from day one
+- Compliance: Embed governance, ethics, and security throughout
+
+---
+
+**PROJECT ANALYSIS:**
+
+**Project:** ${this.state.projectName}
+
+**Financial Summary:**
+- Total 5-Year Benefits: $${this.formatCurrency(analysis.totalBenefits)}
+- Total Investment: $${this.formatCurrency(analysis.totalCosts)}
+- Net Benefit: $${this.formatCurrency(analysis.netBenefit)}
+- ROI: ${analysis.roi.toFixed(1)}%
+- NPV (10% discount): $${this.formatCurrency(analysis.npv)}
+- Payback Period: ${analysis.payback ? `${Math.floor(analysis.payback)} years, ${Math.round((analysis.payback - Math.floor(analysis.payback)) * 12)} months` : 'Never'}
+
+**Use Cases (Prioritized):**${useCasesDetails}
+
+**Prioritization Scores:**
+${analysis.prioritized.map((uc, idx) => `${idx + 1}. ${uc.title}: ${uc.priorityScore.toFixed(1)}`).join('\n')}
+
+---
+
+**ANALYSIS REQUEST:**
+
+Using your expertise in the AI Delivery Methodology and the project data above, provide:
+
+1. **Strategic Assessment** (2-3 sentences)
+   - Overall viability and alignment with Microsoft AI Frontier best practices
+   - Strategic fit for the organization
+
+2. **Key Strengths** (3-4 bullet points)
+   - What makes this compelling from a business and technical perspective
+   - Alignment with proven delivery patterns
+
+3. **Key Risks & Mitigations** (3-4 bullet points)
+   - What could go wrong based on methodology experience
+   - Specific mitigation strategies from the AI Delivery playbook
+
+4. **Delivery Recommendations** (3-4 bullet points)
+   - Specific actionable next steps aligned to methodology phases
+   - Resource allocation and timeline guidance
+   - Platform and governance considerations
+
+5. **Implementation Sequence**
+   - Recommended order for use cases based on value, risk, and dependencies
+   - Suggested phase mapping (which methodology phases apply to each use case)
+   - Timeline estimates based on effort and complexity
+
+Keep your response concise, actionable, and focused on executive decision-making. Use clear formatting with markdown headings and bullets. Reference specific methodology phases where relevant.`;
+    }
+
+    async callAnthropicAPI(prompt) {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': this.state.anthropicApiKey,
+                'anthropic-version': '2023-06-01'
+            },
+            body: JSON.stringify({
+                model: 'claude-3-5-sonnet-20241022',
+                max_tokens: 2000,
+                messages: [{
+                    role: 'user',
+                    content: prompt
+                }]
+            })
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error?.message || 'API request failed');
+        }
+
+        const data = await response.json();
+        return data.content[0].text;
+    }
+
+    async callCopilotStudioAPI(prompt) {
+        // Copilot Studio uses Direct Line API protocol
+        const response = await fetch(this.state.copilotEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                type: 'message',
+                from: { id: 'user' },
+                text: prompt
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Copilot Studio API error: ${response.status} - ${errorText}`);
+        }
+
+        const data = await response.json();
+        
+        // Handle Copilot Studio response format
+        if (data.activities && data.activities.length > 0) {
+            // Get the last bot response
+            const botMessages = data.activities.filter(a => a.from.role === 'bot');
+            if (botMessages.length > 0) {
+                return botMessages[botMessages.length - 1].text;
+            }
+        }
+        
+        // Fallback for different response formats
+        if (data.text) return data.text;
+        if (data.response) return data.response;
+        
+        throw new Error('Unexpected response format from Copilot Studio');
+    }
+
+    saveApiKey(apiKey) {
+        this.state.anthropicApiKey = apiKey;
+        localStorage.setItem('anthropic_api_key', apiKey);
+        this.addBotMessage(
+            '✅ API key saved locally! Now let me analyze your project...'
+        );
+        // Trigger AI insights with the saved key
+        setTimeout(() => {
+            this.getAIInsights(this.state.analysis);
+        }, 500);
+    }
+
+    showDetailedReport() {
+        const analysis = this.state.analysis;
+        let report = `📊 **Detailed Analysis Report**\n\n`;
+        report += `**Project:** ${this.state.projectName}\n\n`;
+        
+        report += `**Financial Summary**\n`;
+        report += `• Total 5-Year Benefits: $${this.formatCurrency(analysis.totalBenefits)}\n`;
+        report += `• Total Investment: $${this.formatCurrency(analysis.totalCosts)}\n`;
+        report += `• Net Benefit: $${this.formatCurrency(analysis.netBenefit)}\n`;
+        report += `• ROI: ${analysis.roi.toFixed(1)}%\n`;
+        report += `• NPV: $${this.formatCurrency(analysis.npv)}\n`;
+        
+        if (analysis.payback) {
+            const years = Math.floor(analysis.payback);
+            const months = Math.round((analysis.payback - years) * 12);
+            report += `• Payback: ${years} years, ${months} months\n\n`;
+        } else {
+            report += `• Payback: Never\n\n`;
+        }
+        
+        report += `**Use Cases Detail**\n`;
+        this.state.useCases.forEach((uc, idx) => {
+            report += `\n${idx + 1}. **${uc.title}**\n`;
+            report += `   Problem: ${uc.problem}\n`;
+            report += `   Impact: ${uc.impact}/5 | Effort: ${uc.effort} points\n`;
+            report += `   Total Benefit: $${this.formatCurrency(uc.totalBenefit)}\n`;
+        });
+        
+        this.addBotMessage(report);
+        
+        setTimeout(() => {
+            this.showQuickReplies([
+                { label: '📥 Export JSON', value: 'json' },
+                { label: '🔄 Start Over', value: 'reset' }
+            ]);
+        }, 500);
+    }
+
+    exportJSON() {
+        const exportData = {
+            projectName: this.state.projectName,
+            analysis: this.state.analysis,
+            useCases: this.state.useCases,
+            costs: this.state.costs,
+            generatedAt: new Date().toISOString()
+        };
+        
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${this.state.projectName.replace(/\s+/g, '-')}-analysis.json`;
+        link.click();
+        
+        this.addBotMessage('✅ Analysis exported to JSON file!');
+        
+        setTimeout(() => {
+            this.showQuickReplies([
+                { label: '🔄 Start New Analysis', value: 'reset' }
+            ]);
         }, 500);
     }
 
@@ -500,16 +1433,19 @@ class ValueAnalysisChatbot {
     }
 
     showQuickReplies(replies) {
+        console.log('💬 Showing quick replies:', replies.length, 'buttons');
         this.clearQuickReplies();
-        replies.forEach(reply => {
+        replies.forEach((reply, index) => {
             const btn = document.createElement('button');
             btn.className = 'quick-reply-btn';
             btn.textContent = reply.label;
             btn.addEventListener('click', () => {
+                console.log(`🖱️ Quick reply clicked: ${reply.label} (value: ${reply.value})`);
                 this.addUserMessage(reply.label);
                 this.processInput(reply.value);
             });
             this.quickReplies.appendChild(btn);
+            console.log(`  ✅ Button ${index + 1}: ${reply.label}`);
         });
     }
 
@@ -549,7 +1485,12 @@ class ValueAnalysisChatbot {
                 currentUseCase: {},
                 costs: [],
                 currentCost: {},
-                discountRate: 0.10
+                discountRate: 0.10,
+                anthropicApiKey: localStorage.getItem('anthropic_api_key') || '',
+                copilotEndpoint: localStorage.getItem('copilot_endpoint') || '',
+                aiProvider: localStorage.getItem('ai_provider') || '',
+                conversationHistory: [],
+                conversationalMode: true
             };
             this.messages = [];
             this.chatMessages.innerHTML = '';
@@ -561,5 +1502,27 @@ class ValueAnalysisChatbot {
 
 // Initialize chatbot when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    window.chatbot = new ValueAnalysisChatbot();
+    console.log('🚀 DOM Content Loaded - Initializing chatbot...');
+    try {
+        window.chatbot = new ValueAnalysisChatbot();
+        console.log('✅ Chatbot initialized successfully');
+    } catch (error) {
+        console.error('❌ Failed to initialize chatbot:', error);
+        alert('Failed to initialize chatbot. Please refresh the page. Error: ' + error.message);
+    }
 });
+
+// Fallback initialization if DOMContentLoaded already fired
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log('🔄 DOM already loaded, initializing immediately...');
+    setTimeout(() => {
+        if (!window.chatbot) {
+            try {
+                window.chatbot = new ValueAnalysisChatbot();
+                console.log('✅ Chatbot initialized via fallback');
+            } catch (error) {
+                console.error('❌ Fallback initialization failed:', error);
+            }
+        }
+    }, 100);
+}

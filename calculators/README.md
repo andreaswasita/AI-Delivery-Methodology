@@ -55,7 +55,7 @@ Calculate comprehensive return on investment for AI projects with professional f
 5. **Review Results**: NPV, ROI%, payback period, 5-year projections
 6. **Export**: Print to PDF or copy to clipboard for presentations
 
-[📖 Complete ROI Calculator Guide →](../guides/engagement-modes-framework.md#how-to-use-the-roi-calculator)
+[📖 Complete ROI Calculator Guide →](../guides/92-engagement-modes-framework.md#how-to-use-the-roi-calculator)
 
 ---
 
@@ -322,8 +322,8 @@ calculators/
 
 ### Comprehensive Guides
 - [ROI & Financial Analysis Module](../templates/shared-components/roi-financial-analysis.md) - 500+ line financial framework
-- [Engagement Modes Framework](../guides/engagement-modes-framework.md) - How to use ROI calculator in different scenarios
-- [Business Envisioning Workshop Guide](../guides/business-envisioning-workshop-guide.md) - Use calculator during workshops
+- [Engagement Modes Framework](../guides/92-engagement-modes-framework.md) - How to use ROI calculator in different scenarios
+- [Business Envisioning Workshop Guide](../guides/01-business-envisioning-workshop-guide.md) - Use calculator during workshops
 
 ### External Resources
 - [Microsoft Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator) - Detailed Azure cost estimation

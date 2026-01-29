@@ -236,6 +236,50 @@
             font-weight: bold;
         }
 
+        .allocation-slider {
+            margin: 0.75rem 0;
+        }
+
+        .allocation-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .allocation-value {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+        }
+
         @media (max-width: 968px) {
             .calculator-grid {
                 grid-template-columns: 1fr;
@@ -328,6 +372,74 @@
                     <label for="avgRate">Average Daily Rate (USD)</label>
                     <input type="number" id="avgRate" value="1200" min="0" step="50">
                     <small>Average blended rate per person per day</small>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="customAllocations" onchange="toggleAllocations()" style="width: auto; margin-right: 0.5rem;">
+                        Customize Role Allocations (Part-Time)
+                    </label>
+                    <small>Adjust FTE percentage per role (e.g., Product Owner at 50%)</small>
+                </div>
+
+                <div id="allocationControls" style="display: none; background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <h4 style="margin-top: 0; color: #333; font-size: 0.95rem;">Role Allocations (% FTE)</h4>
+                    
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>Product Manager</span>
+                            <span class="allocation-value"><span id="pmAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="pmAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>Solution Architect</span>
+                            <span class="allocation-value"><span id="architectAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="architectAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>ML Engineer / Data Scientist</span>
+                            <span class="allocation-value"><span id="mlAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="mlAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>Data Engineer</span>
+                            <span class="allocation-value"><span id="dataAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="dataAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>Software Engineer</span>
+                            <span class="allocation-value"><span id="devAllocationValue">100</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="100" step="5" class="slider" id="devAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>QA Engineer</span>
+                            <span class="allocation-value"><span id="qaAllocationValue">50</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="50" step="5" class="slider" id="qaAllocation">
+                    </div>
+
+                    <div class="allocation-slider">
+                        <div class="allocation-label">
+                            <span>MLOps / DevOps Engineer</span>
+                            <span class="allocation-value"><span id="devopsAllocationValue">75</span>%</span>
+                        </div>
+                        <input type="range" min="10" max="100" value="75" step="5" class="slider" id="devopsAllocation">
+                    </div>
                 </div>
 
                 <button class="calculate-btn" onclick="calculateTeam()">👥 Calculate Team Size</button>
@@ -458,6 +570,35 @@
             // Could add logic to auto-adjust other fields based on phase/complexity
         }
 
+        function toggleAllocations() {
+            const checkbox = document.getElementById('customAllocations');
+            const controls = document.getElementById('allocationControls');
+            controls.style.display = checkbox.checked ? 'block' : 'none';
+        }
+
+        // Setup allocation sliders
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliders = [
+                { slider: 'pmAllocation', display: 'pmAllocationValue' },
+                { slider: 'architectAllocation', display: 'architectAllocationValue' },
+                { slider: 'mlAllocation', display: 'mlAllocationValue' },
+                { slider: 'dataAllocation', display: 'dataAllocationValue' },
+                { slider: 'devAllocation', display: 'devAllocationValue' },
+                { slider: 'qaAllocation', display: 'qaAllocationValue' },
+                { slider: 'devopsAllocation', display: 'devopsAllocationValue' }
+            ];
+
+            sliders.forEach(item => {
+                const slider = document.getElementById(item.slider);
+                const display = document.getElementById(item.display);
+                if (slider && display) {
+                    slider.addEventListener('input', function() {
+                        display.textContent = this.value;
+                    });
+                }
+            });
+        });
+
         function calculateTeam() {
             // Get inputs
             const projectName = document.getElementById('projectName').value || 'AI Project';
@@ -468,6 +609,18 @@
             const includeDataTeam = document.getElementById('includeDataTeam').checked;
             const includeMLOps = document.getElementById('includeMLOps').checked;
             const avgRate = parseInt(document.getElementById('avgRate').value);
+            const customAllocations = document.getElementById('customAllocations').checked;
+
+            // Get custom allocation percentages
+            const allocations = {
+                pm: customAllocations ? parseInt(document.getElementById('pmAllocation').value) / 100 : 1.0,
+                architect: customAllocations ? parseInt(document.getElementById('architectAllocation').value) / 100 : 1.0,
+                ml: customAllocations ? parseInt(document.getElementById('mlAllocation').value) / 100 : 1.0,
+                data: customAllocations ? parseInt(document.getElementById('dataAllocation').value) / 100 : 1.0,
+                dev: customAllocations ? parseInt(document.getElementById('devAllocation').value) / 100 : 1.0,
+                qa: customAllocations ? parseInt(document.getElementById('qaAllocation').value) / 100 : 1.0,
+                devops: customAllocations ? parseInt(document.getElementById('devopsAllocation').value) / 100 : 1.0
+            };
 
             // Get team template
             const template = teamTemplates[phase][complexity];
@@ -478,72 +631,86 @@
 
             // Always include PM
             if (template.pm > 0) {
+                const fte = template.pm * allocations.pm;
                 roles.push({
                     ...roleDefinitions.pm,
                     count: template.pm,
-                    fte: template.pm
+                    fte: fte,
+                    allocation: allocations.pm
                 });
-                totalFTE += template.pm;
+                totalFTE += fte;
             }
 
             // Include architect for larger projects
             if (template.architect > 0) {
+                const fte = template.architect * allocations.architect;
                 roles.push({
                     ...roleDefinitions.architect,
                     count: template.architect,
-                    fte: template.architect
+                    fte: fte,
+                    allocation: allocations.architect
                 });
-                totalFTE += template.architect;
+                totalFTE += fte;
             }
 
             // ML Engineers
             if (template.ml > 0) {
+                const fte = template.ml * allocations.ml;
                 roles.push({
                     ...roleDefinitions.ml,
                     count: template.ml,
-                    fte: template.ml
+                    fte: fte,
+                    allocation: allocations.ml
                 });
-                totalFTE += template.ml;
+                totalFTE += fte;
             }
 
             // Data Engineers (optional)
             if (includeDataTeam && template.data > 0) {
+                const fte = template.data * allocations.data;
                 roles.push({
                     ...roleDefinitions.data,
                     count: template.data,
-                    fte: template.data
+                    fte: fte,
+                    allocation: allocations.data
                 });
-                totalFTE += template.data;
+                totalFTE += fte;
             }
 
             // Software Engineers
             if (template.dev > 0) {
+                const fte = template.dev * allocations.dev;
                 roles.push({
                     ...roleDefinitions.dev,
                     count: template.dev,
-                    fte: template.dev
+                    fte: fte,
+                    allocation: allocations.dev
                 });
-                totalFTE += template.dev;
+                totalFTE += fte;
             }
 
             // QA Engineers
             if (template.qa > 0) {
+                const fte = template.qa * allocations.qa;
                 roles.push({
                     ...roleDefinitions.qa,
                     count: template.qa,
-                    fte: template.qa
+                    fte: fte,
+                    allocation: allocations.qa
                 });
-                totalFTE += template.qa;
+                totalFTE += fte;
             }
 
             // DevOps/MLOps (optional)
             if (includeMLOps && template.devops > 0) {
+                const fte = template.devops * allocations.devops;
                 roles.push({
                     ...roleDefinitions.devops,
                     count: template.devops,
-                    fte: template.devops
+                    fte: fte,
+                    allocation: allocations.devops
                 });
-                totalFTE += template.devops;
+                totalFTE += fte;
             }
 
             // Adjust for team model
@@ -575,10 +742,12 @@
             roles.forEach(role => {
                 const roleCard = document.createElement('div');
                 roleCard.className = 'role-card';
+                const allocationText = role.allocation < 1.0 ? ` @ ${Math.round(role.allocation * 100)}%` : '';
+                const fteDisplay = role.fte.toFixed(2);
                 roleCard.innerHTML = `
                     <div class="role-header">
                         <div class="role-title">${role.title}</div>
-                        <div class="role-count">${role.count} FTE</div>
+                        <div class="role-count">${fteDisplay} FTE${allocationText}</div>
                     </div>
                     <div class="role-details">${role.description}</div>
                     <div class="role-skills">
@@ -650,6 +819,7 @@
                     title: r.title,
                     count: r.count,
                     fte: r.fte,
+                    allocation: r.allocation ? Math.round(r.allocation * 100) + '%' : '100%',
                     skills: r.skills
                 })),
                 costs: roleCosts,
@@ -719,7 +889,7 @@ RESULTS:
 - Monthly Burn Rate: $${Math.round(data.results.monthlyCost / 1000)}K
 
 TEAM COMPOSITION:
-${data.roles.map(r => `- ${r.title}: ${r.count} FTE
+${data.roles.map(r => `- ${r.title}: ${r.fte.toFixed(2)} FTE (${r.allocation})
   Skills: ${r.skills.join(', ')}`).join('\n')}
 
 COST BREAKDOWN:
