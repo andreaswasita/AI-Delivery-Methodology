@@ -145,9 +145,13 @@ class ValueAnalysisChatbot {
         
         let message = '🤖 **AI Provider Settings**\n\n';
         
+        message += '⚠️ **Important:** Browser CORS restrictions prevent direct API calls to Anthropic/OpenAI. ' +
+                   'AI conversational mode requires a backend proxy server.\n\n' +
+                   '✅ **Recommended:** Use the built-in Structured Mode for best experience.\n\n';
+        
         if (hasAnyProvider) {
             message += '**Current Configuration:**\n';
-            if (hasAnthropicKey) message += '✅ Anthropic Claude: Configured\n';
+            if (hasAnthropicKey) message += '✅ Anthropic Claude: Configured (requires proxy)\n';
             if (hasCopilotEndpoint) message += '✅ Microsoft Copilot Studio: Configured\n';
             message += `\n**Active Provider:** ${this.state.aiProvider || 'None selected'}\n\n`;
             message += 'What would you like to do?';
@@ -156,17 +160,17 @@ class ValueAnalysisChatbot {
             this.showQuickReplies([
                 { label: '🔄 Change Provider', value: 'select_provider' },
                 { label: '🔑 Manage Keys', value: 'manage_keys' },
+                { label: '🗑️ Clear Configuration', value: 'clear_all' },
                 { label: '❌ Cancel', value: 'cancel' }
             ]);
         } else {
-            message += '❌ No AI providers configured\n\n';
-            message += 'Choose an AI provider to enable insights:';
+            message += '💡 **Note:** The chatbot works great in Structured Mode without any API configuration.\n\n';
+            message += 'Only configure API access if you have a backend proxy server setup.';
             
             this.addBotMessage(message);
             this.showQuickReplies([
-                { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
-                { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
-                { label: '❌ Cancel', value: 'cancel' }
+                { label: '✅ Continue in Structured Mode', value: 'cancel' },
+                { label: '🔧 Advanced: Configure API', value: 'show_api_options' }
             ]);
         }
         this.state.previousStage = this.state.stage;
@@ -174,42 +178,23 @@ class ValueAnalysisChatbot {
     }
 
     async showWelcome() {
-        // Check if Claude AI is available for conversational mode
-        if (this.state.anthropicApiKey || this.state.copilotEndpoint) {
-            this.addBotMessage(
-                "👋 Hi! I'm your AI Delivery Methodology consultant, powered by Claude AI. I'm here to guide your delivery team through value analysis using the Microsoft AI Frontier methodology.",
-                () => {
-                    this.addBotMessage(
-                        "I combine conversational guidance with proven best practices from:\n\n" +
-                        "• 🎯 9-phase delivery methodology (Envisioning → Production)\n" +
-                        "• 💰 ROI and NPV financial analysis\n" +
-                        "• 📊 Use case prioritization frameworks\n" +
-                        "• ⚡ Real-world delivery patterns\n\n" +
-                        "Tell me about your AI initiative - what are you trying to achieve? Feel free to describe it naturally, and I'll help you structure the analysis."
-                    );
-                },
-                500
-            );
-            this.state.stage = 'conversational';
-            this.state.conversationHistory = [];
-        } else {
-            // Fallback to structured mode if no AI provider
-            this.addBotMessage(
-                "👋 Hi! I'm your AI Value Analysis Assistant. I'll help you analyze the business value of your AI initiatives.",
-                () => {
-                    this.addBotMessage(
-                        "💡 **Tip:** For a more conversational experience, click the 🤖 icon to configure Claude AI.\n\n" +
-                        "For now, I'll guide you through a structured analysis:\n\n" +
-                        "• 📊 Quantifying business benefits\n" +
-                        "• 💰 Calculating ROI and NPV\n" +
-                        "• 🎯 Prioritizing use cases\n\n" +
-                        "Let's get started! What's your project name?"
-                    );
-                },
-                500
-            );
-            this.state.stage = 'project_name';
-        }
+        // Always start with structured mode (AI mode has CORS limitations from browsers)
+        this.addBotMessage(
+            "👋 Hi! I'm your AI Value Analysis Assistant. I'll help you analyze the business value of your AI initiatives.",
+            () => {
+                this.addBotMessage(
+                    "I'll guide you through a comprehensive structured analysis:\n\n" +
+                    "• 📊 Quantifying business benefits\n" +
+                    "• 💰 Calculating ROI and NPV\n" +
+                    "• 🎯 Prioritizing use cases\n" +
+                    "• 📈 Risk-adjusted value modeling\n\n" +
+                    "Based on the Microsoft AI Frontier 9-phase delivery methodology.\n\n" +
+                    "Let's get started! What's your project name?"
+                );
+            },
+            500
+        );
+        this.state.stage = 'project_name';
     }
 
     handleSend() {
@@ -538,10 +523,19 @@ class ValueAnalysisChatbot {
                 break;
 
             case 'ai_provider_menu':
-                if (input === 'setup_anthropic') {
+                if (input === 'show_api_options') {
+                    this.addBotMessage('Choose an AI provider to configure:');
+                    this.showQuickReplies([
+                        { label: '🔵 Anthropic Claude', value: 'setup_anthropic' },
+                        { label: '🟢 Microsoft Copilot Studio', value: 'setup_copilot' },
+                        { label: '❌ Cancel', value: 'cancel' }
+                    ]);
+                    this.state.stage = 'ai_provider_menu';
+                } else if (input === 'setup_anthropic') {
                     this.addBotMessage(
                         '🔵 **Anthropic Claude Setup**\n\n' +
-                        'Please paste your Anthropic API key:\n' +
+                        '⚠️ **Important:** Direct browser calls to Anthropic API are blocked by CORS.\n\n' +
+                        'You need a backend proxy to use this. If you have one, paste your API key:\n' +
                         '(Starts with "sk-ant-")\n\n' +
                         'Get one at: https://console.anthropic.com/'
                     );
@@ -574,9 +568,19 @@ class ValueAnalysisChatbot {
                         { label: '❌ Cancel', value: 'cancel' }
                     ]);
                     this.state.stage = 'key_management';
+                } else if (input === 'clear_all') {
+                    localStorage.removeItem('anthropic_api_key');
+                    localStorage.removeItem('copilot_endpoint');
+                    localStorage.removeItem('ai_provider');
+                    this.state.anthropicApiKey = '';
+                    this.state.copilotEndpoint = '';
+                    this.state.aiProvider = '';
+                    this.updateProviderIndicator();
+                    this.addBotMessage('✅ All API configurations cleared. Continuing in Structured Mode.');
+                    this.state.stage = 'project_name';
                 } else {
                     this.addBotMessage('Cancelled.');
-                    this.state.stage = this.state.previousStage;
+                    this.state.stage = this.state.previousStage || 'project_name';
                 }
                 break;
 
@@ -754,8 +758,11 @@ class ValueAnalysisChatbot {
                 if (input && input.startsWith('sk-ant-')) {
                     this.state.anthropicApiKey = input;
                     localStorage.setItem('anthropic_api_key', input);
+                    this.state.aiProvider = 'anthropic';
+                    localStorage.setItem('ai_provider', 'anthropic');
+                    this.updateProviderIndicator();
                     this.addBotMessage('✅ API key saved successfully!');
-                    this.state.stage = this.state.previousStage;
+                    this.state.stage = this.state.previousStage || 'project_name';
                 } else {
                     this.addBotMessage(
                         '❌ Invalid API key format. Keys should start with "sk-ant-".\n\n' +
@@ -768,11 +775,55 @@ class ValueAnalysisChatbot {
                     this.state.stage = 'api_key_manage';
                 }
                 break;
+
+            case 'ai_provider_choice':
+                if (input === 'use_structured') {
+                    this.addBotMessage(
+                        "Perfect! I'll guide you through a structured analysis.\n\n" +
+                        "Let's get started! What's your project name?"
+                    );
+                    this.state.stage = 'project_name';
+                } else if (input === 'configure_ai') {
+                    this.manageApiKey();
+                }
+                break;
+
+            case 'ai_error_recovery':
+                if (input === 'use_structured') {
+                    this.addBotMessage(
+                        "No problem! Switching to structured mode.\n\n" +
+                        "Let's get started! What's your project name?"
+                    );
+                    this.state.stage = 'project_name';
+                } else if (input === 'configure_ai') {
+                    this.manageApiKey();
+                } else if (input === 'retry' && this.state.lastUserMessage) {
+                    this.handleConversationalInput(this.state.lastUserMessage);
+                }
+                break;
         }
     }
 
     async handleConversationalInput(userMessage) {
         console.log('💬 Conversational mode - processing:', userMessage);
+        
+        // Check if AI provider is actually configured
+        if (!this.state.anthropicApiKey && !this.state.copilotEndpoint) {
+            console.warn('⚠️ No AI provider configured, falling back to structured mode');
+            this.addBotMessage(
+                `⚠️ **AI-Powered Conversational Mode**\n\n` +
+                `This chatbot uses AI to provide intelligent guidance. To enable:\n\n` +
+                `1. Click the 🤖 button in the header\n2. Configure your API key\n\n` +
+                `💡 **No API key?** No problem! The chatbot will work in structured mode with guided questions.\n\n` +
+                `Would you like to continue with structured mode?`
+            );
+            this.showQuickReplies([
+                { label: '✅ Yes, continue in structured mode', value: 'use_structured' },
+                { label: '🤖 Configure AI provider', value: 'configure_ai' }
+            ]);
+            this.state.stage = 'ai_provider_choice';
+            return;
+        }
         
         // Add to conversation history
         this.state.conversationHistory.push({
@@ -832,10 +883,30 @@ class ValueAnalysisChatbot {
                 }
             }
             
-            this.addBotMessage(
-                `❌ I encountered an error: ${error.message}\n\n` +
-                `Let's continue our discussion. What else would you like to tell me about your AI initiative?`
-            );
+            // Check if it's an API key issue
+            if (error.message.includes('Failed to fetch') || error.message.includes('API') || error.message.includes('401') || error.message.includes('403')) {
+                this.addBotMessage(
+                    `❌ **AI Service Error**\n\n` +
+                    `${error.message}\n\n` +
+                    `This might be due to:\n` +
+                    `• Invalid or expired API key\n` +
+                    `• Network connectivity issues\n` +
+                    `• API service unavailable\n\n` +
+                    `Would you like to continue in structured mode (without AI)?`
+                );
+                this.showQuickReplies([
+                    { label: '✅ Yes, use structured mode', value: 'use_structured' },
+                    { label: '🔧 Update API settings', value: 'configure_ai' },
+                    { label: '🔄 Try again', value: 'retry' }
+                ]);
+                this.state.stage = 'ai_error_recovery';
+                this.state.lastUserMessage = userMessage; // Store for retry
+            } else {
+                this.addBotMessage(
+                    `❌ I encountered an error: ${error.message}\n\n` +
+                    `Let's continue our discussion. What else would you like to tell me about your AI initiative?`
+                );
+            }
         }
     }
 
@@ -1264,30 +1335,43 @@ Keep your response concise, actionable, and focused on executive decision-making
     }
 
     async callAnthropicAPI(prompt) {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': this.state.anthropicApiKey,
-                'anthropic-version': '2023-06-01'
-            },
-            body: JSON.stringify({
-                model: 'claude-3-5-sonnet-20241022',
-                max_tokens: 2000,
-                messages: [{
-                    role: 'user',
-                    content: prompt
-                }]
-            })
-        });
+        try {
+            const response = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': this.state.anthropicApiKey,
+                    'anthropic-version': '2023-06-01'
+                },
+                body: JSON.stringify({
+                    model: 'claude-3-5-sonnet-20241022',
+                    max_tokens: 2000,
+                    messages: [{
+                        role: 'user',
+                        content: prompt
+                    }]
+                })
+            });
 
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.error?.message || 'API request failed');
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || `API request failed with status ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.content[0].text;
+        } catch (error) {
+            // Check if it's a CORS error (common when calling Anthropic API directly from browser)
+            if (error.message === 'Failed to fetch' || error.name === 'TypeError') {
+                throw new Error(
+                    'Browser CORS restriction detected. ' +
+                    'The Anthropic API cannot be called directly from browsers due to security policies. ' +
+                    'To use AI mode, you need a backend proxy server. ' +
+                    'For now, please use Structured Mode which works entirely in your browser.'
+                );
+            }
+            throw error;
         }
-
-        const data = await response.json();
-        return data.content[0].text;
     }
 
     async callCopilotStudioAPI(prompt) {

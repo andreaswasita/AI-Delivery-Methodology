@@ -1,25 +1,91 @@
 # Value Analysis Chatbot - Troubleshooting Guide
 
-## Issue: Buttons Not Working (Send, Quick Replies, API Key Button)
+## 🔴 Issue: "Failed to Fetch" Error When Using AI Mode
 
-### Quick Fixes
+### The Problem
 
-#### Option 1: Use Hardcoded API Key (Recommended for Testing)
+You've configured your Anthropic API key, but when you try to use the chatbot, you get:
+```
+❌ I encountered an error: Failed to fetch
+```
 
-1. **Open the JavaScript file:**
-   - Navigate to `calculators/js/value-analysis-chatbot.js`
+### Root Cause: CORS (Cross-Origin Resource Sharing) Restrictions
 
-2. **Find lines 4-5 and add your API key:**
-   ```javascript
-   const HARDCODED_ANTHROPIC_KEY = 'sk-ant-your-key-here'; // Add your Anthropic API key
-   const HARDCODED_COPILOT_ENDPOINT = ''; // Or add your Copilot endpoint
-   ```
+**The Anthropic API (and most AI APIs) do not allow direct calls from web browsers** due to security policies called CORS. When your browser tries to call `https://api.anthropic.com` directly, the request is blocked.
 
-3. **Save the file and reload the page**
-   - The chatbot will automatically detect and use your hardcoded key
-   - You can remove the key later before committing to git
+This is a **browser security feature**, not a bug in the chatbot.
 
-4. **Important:** Never commit your API key to git! Add it only for local testing.
+### ✅ Recommended Solution: Use Structured Mode
+
+**The chatbot works perfectly in Structured Mode without any API key!**
+
+Structured Mode provides:
+- ✅ Intelligent guided questions
+- ✅ Comprehensive value analysis
+- ✅ ROI and NPV calculations
+- ✅ Use case prioritization
+- ✅ Risk-adjusted modeling
+- ✅ Export to JSON and reports
+- ✅ Based on Microsoft AI Frontier methodology
+- ✅ 100% private - runs in your browser
+
+**To use Structured Mode:**
+1. Click the 🤖 button in the chatbot header
+2. Select "Clear Configuration" if you have an API key configured
+3. The chatbot will guide you through structured questions
+
+---
+
+## 🔧 Advanced: Using AI Mode with a Backend Proxy
+
+If you need AI-powered conversational mode, you have two options:
+
+### Option 1: Azure Functions Proxy (Recommended for Production)
+
+Create a serverless proxy in Azure to forward requests to Anthropic:
+
+```javascript
+// Azure Function (Node.js)
+module.exports = async function (context, req) {
+    const anthropicApiKey = process.env.ANTHROPIC_API_KEY;
+    
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': anthropicApiKey,
+            'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify(req.body)
+    });
+    
+    const data = await response.json();
+    context.res = {
+        body: data,
+        headers: { 'Content-Type': 'application/json' }
+    };
+};
+```
+
+**Benefits:**
+- ✅ Keeps API key secure (server-side only)
+- ✅ Works from any browser
+- ✅ Can add rate limiting, logging, etc.
+
+### Option 2: Microsoft Copilot Studio (Azure Bot Service)
+
+Use Microsoft's own conversational AI platform:
+
+1. Create a bot in Copilot Studio
+2. Add knowledge from your methodology documents
+3. Get the Direct Line endpoint URL
+4. Configure it in the chatbot
+
+**Benefits:**
+- ✅ Native Azure integration
+- ✅ No CORS issues
+- ✅ Built-in conversation management
+- ✅ Microsoft ecosystem
 
 ---
 
