@@ -23,6 +23,22 @@
     </nav>
 
     <main class="chatbot-container">
+        <!-- Setup Notice Banner -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 18px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <div style="display: flex; align-items: start; gap: 12px;">
+                <div style="font-size: 1.8em;">🤖</div>
+                <div style="flex: 1;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.1em;">AI-Powered Conversational Mode</h3>
+                    <p style="margin: 0 0 8px 0; opacity: 0.95; line-height: 1.5; font-size: 0.95em;">
+                        This chatbot uses AI to provide intelligent guidance. <strong>To enable:</strong> Click the <strong>🤖 button</strong> in the header and configure your API key. 
+                    </p>
+                    <p style="margin: 0; opacity: 0.85; line-height: 1.5; font-size: 0.9em;">
+                        💡 <em>No API key? No problem! The chatbot will work in structured mode with guided questions.</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div class="chatbot-header">
             <div class="bot-avatar">🤖</div>
             <div class="bot-info">
@@ -33,7 +49,7 @@
                 </p>
             </div>
             <div class="header-actions">
-                <button id="apiKeyBtn" class="icon-btn" title="AI Provider Settings">
+                <button id="apiKeyBtn" class="icon-btn" title="AI Provider Settings - Click to configure">
                     🤖
                 </button>
                 <button id="resetBtn" class="reset-btn" title="Start new analysis">
