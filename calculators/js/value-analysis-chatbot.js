@@ -1336,6 +1336,9 @@ Keep your response concise, actionable, and focused on executive decision-making
 
     async callAnthropicAPI(prompt) {
         try {
+            // NOTE: Direct browser calls to Anthropic API are blocked by CORS
+            // For production use, you need a backend proxy server
+            // For local testing: see calculators/PROXY-SETUP.md
             const response = await fetch('https://api.anthropic.com/v1/messages', {
                 method: 'POST',
                 headers: {
@@ -1365,9 +1368,9 @@ Keep your response concise, actionable, and focused on executive decision-making
             if (error.message === 'Failed to fetch' || error.name === 'TypeError') {
                 throw new Error(
                     'Browser CORS restriction detected. ' +
-                    'The Anthropic API cannot be called directly from browsers due to security policies. ' +
-                    'To use AI mode, you need a backend proxy server. ' +
-                    'For now, please use Structured Mode which works entirely in your browser.'
+                    'Direct API calls from browsers are blocked for security. ' +
+                    'Please use Structured Mode which works perfectly without any setup. ' +
+                    '(Advanced: See PROXY-SETUP.md for local proxy server setup)'
                 );
             }
             throw error;
