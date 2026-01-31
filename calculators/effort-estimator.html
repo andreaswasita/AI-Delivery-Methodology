@@ -13,6 +13,28 @@
             padding: 0 1rem;
         }
 
+        .wizard-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .wizard-section h2 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card {
+            background: #e7f3ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
         .calculator-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -218,17 +240,105 @@
     </nav>
 
     <div class="calculator-container">
-        <div class="calculator-grid">
+        <!-- Quick Start Wizard -->
+        <div class="wizard-section" id="wizardSection">
+            <h2>🚀 Quick Start - Auto-Populate Estimate</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">Answer 3 questions and we'll auto-populate your effort estimate</p>
+            
+            <div class="input-group">
+                <label for="aiUseCase">1. What type of AI project? (Use Case)</label>
+                <select id="aiUseCase" onchange="autoPopulateFromUseCase()">
+                    <option value="">-- Select AI Use Case --</option>
+                    <optgroup label="🤖 Conversational AI">
+                        <option value="chatbot-basic">Customer Service Chatbot (Basic)</option>
+                        <option value="chatbot-advanced">AI Assistant (Advanced with RAG)</option>
+                        <option value="voice-assistant">Voice Assistant / IVR</option>
+                    </optgroup>
+                    <optgroup label="📄 Document AI">
+                        <option value="doc-extraction">Document Data Extraction (Forms, Invoices)</option>
+                        <option value="doc-classification">Document Classification & Routing</option>
+                        <option value="doc-search">Intelligent Document Search</option>
+                    </optgroup>
+                    <optgroup label="📊 Predictive Analytics">
+                        <option value="churn-prediction">Customer Churn Prediction</option>
+                        <option value="demand-forecast">Demand Forecasting</option>
+                        <option value="fraud-detection">Fraud Detection</option>
+                        <option value="recommendation">Recommendation Engine</option>
+                    </optgroup>
+                    <optgroup label="👁️ Computer Vision">
+                        <option value="image-classification">Image Classification</option>
+                        <option value="object-detection">Object Detection</option>
+                        <option value="quality-inspection">Quality Inspection / Defect Detection</option>
+                    </optgroup>
+                    <optgroup label="📝 Language AI">
+                        <option value="sentiment-analysis">Sentiment Analysis</option>
+                        <option value="content-moderation">Content Moderation</option>
+                        <option value="text-summarization">Text Summarization</option>
+                    </optgroup>
+                    <optgroup label="🏢 Enterprise AI">
+                        <option value="process-automation">Process Automation with AI</option>
+                        <option value="analytics-dashboard">AI-Powered Analytics Dashboard</option>
+                        <option value="custom">Custom AI Solution</option>
+                    </optgroup>
+                </select>
+                <small id="useCaseDescription">Select a use case to see description and typical features</small>
+            </div>
+
+            <div class="input-group">
+                <label for="aiMaturity">2. What's your AI Maturity Level?</label>
+                <select id="aiMaturity" onchange="autoPopulateFromUseCase()">
+                    <option value="">-- Select Maturity Level --</option>
+                    <option value="1">Level 1 - Initial / Aware (First AI project, limited experience)</option>
+                    <option value="2">Level 2 - Developing / Experimenting (Some pilots, learning)</option>
+                    <option value="3">Level 3 - Defined / Emerging (Established practices, some production AI)</option>
+                    <option value="4">Level 4 - Managed / Performing (Mature AI delivery, multiple production systems)</option>
+                    <option value="5">Level 5 - Optimizing / Leading (Industry-leading AI capability)</option>
+                </select>
+                <small id="maturityImpact">Maturity affects team velocity, risk level, and complexity handling</small>
+            </div>
+
+            <div class="input-group">
+                <label for="industry">3. What's your industry?</label>
+                <select id="industry" onchange="autoPopulateFromUseCase()">
+                    <option value="">-- Select Industry --</option>
+                    <option value="financial">Financial Services (Banking, Insurance)</option>
+                    <option value="healthcare">Healthcare & Life Sciences</option>
+                    <option value="retail">Retail & E-commerce</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="technology">Technology & Software</option>
+                    <option value="telecom">Telecommunications</option>
+                    <option value="energy">Energy & Utilities</option>
+                    <option value="government">Government & Public Sector</option>
+                    <option value="other">Other</option>
+                </select>
+                <small id="industryImpact">Industry affects compliance requirements and typical complexity</small>
+            </div>
+
+            <div class="input-group">
+                <label for="projectName">Project Name (Optional)</label>
+                <input type="text" id="projectName" placeholder="e.g., Customer Churn Prediction AI">
+                <small>Give your project a name for the report</small>
+            </div>
+
+            <button class="calculate-btn" onclick="generateDetailedEstimate()" style="margin-top: 1rem;">
+                ✨ Generate Detailed Estimate
+            </button>
+        </div>
+
+        <div class="calculator-grid" id="detailedSection" style="display: none;">
             <!-- Input Section -->
             <div class="input-section">
-                <h2>Project Inputs</h2>
-                
-                <div class="input-group">
-                    <label for="projectName">Project Name</label>
-                    <input type="text" id="projectName" placeholder="e.g., Customer Churn Prediction AI">
-                    <small>Give your project a name for the report</small>
-                </div>
+                <h2>📋 Project Details</h2>
+                <button onclick="showWizard()" style="float: right; padding: 0.5rem 1rem; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">← Back to Wizard</button>
+                <div style="clear: both; margin-bottom: 1rem;"></div>
 
+                <div class="info-card" style="background: #e7f3ff; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <strong id="selectedUseCaseDisplay">Selected: </strong>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: #555;">
+                        <span id="autoPopulatedDetails"></span>
+                    </div>
+                </div>
+                
                 <div class="input-group">
                     <label for="journeyPhase">AI Delivery Journey Phase</label>
                     <select id="journeyPhase" onchange="updateFeatureEstimate()">
@@ -246,36 +356,36 @@
                 <div class="input-group">
                     <label for="numFeatures">Number of Features/User Stories</label>
                     <input type="number" id="numFeatures" value="20" min="1" max="500" onchange="calculateStoryPoints()">
-                    <small id="featureGuidance">Based on your selection above</small>
+                    <small id="featureGuidance">Auto-populated based on use case and phase</small>
                 </div>
 
                 <div class="input-group">
-                    <label for="complexity">Project Complexity (from workshops/use cases)</label>
+                    <label for="complexity">Project Complexity</label>
                     <select id="complexity" onchange="calculateStoryPoints()">
                         <option value="low">Low - Reporting/Analytics, Simple UI</option>
                         <option value="medium" selected>Medium - Document Processing, Chatbots</option>
                         <option value="high">High - Predictive Models, Computer Vision</option>
                         <option value="veryHigh">Very High - Multi-Model AI, Real-time Systems</option>
                     </select>
-                    <small>Complexity identified in business envisioning workshops</small>
+                    <small>Auto-set based on use case; adjust if needed</small>
                 </div>
 
                 <div class="input-group">
                     <label for="avgStoryPoints">Average Story Points per Feature</label>
                     <input type="number" id="avgStoryPoints" value="5" min="1" max="21" readonly style="background: #f0f0f0;">
-                    <small id="storyPointGuidance">Auto-calculated based on industry guidance (Fibonacci: 1, 2, 3, 5, 8, 13, 21)</small>
+                    <small id="storyPointGuidance">Auto-calculated based on complexity</small>
                 </div>
 
                 <div class="input-group">
                     <label for="teamVelocity">Team Velocity (Story Points per Sprint)</label>
                     <input type="number" id="teamVelocity" value="25" min="1" max="100" readonly style="background: #f0f0f0;">
-                    <small id="velocityGuidance">Auto-calculated: Industry standard 2-week sprints</small>
+                    <small id="velocityGuidance">Auto-calculated based on team size and maturity</small>
                 </div>
 
                 <div class="input-group">
                     <label for="teamSize">Team Size (FTE)</label>
                     <input type="number" id="teamSize" value="5" min="1" max="50">
-                    <small>Full-time equivalent team members</small>
+                    <small>Auto-populated based on project; adjust if needed</small>
                 </div>
 
                 <div class="input-group">
@@ -285,7 +395,12 @@
                         <option value="7" selected>Medium Risk - Some unknowns (7%)</option>
                         <option value="15">High Risk - Many uncertainties (15%)</option>
                     </select>
-                    <small>Risk buffer based on project uncertainty and requirements clarity</small>
+                    <small>Auto-set based on maturity; adjust if needed</small>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem;">📝 Example User Stories</h3>
+                <div id="userStoriesDisplay" style="background: #f8f9fa; padding: 1rem; border-radius: 8px; max-height: 300px; overflow-y: auto; font-size: 0.9rem;">
+                    <p style="color: #666;">User stories will appear here after selecting a use case</p>
                 </div>
 
                 <div class="input-group">
@@ -399,6 +514,479 @@
     </footer>
 
     <script>
+        // ============================================
+        // USE CASE TEMPLATES WITH USER STORIES
+        // ============================================
+        const useCaseTemplates = {
+            'chatbot-basic': {
+                name: 'Customer Service Chatbot (Basic)',
+                description: 'FAQ chatbot with basic intent recognition',
+                complexity: 'medium',
+                baseFeatures: 15,
+                baseTeamSize: 4,
+                userStories: [
+                    'As a customer, I want to ask common questions and get instant answers',
+                    'As a customer, I want the chatbot to understand my intent even with typos',
+                    'As a customer, I want to escalate to a human agent when needed',
+                    'As a customer, I want to access the chatbot 24/7 on website',
+                    'As a business, I want to track chatbot usage and popular questions',
+                    'As a business, I want to update FAQ content easily',
+                    'As a business, I want to see conversation history',
+                    'As a user, I want the chatbot to support multiple languages',
+                    'As a user, I want the chatbot to remember context within a conversation',
+                    'As a user, I want to rate chatbot responses',
+                    'As an admin, I want to configure chatbot personality and tone',
+                    'As an admin, I want to see analytics on chatbot performance',
+                    'As an admin, I want to integrate with our CRM system',
+                    'As a developer, I want to deploy chatbot to Teams/Slack',
+                    'As a developer, I want to test chatbot before production'
+                ]
+            },
+            'chatbot-advanced': {
+                name: 'AI Assistant (Advanced with RAG)',
+                description: 'Advanced AI assistant with RAG, custom knowledge base',
+                complexity: 'high',
+                baseFeatures: 30,
+                baseTeamSize: 6,
+                userStories: [
+                    'As a user, I want to ask questions about company documents',
+                    'As a user, I want the AI to cite sources for its answers',
+                    'As a user, I want to upload documents for the AI to learn from',
+                    'As a user, I want the AI to understand complex multi-turn conversations',
+                    'As a user, I want personalized responses based on my role',
+                    'As a business, I want to integrate multiple knowledge sources (SharePoint, wikis, etc)',
+                    'As a business, I want to control what documents the AI can access',
+                    'As a business, I want to ensure data privacy and security',
+                    'As a business, I want to track AI accuracy and user satisfaction',
+                    'As a business, I want to fine-tune the AI on our domain',
+                    'As an admin, I want to manage user permissions',
+                    'As an admin, I want to monitor AI costs and usage',
+                    'As an admin, I want to configure retrieval strategies',
+                    'As an admin, I want to version control knowledge base',
+                    'As an admin, I want to audit AI responses for compliance'
+                ]
+            },
+            'doc-extraction': {
+                name: 'Document Data Extraction',
+                description: 'Extract structured data from forms, invoices, receipts',
+                complexity: 'medium',
+                baseFeatures: 20,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a user, I want to upload documents (PDF, images) for extraction',
+                    'As a user, I want to see extracted data in structured format',
+                    'As a user, I want to verify and correct extracted data',
+                    'As a user, I want to export extracted data to Excel/CSV',
+                    'As a business, I want to process multiple document types (invoices, receipts, forms)',
+                    'As a business, I want to integrate with our ERP system',
+                    'As a business, I want to track extraction accuracy',
+                    'As a business, I want to handle documents in multiple languages',
+                    'As a business, I want to train the model on our specific document formats',
+                    'As a business, I want to batch process 1000s of documents',
+                    'As a business, I want to detect and flag suspicious documents',
+                    'As an admin, I want to configure extraction templates',
+                    'As an admin, I want to monitor processing queue',
+                    'As an admin, I want to see error reports and retry failed extractions',
+                    'As a developer, I want APIs for programmatic document submission'
+                ]
+            },
+            'churn-prediction': {
+                name: 'Customer Churn Prediction',
+                description: 'Predict which customers are likely to churn',
+                complexity: 'high',
+                baseFeatures: 25,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a business analyst, I want to see churn risk scores for all customers',
+                    'As a business analyst, I want to understand why a customer is flagged as high risk',
+                    'As a business analyst, I want to segment customers by churn risk',
+                    'As a marketing manager, I want to create retention campaigns for high-risk customers',
+                    'As a marketing manager, I want to see predicted churn for next 30/60/90 days',
+                    'As a business, I want to track churn prediction accuracy over time',
+                    'As a business, I want to integrate with CRM (Salesforce, Dynamics)',
+                    'As a business, I want to retrain model monthly with new data',
+                    'As a business, I want alerts when high-value customers are at risk',
+                    'As a data scientist, I want to engineer features from customer behavior',
+                    'As a data scientist, I want to experiment with different models',
+                    'As a data scientist, I want to explain model predictions to business users',
+                    'As a data engineer, I want to build data pipelines from multiple sources',
+                    'As an admin, I want to monitor model performance metrics',
+                    'As an admin, I want to schedule automated retraining'
+                ]
+            },
+            'fraud-detection': {
+                name: 'Fraud Detection',
+                description: 'Real-time fraud detection for transactions',
+                complexity: 'veryHigh',
+                baseFeatures: 35,
+                baseTeamSize: 7,
+                userStories: [
+                    'As a system, I want to score every transaction for fraud risk in <100ms',
+                    'As a fraud analyst, I want to review flagged transactions',
+                    'As a fraud analyst, I want to see why a transaction was flagged',
+                    'As a fraud analyst, I want to mark transactions as fraud/not fraud for retraining',
+                    'As a business, I want to reduce false positives (legitimate transactions blocked)',
+                    'As a business, I want to catch fraud before transaction completes',
+                    'As a business, I want to integrate with payment gateway',
+                    'As a business, I want to track fraud detection accuracy and savings',
+                    'As a business, I want to handle 10K+ transactions per second',
+                    'As a business, I want to detect new fraud patterns automatically',
+                    'As a data scientist, I want to use transaction history, device fingerprinting, behavioral patterns',
+                    'As a data scientist, I want to experiment with ensemble models',
+                    'As a developer, I want to deploy model with A/B testing',
+                    'As a developer, I want monitoring and alerting for model performance',
+                    'As a compliance officer, I want audit trails for all fraud decisions'
+                ]
+            },
+            'recommendation': {
+                name: 'Recommendation Engine',
+                description: 'Personalized product/content recommendations',
+                complexity: 'high',
+                baseFeatures: 28,
+                baseTeamSize: 6,
+                userStories: [
+                    'As a customer, I want to see personalized product recommendations',
+                    'As a customer, I want recommendations based on my browsing history',
+                    'As a customer, I want recommendations updated in real-time',
+                    'As a business, I want to recommend products/content on homepage, product pages, checkout',
+                    'As a business, I want to track recommendation click-through rate and conversion',
+                    'As a business, I want to A/B test different recommendation strategies',
+                    'As a business, I want to handle cold start (new users with no history)',
+                    'As a business, I want to incorporate business rules (e.g., promote sale items)',
+                    'As a business, I want to avoid recommending out-of-stock items',
+                    'As a data scientist, I want to use collaborative filtering, content-based, hybrid approaches',
+                    'As a data scientist, I want to experiment with deep learning models',
+                    'As a data scientist, I want to explain why items were recommended',
+                    'As a developer, I want to serve recommendations in <50ms',
+                    'As a developer, I want to scale to millions of users',
+                    'As an admin, I want to monitor recommendation quality metrics'
+                ]
+            },
+            'image-classification': {
+                name: 'Image Classification',
+                description: 'Classify images into categories',
+                complexity: 'high',
+                baseFeatures: 22,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a user, I want to upload images for classification',
+                    'As a user, I want to see classification results with confidence scores',
+                    'As a user, I want to classify images in real-time (camera input)',
+                    'As a business, I want to support 20-50 different categories',
+                    'As a business, I want to handle various image formats and sizes',
+                    'As a business, I want to batch process 1000s of images',
+                    'As a business, I want to track classification accuracy',
+                    'As a business, I want to train on our custom image dataset',
+                    'As a data scientist, I want to use transfer learning (pre-trained models)',
+                    'As a data scientist, I want to fine-tune model on our data',
+                    'As a data scientist, I want to augment training data',
+                    'As a data scientist, I want to explain model decisions (e.g., attention maps)',
+                    'As a developer, I want to deploy model as REST API',
+                    'As a developer, I want to optimize for inference speed',
+                    'As an admin, I want to version control models'
+                ]
+            },
+            'quality-inspection': {
+                name: 'Quality Inspection / Defect Detection',
+                description: 'Automated visual inspection for manufacturing',
+                complexity: 'veryHigh',
+                baseFeatures: 30,
+                baseTeamSize: 6,
+                userStories: [
+                    'As a quality inspector, I want to scan products for defects automatically',
+                    'As a quality inspector, I want to see defect type and location on image',
+                    'As a quality inspector, I want to override AI decisions when wrong',
+                    'As a business, I want to detect multiple defect types (scratches, dents, misalignment)',
+                    'As a business, I want to achieve >99% accuracy (minimize false negatives)',
+                    'As a business, I want to inspect products in real-time on production line',
+                    'As a business, I want to track defect rates and trends',
+                    'As a business, I want to integrate with manufacturing execution system',
+                    'As a business, I want to handle different product variants',
+                    'As a data scientist, I want to use object detection or segmentation models',
+                    'As a data scientist, I want to train on limited defect examples (few-shot learning)',
+                    'As a data scientist, I want to handle class imbalance (defects are rare)',
+                    'As a developer, I want to deploy at edge (factory floor) for low latency',
+                    'As a developer, I want to monitor model drift (product changes over time)',
+                    'As an admin, I want to retrain model when new defect types appear'
+                ]
+            },
+            'sentiment-analysis': {
+                name: 'Sentiment Analysis',
+                description: 'Analyze sentiment in customer feedback, social media',
+                complexity: 'medium',
+                baseFeatures: 18,
+                baseTeamSize: 4,
+                userStories: [
+                    'As a business analyst, I want to see sentiment (positive/negative/neutral) for customer feedback',
+                    'As a business analyst, I want to track sentiment trends over time',
+                    'As a business analyst, I want to drill down into negative feedback',
+                    'As a business, I want to analyze social media mentions',
+                    'As a business, I want to analyze customer support tickets',
+                    'As a business, I want to analyze product reviews',
+                    'As a business, I want to get alerts when sentiment drops suddenly',
+                    'As a business, I want to compare sentiment across products/services',
+                    'As a business, I want to support multiple languages',
+                    'As a data scientist, I want to classify sentiment with confidence scores',
+                    'As a data scientist, I want to detect emotions (angry, happy, frustrated, etc.)',
+                    'As a developer, I want to process real-time streams (Twitter, etc.)',
+                    'As a developer, I want to integrate with customer feedback tools',
+                    'As an admin, I want to configure sentiment thresholds for alerts'
+                ]
+            },
+            'process-automation': {
+                name: 'Process Automation with AI',
+                description: 'Automate business processes using AI',
+                complexity: 'high',
+                baseFeatures: 25,
+                baseTeamSize: 6,
+                userStories: [
+                    'As a business user, I want to trigger automation with natural language',
+                    'As a business user, I want AI to make decisions in the process',
+                    'As a business user, I want to review AI decisions before execution',
+                    'As a business, I want to automate end-to-end workflows',
+                    'As a business, I want to integrate with existing systems (ERP, CRM)',
+                    'As a business, I want to track automation success rate',
+                    'As a business, I want to handle exceptions (human-in-the-loop)',
+                    'As a business, I want to measure time/cost savings from automation',
+                    'As a business, I want to scale to 1000s of process instances per day',
+                    'As a developer, I want to use workflow orchestration (Azure Logic Apps, Power Automate)',
+                    'As a developer, I want to integrate multiple AI models (document extraction, classification, etc.)',
+                    'As a developer, I want to monitor process performance',
+                    'As an admin, I want to configure business rules',
+                    'As an admin, I want audit trails for compliance'
+                ]
+            }
+        };
+
+        // ============================================
+        // MATURITY LEVEL ADJUSTMENTS
+        // ============================================
+        const maturityAdjustments = {
+            '1': { // Initial / Aware
+                velocityMultiplier: 0.6,  // Lower velocity (learning)
+                riskBuffer: 15,           // High risk
+                teamSizeMultiplier: 1.2,  // Slightly larger team (inefficiency)
+                description: 'First AI project; expect learning curve and slower velocity'
+            },
+            '2': { // Developing / Experimenting
+                velocityMultiplier: 0.75,
+                riskBuffer: 10,
+                teamSizeMultiplier: 1.1,
+                description: 'Some experience; still building practices'
+            },
+            '3': { // Defined / Emerging
+                velocityMultiplier: 1.0,
+                riskBuffer: 7,
+                teamSizeMultiplier: 1.0,
+                description: 'Established practices; typical velocity'
+            },
+            '4': { // Managed / Performing
+                velocityMultiplier: 1.2,
+                riskBuffer: 5,
+                teamSizeMultiplier: 0.9,
+                description: 'Mature delivery; higher velocity, smaller teams'
+            },
+            '5': { // Optimizing / Leading
+                velocityMultiplier: 1.4,
+                riskBuffer: 4,
+                teamSizeMultiplier: 0.8,
+                description: 'Industry-leading; very efficient'
+            }
+        };
+
+        // ============================================
+        // INDUSTRY ADJUSTMENTS
+        // ============================================
+        const industryAdjustments = {
+            'financial': {
+                complianceOverhead: 1.25,  // 25% more effort for compliance
+                riskIncrease: 2,           // +2% risk buffer
+                description: 'High compliance requirements (GDPR, financial regulations)'
+            },
+            'healthcare': {
+                complianceOverhead: 1.3,   // 30% more effort
+                riskIncrease: 3,
+                description: 'Very high compliance (HIPAA, patient privacy)'
+            },
+            'retail': {
+                complianceOverhead: 1.05,
+                riskIncrease: 0,
+                description: 'Moderate compliance; focus on scale'
+            },
+            'manufacturing': {
+                complianceOverhead: 1.1,
+                riskIncrease: 1,
+                description: 'Quality and safety requirements'
+            },
+            'technology': {
+                complianceOverhead: 1.0,
+                riskIncrease: 0,
+                description: 'Lower compliance; faster iteration'
+            },
+            'telecom': {
+                complianceOverhead: 1.15,
+                riskIncrease: 1,
+                description: 'Regulatory oversight; scale requirements'
+            },
+            'energy': {
+                complianceOverhead: 1.2,
+                riskIncrease: 2,
+                description: 'Safety-critical; regulatory compliance'
+            },
+            'government': {
+                complianceOverhead: 1.35,
+                riskIncrease: 3,
+                description: 'High compliance; procurement complexity'
+            },
+            'other': {
+                complianceOverhead: 1.1,
+                riskIncrease: 1,
+                description: 'Standard compliance requirements'
+            }
+        };
+
+        // ============================================
+        // AUTO-POPULATE LOGIC
+        // ============================================
+        function autoPopulateFromUseCase() {
+            const useCaseId = document.getElementById('aiUseCase').value;
+            const maturityLevel = document.getElementById('aiMaturity').value;
+            const industry = document.getElementById('industry').value;
+
+            if (!useCaseId || !maturityLevel || !industry) {
+                // Update descriptions as user selects
+                if (useCaseId) {
+                    const useCase = useCaseTemplates[useCaseId];
+                    document.getElementById('useCaseDescription').textContent = useCase.description;
+                }
+                if (maturityLevel) {
+                    const maturity = maturityAdjustments[maturityLevel];
+                    document.getElementById('maturityImpact').textContent = maturity.description;
+                }
+                if (industry) {
+                    const ind = industryAdjustments[industry];
+                    document.getElementById('industryImpact').textContent = ind.description;
+                }
+                return;
+            }
+
+            // All three selected - show detailed section
+            const useCase = useCaseTemplates[useCaseId];
+            const maturity = maturityAdjustments[maturityLevel];
+            const ind = industryAdjustments[industry];
+
+            // Update display
+            document.getElementById('selectedUseCaseDisplay').textContent = 
+                `Selected: ${useCase.name} | Maturity Level ${maturityLevel} | ${getIndustryName(industry)}`;
+            
+            document.getElementById('autoPopulatedDetails').innerHTML = `
+                <strong>📊 Auto-populated values:</strong><br>
+                • Complexity: ${useCase.complexity}<br>
+                • Base features: ${useCase.baseFeatures}<br>
+                • Team size: ${Math.round(useCase.baseTeamSize * maturity.teamSizeMultiplier)} FTE<br>
+                • Risk buffer: ${maturity.riskBuffer + ind.riskIncrease}%<br>
+                • Compliance overhead: +${Math.round((ind.complianceOverhead - 1) * 100)}%
+            `;
+
+            // Display user stories
+            displayUserStories(useCase.userStories, useCase.baseFeatures);
+        }
+
+        function getIndustryName(industryCode) {
+            const names = {
+                'financial': 'Financial Services',
+                'healthcare': 'Healthcare',
+                'retail': 'Retail',
+                'manufacturing': 'Manufacturing',
+                'technology': 'Technology',
+                'telecom': 'Telecommunications',
+                'energy': 'Energy',
+                'government': 'Government',
+                'other': 'Other'
+            };
+            return names[industryCode] || industryCode;
+        }
+
+        function displayUserStories(stories, totalFeatures) {
+            const container = document.getElementById('userStoriesDisplay');
+            
+            // Show subset of stories if more than totalFeatures
+            const storiesToShow = stories.slice(0, totalFeatures);
+            const remaining = stories.length - storiesToShow.length;
+            
+            let html = '<strong>Example User Stories:</strong><ul style="margin: 0.5rem 0; padding-left: 1.5rem;">';
+            storiesToShow.forEach(story => {
+                html += `<li style="margin: 0.5rem 0;">${story}</li>`;
+            });
+            html += '</ul>';
+            
+            if (remaining > 0) {
+                html += `<p style="color: #666; font-style: italic;">+ ${remaining} more user stories...</p>`;
+            }
+            
+            html += `<p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #555;">
+                <strong>Story Points Distribution:</strong> These user stories typically range from 2-13 story points based on complexity.
+            </p>`;
+            
+            container.innerHTML = html;
+        }
+
+        function generateDetailedEstimate() {
+            const useCaseId = document.getElementById('aiUseCase').value;
+            const maturityLevel = document.getElementById('aiMaturity').value;
+            const industry = document.getElementById('industry').value;
+
+            if (!useCaseId || !maturityLevel || !industry) {
+                alert('Please answer all 3 questions to generate an estimate');
+                return;
+            }
+
+            const useCase = useCaseTemplates[useCaseId];
+            const maturity = maturityAdjustments[maturityLevel];
+            const ind = industryAdjustments[industry];
+
+            // Populate detailed inputs
+            document.getElementById('journeyPhase').value = 'mvp';  // Default to MVP
+            document.getElementById('numFeatures').value = useCase.baseFeatures;
+            document.getElementById('complexity').value = useCase.complexity;
+            
+            // Adjust team size based on maturity
+            const adjustedTeamSize = Math.round(useCase.baseTeamSize * maturity.teamSizeMultiplier);
+            document.getElementById('teamSize').value = adjustedTeamSize;
+            
+            // Set risk level based on maturity and industry
+            const totalRisk = maturity.riskBuffer + ind.riskIncrease;
+            if (totalRisk <= 5) {
+                document.getElementById('riskLevel').value = '4';
+            } else if (totalRisk <= 10) {
+                document.getElementById('riskLevel').value = '7';
+            } else {
+                document.getElementById('riskLevel').value = '15';
+            }
+
+            // Auto-populate project name if empty
+            if (!document.getElementById('projectName').value) {
+                document.getElementById('projectName').value = useCase.name;
+            }
+
+            // Recalculate story points with maturity adjustment
+            calculateStoryPoints();
+
+            // Show detailed section
+            document.getElementById('wizardSection').style.display = 'none';
+            document.getElementById('detailedSection').style.display = 'grid';
+
+            // Auto-calculate
+            setTimeout(() => {
+                calculateEffort();
+            }, 100);
+        }
+
+        function showWizard() {
+            document.getElementById('wizardSection').style.display = 'block';
+            document.getElementById('detailedSection').style.display = 'none';
+        }
+
         // Industry guidance for story points based on complexity
         const storyPointGuidance = {
             low: { 
@@ -453,19 +1041,24 @@
         function calculateStoryPoints() {
             const complexity = document.getElementById('complexity').value;
             const teamSize = parseInt(document.getElementById('teamSize').value);
+            const maturityLevel = document.getElementById('aiMaturity')?.value || '3';  // Default to Level 3
             const guidance = storyPointGuidance[complexity];
+            
+            // Get maturity adjustment
+            const maturity = maturityAdjustments[maturityLevel] || maturityAdjustments['3'];
             
             // Update average story points
             document.getElementById('avgStoryPoints').value = guidance.avg;
             document.getElementById('storyPointGuidance').textContent = guidance.description;
             
-            // Calculate team velocity based on team size and complexity
-            const teamVelocity = teamSize * guidance.velocityPerFTE;
+            // Calculate team velocity based on team size, complexity, and maturity
+            const baseVelocity = teamSize * guidance.velocityPerFTE;
+            const adjustedVelocity = Math.round(baseVelocity * maturity.velocityMultiplier);
             
             // Update velocity display
-            document.getElementById('teamVelocity').value = teamVelocity;
+            document.getElementById('teamVelocity').value = adjustedVelocity;
             document.getElementById('velocityGuidance').textContent = 
-                `${guidance.velocityPerFTE} points/sprint/FTE × ${teamSize} FTE = ${teamVelocity} points per 2-week sprint`;
+                `Base: ${guidance.velocityPerFTE} points/FTE × ${teamSize} FTE × ${maturity.velocityMultiplier} (maturity) = ${adjustedVelocity} points per sprint`;
         }
 
         function updateFeatureEstimate() {
