@@ -1,7 +1,7 @@
 ﻿# AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🎯 **[AI Maturity Assessment](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
+🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | � **[Cross-Industry Solutions](https://andreaswasita.github.io/AI-Delivery-Methodology/#cross-industry)** | �🎯 **[AI Maturity Assessment](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**
 
 ---
 
@@ -36,6 +36,13 @@
 - 🛡️ [Defense](./guides/industry-use-cases/defense-security-use-cases.md) - Intelligence, logistics optimization
 
 [→ Explore All Industries](./guides/industry-use-cases)
+
+### 🌍 [Cross-Industry Solutions](https://andreaswasita.github.io/AI-Delivery-Methodology/#cross-industry)
+**Enterprise AI that works everywhere**
+- 🤖 **AI Workforce** - Automate document processing, customer handling, code generation, research & reports
+- 📞 **Contact Center as a Service** - Omnichannel contact center with Dynamics 365, AI voice/IVR, async chat, smart routing
+
+[→ View Cross-Industry Solutions](https://andreaswasita.github.io/AI-Delivery-Methodology/#cross-industry)
 
 </td>
 <td width="25%" valign="top">
