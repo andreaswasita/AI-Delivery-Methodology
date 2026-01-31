@@ -315,8 +315,22 @@
             </div>
 
             <div class="input-group">
+                <label for="techStack">4. What's your primary technology stack?</label>
+                <select id="techStack" onchange="autoPopulateFromUseCase()">
+                    <option value="">-- Select Technology Stack --</option>
+                    <option value="microsoft-lowcode">Microsoft Low-Code (Copilot Studio, Power Platform) ⚡</option>
+                    <option value="microsoft-procode">Microsoft Pro-Code (Azure AI, Azure ML, OpenAI)</option>
+                    <option value="microsoft-hybrid">Microsoft Hybrid (Mix of Low-Code + Pro-Code)</option>
+                    <option value="opensource">Open Source (Python, TensorFlow, PyTorch, etc.)</option>
+                    <option value="other-cloud">Other Cloud (AWS, GCP)</option>
+                    <option value="custom">Custom / On-Premise</option>
+                </select>
+                <small id="techStackImpact">Technology choice significantly affects development speed</small>
+            </div>
+
+            <div class="input-group">
                 <label for="projectName">Project Name (Optional)</label>
-                <input type="text" id="projectName" placeholder="e.g., Customer Churn Prediction AI">
+                <input type="text" id="projectName" placeholder="e.g., CBA CEBA Bot">
                 <small>Give your project a name for the report</small>
             </div>
 
@@ -1003,46 +1017,120 @@
         };
 
         // ============================================
+        // TECHNOLOGY STACK ADJUSTMENTS
+        // ============================================
+        const techStackAdjustments = {
+            'microsoft-lowcode': {
+                effortMultiplier: 0.7,  // 30% faster with low-code (Copilot Studio, Power Platform)
+                description: 'Low-code accelerates development significantly',
+                bestFor: ['chatbot-basic', 'chatbot-advanced', 'voice-assistant', 'doc-extraction', 'process-automation'],
+                velocityBoost: 1.3,  // Teams move 30% faster
+                notes: 'Copilot Studio: 40-60% faster for chatbots; Power Platform: rapid prototyping'
+            },
+            'microsoft-procode': {
+                effortMultiplier: 0.85,  // 15% faster with Azure AI services
+                description: 'Azure AI services provide pre-built capabilities',
+                bestFor: ['doc-extraction', 'image-classification', 'sentiment-analysis', 'fraud-detection'],
+                velocityBoost: 1.15,
+                notes: 'Azure OpenAI, Document Intelligence, Computer Vision reduce custom ML work'
+            },
+            'microsoft-hybrid': {
+                effortMultiplier: 0.8,  // 20% faster with hybrid approach
+                description: 'Best of both worlds - rapid prototyping + customization',
+                bestFor: ['chatbot-advanced', 'process-automation', 'recommendation'],
+                velocityBoost: 1.2,
+                notes: 'Use low-code for UI/integration, pro-code for custom ML models'
+            },
+            'opensource': {
+                effortMultiplier: 1.0,  // Baseline
+                description: 'Maximum flexibility but more development effort',
+                bestFor: ['custom', 'churn-prediction', 'recommendation'],
+                velocityBoost: 1.0,
+                notes: 'Full control but requires building more from scratch'
+            },
+            'other-cloud': {
+                effortMultiplier: 0.9,  // 10% faster with other cloud services
+                description: 'AWS/GCP AI services similar to Azure',
+                bestFor: ['doc-extraction', 'image-classification', 'sentiment-analysis'],
+                velocityBoost: 1.1,
+                notes: 'AWS SageMaker, GCP Vertex AI comparable to Azure ML'
+            },
+            'custom': {
+                effortMultiplier: 1.2,  // 20% more effort
+                description: 'On-premise or custom infrastructure adds complexity',
+                bestFor: [],
+                velocityBoost: 0.9,
+                notes: 'Infrastructure setup, security, scaling all manual'
+            }
+        };
+
+        // ============================================
         // AUTO-POPULATE LOGIC
         // ============================================
         function autoPopulateFromUseCase() {
             const useCaseId = document.getElementById('aiUseCase').value;
             const maturityLevel = document.getElementById('aiMaturity').value;
             const industry = document.getElementById('industry').value;
+            const techStack = document.getElementById('techStack').value;
 
-            if (!useCaseId || !maturityLevel || !industry) {
-                // Update descriptions as user selects
-                if (useCaseId) {
-                    const useCase = useCaseTemplates[useCaseId];
-                    document.getElementById('useCaseDescription').textContent = useCase.description;
-                }
-                if (maturityLevel) {
-                    const maturity = maturityAdjustments[maturityLevel];
-                    document.getElementById('maturityImpact').textContent = maturity.description;
-                }
-                if (industry) {
-                    const ind = industryAdjustments[industry];
-                    document.getElementById('industryImpact').textContent = ind.description;
-                }
+            // Update descriptions as user selects
+            if (useCaseId) {
+                const useCase = useCaseTemplates[useCaseId];
+                document.getElementById('useCaseDescription').textContent = useCase.description;
+            }
+            if (maturityLevel) {
+                const maturity = maturityAdjustments[maturityLevel];
+                document.getElementById('maturityImpact').textContent = maturity.description;
+            }
+            if (industry) {
+                const ind = industryAdjustments[industry];
+                document.getElementById('industryImpact').textContent = ind.description;
+            }
+            if (techStack) {
+                const tech = techStackAdjustments[techStack];
+                const savingsPercent = Math.round((1 - tech.effortMultiplier) * 100);
+                const savingsText = tech.effortMultiplier < 1.0 
+                    ? `${savingsPercent}% faster development` 
+                    : tech.effortMultiplier > 1.0 
+                        ? `${Math.round((tech.effortMultiplier - 1) * 100)}% more effort`
+                        : 'Baseline effort';
+                document.getElementById('techStackImpact').textContent = `${tech.description} (${savingsText})`;
+            }
+
+            if (!useCaseId || !maturityLevel || !industry || !techStack) {
                 return;
             }
 
-            // All three selected - show detailed section
+            // All four selected - show detailed section
             const useCase = useCaseTemplates[useCaseId];
             const maturity = maturityAdjustments[maturityLevel];
             const ind = industryAdjustments[industry];
+            const tech = techStackAdjustments[techStack];
+
+            // Check if tech stack is optimal for this use case
+            const isOptimalTech = tech.bestFor.includes(useCaseId);
+            const techBonus = isOptimalTech ? ' ✨ (Optimal for this use case!)' : '';
 
             // Update display
             document.getElementById('selectedUseCaseDisplay').textContent = 
-                `Selected: ${useCase.name} | Maturity Level ${maturityLevel} | ${getIndustryName(industry)}`;
+                `Selected: ${useCase.name} | Maturity Level ${maturityLevel} | ${getIndustryName(industry)} | ${getTechStackName(techStack)}`;
             
+            const effortReduction = Math.round((1 - tech.effortMultiplier) * 100);
+            const effortText = tech.effortMultiplier < 1.0 
+                ? `${effortReduction}% faster` 
+                : tech.effortMultiplier > 1.0 
+                    ? `${Math.round((tech.effortMultiplier - 1) * 100)}% slower`
+                    : 'baseline';
+
             document.getElementById('autoPopulatedDetails').innerHTML = `
                 <strong>📊 Auto-populated values:</strong><br>
                 • Complexity: ${useCase.complexity}<br>
                 • Base features: ${useCase.baseFeatures}<br>
                 • Team size: ${Math.round(useCase.baseTeamSize * maturity.teamSizeMultiplier)} FTE<br>
                 • Risk buffer: ${maturity.riskBuffer + ind.riskIncrease}%<br>
-                • Compliance overhead: +${Math.round((ind.complianceOverhead - 1) * 100)}%
+                • Compliance overhead: +${Math.round((ind.complianceOverhead - 1) * 100)}%<br>
+                • Tech stack advantage: <strong style="color: #667eea;">${effortText}${techBonus}</strong><br>
+                <small style="color: #666;">${tech.notes}</small>
             `;
 
             // Display user stories
@@ -1062,6 +1150,18 @@
                 'other': 'Other'
             };
             return names[industryCode] || industryCode;
+        }
+
+        function getTechStackName(techCode) {
+            const names = {
+                'microsoft-lowcode': 'Microsoft Low-Code (Copilot Studio)',
+                'microsoft-procode': 'Microsoft Pro-Code (Azure AI)',
+                'microsoft-hybrid': 'Microsoft Hybrid',
+                'opensource': 'Open Source',
+                'other-cloud': 'Other Cloud (AWS/GCP)',
+                'custom': 'Custom / On-Premise'
+            };
+            return names[techCode] || techCode;
         }
 
         function displayUserStories(stories, totalFeatures) {
@@ -1092,17 +1192,19 @@
             const useCaseId = document.getElementById('aiUseCase').value;
             const maturityLevel = document.getElementById('aiMaturity').value;
             const industry = document.getElementById('industry').value;
+            const techStack = document.getElementById('techStack').value;
 
-            console.log('Generating estimate:', { useCaseId, maturityLevel, industry });
+            console.log('Generating estimate:', { useCaseId, maturityLevel, industry, techStack });
 
-            if (!useCaseId || !maturityLevel || !industry) {
-                alert('Please answer all 3 questions to generate an estimate');
+            if (!useCaseId || !maturityLevel || !industry || !techStack) {
+                alert('Please answer all 4 questions to generate an estimate');
                 return;
             }
 
             const useCase = useCaseTemplates[useCaseId];
             const maturity = maturityAdjustments[maturityLevel];
             const ind = industryAdjustments[industry];
+            const tech = techStackAdjustments[techStack];
 
             if (!useCase) {
                 console.error('Use case template not found:', useCaseId);
@@ -1111,6 +1213,9 @@
             }
 
             console.log('Use case loaded:', useCase.name);
+
+            // Store tech stack selection for use in calculation
+            window.selectedTechStack = techStack;
 
             // Populate detailed inputs
             document.getElementById('journeyPhase').value = 'mvp';  // Default to MVP
@@ -1209,23 +1314,28 @@
             const complexity = document.getElementById('complexity').value;
             const teamSize = parseInt(document.getElementById('teamSize').value);
             const maturityLevel = document.getElementById('aiMaturity')?.value || '3';  // Default to Level 3
+            const techStack = document.getElementById('techStack')?.value || 'opensource';  // Default to open source
             const guidance = storyPointGuidance[complexity];
             
             // Get maturity adjustment
             const maturity = maturityAdjustments[maturityLevel] || maturityAdjustments['3'];
             
+            // Get tech stack adjustment
+            const tech = techStackAdjustments[techStack] || techStackAdjustments['opensource'];
+            
             // Update average story points
             document.getElementById('avgStoryPoints').value = guidance.avg;
             document.getElementById('storyPointGuidance').textContent = guidance.description;
             
-            // Calculate team velocity based on team size, complexity, and maturity
+            // Calculate team velocity based on team size, complexity, maturity, AND tech stack
             const baseVelocity = teamSize * guidance.velocityPerFTE;
-            const adjustedVelocity = Math.round(baseVelocity * maturity.velocityMultiplier);
+            const maturityAdjustedVelocity = baseVelocity * maturity.velocityMultiplier;
+            const finalVelocity = Math.round(maturityAdjustedVelocity * tech.velocityBoost);
             
             // Update velocity display
-            document.getElementById('teamVelocity').value = adjustedVelocity;
+            document.getElementById('teamVelocity').value = finalVelocity;
             document.getElementById('velocityGuidance').textContent = 
-                `Base: ${guidance.velocityPerFTE} points/FTE × ${teamSize} FTE × ${maturity.velocityMultiplier} (maturity) = ${adjustedVelocity} points per sprint`;
+                `Base: ${guidance.velocityPerFTE} points/FTE × ${teamSize} FTE × ${maturity.velocityMultiplier} (maturity) × ${tech.velocityBoost} (tech) = ${finalVelocity} points per sprint`;
         }
 
         function updateFeatureEstimate() {
@@ -1272,6 +1382,10 @@
             const includeDiscovery = document.getElementById('includeDiscovery').checked;
             const includeDeployment = document.getElementById('includeDeployment').checked;
 
+            // Get tech stack adjustment (if available from wizard)
+            const techStack = document.getElementById('techStack')?.value || window.selectedTechStack || 'opensource';
+            const tech = techStackAdjustments[techStack] || techStackAdjustments['opensource'];
+
             // Calculate total story points
             const totalStoryPoints = numFeatures * avgStoryPoints;
             
@@ -1285,7 +1399,10 @@
             const hoursPerPoint = (teamSize * hoursPerSprint) / teamVelocity;
             
             // Calculate base development effort
-            const baseHours = totalStoryPoints * hoursPerPoint;
+            let baseHours = totalStoryPoints * hoursPerPoint;
+
+            // Apply tech stack multiplier (THIS IS THE KEY CHANGE!)
+            baseHours = baseHours * tech.effortMultiplier;
             
             // Complexity multipliers
             const complexityMultipliers = {
@@ -1411,6 +1528,8 @@
                     totalSprints: numSprints,
                     riskLevel: riskBuffer * 100 + '%',
                     riskBufferPercentage: riskBuffer * 100,
+                    technologyStack: getTechStackName(techStack),
+                    techMultiplier: tech.effortMultiplier,
                     includeDiscovery,
                     includeDeployment
                 },
