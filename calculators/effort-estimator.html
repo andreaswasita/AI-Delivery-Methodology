@@ -253,6 +253,7 @@
                         <option value="chatbot-basic">Customer Service Chatbot (Basic)</option>
                         <option value="chatbot-advanced">AI Assistant (Advanced with RAG)</option>
                         <option value="voice-assistant">Voice Assistant / IVR</option>
+                        <option value="contact-center">Contact Center as a Service (Dynamics 365 + AI)</option>
                     </optgroup>
                     <optgroup label="📄 Document AI">
                         <option value="doc-extraction">Document Data Extraction (Forms, Invoices)</option>
@@ -605,6 +606,55 @@
                     'As an admin, I want to update voice prompts and responses',
                     'As an admin, I want to analyze call transcripts',
                     'As a compliance officer, I want to ensure regulatory compliance for recorded calls'
+                ]
+            },
+            'contact-center': {
+                name: 'Contact Center as a Service (Dynamics 365 + AI)',
+                description: 'Omnichannel contact center with AI IVR, voice, async chat, and CRM integration',
+                complexity: 'veryHigh',
+                baseFeatures: 40,
+                baseTeamSize: 8,
+                userStories: [
+                    'As a customer, I want to reach support via phone, chat, email, SMS, or social media',
+                    'As a customer, I want my conversation history available across all channels',
+                    'As a customer, I want AI to handle simple requests and escalate complex ones',
+                    'As a customer, I want to start on chat and switch to voice seamlessly',
+                    'As a customer, I want 24/7 AI-powered self-service',
+                    'As a customer, I want to continue conversations asynchronously (respond hours later)',
+                    'As a customer, I want personalized service based on my history',
+                    'As an agent, I want AI to provide suggested responses during conversations',
+                    'As an agent, I want real-time sentiment analysis and alerts',
+                    'As an agent, I want AI to summarize customer history and context',
+                    'As an agent, I want omnichannel view (all customer interactions in one place)',
+                    'As an agent, I want smart case routing based on skills and availability',
+                    'As an agent, I want knowledge base articles suggested based on conversation',
+                    'As a supervisor, I want real-time dashboards showing queue status, agent performance',
+                    'As a supervisor, I want to monitor conversations and provide assistance',
+                    'As a supervisor, I want AI quality monitoring (auto-score interactions)',
+                    'As a supervisor, I want forecasting for staffing requirements',
+                    'As a business, I want AI IVR to handle high-volume calls',
+                    'As a business, I want AI voice bots with natural conversations',
+                    'As a business, I want asynchronous messaging (customers reply on their schedule)',
+                    'As a business, I want integration with Dynamics 365 CRM for full customer view',
+                    'As a business, I want integration with Power Platform for custom workflows',
+                    'As a business, I want sentiment analysis across all channels',
+                    'As a business, I want AI chatbots with handoff to human agents',
+                    'As a business, I want call transcription and analytics',
+                    'As a business, I want automated post-interaction surveys',
+                    'As a business, I want to track KPIs (first call resolution, CSAT, average handle time)',
+                    'As a business, I want workforce management integration',
+                    'As a business, I want multi-language support (voice and text)',
+                    'As a business, I want compliance recording and data retention',
+                    'As a developer, I want to integrate with telephony providers (Teams, Genesys, etc)',
+                    'As a developer, I want to customize AI models for industry-specific terminology',
+                    'As a developer, I want APIs for custom integrations',
+                    'As a developer, I want to deploy AI voice bots with low latency',
+                    'As an admin, I want to configure routing rules and business hours',
+                    'As an admin, I want to manage agent skills and capacity',
+                    'As an admin, I want to monitor system health and performance',
+                    'As an admin, I want to configure AI escalation triggers',
+                    'As a compliance officer, I want audit trails for all interactions',
+                    'As a compliance officer, I want data privacy controls (GDPR, HIPAA compliance)'
                 ]
             },
             'doc-classification': {
@@ -1023,23 +1073,23 @@
             'microsoft-lowcode': {
                 effortMultiplier: 0.7,  // 30% faster with low-code (Copilot Studio, Power Platform)
                 description: 'Low-code accelerates development significantly',
-                bestFor: ['chatbot-basic', 'chatbot-advanced', 'voice-assistant', 'doc-extraction', 'process-automation'],
+                bestFor: ['chatbot-basic', 'chatbot-advanced', 'voice-assistant', 'doc-extraction', 'process-automation', 'contact-center'],
                 velocityBoost: 1.3,  // Teams move 30% faster
-                notes: 'Copilot Studio: 40-60% faster for chatbots; Power Platform: rapid prototyping'
+                notes: 'Copilot Studio: 40-60% faster for chatbots; Power Platform: rapid prototyping; Dynamics 365 Contact Center: enterprise-ready'
             },
             'microsoft-procode': {
                 effortMultiplier: 0.85,  // 15% faster with Azure AI services
                 description: 'Azure AI services provide pre-built capabilities',
-                bestFor: ['doc-extraction', 'image-classification', 'sentiment-analysis', 'fraud-detection'],
+                bestFor: ['doc-extraction', 'image-classification', 'sentiment-analysis', 'fraud-detection', 'contact-center'],
                 velocityBoost: 1.15,
-                notes: 'Azure OpenAI, Document Intelligence, Computer Vision reduce custom ML work'
+                notes: 'Azure OpenAI, Document Intelligence, Computer Vision, Speech Services reduce custom ML work'
             },
             'microsoft-hybrid': {
                 effortMultiplier: 0.8,  // 20% faster with hybrid approach
                 description: 'Best of both worlds - rapid prototyping + customization',
-                bestFor: ['chatbot-advanced', 'process-automation', 'recommendation'],
+                bestFor: ['chatbot-advanced', 'process-automation', 'recommendation', 'contact-center'],
                 velocityBoost: 1.2,
-                notes: 'Use low-code for UI/integration, pro-code for custom ML models'
+                notes: 'Use low-code for UI/integration, pro-code for custom ML models; ideal for Dynamics 365 Contact Center'
             },
             'opensource': {
                 effortMultiplier: 1.0,  // Baseline
