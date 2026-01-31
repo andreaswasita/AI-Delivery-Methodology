@@ -42,6 +42,7 @@
 
 ### 📚 [Guides & Frameworks](./guides)
 **Expert knowledge & best practices**
+- 🎯 [AI Maturity Assessment Guide](./guides/99-ai-maturity-assessment-guide.md) ⭐ **START HERE**
 - 🎯 [Executive Coaching Guide](./guides/90-executive-coaching-guide.md)
 - 🏢 [AI Center of Excellence](./guides/91-ai-center-of-excellence-framework.md)
 - 📊 [Story Points Estimation](./guides/94-story-points-estimation-guide.md)
