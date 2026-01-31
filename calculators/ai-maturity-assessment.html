@@ -183,6 +183,30 @@
             transform: translateY(0);
         }
 
+        .next-step-btn {
+            width: 100%;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+            margin: 30px 0 20px 0;
+        }
+
+        .next-step-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .next-step-btn:active {
+            transform: scale(0.98);
+        }
+
         .results {
             display: none;
             margin-top: 40px;
@@ -863,6 +887,10 @@
                     <button class="action-btn" onclick="downloadPDF()">📄 Download PDF</button>
                     <button class="action-btn" onclick="window.location.reload()">🔄 Retake Assessment</button>
                 </div>
+
+                <button class="next-step-btn" onclick="window.location.href='effort-estimator.html'">
+                    ⏱️ Next Step: Estimate Implementation Effort →
+                </button>
             </div>
 
             <div class="references">
