@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Maturity Assessment Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro-text {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .intro-text h2 {
+            color: #4c1d95;
+            margin-bottom: 10px;
+        }
+
+        .intro-text p {
+            color: #5b21b6;
+            line-height: 1.6;
+        }
+
+        .dimension {
+            margin-bottom: 40px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+        }
+
+        .dimension:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .dimension h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dimension-icon {
+            font-size: 1.8em;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .question-text {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            background: #f3f4f6;
+            border-color: #667eea;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .level-1 { background: #fee2e2; color: #991b1b; }
+        .level-2 { background: #fed7aa; color: #9a3412; }
+        .level-3 { background: #fef08a; color: #854d0e; }
+        .level-4 { background: #bbf7d0; color: #166534; }
+        .level-5 { background: #bfdbfe; color: #1e40af; }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .results {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            border-radius: 12px;
+            border: 3px solid #667eea;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .overall-score {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .overall-score h2 {
+            color: #4c1d95;
+            margin-bottom: 15px;
+        }
+
+        .maturity-level {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0;
+        }
+
+        .score-bar-container {
+            background: #e5e7eb;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .score-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .dimension-scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .dimension-score-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .dimension-score-card h4 {
+            color: #4c1d95;
+            margin-bottom: 10px;
+        }
+
+        .mini-score-bar {
+            background: #e5e7eb;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .mini-score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.8s ease;
+        }
+
+        .recommendations {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .recommendations h3 {
+            color: #4c1d95;
+            margin-bottom: 15px;
+        }
+
+        .recommendation-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f9fafb;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .recommendation-item strong {
+            color: #667eea;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .references {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+
+        .references h3 {
+            color: #065f46;
+            margin-bottom: 15px;
+        }
+
+        .references ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .references li {
+            padding: 8px 0;
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .references li:before {
+            content: "📚 ";
+            margin-right: 8px;
+        }
+
+        .progress-indicator {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .progress-text {
+            color: #4c1d95;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-container {
+            background: #e5e7eb;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .dimension-scores {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 AI Maturity Assessment Calculator</h1>
+            <p>Evaluate your organization's AI maturity across 5 critical dimensions</p>
+        </div>
+
+        <div class="content">
+            <div class="intro-text">
+                <h2>About This Assessment</h2>
+                <p>This comprehensive maturity assessment evaluates your organization's AI capabilities across five key dimensions: Strategy & Leadership, Data & Infrastructure, Technology & Operations, Talent & Culture, and Governance & Ethics. Based on industry-leading frameworks from Accenture, Gartner, McKinsey, and MIT, this tool will help you understand where you stand and provide actionable recommendations for advancing your AI maturity.</p>
+            </div>
+
+            <div class="progress-indicator">
+                <div class="progress-text">Assessment Progress: <span id="progressPercent">0%</span></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <!-- Dimension 1: Strategy & Leadership -->
+            <div class="dimension" data-dimension="strategy">
+                <h3><span class="dimension-icon">🎯</span> Strategy & Leadership Sponsorship</h3>
+                
+                <div class="question">
+                    <div class="question-text">1. How is AI positioned in your organization's overall business strategy?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q1_1" name="q1" value="1">
+                            <label for="q1_1">No AI strategy exists <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_2" name="q1" value="2">
+                            <label for="q1_2">AI discussed occasionally but not formally documented <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_3" name="q1" value="3">
+                            <label for="q1_3">AI strategy exists but not fully integrated with business strategy <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_4" name="q1" value="4">
+                            <label for="q1_4">AI strategy aligned with business goals, actively managed <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_5" name="q1" value="5">
+                            <label for="q1_5">AI is central to business strategy, drives innovation and competitive advantage <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">2. What level of executive sponsorship does AI have in your organization?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q2_1" name="q2" value="1">
+                            <label for="q2_1">No executive sponsorship or awareness <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_2" name="q2" value="2">
+                            <label for="q2_2">Mid-level management exploring AI opportunities <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_3" name="q2" value="3">
+                            <label for="q2_3">Single C-level executive (CIO/CDO) sponsors AI initiatives <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_4" name="q2" value="4">
+                            <label for="q2_4">CEO and board actively sponsor and track AI initiatives <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_5" name="q2" value="5">
+                            <label for="q2_5">CEO, board, and leadership team champion AI as strategic priority <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">3. How does your organization approach AI investment and prioritization?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q3_1" name="q3" value="1">
+                            <label for="q3_1">No budget allocated for AI <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_2" name="q3" value="2">
+                            <label for="q3_2">Ad-hoc spending on isolated AI experiments <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_3" name="q3" value="3">
+                            <label for="q3_3">Defined AI budget, projects prioritized by department <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_4" name="q3" value="4">
+                            <label for="q3_4">Enterprise-wide AI budget with ROI-driven prioritization <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_5" name="q3" value="5">
+                            <label for="q3_5">Strategic AI portfolio management, clear business case for each initiative <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimension 2: Data & Infrastructure -->
+            <div class="dimension" data-dimension="data">
+                <h3><span class="dimension-icon">💾</span> Data & Infrastructure</h3>
+                
+                <div class="question">
+                    <div class="question-text">4. How mature is your organization's data infrastructure?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q4_1" name="q4" value="1">
+                            <label for="q4_1">Data scattered across siloed systems, no integration <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_2" name="q4" value="2">
+                            <label for="q4_2">Basic databases exist, minimal integration between systems <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_3" name="q4" value="3">
+                            <label for="q4_3">Data warehouse or lake implemented, some integration <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_4" name="q4" value="4">
+                            <label for="q4_4">Modern data platform (cloud-based), well-integrated, real-time capabilities <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_5" name="q4" value="5">
+                            <label for="q4_5">Enterprise data fabric/mesh, real-time data streaming, advanced analytics ready <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">5. What is the quality and accessibility of your data for AI purposes?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q5_1" name="q5" value="1">
+                            <label for="q5_1">Poor data quality, significant manual effort required <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_2" name="q5" value="2">
+                            <label for="q5_2">Some data quality issues, limited access for AI teams <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_3" name="q5" value="3">
+                            <label for="q5_3">Data quality processes in place, self-service access for some users <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_4" name="q5" value="4">
+                            <label for="q5_4">High data quality, self-service analytics platform, good documentation <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_5" name="q5" value="5">
+                            <label for="q5_5">Trusted data with lineage tracking, automated quality checks, democratized access <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">6. How robust is your data governance framework?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q6_1" name="q6" value="1">
+                            <label for="q6_1">No data governance policies or practices <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_2" name="q6" value="2">
+                            <label for="q6_2">Basic policies exist but not consistently enforced <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_3" name="q6" value="3">
+                            <label for="q6_3">Governance framework defined, roles assigned (data stewards) <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_4" name="q6" value="4">
+                            <label for="q6_4">Mature governance with automated compliance, master data management <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6_5" name="q6" value="5">
+                            <label for="q6_5">Enterprise-wide governance, real-time compliance monitoring, privacy-by-design <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimension 3: Technology & Operations -->
+            <div class="dimension" data-dimension="technology">
+                <h3><span class="dimension-icon">⚙️</span> Technology & Operations</h3>
+                
+                <div class="question">
+                    <div class="question-text">7. What is your organization's approach to AI/ML technology and tools?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q7_1" name="q7" value="1">
+                            <label for="q7_1">No AI/ML tools or platforms in use <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7_2" name="q7" value="2">
+                            <label for="q7_2">Experimenting with open-source tools, no standardization <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7_3" name="q7" value="3">
+                            <label for="q7_3">Cloud-based ML platform adopted, some standardization <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7_4" name="q7" value="4">
+                            <label for="q7_4">Enterprise ML platform with MLOps, reusable components, CI/CD <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7_5" name="q7" value="5">
+                            <label for="q7_5">AI factory/studio model, automated ML pipelines, model marketplace <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">8. How does your organization operationalize AI models (from pilot to production)?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q8_1" name="q8" value="1">
+                            <label for="q8_1">No models in production, only research/experimentation <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8_2" name="q8" value="2">
+                            <label for="q8_2">1-2 models in production, manual deployment process <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8_3" name="q8" value="3">
+                            <label for="q8_3">Multiple models deployed, semi-automated deployment, basic monitoring <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8_4" name="q8" value="4">
+                            <label for="q8_4">30%+ of pilots scaled to production, automated MLOps, model performance tracking <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8_5" name="q8" value="5">
+                            <label for="q8_5">Models as a service, continuous deployment, automated retraining, drift detection <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">9. What is the integration level of AI into your business processes and workflows?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q9_1" name="q9" value="1">
+                            <label for="q9_1">No AI integrated into business processes <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9_2" name="q9" value="2">
+                            <label for="q9_2">AI used in isolated tasks, not integrated into workflows <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9_3" name="q9" value="3">
+                            <label for="q9_3">AI embedded in 1-2 key workflows (e.g., customer service) <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9_4" name="q9" value="4">
+                            <label for="q9_4">AI integral to multiple workflows, human-in-the-loop processes <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9_5" name="q9" value="5">
+                            <label for="q9_5">AI-first workflows, agentic AI, autonomous decision-making in approved domains <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimension 4: Talent & Culture -->
+            <div class="dimension" data-dimension="talent">
+                <h3><span class="dimension-icon">👥</span> Talent & Culture</h3>
+                
+                <div class="question">
+                    <div class="question-text">10. What AI skills and capabilities exist in your organization?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q10_1" name="q10" value="1">
+                            <label for="q10_1">No AI talent or skills, no training programs <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10_2" name="q10" value="2">
+                            <label for="q10_2">1-2 data scientists, limited AI literacy across organization <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10_3" name="q10" value="3">
+                            <label for="q10_3">Dedicated AI team (5-10 people), basic training for business users <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10_4" name="q10" value="4">
+                            <label for="q10_4">Center of Excellence, mandatory AI training, citizen data scientists <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q10_5" name="q10" value="5">
+                            <label for="q10_5">AI talent strategy, diverse roles (ML engineers, ethicists), organization-wide AI fluency <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">11. How would you describe your organizational culture regarding AI adoption?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q11_1" name="q11" value="1">
+                            <label for="q11_1">Resistant to change, skeptical about AI <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11_2" name="q11" value="2">
+                            <label for="q11_2">Cautiously curious, waiting to see results <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11_3" name="q11" value="3">
+                            <label for="q11_3">Open to AI, pockets of innovation, some experimentation <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11_4" name="q11" value="4">
+                            <label for="q11_4">Innovation encouraged, collaboration across teams, calculated risk-taking <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q11_5" name="q11" value="5">
+                            <label for="q11_5">AI-driven culture, continuous learning, fail-fast mindset, innovation embedded <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">12. How does your organization measure and develop AI competency across employees?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q12_1" name="q12" value="1">
+                            <label for="q12_1">No measurement or development programs <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12_2" name="q12" value="2">
+                            <label for="q12_2">Optional self-paced learning resources available <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12_3" name="q12" value="3">
+                            <label for="q12_3">Training programs offered, competency assessments for AI roles <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12_4" name="q12" value="4">
+                            <label for="q12_4">Role-specific training paths, regular competency assessments, learning KPIs <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q12_5" name="q12" value="5">
+                            <label for="q12_5">Continuous learning culture, AI academies, competency tracking in performance reviews <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dimension 5: Governance & Ethics -->
+            <div class="dimension" data-dimension="governance">
+                <h3><span class="dimension-icon">⚖️</span> Governance & Ethics</h3>
+                
+                <div class="question">
+                    <div class="question-text">13. What responsible AI and ethics framework does your organization have?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q13_1" name="q13" value="1">
+                            <label for="q13_1">No AI ethics policies or considerations <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13_2" name="q13" value="2">
+                            <label for="q13_2">Awareness of AI ethics issues, no formal policies <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13_3" name="q13" value="3">
+                            <label for="q13_3">AI ethics principles documented, manual review processes <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13_4" name="q13" value="4">
+                            <label for="q13_4">Responsible AI framework operationalized, bias testing, explainability tools <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q13_5" name="q13" value="5">
+                            <label for="q13_5">Industrialized responsible AI, automated testing, ethics board, continuous monitoring <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">14. How does your organization manage AI model risk and compliance?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q14_1" name="q14" value="1">
+                            <label for="q14_1">No risk management or compliance processes for AI <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14_2" name="q14" value="2">
+                            <label for="q14_2">Ad-hoc risk reviews, relying on general IT policies <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14_3" name="q14" value="3">
+                            <label for="q14_3">AI risk framework defined, model inventory maintained <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14_4" name="q14" value="4">
+                            <label for="q14_4">Risk tiering, approval workflows, regular audits, regulatory compliance tracking <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q14_5" name="q14" value="5">
+                            <label for="q14_5">Automated risk assessment, real-time compliance monitoring, model cards, audit trails <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">15. How does your organization ensure transparency and explainability of AI systems?</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q15_1" name="q15" value="1">
+                            <label for="q15_1">No transparency or explainability requirements <span class="level-badge level-1">Level 1</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15_2" name="q15" value="2">
+                            <label for="q15_2">Basic documentation of model inputs and outputs <span class="level-badge level-2">Level 2</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15_3" name="q15" value="3">
+                            <label for="q15_3">Explainability tools used for high-risk models (SHAP, LIME) <span class="level-badge level-3">Level 3</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15_4" name="q15" value="4">
+                            <label for="q15_4">Model documentation standard, explainability required for all models, stakeholder communication <span class="level-badge level-4">Level 4</span></label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q15_5" name="q15" value="5">
+                            <label for="q15_5">Transparent AI by design, interactive explainability interfaces, public model cards <span class="level-badge level-5">Level 5</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateMaturity()">📊 Calculate My AI Maturity</button>
+
+            <div class="results" id="results">
+                <div class="overall-score">
+                    <h2>Your AI Maturity Assessment Results</h2>
+                    <div class="maturity-level" id="maturityLevel"></div>
+                    <div class="score-bar-container">
+                        <div class="score-bar" id="overallScoreBar"></div>
+                    </div>
+                    <p id="levelDescription"></p>
+                </div>
+
+                <div class="dimension-scores" id="dimensionScores"></div>
+
+                <div class="recommendations" id="recommendations"></div>
+
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="copyResults()">📋 Copy Results</button>
+                    <button class="action-btn" onclick="downloadPDF()">📄 Download PDF</button>
+                    <button class="action-btn" onclick="window.location.reload()">🔄 Retake Assessment</button>
+                </div>
+            </div>
+
+            <div class="references">
+                <h3>📚 References & Research Sources</h3>
+                <ul>
+                    <li><strong>Accenture (2021-2024):</strong> "The Art of AI Maturity: Advancing from Practice to Performance" - Framework identifying AI Achievers, Builders, Innovators, and Experimenters across 17 key capabilities</li>
+                    <li><strong>PwC (2026):</strong> "2026 AI Business Predictions" - Research on disciplined AI value creation, agentic AI, and responsible AI operationalization</li>
+                    <li><strong>Gartner (2023-2026):</strong> "AI Maturity Model & Strategic Predictions" - Industry analysis of AI adoption stages and competitive advantage frameworks</li>
+                    <li><strong>McKinsey & Company (2023):</strong> "The State of AI" - Annual report on AI adoption trends, use cases, and ROI across industries</li>
+                    <li><strong>MIT Sloan Management Review (2022):</strong> "Building an AI-First Company" - Research on organizational transformation and AI-native cultures</li>
+                    <li><strong>Deloitte Insights (2023):</strong> "State of AI in the Enterprise" - Survey of 2,620 organizations on AI maturity dimensions</li>
+                    <li><strong>Stanford HAI (2024):</strong> "AI Index Report" - Comprehensive data on AI development, deployment, and impact</li>
+                    <li><strong>IBM (2023):</strong> "Global AI Adoption Index" - Enterprise AI adoption patterns and best practices</li>
+                    <li><strong>Forrester Research (2023):</strong> "The Forrester Wave: AI/ML Platforms" - Evaluation of AI platforms and maturity indicators</li>
+                    <li><strong>NVIDIA AI Enterprise (2024):</strong> "AI Maturity Assessment Framework" - Technical infrastructure and operations maturity model</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Maturity level definitions
+        const maturityLevels = {
+            1: {
+                name: "Level 1: Initial / Aware",
+                description: "Your organization is at the beginning of the AI journey. You're aware of AI opportunities but lack formal strategy, infrastructure, and capabilities. Focus on building awareness and securing executive sponsorship.",
+                color: "#991b1b"
+            },
+            2: {
+                name: "Level 2: Developing / Experimenting",
+                description: "Your organization is experimenting with AI through pilots and proof-of-concepts. While promising, efforts are fragmented. Focus on defining strategy and building foundational infrastructure.",
+                color: "#9a3412"
+            },
+            3: {
+                name: "Level 3: Defined / Emerging",
+                description: "Your organization has defined AI strategy and processes with some models in production. You're building momentum but need to scale. Focus on operationalizing MLOps and expanding use cases.",
+                color: "#854d0e"
+            },
+            4: {
+                name: "Level 4: Managed / Performing",
+                description: "Your organization has mature AI capabilities with systematic deployment and governance. AI is integrated into business processes with measurable ROI. Focus on optimization and innovation.",
+                color: "#166534"
+            },
+            5: {
+                name: "Level 5: Optimizing / Leading",
+                description: "Your organization is an AI leader with industrial-strength capabilities. AI drives competitive advantage and innovation. Continue advancing responsible AI and exploring emerging technologies.",
+                color: "#1e40af"
+            }
+        };
+
+        // Track progress
+        function updateProgress() {
+            const totalQuestions = 15;
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+        }
+
+        // Add event listeners to all radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', updateProgress);
+        });
+
+        function calculateMaturity() {
+            // Check if all questions are answered
+            const totalQuestions = 15;
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            
+            if (answeredQuestions < totalQuestions) {
+                alert(`Please answer all questions. You've answered ${answeredQuestions} out of ${totalQuestions}.`);
+                return;
+            }
+
+            // Calculate scores by dimension
+            const dimensions = {
+                strategy: { questions: [1, 2, 3], name: "Strategy & Leadership", icon: "🎯" },
+                data: { questions: [4, 5, 6], name: "Data & Infrastructure", icon: "💾" },
+                technology: { questions: [7, 8, 9], name: "Technology & Operations", icon: "⚙️" },
+                talent: { questions: [10, 11, 12], name: "Talent & Culture", icon: "👥" },
+                governance: { questions: [13, 14, 15], name: "Governance & Ethics", icon: "⚖️" }
+            };
+
+            let totalScore = 0;
+            let dimensionScores = {};
+
+            for (const [key, dim] of Object.entries(dimensions)) {
+                let dimScore = 0;
+                dim.questions.forEach(qNum => {
+                    const answer = document.querySelector(`input[name="q${qNum}"]:checked`);
+                    if (answer) {
+                        dimScore += parseInt(answer.value);
+                    }
+                });
+                const avgScore = dimScore / dim.questions.length;
+                dimensionScores[key] = {
+                    score: avgScore,
+                    name: dim.name,
+                    icon: dim.icon
+                };
+                totalScore += avgScore;
+            }
+
+            const overallScore = totalScore / Object.keys(dimensions).length;
+            const maturityLevel = Math.round(overallScore);
+
+            // Display results
+            displayResults(overallScore, maturityLevel, dimensionScores);
+        }
+
+        function displayResults(overallScore, maturityLevel, dimensionScores) {
+            const resultsDiv = document.getElementById('results');
+            const levelInfo = maturityLevels[maturityLevel];
+
+            // Overall score
+            document.getElementById('maturityLevel').textContent = levelInfo.name;
+            document.getElementById('levelDescription').textContent = levelInfo.description;
+            
+            const scoreBar = document.getElementById('overallScoreBar');
+            setTimeout(() => {
+                scoreBar.style.width = ((overallScore / 5) * 100) + '%';
+                scoreBar.textContent = overallScore.toFixed(2) + ' / 5.0';
+            }, 100);
+
+            // Dimension scores
+            const dimensionScoresHTML = Object.entries(dimensionScores).map(([key, dim]) => `
+                <div class="dimension-score-card">
+                    <h4>${dim.icon} ${dim.name}</h4>
+                    <div class="mini-score-bar">
+                        <div class="mini-score-fill" style="width: ${(dim.score / 5) * 100}%"></div>
+                    </div>
+                    <p style="color: #6b7280; font-size: 0.9em; margin-top: 5px;">
+                        Score: ${dim.score.toFixed(2)} / 5.0 (Level ${Math.round(dim.score)})
+                    </p>
+                </div>
+            `).join('');
+            document.getElementById('dimensionScores').innerHTML = dimensionScoresHTML;
+
+            // Recommendations
+            const recommendations = generateRecommendations(maturityLevel, dimensionScores);
+            document.getElementById('recommendations').innerHTML = recommendations;
+
+            // Show results
+            resultsDiv.classList.add('show');
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function generateRecommendations(level, dimScores) {
+            let html = '<h3>🎯 Recommended Actions</h3>';
+
+            // Find lowest scoring dimensions
+            const sortedDims = Object.entries(dimScores).sort((a, b) => a[1].score - b[1].score);
+            const lowestDim = sortedDims[0];
+
+            // Level-specific recommendations
+            const levelRecs = {
+                1: [
+                    "<strong>Secure Executive Sponsorship:</strong> Present AI opportunity assessment to C-suite. Target quick wins with measurable ROI to build confidence.",
+                    "<strong>Start Data Inventory:</strong> Catalog existing data assets. Identify high-quality datasets suitable for initial AI experiments.",
+                    "<strong>Pilot Project:</strong> Launch 1-2 low-risk AI pilots in areas like customer service automation or predictive maintenance. Target 3-6 month timeline.",
+                    "<strong>Build AI Awareness:</strong> Conduct AI 101 workshops for leadership and key stakeholders. Share industry use cases relevant to your business."
+                ],
+                2: [
+                    "<strong>Formalize AI Strategy:</strong> Document AI vision, goals, and roadmap aligned with business objectives. Get board approval and budget allocation.",
+                    "<strong>Establish AI Governance:</strong> Create AI steering committee with C-level representation. Define decision-making frameworks and risk management policies.",
+                    "<strong>Invest in Data Infrastructure:</strong> Deploy cloud-based data platform (Azure ML, AWS SageMaker, Google Vertex AI). Prioritize data quality and integration.",
+                    "<strong>Scale 2-3 Pilots:</strong> Move successful experiments to production. Establish MLOps practices for model deployment and monitoring."
+                ],
+                3: [
+                    "<strong>Build Center of Excellence:</strong> Establish dedicated AI team with data scientists, ML engineers, and domain experts. Create reusable ML components.",
+                    "<strong>Implement MLOps:</strong> Deploy end-to-end ML pipelines with CI/CD, automated testing, and model versioning. Target 30% pilot-to-production rate.",
+                    "<strong>Scale Across Functions:</strong> Expand AI use cases beyond initial areas. Prioritize high-value workflows in sales, operations, and finance.",
+                    "<strong>Develop AI Talent:</strong> Launch mandatory AI training programs. Create career paths for AI roles. Consider partnerships with universities."
+                ],
+                4: [
+                    "<strong>Drive Business Transformation:</strong> Redesign core workflows around AI capabilities. Move beyond efficiency to revenue growth and new business models.",
+                    "<strong>Industrialize Responsible AI:</strong> Implement automated bias testing, explainability tools, and continuous monitoring. Achieve regulatory compliance readiness.",
+                    "<strong>Optimize AI Portfolio:</strong> Continuously measure and optimize ROI across all AI initiatives. Sunset low-performing projects, double down on high-impact areas.",
+                    "<strong>Innovate with Emerging Tech:</strong> Experiment with agentic AI, multi-modal models, and AI agents for autonomous decision-making in approved domains."
+                ],
+                5: [
+                    "<strong>Lead Industry Innovation:</strong> Publish research, contribute to open-source, and shape industry standards. Position as AI thought leader.",
+                    "<strong>AI-Driven Products/Services:</strong> Launch AI-native products that create new revenue streams. Explore AI-as-a-Service offerings.",
+                    "<strong>Ecosystem Partnerships:</strong> Build AI partnerships and developer networks. Create external innovation hubs and venture investments.",
+                    "<strong>Continuous Advancement:</strong> Stay ahead of emerging trends (quantum ML, neuromorphic computing). Maintain innovation culture through experimentation and R&D."
+                ]
+            };
+
+            html += levelRecs[level].map(rec => `
+                <div class="recommendation-item">${rec}</div>
+            `).join('');
+
+            // Add dimension-specific recommendation for lowest scoring area
+            html += `<div class="recommendation-item">
+                <strong>Priority Focus Area:</strong> Your lowest scoring dimension is <em>${lowestDim[1].name}</em> (${lowestDim[1].score.toFixed(2)}/5.0). 
+                This should be your immediate focus area for improvement. Consider targeted investments and quick wins in this dimension.
+            </div>`;
+
+            // Add industry benchmarking note
+            html += `<div class="recommendation-item">
+                <strong>Industry Benchmarking:</strong> According to Accenture's research, only 12% of organizations are "AI Achievers" (Level 4-5). 
+                Organizations at Level 4+ attribute nearly 30% of their total revenue to AI and experience 50% greater revenue growth compared to peers. 
+                ${level >= 4 ? "You're in the top tier! Continue pushing boundaries." : "Focus on advancing to join the AI Achievers."}
+            </div>`;
+
+            return html;
+        }
+
+        function copyResults() {
+            const level = document.getElementById('maturityLevel').textContent;
+            const description = document.getElementById('levelDescription').textContent;
+            
+            let text = `AI Maturity Assessment Results\n`;
+            text += `================================\n\n`;
+            text += `Overall Maturity: ${level}\n`;
+            text += `${description}\n\n`;
+            text += `Dimension Scores:\n`;
+            text += `-----------------\n`;
+            
+            document.querySelectorAll('.dimension-score-card h4').forEach((card, index) => {
+                text += `${card.textContent}\n`;
+            });
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Results copied to clipboard!');
+            });
+        }
+
+        function downloadPDF() {
+            alert('PDF download functionality would be implemented here. For now, use "Copy Results" and paste into a document.');
+            // In a real implementation, you would use a library like jsPDF or html2pdf
+        }
+    </script>
+</body>
+</html>
