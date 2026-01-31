@@ -75,7 +75,287 @@
 
 ---
 
-## 📖 About This Methodology
+## � HOW TO USE THIS METHODOLOGY - START HERE
+
+### 📍 Step 1: Assess Your Organization's AI Maturity **[MANDATORY - DO THIS FIRST]**
+
+**⏱️ Time Required:** 90-120 minutes  
+**👥 Who Should Complete:** Executive Sponsor, IT/Data Leaders, Business Unit Leaders  
+**📅 When:** Before any other activity (pre-sales/discovery phase)
+
+🎯 **[Take the AI Maturity Assessment Now](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html)**
+
+**Why This Matters:**
+- Your maturity level (1-5) determines which methodology phases apply to you
+- Only 12% of organizations reach Level 4-5 maturity (Accenture, 2024)
+- Maturity Level predicts success rate: Level 1-2 (15% success) vs Level 4-5 (80% success)
+- Wrong approach for your maturity = 70% chance of project failure
+
+**What You'll Learn:**
+- ✓ Your overall maturity level and dimension-specific scores
+- ✓ Which tools and guides to use based on your capability
+- ✓ What capability gaps need addressing before starting
+- ✓ Realistic timeline and resource expectations
+- ✓ Which engagement model fits your needs (consulting, co-delivery, advisory)
+
+**📖 [Complete AI Maturity Assessment Guide](./guides/99-ai-maturity-assessment-guide.md)** - Prescriptive instructions on when to use the assessment, how to interpret results, and how to adjust this methodology for your maturity level.
+
+---
+
+### 📊 Step 2: Use the Right Tools in the Right Order **[PRESCRIPTIVE TOOL SEQUENCE]**
+
+Your maturity level determines which tools to use and when:
+
+#### 🟥 **Level 1 Organizations (Initial/Aware)** - Education First
+
+**Your Reality:** Ad-hoc AI exploration, no production models, siloed efforts  
+**Success Rate:** ~15% without proper preparation  
+**Timeline:** 6-12 months to reach Level 2 before attempting production AI
+
+**Tool Sequence:**
+1. ✅ **[AI Maturity Assessment](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html)** - Establish baseline (COMPLETED above)
+2. 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** - Learn about AI use cases
+   - Ask: "What AI use cases are common in [your industry]?"
+   - Ask: "What maturity level is needed for [specific use case]?"
+   - Ask: "What quick wins can a Level 1 organization pursue?"
+3. ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** - Understand realistic timelines
+   - Select "Low" complexity only
+   - Note: Your timeline will be 2-3x longer than Level 3 organizations
+4. ❌ **Do NOT Use Yet:** ROI Calculator, Team Sizer, Azure Cost Estimator (premature)
+
+**Your Action Plan:** Focus on capability building, not delivery. See [Level 1→2 Improvement Plan](./guides/99-ai-maturity-assessment-guide.md#71-level-1--level-2-improvement-plan-6-12-months)
+
+---
+
+#### 🟨 **Level 2 Organizations (Developing/Experimenting)** - Pilot Planning
+
+**Your Reality:** Some structure exists, ready for pilots but not production at scale  
+**Success Rate:** ~30% for pilot projects  
+**Timeline:** 9-15 months to reach Level 3
+
+**Tool Sequence for Your First AI Project:**
+
+**Step 1:** 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**  
+→ Identify 3-5 candidate use cases suitable for Level 2 maturity
+
+**Step 2:** ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)**  
+→ Estimate timeline for each candidate (select Level 2 maturity, "Low" to "Medium" complexity)
+
+**Step 3:** 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)**  
+→ Calculate business case for top 2-3 use cases (use conservative estimates)
+
+**Step 4:** 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)**  
+→ Understand team requirements (select Level 2 - will show need for external support)
+
+**Step 5:** ☁️ **[Azure Cost Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)**  
+→ Estimate infrastructure costs (use project size from Team Sizer)
+
+**Step 6:** Compile business case using template: [Business Case Template](./templates/02-business-case.md)
+
+**Methodology Phases to Use:**
+- ✅ [Business Envisioning Workshop](./guides/01-business-envisioning-workshop-guide.md) - Standard 1-day
+- ✅ [Mobilisation Phase](./guides/01-mobilisation-complete-guide.md) - 2-4 weeks with capability gap analysis
+- ✅ [Hackathon/Prototype](./guides/02-hackathons-complete-guide.md) - Start here with guided support
+- ⚠️ [Build Phase](./guides/04-build-phase-complete-guide.md) - Only with managed support/co-delivery
+- ⚠️ [Deploy Phase](./guides/07-prepare-deploy-phase-complete-guide.md) - Controlled pilot rollout only
+
+**Critical:** Use [Engagement Modes Framework](./guides/92-engagement-modes-framework.md) - Select **Co-Delivery** or **Managed Service** engagement model
+
+**Your Action Plan:** [Level 2→3 Improvement Plan](./guides/99-ai-maturity-assessment-guide.md#72-level-2--level-3-improvement-plan-9-15-months)
+
+---
+
+#### 🟩 **Level 3 Organizations (Defined/Emerging)** - Standard Approach
+
+**Your Reality:** Repeatable processes, can deliver production AI with guidance  
+**Success Rate:** ~45% for production projects  
+**Timeline:** This is the sweet spot - use standard timelines
+
+**Tool Sequence for AI Portfolio Roadmap:**
+
+**Step 1:** 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)**  
+→ Brainstorm 10-15 use cases across departments  
+→ Ask about quick wins (Year 1) and transformational value (Year 2-3)
+
+**Step 2:** Create use case prioritization matrix (spreadsheet)
+
+**Step 3:** For each high-priority use case, use all calculators in sequence:
+- ⏱️ **Effort Estimator** → Timeline
+- 💰 **ROI Calculator** → Financial benefits  
+- 👥 **Team Sizer** → Resource requirements (select Level 3)
+- ☁️ **Azure Cost Estimator** → Infrastructure costs
+
+**Step 4:** Document in [Business Case Template](./templates/02-business-case.md) for each use case
+
+**Methodology Phases to Use - FULL METHODOLOGY:**
+- ✅ [Pre-Sales Discovery](./guides/00-presales-discovery-activities.md)
+- ✅ [Business Envisioning Workshop](./guides/01-business-envisioning-workshop-guide.md) - 1 day
+- ✅ [Mobilisation Phase](./guides/01-mobilisation-complete-guide.md) - 2-4 weeks standard
+- ✅ [Setup Platform](./guides/03-setup-platform-complete-guide.md) - 2-3 weeks
+- ✅ [Build Phase](./guides/04-build-phase-complete-guide.md) - 3-4 months
+- ✅ [Integrate Phase](./guides/05-integrate-phase-complete-guide.md) - 4-6 weeks
+- ✅ [Test & Evaluate](./guides/06-test-evaluate-phase-complete-guide.md) - 3-4 weeks
+- ✅ [Deploy Phase](./guides/07-prepare-deploy-phase-complete-guide.md) - 4-8 weeks
+- ✅ [Operate & Care](./guides/08-operate-care-phase-complete-guide.md) - Ongoing
+
+**Use All Templates & Checklists:** [Templates Folder](./templates/) | [Checklists Folder](./checklists/)
+
+**Engagement Model:** [Staff Augmentation or Advisory](./guides/92-engagement-modes-framework.md)
+
+**Your Action Plan:** [Level 3→4 Improvement Plan](./guides/99-ai-maturity-assessment-guide.md#73-level-3--level-4-improvement-plan-12-18-months)
+
+---
+
+#### 🟦 **Level 4-5 Organizations (Managed/Optimizing)** - Accelerated/Innovation Approach
+
+**Your Reality:** Optimized operations, can deliver consistently, strategic AI advantage  
+**Success Rate:** ~70-85% for complex projects  
+**Timeline:** Use fast-track approaches
+
+**Tool Usage:**
+- Use tools selectively for specific analyses
+- 🤖 Value Analysis Chatbot for emerging AI capabilities research
+- 💰 ROI Calculator for business model transformation scenarios
+- 👥 Team Sizer for AI Center of Excellence sizing
+
+**Methodology Phases:**
+- ✅ [3-Month Fast Track Guide](./guides/93-3-month-fast-track-guide.md) - Compressed delivery
+- ✅ [AI Center of Excellence Framework](./guides/91-ai-center-of-excellence-framework.md) - Scale your capability
+- ✅ [AI Scaling Patterns](./guides/95-ai-scaling-patterns-guide.md) - Enterprise-wide deployment
+- ✅ Use specific guides as needed, not full methodology
+
+**Engagement Model:** [Advisory or Peer Collaboration](./guides/92-engagement-modes-framework.md)
+
+**Your Action Plan:** Focus on innovation leadership, not just operational excellence
+
+---
+
+### 🎯 Step 3: Select Your Delivery Track
+
+Based on your maturity level and project scope, choose the appropriate track:
+
+#### ⚡ **Fast-Track (3 Months)** - For Level 3+ Organizations
+
+**When to Use:**
+- ✓ You are Level 3+ maturity (prerequisite)
+- ✓ Single use case, clear scope
+- ✓ Pilot or POC project
+- ✓ Need quick wins to build momentum
+- ✓ Team size: 5-8 people
+
+**📖 [3-Month Fast-Track Guide](./guides/93-3-month-fast-track-guide.md)**
+
+---
+
+#### 🏢 **Full Methodology (6-12+ Months)** - For Level 2-3 Organizations
+
+**When to Use:**
+- ✓ You are Level 2-3 maturity
+- ✓ Production system at scale
+- ✓ Multiple use cases or complex integration
+- ✓ Enterprise-wide transformation
+- ✓ Team size: 10-20+ people
+
+**📖 Use all guides in [Guides Folder](./guides/)** following the phase sequence based on your maturity level
+
+---
+
+### 🔄 Step 4: Re-Assess Maturity at Key Milestones **[MANDATORY CHECKPOINTS]**
+
+**Quarterly Re-Assessment (Ongoing Projects):**
+- 🎯 Take the [AI Maturity Assessment](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html) every 3 months
+- Track improvement across dimensions
+- Adjust methodology approach as maturity increases
+- Celebrate progress with stakeholders
+
+**Phase Gate Re-Assessment (Before Major Transitions):**
+- Before Build Phase → Verify capability to deliver
+- Before Deploy Phase → Verify capability to operate
+- Before Scaling → Verify organizational readiness
+
+**Post-Project Assessment (30-60 Days After Go-Live):**
+- Measure how much maturity improved
+- Document lessons learned
+- Plan next initiatives with higher confidence
+
+**📖 See complete re-assessment schedule:** [AI Maturity Assessment Guide](./guides/99-ai-maturity-assessment-guide.md#2-when-to-use-this-assessment)
+
+---
+
+### 📋 Quick Decision Tree
+
+```
+START HERE
+    ↓
+Have you completed AI Maturity Assessment? 
+    NO → [GO TO STEP 1] ← START HERE!
+    YES → Continue
+        ↓
+What is your maturity level?
+    ↓
+Level 1 (Initial/Aware)?
+    → Focus: Capability Building First
+    → Tools: Maturity Assessment + Value Chatbot + Effort Estimator ONLY
+    → Action: 6-12 month improvement plan to reach Level 2
+    → Methodology: Do NOT attempt production AI yet
+    → Start: [Executive Coaching Guide](./guides/90-executive-coaching-guide.md)
+    
+Level 2 (Developing)?
+    → Focus: Guided Pilot Projects
+    → Tools: All calculators in sequence (Value Chatbot → Effort → ROI → Team Sizer → Azure Cost)
+    → Action: First pilot with co-delivery/managed service
+    → Methodology: Business Envisioning → Mobilisation → Hackathon → Pilot Build (with support)
+    → Start: [Business Envisioning Workshop](./guides/01-business-envisioning-workshop-guide.md)
+    
+Level 3 (Defined)?
+    → Focus: Production Delivery
+    → Tools: All calculators for portfolio planning
+    → Action: Production AI with internal team + selective external expertise
+    → Methodology: Use FULL methodology (all 9 phases)
+    → Track: Standard or Fast-Track (depending on scope)
+    → Start: [Pre-Sales Discovery](./guides/00-presales-discovery-activities.md)
+    
+Level 4-5 (Managed/Optimizing)?
+    → Focus: Innovation & Scale
+    → Tools: Selective use for specific analyses
+    → Action: Fast-track delivery, focus on complex/innovative use cases
+    → Methodology: Compressed phases, focus on scale and innovation guides
+    → Start: [3-Month Fast Track](./guides/93-3-month-fast-track-guide.md) or [AI Center of Excellence](./guides/91-ai-center-of-excellence-framework.md)
+```
+
+---
+
+### 🎓 Additional Resources by Maturity Level
+
+**Level 1 - Start Here:**
+1. 📖 [AI Maturity Assessment Guide](./guides/99-ai-maturity-assessment-guide.md) - Complete how-to guide
+2. 🎯 [Executive Coaching Guide](./guides/90-executive-coaching-guide.md) - Build executive support
+3. 🤖 [Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html) - Learn about AI use cases
+4. 🏢 [AI Center of Excellence Framework](./guides/91-ai-center-of-excellence-framework.md) - Establish governance
+
+**Level 2 - Build Your First Project:**
+1. 🎯 [Business Envisioning Workshop Guide](./guides/01-business-envisioning-workshop-guide.md)
+2. 🚀 [Mobilisation Complete Guide](./guides/01-mobilisation-complete-guide.md)
+3. ⚡ [Hackathons Complete Guide](./guides/02-hackathons-complete-guide.md)
+4. 📋 All calculators + [Business Case Template](./templates/02-business-case.md)
+5. 🤝 [Engagement Modes Framework](./guides/92-engagement-modes-framework.md) - Select partner model
+
+**Level 3 - Scale Production AI:**
+1. All guides in [Guides Folder](./guides/) - Full methodology
+2. All templates in [Templates Folder](./templates/)
+3. All checklists in [Checklists Folder](./checklists/)
+4. 🔄 [MLOps & DevOps Guide](./guides/03-mlops-devops-complete-guide.md)
+5. 🔧 [Operate & Care Guide](./guides/08-operate-care-phase-complete-guide.md)
+
+**Level 4-5 - Lead Innovation:**
+1. ⚡ [3-Month Fast Track Guide](./guides/93-3-month-fast-track-guide.md)
+2. 🔄 [AI Scaling Patterns Guide](./guides/95-ai-scaling-patterns-guide.md)
+3. ⚖️ [AI Model Risk Management Guide](./guides/96-ai-model-risk-management-guide.md)
+4. 🏢 [AI Center of Excellence Framework](./guides/91-ai-center-of-excellence-framework.md)
+
+---
+
+## �📖 About This Methodology
 
 ### What We're Trying to Achieve
 
