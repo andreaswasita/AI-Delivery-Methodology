@@ -566,6 +566,163 @@
                     'As an admin, I want to audit AI responses for compliance'
                 ]
             },
+            'voice-assistant': {
+                name: 'Voice Assistant / IVR',
+                description: 'Voice-enabled AI for customer service and IVR systems',
+                complexity: 'high',
+                baseFeatures: 25,
+                baseTeamSize: 6,
+                userStories: [
+                    'As a customer, I want to speak naturally to get help',
+                    'As a customer, I want the system to understand different accents and speech patterns',
+                    'As a customer, I want to interrupt and change topics mid-conversation',
+                    'As a customer, I want confirmation before taking actions',
+                    'As a customer, I want to transfer to a live agent anytime',
+                    'As a business, I want to integrate with existing IVR infrastructure',
+                    'As a business, I want to support multiple languages',
+                    'As a business, I want to handle thousands of concurrent calls',
+                    'As a business, I want to track call resolution rates',
+                    'As a business, I want to reduce average handle time',
+                    'As a business, I want to identify caller intent quickly',
+                    'As a business, I want to authenticate callers securely',
+                    'As a developer, I want to integrate with telephony systems',
+                    'As a developer, I want to test voice interactions',
+                    'As an admin, I want to monitor call quality and accuracy',
+                    'As an admin, I want to update voice prompts and responses',
+                    'As an admin, I want to analyze call transcripts',
+                    'As a compliance officer, I want to ensure regulatory compliance for recorded calls'
+                ]
+            },
+            'doc-classification': {
+                name: 'Document Classification & Routing',
+                description: 'Automatically classify and route documents',
+                complexity: 'medium',
+                baseFeatures: 18,
+                baseTeamSize: 4,
+                userStories: [
+                    'As a user, I want to upload documents for automatic classification',
+                    'As a user, I want to see classification confidence scores',
+                    'As a user, I want to correct misclassifications',
+                    'As a business, I want to classify 20-50 document types',
+                    'As a business, I want to route documents to appropriate teams',
+                    'As a business, I want to integrate with document management system',
+                    'As a business, I want to handle multiple file formats',
+                    'As a business, I want to track classification accuracy',
+                    'As a business, I want to train on new document types',
+                    'As a developer, I want to process documents in batches',
+                    'As an admin, I want to configure routing rules',
+                    'As an admin, I want to monitor processing queues'
+                ]
+            },
+            'doc-search': {
+                name: 'Intelligent Document Search',
+                description: 'AI-powered semantic search across documents',
+                complexity: 'medium',
+                baseFeatures: 20,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a user, I want to search documents using natural language',
+                    'As a user, I want to see relevant results even with synonyms',
+                    'As a user, I want to filter by document type, date, author',
+                    'As a user, I want to preview documents in search results',
+                    'As a business, I want to search across multiple repositories',
+                    'As a business, I want to respect document permissions',
+                    'As a business, I want to track popular searches',
+                    'As a business, I want to improve search over time',
+                    'As a developer, I want to integrate with SharePoint, OneDrive',
+                    'As an admin, I want to configure search relevance'
+                ]
+            },
+            'demand-forecast': {
+                name: 'Demand Forecasting',
+                description: 'Predict future demand for products or services',
+                complexity: 'high',
+                baseFeatures: 28,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a business analyst, I want to see demand forecasts for next 30/60/90 days',
+                    'As a business analyst, I want to compare forecast vs actual',
+                    'As a business analyst, I want to understand forecast drivers',
+                    'As a supply chain manager, I want to forecast by product, region, channel',
+                    'As a supply chain manager, I want to incorporate seasonality',
+                    'As a supply chain manager, I want to account for promotions and events',
+                    'As a business, I want to integrate historical sales data',
+                    'As a business, I want to include external factors (weather, economy)',
+                    'As a business, I want to track forecast accuracy',
+                    'As a business, I want to retrain models monthly',
+                    'As a developer, I want to deploy forecasts to planning systems',
+                    'As an admin, I want to configure forecast parameters'
+                ]
+            },
+            'content-moderation': {
+                name: 'Content Moderation',
+                description: 'Automated moderation of user-generated content',
+                complexity: 'high',
+                baseFeatures: 22,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a platform, I want to detect inappropriate content automatically',
+                    'As a platform, I want to flag content for human review',
+                    'As a moderator, I want to review flagged content efficiently',
+                    'As a moderator, I want to provide feedback to improve AI',
+                    'As a business, I want to moderate text, images, videos',
+                    'As a business, I want to detect multiple violation types',
+                    'As a business, I want to handle real-time moderation',
+                    'As a business, I want to track moderation accuracy',
+                    'As a developer, I want to integrate with content platforms',
+                    'As an admin, I want to configure moderation policies'
+                ]
+            },
+            'text-summarization': {
+                name: 'Text Summarization',
+                description: 'Automatically summarize long documents',
+                complexity: 'medium',
+                baseFeatures: 16,
+                baseTeamSize: 4,
+                userStories: [
+                    'As a user, I want to upload documents for summarization',
+                    'As a user, I want to choose summary length (short/medium/long)',
+                    'As a user, I want to highlight key points',
+                    'As a business, I want to summarize multiple document types',
+                    'As a business, I want to preserve important details',
+                    'As a business, I want to batch summarize documents',
+                    'As a business, I want to track summary quality',
+                    'As a developer, I want to integrate with document systems',
+                    'As an admin, I want to configure summary parameters'
+                ]
+            },
+            'analytics-dashboard': {
+                name: 'AI-Powered Analytics Dashboard',
+                description: 'Interactive dashboard with AI insights',
+                complexity: 'medium',
+                baseFeatures: 22,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a business user, I want to ask questions about data in natural language',
+                    'As a business user, I want AI to suggest insights automatically',
+                    'As a business user, I want to drill down into anomalies',
+                    'As a business user, I want to create custom visualizations',
+                    'As a business, I want to connect to multiple data sources',
+                    'As a business, I want to schedule automated reports',
+                    'As a business, I want to share dashboards securely',
+                    'As a developer, I want to integrate with Power BI/Tableau',
+                    'As an admin, I want to manage data access permissions'
+                ]
+            },
+            'custom': {
+                name: 'Custom AI Solution',
+                description: 'Custom AI project - will use defaults',
+                complexity: 'medium',
+                baseFeatures: 20,
+                baseTeamSize: 5,
+                userStories: [
+                    'As a user, I want the AI solution to meet my specific needs',
+                    'Custom user stories will be defined during discovery',
+                    'Features will be prioritized based on business value',
+                    'Solution will be tailored to industry requirements',
+                    'Implementation will follow AI delivery methodology'
+                ]
+            },
             'doc-extraction': {
                 name: 'Document Data Extraction',
                 description: 'Extract structured data from forms, invoices, receipts',
@@ -936,6 +1093,8 @@
             const maturityLevel = document.getElementById('aiMaturity').value;
             const industry = document.getElementById('industry').value;
 
+            console.log('Generating estimate:', { useCaseId, maturityLevel, industry });
+
             if (!useCaseId || !maturityLevel || !industry) {
                 alert('Please answer all 3 questions to generate an estimate');
                 return;
@@ -944,6 +1103,14 @@
             const useCase = useCaseTemplates[useCaseId];
             const maturity = maturityAdjustments[maturityLevel];
             const ind = industryAdjustments[industry];
+
+            if (!useCase) {
+                console.error('Use case template not found:', useCaseId);
+                alert(`Error: Use case template "${useCaseId}" not found. Please try another use case or contact support.`);
+                return;
+            }
+
+            console.log('Use case loaded:', useCase.name);
 
             // Populate detailed inputs
             document.getElementById('journeyPhase').value = 'mvp';  // Default to MVP
