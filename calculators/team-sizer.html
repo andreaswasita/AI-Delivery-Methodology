@@ -280,6 +280,53 @@
             border: none;
         }
 
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .maturity-info {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #856404;
+            display: none;
+        }
+
+        .complexity-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .complexity-xs { background: #d4edda; color: #155724; }
+        .complexity-sm { background: #cce5ff; color: #004085; }
+        .complexity-md { background: #fff3cd; color: #856404; }
+        .complexity-lg { background: #f8d7da; color: #721c24; }
+        .complexity-xl { background: #d6d8db; color: #1b1e21; }
+
         @media (max-width: 968px) {
             .calculator-grid {
                 grid-template-columns: 1fr;
@@ -291,7 +338,7 @@
     <header>
         <div class="container">
             <h1>👥 AI Project Team Sizing Calculator</h1>
-            <p class="subtitle">Determine optimal team composition based on your project requirements</p>
+            <p class="subtitle">Industry-specific team sizing with AI maturity assessment and complexity t-shirt sizing</p>
         </div>
     </header>
 
@@ -314,6 +361,40 @@
                 </div>
 
                 <div class="input-group">
+                    <label for="industry">Industry</label>
+                    <select id="industry" onchange="updateUseCases()">
+                        <option value="">Select Industry</option>
+                        <option value="financial">Financial Services</option>
+                        <option value="retail">Retail & Consumer Goods</option>
+                        <option value="energy">Energy & Mining</option>
+                        <option value="defense">Defense & Security</option>
+                        <option value="public">Public Sector</option>
+                        <option value="generic">Generic / Other</option>
+                    </select>
+                    <small>Industry affects complexity patterns and team composition</small>
+                </div>
+
+                <div class="input-group" id="useCaseGroup" style="display: none;">
+                    <label for="useCase">Common Use Case Template</label>
+                    <select id="useCase" onchange="loadUseCaseTemplate()">
+                        <option value="">Select a template or configure manually</option>
+                    </select>
+                    <small>Auto-populate based on proven industry patterns</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="aiMaturity">Organization AI Maturity Level</label>
+                    <select id="aiMaturity" onchange="updateMaturityRecommendations()">
+                        <option value="initial">Level 1: Initial - No AI experience, exploring possibilities</option>
+                        <option value="developing" selected>Level 2: Developing - First AI projects, building capabilities</option>
+                        <option value="defined">Level 3: Defined - Established AI practice, multiple projects</option>
+                        <option value="managed">Level 4: Managed - Mature MLOps, AI CoE established</option>
+                        <option value="optimizing">Level 5: Optimizing - AI-driven organization, continuous innovation</option>
+                    </select>
+                    <small>Maturity level affects team structure and support needs</small>
+                </div>
+
+                <div class="input-group">
                     <label for="projectPhase">Project Phase</label>
                     <select id="projectPhase" onchange="updateDefaults()">
                         <option value="discovery">Discovery & Planning (2-3 months)</option>
@@ -326,14 +407,14 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="projectComplexity">Project Complexity</label>
+                    <label for="projectComplexity">Project Complexity (T-Shirt Size)</label>
                     <select id="projectComplexity" onchange="updateDefaults()">
-                        <option value="low">Low - Simple ML/Analytics, Dashboard</option>
-                        <option value="medium" selected>Medium - Document AI, Chatbot, Predictive Models</option>
-                        <option value="high">High - Computer Vision, Multi-Model Systems</option>
-                        <option value="veryHigh">Very High - Real-time AI, Multi-tenant Platforms</option>
+                        <option value="low">XS - Simple Analytics/Dashboard (2-4 weeks)</option>
+                        <option value="medium" selected>S/M - Document AI, Basic Chatbot, Classification (2-4 months)</option>
+                        <option value="high">L - Computer Vision, NLP, Multi-Model (4-8 months)</option>
+                        <option value="veryHigh">XL - Real-time AI, Platform, Multi-tenant (8-18 months)</option>
                     </select>
-                    <small>Complexity impacts required expertise levels</small>
+                    <small>T-shirt sizing based on industry benchmarks</small>
                 </div>
 
                 <div class="input-group">
@@ -493,6 +574,172 @@
     </footer>
 
     <script>
+        // Industry-specific use case templates
+        const industryUseCases = {
+            financial: [
+                { id: 'fin-chatbot', name: 'Virtual Banking Assistant', complexity: 'medium', duration: 4, phase: 'mvp', description: 'Customer service chatbot for banking' },
+                { id: 'fin-fraud', name: 'Fraud Detection System', complexity: 'high', duration: 6, phase: 'pilot', description: 'Real-time transaction monitoring' },
+                { id: 'fin-churn', name: 'Customer Churn Prevention', complexity: 'medium', duration: 5, phase: 'mvp', description: 'Predictive ML for retention' },
+                { id: 'fin-credit', name: 'Credit Risk Assessment', complexity: 'high', duration: 8, phase: 'production', description: 'Automated underwriting ML models' },
+                { id: 'fin-aml', name: 'Anti-Money Laundering', complexity: 'veryHigh', duration: 12, phase: 'production', description: 'Transaction monitoring and compliance' },
+                { id: 'fin-robo', name: 'Robo-Advisor Platform', complexity: 'high', duration: 9, phase: 'production', description: 'Automated investment advisory' }
+            ],
+            retail: [
+                { id: 'retail-demand', name: 'Demand Forecasting', complexity: 'medium', duration: 4, phase: 'mvp', description: 'ML-based inventory optimization' },
+                { id: 'retail-personalization', name: 'Product Recommendations', complexity: 'medium', duration: 5, phase: 'pilot', description: 'Personalized shopping experience' },
+                { id: 'retail-price', name: 'Dynamic Pricing Optimization', complexity: 'high', duration: 6, phase: 'pilot', description: 'Real-time price optimization' },
+                { id: 'retail-vision', name: 'Visual Search & Recognition', complexity: 'veryHigh', duration: 8, phase: 'production', description: 'Computer vision for product search' },
+                { id: 'retail-sentiment', name: 'Customer Sentiment Analysis', complexity: 'low', duration: 3, phase: 'mvp', description: 'Social media and review analysis' }
+            ],
+            energy: [
+                { id: 'energy-predictive', name: 'Predictive Maintenance', complexity: 'high', duration: 7, phase: 'pilot', description: 'Equipment failure prediction' },
+                { id: 'energy-demand', name: 'Energy Demand Forecasting', complexity: 'medium', duration: 5, phase: 'mvp', description: 'Load prediction and optimization' },
+                { id: 'energy-exploration', name: 'Geological Data Analysis', complexity: 'veryHigh', duration: 10, phase: 'production', description: 'AI for resource exploration' },
+                { id: 'energy-safety', name: 'Safety Incident Prevention', complexity: 'high', duration: 6, phase: 'pilot', description: 'Computer vision for safety monitoring' },
+                { id: 'energy-grid', name: 'Smart Grid Optimization', complexity: 'veryHigh', duration: 12, phase: 'enterprise', description: 'Real-time grid management' }
+            ],
+            defense: [
+                { id: 'defense-intel', name: 'Intelligence Analysis', complexity: 'veryHigh', duration: 12, phase: 'production', description: 'Multi-source intelligence processing' },
+                { id: 'defense-cyber', name: 'Cyber Threat Detection', complexity: 'high', duration: 8, phase: 'pilot', description: 'ML-based threat hunting' },
+                { id: 'defense-logistics', name: 'Logistics Optimization', complexity: 'high', duration: 7, phase: 'pilot', description: 'Supply chain AI optimization' },
+                { id: 'defense-predictive', name: 'Predictive Maintenance', complexity: 'high', duration: 6, phase: 'pilot', description: 'Equipment and fleet maintenance' },
+                { id: 'defense-surveillance', name: 'Surveillance Analysis', complexity: 'veryHigh', duration: 10, phase: 'production', description: 'Computer vision for monitoring' }
+            ],
+            public: [
+                { id: 'public-citizen', name: 'Citizen Services Chatbot', complexity: 'medium', duration: 4, phase: 'mvp', description: 'AI assistant for government services' },
+                { id: 'public-doc', name: 'Document Intelligence', complexity: 'medium', duration: 5, phase: 'pilot', description: 'Automated document processing' },
+                { id: 'public-fraud', name: 'Benefits Fraud Detection', complexity: 'high', duration: 6, phase: 'pilot', description: 'ML for fraud prevention' },
+                { id: 'public-traffic', name: 'Traffic Management', complexity: 'high', duration: 7, phase: 'production', description: 'AI-powered traffic optimization' },
+                { id: 'public-health', name: 'Public Health Analytics', complexity: 'high', duration: 8, phase: 'production', description: 'Predictive health monitoring' }
+            ],
+            generic: [
+                { id: 'gen-chatbot', name: 'Custom Chatbot', complexity: 'medium', duration: 4, phase: 'mvp', description: 'Generic conversational AI' },
+                { id: 'gen-analytics', name: 'Advanced Analytics Platform', complexity: 'medium', duration: 5, phase: 'pilot', description: 'ML-powered insights' },
+                { id: 'gen-automation', name: 'Process Automation', complexity: 'high', duration: 6, phase: 'pilot', description: 'Intelligent process automation' },
+                { id: 'gen-vision', name: 'Computer Vision Solution', complexity: 'veryHigh', duration: 8, phase: 'production', description: 'Custom vision AI' }
+            ]
+        };
+
+        // AI Maturity level impacts
+        const maturityImpact = {
+            initial: {
+                multiplier: 1.4,
+                description: 'Additional support needed for capability building',
+                recommendations: [
+                    'Include AI champions and change management resources',
+                    'Plan for extensive training and upskilling',
+                    'Consider external AI consultants for guidance',
+                    'Start with simpler use cases to build confidence',
+                    'Invest in data governance foundation'
+                ]
+            },
+            developing: {
+                multiplier: 1.2,
+                description: 'Some additional expertise needed',
+                recommendations: [
+                    'Bring in experienced ML engineers to mentor team',
+                    'Establish MLOps practices early',
+                    'Create knowledge sharing and documentation practices',
+                    'Invest in data quality and governance',
+                    'Build repeatable templates and patterns'
+                ]
+            },
+            defined: {
+                multiplier: 1.0,
+                description: 'Standard team composition',
+                recommendations: [
+                    'Leverage existing AI patterns and frameworks',
+                    'Focus on scaling best practices',
+                    'Continue investing in team development',
+                    'Standardize deployment and monitoring'
+                ]
+            },
+            managed: {
+                multiplier: 0.9,
+                description: 'Efficient delivery with established practices',
+                recommendations: [
+                    'Optimize team for efficiency',
+                    'Leverage reusable components and platforms',
+                    'Focus on advanced use cases',
+                    'Drive innovation and experimentation'
+                ]
+            },
+            optimizing: {
+                multiplier: 0.8,
+                description: 'Highly efficient with mature capabilities',
+                recommendations: [
+                    'Smaller core teams with platform leverage',
+                    'Focus on cutting-edge AI capabilities',
+                    'Drive industry leadership',
+                    'Optimize for continuous deployment'
+                ]
+            }
+        };
+
+        // Update use cases dropdown based on industry
+        function updateUseCases() {
+            const industry = document.getElementById('industry').value;
+            const useCaseGroup = document.getElementById('useCaseGroup');
+            const useCaseSelect = document.getElementById('useCase');
+            
+            if (industry && industry !== '') {
+                useCaseGroup.style.display = 'block';
+                useCaseSelect.innerHTML = '<option value="">Select a template or configure manually</option>';
+                
+                const cases = industryUseCases[industry] || [];
+                cases.forEach(useCase => {
+                    const option = document.createElement('option');
+                    option.value = useCase.id;
+                    option.textContent = useCase.name;
+                    option.dataset.complexity = useCase.complexity;
+                    option.dataset.duration = useCase.duration;
+                    option.dataset.phase = useCase.phase;
+                    option.dataset.description = useCase.description;
+                    useCaseSelect.appendChild(option);
+                });
+            } else {
+                useCaseGroup.style.display = 'none';
+            }
+        }
+
+        // Load use case template
+        function loadUseCaseTemplate() {
+            const useCaseSelect = document.getElementById('useCase');
+            const selectedOption = useCaseSelect.options[useCaseSelect.selectedIndex];
+            
+            if (selectedOption.value) {
+                document.getElementById('projectName').value = selectedOption.textContent;
+                document.getElementById('projectComplexity').value = selectedOption.dataset.complexity;
+                document.getElementById('projectDuration').value = selectedOption.dataset.duration;
+                document.getElementById('projectPhase').value = selectedOption.dataset.phase;
+                
+                // Show a notification
+                const notification = document.createElement('div');
+                notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #4CAF50; color: white; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; animation: slideIn 0.3s ease;';
+                notification.innerHTML = `✓ Template loaded: ${selectedOption.textContent}<br><small>${selectedOption.dataset.description}</small>`;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+        }
+
+        // Update maturity recommendations display
+        function updateMaturityRecommendations() {
+            const maturity = document.getElementById('aiMaturity').value;
+            const impact = maturityImpact[maturity];
+            
+            // Store for later use in recommendations
+            window.maturityContext = {
+                level: maturity,
+                multiplier: impact.multiplier,
+                description: impact.description,
+                recommendations: impact.recommendations
+            };
+        }
+
         // Team sizing templates based on phase and complexity
         const teamTemplates = {
             discovery: {
@@ -602,6 +849,8 @@
         function calculateTeam() {
             // Get inputs
             const projectName = document.getElementById('projectName').value || 'AI Project';
+            const industry = document.getElementById('industry').value;
+            const aiMaturity = document.getElementById('aiMaturity').value;
             const phase = document.getElementById('projectPhase').value;
             const complexity = document.getElementById('projectComplexity').value;
             const duration = parseInt(document.getElementById('projectDuration').value);
@@ -622,6 +871,10 @@
                 devops: customAllocations ? parseInt(document.getElementById('devopsAllocation').value) / 100 : 1.0
             };
 
+            // Get maturity impact
+            const maturityData = maturityImpact[aiMaturity];
+            const maturityMultiplier = maturityData.multiplier;
+
             // Get team template
             const template = teamTemplates[phase][complexity];
             
@@ -631,86 +884,106 @@
 
             // Always include PM
             if (template.pm > 0) {
-                const fte = template.pm * allocations.pm;
+                const baseFTE = template.pm * allocations.pm;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.pm,
                     count: template.pm,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.pm
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
             }
 
             // Include architect for larger projects
             if (template.architect > 0) {
-                const fte = template.architect * allocations.architect;
+                const baseFTE = template.architect * allocations.architect;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.architect,
                     count: template.architect,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.architect
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
             }
 
             // ML Engineers
             if (template.ml > 0) {
-                const fte = template.ml * allocations.ml;
+                const baseFTE = template.ml * allocations.ml;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.ml,
                     count: template.ml,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.ml
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
             }
 
             // Data Engineers (optional)
             if (includeDataTeam && template.data > 0) {
-                const fte = template.data * allocations.data;
+                const baseFTE = template.data * allocations.data;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.data,
                     count: template.data,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.data
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
             }
 
             // Software Engineers
             if (template.dev > 0) {
-                const fte = template.dev * allocations.dev;
+                const baseFTE = template.dev * allocations.dev;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.dev,
                     count: template.dev,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.dev
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
             }
 
             // QA Engineers
             if (template.qa > 0) {
-                const fte = template.qa * allocations.qa;
+                const baseFTE = template.qa * allocations.qa;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.qa,
                     count: template.qa,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.qa
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
             }
 
             // DevOps/MLOps (optional)
             if (includeMLOps && template.devops > 0) {
-                const fte = template.devops * allocations.devops;
+                const baseFTE = template.devops * allocations.devops;
+                const adjustedFTE = baseFTE * maturityMultiplier;
                 roles.push({
                     ...roleDefinitions.devops,
                     count: template.devops,
-                    fte: fte,
+                    fte: adjustedFTE,
                     allocation: allocations.devops
                 });
-                totalFTE += fte;
+                totalFTE += adjustedFTE;
+            }
+
+            // Add AI maturity support roles for initial/developing organizations
+            if (aiMaturity === 'initial' || aiMaturity === 'developing') {
+                roles.push({
+                    title: 'AI Champion / Change Management',
+                    description: 'Drives adoption, training, and organizational change',
+                    skills: ['Change Mgmt', 'Training', 'AI Strategy', 'Communication'],
+                    count: 1,
+                    fte: 0.5,
+                    allocation: 0.5
+                });
+                totalFTE += 0.5;
             }
 
             // Adjust for team model
@@ -729,7 +1002,8 @@
 
             // Display results
             document.getElementById('totalTeam').textContent = `${Math.round(adjustedFTE)} FTE`;
-            document.getElementById('teamSubtext').textContent = `${roles.length} distinct roles`;
+            const maturityNote = maturityMultiplier !== 1.0 ? ` (${Math.round((maturityMultiplier - 1) * 100)}% for maturity)` : '';
+            document.getElementById('teamSubtext').textContent = `${roles.length} distinct roles${maturityNote}`;
 
             document.getElementById('totalBudget').textContent = `$${(totalCost / 1000000).toFixed(2)}M`;
             document.getElementById('budgetSubtext').textContent = `$${Math.round(monthlyCost / 1000)}K per month`;
@@ -758,7 +1032,7 @@
             });
 
             // Display recommendations
-            const recommendations = generateRecommendations(phase, complexity, totalFTE, duration, teamModel);
+            const recommendations = generateRecommendations(phase, complexity, totalFTE, duration, teamModel, aiMaturity, industry);
             const recommendationsDiv = document.getElementById('recommendations');
             recommendationsDiv.style.display = 'block';
             const recList = document.getElementById('recommendationsList');
@@ -800,6 +1074,9 @@
             window.teamData = {
                 projectName,
                 inputs: {
+                    industry,
+                    aiMaturity,
+                    maturityImpact: maturityData.description,
                     phase,
                     complexity,
                     duration,
@@ -813,7 +1090,8 @@
                     roleCount: roles.length,
                     totalCost,
                     monthlyCost,
-                    totalDays
+                    totalDays,
+                    maturityMultiplier
                 },
                 roles: roles.map(r => ({
                     title: r.title,
@@ -827,34 +1105,96 @@
             };
         }
 
-        function generateRecommendations(phase, complexity, teamSize, duration, teamModel) {
+        function generateRecommendations(phase, complexity, teamSize, duration, teamModel, aiMaturity, industry) {
             const recs = [];
 
-            if (phase === 'discovery' || phase === 'mvp') {
-                recs.push('Start with a smaller core team and scale up as requirements solidify');
+            // Add maturity-specific recommendations
+            if (window.maturityContext && window.maturityContext.recommendations) {
+                recs.push(...window.maturityContext.recommendations);
             }
 
+            // Industry-specific recommendations
+            const industryRecs = {
+                financial: [
+                    'Ensure compliance expertise (GDPR, SOC2, PCI-DSS) for financial services',
+                    'Plan for extensive security reviews and audit trails',
+                    'Consider regulatory approval timeline (add 3-6 months for production)'
+                ],
+                retail: [
+                    'Plan for high scalability - retail AI can go from 1K to 1M users quickly',
+                    'Include A/B testing framework for personalization features',
+                    'Consider seasonal demand fluctuations in planning'
+                ],
+                energy: [
+                    'Include domain experts (geologists, engineers) in the team',
+                    'Plan for IoT/sensor data integration complexity',
+                    'Consider harsh environment deployment requirements'
+                ],
+                defense: [
+                    'Include cleared personnel with appropriate security levels',
+                    'Plan for air-gapped or restricted environment deployment',
+                    'Add 30-50% timeline for security certifications',
+                    'Consider redundancy and high-availability requirements'
+                ],
+                public: [
+                    'Plan for accessibility compliance (WCAG 2.1 AA minimum)',
+                    'Include multilingual support in scope',
+                    'Consider lengthy procurement and approval processes',
+                    'Plan for transparency and explainability requirements'
+                ]
+            };
+
+            if (industry && industryRecs[industry]) {
+                recs.push(...industryRecs[industry].slice(0, 2)); // Add top 2 industry recs
+            }
+
+            // Phase-specific recommendations
+            if (phase === 'discovery' || phase === 'mvp') {
+                recs.push('Start with a smaller core team and scale up as requirements solidify');
+                recs.push('Focus on rapid prototyping and quick wins to build momentum');
+            }
+
+            // Complexity recommendations
             if (complexity === 'high' || complexity === 'veryHigh') {
                 recs.push('Consider hiring senior/lead level engineers given project complexity');
                 recs.push('Plan for dedicated architect role from day one');
+                recs.push('Allocate 20% of ML engineering time for experimentation and R&D');
             }
 
+            // Team size recommendations
             if (teamSize > 10) {
                 recs.push('Consider splitting into multiple squads (e.g., ML squad, platform squad)');
                 recs.push('Ensure strong PM/technical lead to coordinate across teams');
+                recs.push('Implement clear communication protocols (daily standups, weekly demos)');
+            } else if (teamSize < 5) {
+                recs.push('Small team - ensure broad skillsets and T-shaped team members');
             }
 
+            // Team model recommendations
             if (teamModel === 'parttime') {
-                recs.push('Part-time model may increase coordination overhead - factor in additional time');
+                recs.push('Part-time model may increase coordination overhead - factor in additional 15-20% time');
+                recs.push('Use async communication tools effectively (wikis, recorded demos)');
             }
 
+            // Duration recommendations
             if (duration > 12) {
                 recs.push('Long timeline - consider phased delivery with milestones every 3 months');
-                recs.push('Plan for team rotation and knowledge transfer');
+                recs.push('Plan for team rotation and knowledge transfer to prevent burnout');
+                recs.push('Re-validate use case and business value at 6-month intervals');
+            } else if (duration < 4) {
+                recs.push('Short timeline - focus ruthlessly on MVP scope');
+                recs.push('Prefer pre-trained models and existing platforms over custom development');
             }
 
+            // General best practices
             recs.push('Include buffer for ramp-up time (typically 2-4 weeks per new team member)');
-            recs.push('Consider mix of onshore and offshore resources to optimize cost');
+            recs.push('Plan for model retraining and drift monitoring from day one');
+            
+            // Cost optimization for mature organizations
+            if (aiMaturity === 'managed' || aiMaturity === 'optimizing') {
+                recs.push('Leverage existing AI platform and reusable components to reduce costs');
+                recs.push('Consider offshore/nearshore mix to optimize team cost (40-60% savings)');
+            }
 
             return recs;
         }
@@ -872,10 +1212,14 @@
 
         function copyToClipboard() {
             const data = window.teamData;
+            const industryText = data.inputs.industry ? `\n- Industry: ${data.inputs.industry}` : '';
+            const maturityText = data.inputs.aiMaturity ? `\n- AI Maturity: ${data.inputs.aiMaturity} (${data.inputs.maturityImpact})` : '';
+            const maturityMultiplierText = data.results.maturityMultiplier !== 1.0 ? `\n- Maturity Adjustment: ${Math.round((data.results.maturityMultiplier - 1) * 100)}%` : '';
+            
             const summary = `
 TEAM SIZING: ${data.projectName}
 
-INPUTS:
+INPUTS:${industryText}${maturityText}
 - Phase: ${data.inputs.phase}
 - Complexity: ${data.inputs.complexity}
 - Duration: ${data.inputs.duration} months
@@ -883,7 +1227,7 @@ INPUTS:
 - Average Rate: $${data.inputs.avgRate}/day
 
 RESULTS:
-- Total Team Size: ${data.results.totalFTE} FTE
+- Total Team Size: ${data.results.totalFTE} FTE${maturityMultiplierText}
 - Number of Roles: ${data.results.roleCount}
 - Total Project Cost: $${(data.results.totalCost / 1000000).toFixed(2)}M
 - Monthly Burn Rate: $${Math.round(data.results.monthlyCost / 1000)}K
@@ -896,7 +1240,7 @@ COST BREAKDOWN:
 ${data.costs.map(c => `- ${c.name}: $${Math.round(c.cost / 1000)}K`).join('\n')}
 
 RECOMMENDATIONS:
-${data.recommendations.map(r => `• ${r}`).join('\n')}
+${data.recommendations.map((r, idx) => `${idx + 1}. ${r}`).join('\n')}
             `.trim();
 
             navigator.clipboard.writeText(summary).then(() => {

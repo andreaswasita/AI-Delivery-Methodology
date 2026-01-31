@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "value": "uat"
+    },
+    "location": {
+      "value": "australiaeast"
+    },
+    "secondaryLocation": {
+      "value": "australiasoutheast"
+    },
+    "projectName": {
+      "value": "aiproject"
+    },
+    "organizationName": {
+      "value": "YourOrganization"
+    },
+    "costCenter": {
+      "value": "CC-12345"
+    },
+    "enableCompliance": {
+      "value": true
+    },
+    "enableSentinel": {
+      "value": false
+    },
+    "enableGeoRedundancy": {
+      "value": true
+    },
+    "dataResidency": {
+      "value": "Australia"
+    }
+  }
+}
