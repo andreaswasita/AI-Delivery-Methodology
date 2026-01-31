@@ -43,6 +43,12 @@
 ### 📚 [Guides & Frameworks](./guides)
 **Expert knowledge & best practices**
 - 🎯 [AI Maturity Assessment Guide](./guides/99-ai-maturity-assessment-guide.md) ⭐ **START HERE**
+- 📊 [AI Maturity Framework](./guides/maturity-framework/00-ai-maturity-framework-overview.md) - Research-backed capability model
+  - [Strategy & Leadership](./guides/maturity-framework/01-strategy-leadership-dimension.md)
+  - [Data & Infrastructure](./guides/maturity-framework/02-data-infrastructure-dimension.md)
+  - [Technology & Operations](./guides/maturity-framework/03-technology-operations-dimension.md)
+  - [Talent & Culture](./guides/maturity-framework/04-talent-culture-dimension.md)
+  - [Governance & Ethics](./guides/maturity-framework/05-governance-ethics-dimension.md)
 - 🎯 [Executive Coaching Guide](./guides/90-executive-coaching-guide.md)
 - 🏢 [AI Center of Excellence](./guides/91-ai-center-of-excellence-framework.md)
 - 📊 [Story Points Estimation](./guides/94-story-points-estimation-guide.md)
