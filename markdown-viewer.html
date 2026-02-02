@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer - AI Delivery Methodology</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #323130;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0078D4, #005a9e);
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .toolbar {
+            background: #F3F2F1;
+            padding: 15px 40px;
+            border-bottom: 1px solid #E1DFDD;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .toolbar button {
+            background: white;
+            border: 1px solid #E1DFDD;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toolbar button:hover {
+            background: #0078D4;
+            color: white;
+            border-color: #0078D4;
+        }
+
+        .content {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+
+        .error {
+            background: #FEF0F1;
+            border: 2px solid #D13438;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            color: #D13438;
+        }
+
+        /* Markdown Styles */
+        .markdown-content {
+            line-height: 1.7;
+            color: #323130;
+        }
+
+        .markdown-content h1 {
+            font-size: 2.5em;
+            margin: 30px 0 20px;
+            color: #0078D4;
+            border-bottom: 3px solid #0078D4;
+            padding-bottom: 10px;
+        }
+
+        .markdown-content h2 {
+            font-size: 2em;
+            margin: 30px 0 15px;
+            color: #005a9e;
+            border-bottom: 2px solid #E1DFDD;
+            padding-bottom: 8px;
+        }
+
+        .markdown-content h3 {
+            font-size: 1.5em;
+            margin: 25px 0 12px;
+            color: #323130;
+        }
+
+        .markdown-content h4 {
+            font-size: 1.2em;
+            margin: 20px 0 10px;
+            color: #323130;
+        }
+
+        .markdown-content p {
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+
+        .markdown-content ul, .markdown-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .markdown-content li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-content ul ul, .markdown-content ol ul,
+        .markdown-content ul ol, .markdown-content ol ol {
+            margin: 5px 0;
+        }
+
+        .markdown-content input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.2);
+        }
+
+        .markdown-content code {
+            background: #F3F2F1;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #D13438;
+        }
+
+        .markdown-content pre {
+            background: #F3F2F1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #0078D4;
+        }
+
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+            color: #323130;
+        }
+
+        .markdown-content blockquote {
+            border-left: 4px solid #FFB900;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #605E5C;
+            font-style: italic;
+        }
+
+        .markdown-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .markdown-content th {
+            background: #0078D4;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .markdown-content td {
+            padding: 12px;
+            border-bottom: 1px solid #E1DFDD;
+        }
+
+        .markdown-content tr:hover {
+            background: #F3F2F1;
+        }
+
+        .markdown-content a {
+            color: #0078D4;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .markdown-content a:hover {
+            border-bottom-color: #0078D4;
+        }
+
+        .markdown-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .markdown-content hr {
+            border: none;
+            border-top: 2px solid #E1DFDD;
+            margin: 30px 0;
+        }
+
+        .markdown-content strong {
+            color: #323130;
+            font-weight: 600;
+        }
+
+        .markdown-content em {
+            color: #605E5C;
+        }
+
+        /* Status badges for checklists */
+        .markdown-content li input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: #107C10;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            header, .toolbar, .back-button {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            .toolbar {
+                padding: 10px 20px;
+            }
+
+            .markdown-content h1 {
+                font-size: 1.8em;
+            }
+
+            .markdown-content h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1 id="doc-title">Loading...</h1>
+                <p id="doc-subtitle">AI Delivery Methodology</p>
+            </div>
+            <a href="methodology-navigator.html" class="back-button">← Back to Navigator</a>
+        </header>
+
+        <div class="toolbar">
+            <button onclick="window.print()">
+                <span>🖨️</span> Print
+            </button>
+            <button onclick="copyToClipboard()">
+                <span>📋</span> Copy
+            </button>
+            <button onclick="downloadAsHTML()">
+                <span>💾</span> Download HTML
+            </button>
+            <button onclick="toggleCheckboxes()">
+                <span>✅</span> Toggle Checkboxes
+            </button>
+        </div>
+
+        <div class="content">
+            <div class="loading" id="loading">
+                <p>📄 Loading document...</p>
+            </div>
+            <div class="markdown-content" id="markdown-content" style="display: none;"></div>
+            <div class="error" id="error" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get file path from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const filePath = urlParams.get('file');
+
+        if (!filePath) {
+            showError('No file specified. Please provide a file parameter in the URL.');
+        } else {
+            loadMarkdownFile(filePath);
+        }
+
+        async function loadMarkdownFile(path) {
+            try {
+                const response = await fetch(path);
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load file: ${response.statusText}`);
+                }
+
+                const markdown = await response.text();
+                
+                // Configure marked options
+                marked.setOptions({
+                    breaks: true,
+                    gfm: true,
+                    headerIds: true,
+                    mangle: false
+                });
+
+                // Convert markdown to HTML
+                const html = marked.parse(markdown);
+                
+                // Display content
+                document.getElementById('markdown-content').innerHTML = html;
+                document.getElementById('markdown-content').style.display = 'block';
+                document.getElementById('loading').style.display = 'none';
+
+                // Extract and set title
+                const titleMatch = markdown.match(/^#\s+(.+)/m);
+                if (titleMatch) {
+                    document.getElementById('doc-title').textContent = titleMatch[1];
+                    document.title = titleMatch[1] + ' - AI Delivery Methodology';
+                } else {
+                    const fileName = path.split('/').pop().replace('.md', '').replace(/-/g, ' ');
+                    document.getElementById('doc-title').textContent = fileName.charAt(0).toUpperCase() + fileName.slice(1);
+                }
+
+                // Make checkboxes interactive
+                makeCheckboxesInteractive();
+
+            } catch (error) {
+                showError(`Error loading document: ${error.message}`);
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('error').innerHTML = `<strong>Error:</strong> ${message}`;
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('doc-title').textContent = 'Error Loading Document';
+        }
+
+        function makeCheckboxesInteractive() {
+            const checkboxes = document.querySelectorAll('.markdown-content input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', function() {
+                    // Wrap text after checkbox in span for styling
+                    if (!this.nextSibling || this.nextSibling.nodeName !== 'SPAN') {
+                        const text = this.parentNode.textContent.substring(1);
+                        const span = document.createElement('span');
+                        span.textContent = text;
+                        while (this.nextSibling) {
+                            this.nextSibling.remove();
+                        }
+                        this.parentNode.appendChild(span);
+                    }
+                });
+            });
+        }
+
+        function toggleCheckboxes() {
+            const checkboxes = document.querySelectorAll('.markdown-content input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            checkboxes.forEach(cb => {
+                cb.checked = !allChecked;
+                cb.dispatchEvent(new Event('change'));
+            });
+        }
+
+        function copyToClipboard() {
+            const content = document.getElementById('markdown-content');
+            const text = content.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Content copied to clipboard!');
+            }).catch(err => {
+                alert('❌ Failed to copy: ' + err);
+            });
+        }
+
+        function downloadAsHTML() {
+            const content = document.getElementById('markdown-content').innerHTML;
+            const title = document.getElementById('doc-title').textContent;
+            
+            const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title}</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; max-width: 900px; margin: 40px auto; padding: 20px; line-height: 1.7; }
+        h1 { color: #0078D4; border-bottom: 3px solid #0078D4; padding-bottom: 10px; }
+        h2 { color: #005a9e; border-bottom: 2px solid #E1DFDD; padding-bottom: 8px; }
+        code { background: #F3F2F1; padding: 2px 6px; border-radius: 4px; }
+        pre { background: #F3F2F1; padding: 20px; border-radius: 8px; overflow-x: auto; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th { background: #0078D4; color: white; padding: 12px; }
+        td { padding: 12px; border-bottom: 1px solid #E1DFDD; }
+    </style>
+</head>
+<body>
+    <h1>${title}</h1>
+    ${content}
+</body>
+</html>`;
+            
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = title.replace(/[^a-z0-9]/gi, '-').toLowerCase() + '.html';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
