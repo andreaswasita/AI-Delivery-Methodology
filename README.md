@@ -81,6 +81,8 @@
 - 🎯 [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
 - 🔗 **[Benefits Dependency Network](./templates/15-benefits-dependency-network.md)** ⭐ **NEW!**
 - 🔄 **[Business Process Change Analysis](./templates/16-business-process-change-analysis.md)** ⭐ **NEW!**
+- ✅ **[Use Case Business Change Checklist](./checklists/use-case-business-change-checklist.md)** ⭐ **NEW!**
+- 📖 **[Quick Reference: Process Change & Value Realization](./guides/quick-reference-process-change-value-realization.md)** ⭐ **NEW!**
 - ✅ [Phase Checklists](./checklists)
 
 [→ Get All Templates](./templates)
