@@ -121,6 +121,16 @@ We've significantly expanded the methodology to address key feedback and common 
 
 [→ Get All Templates](./templates)
 
+### 🏛️ [Architecture Patterns](./architecture)
+**Solution architecture library**
+- 🏗️ Reference Architectures
+- 🤖 AI Application Patterns
+- ☁️ Azure AI Platform Architectures
+- 🔗 Integration Patterns
+- 📋 Architecture Decision Records (ADRs)
+
+[→ Explore Architecture Library](./architecture)
+
 </td>
 </tr>
 </table>
