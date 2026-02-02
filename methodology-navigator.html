@@ -849,7 +849,12 @@
                 objectives: ["Validate technical approach", "Demonstrate value", "Assess data quality", "Refine requirements"],
                 deliverables: ["Working prototype", "Feasibility report", "Data assessment", "Refined scope"],
                 resources: {
-                    checklist: "markdown-viewer.html?file=checklists/02-hackathons-checklist.md"
+                    checklist: "markdown-viewer.html?file=checklists/02-hackathons-checklist.md",
+                    guide: "markdown-viewer.html?file=hackathons/README.md",
+                    evaluator: "hackathons/hackathon-evaluator.html",
+                    setup: "markdown-viewer.html?file=hackathons/azure-dev-setup.md",
+                    datasets: "markdown-viewer.html?file=hackathons/datasets.md",
+                    snippets: "markdown-viewer.html?file=hackathons/code-snippets/azure-openai-patterns.md"
                 }
             },
             {
@@ -984,6 +989,10 @@
                         ${phase.resources.guide ? `<a href="${phase.resources.guide}" class="quick-link-btn secondary">📖 Guide</a>` : ''}
                         ${phase.resources.calculator ? `<a href="${phase.resources.calculator}" class="quick-link-btn secondary">🧮 Calculator</a>` : ''}
                         ${phase.resources.deploy ? `<a href="${phase.resources.deploy}" class="quick-link-btn" style="background: #107C10;">🚀 Deploy to Azure</a>` : ''}
+                        ${phase.resources.evaluator ? `<a href="${phase.resources.evaluator}" class="quick-link-btn secondary">🏆 Evaluator</a>` : ''}
+                        ${phase.resources.setup ? `<a href="${phase.resources.setup}" class="quick-link-btn secondary">⚙️ Quick Setup</a>` : ''}
+                        ${phase.resources.datasets ? `<a href="${phase.resources.datasets}" class="quick-link-btn secondary">📊 Datasets</a>` : ''}
+                        ${phase.resources.snippets ? `<a href="${phase.resources.snippets}" class="quick-link-btn secondary">💡 Code Snippets</a>` : ''}
                     </div>
                 </div>
             `;

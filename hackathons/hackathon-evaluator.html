@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Results Evaluator - AI Delivery Methodology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0078D4, #005a9e);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #F3F2F1;
+            border-radius: 12px;
+            border-left: 4px solid #0078D4;
+        }
+
+        .section h2 {
+            color: #0078D4;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #323130;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #E1DFDD;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #0078D4;
+        }
+
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .rating-group {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .rating-btn {
+            padding: 12px;
+            border: 2px solid #E1DFDD;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .rating-btn:hover {
+            border-color: #0078D4;
+            transform: translateY(-2px);
+        }
+
+        .rating-btn.selected {
+            background: #0078D4;
+            color: white;
+            border-color: #0078D4;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 15px;
+            background: #0078D4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .calculate-btn:hover {
+            background: #005a9e;
+            transform: translateY(-2px);
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, #E3F2FD, #F3F2F1);
+            border-radius: 12px;
+            border: 2px solid #0078D4;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .score-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #0078D4;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .score-label {
+            text-align: center;
+            color: #605E5C;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .recommendation {
+            background: #FFF4CE;
+            border-left: 4px solid #FFB900;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .recommendation h3 {
+            color: #323130;
+            margin-bottom: 10px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #107C10;
+        }
+
+        .metric-box h4 {
+            color: #605E5C;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .metric-box .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #107C10;
+        }
+
+        .export-btn {
+            padding: 12px 24px;
+            background: #107C10;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .export-btn:hover {
+            background: #0d5e0d;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .rating-group {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 5px;
+            }
+
+            .rating-btn {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 Hackathon Results Evaluator</h1>
+            <p>Rapid evaluation tool for proof-of-value prototypes</p>
+        </header>
+
+        <div class="content">
+            <!-- Project Information -->
+            <div class="section">
+                <h2>📋 Project Information</h2>
+                <div class="form-group">
+                    <label for="teamName">Team Name</label>
+                    <input type="text" id="teamName" placeholder="Enter team name">
+                </div>
+                <div class="form-group">
+                    <label for="useCaseName">Use Case / Project Name</label>
+                    <input type="text" id="useCaseName" placeholder="Enter use case name">
+                </div>
+                <div class="form-group">
+                    <label for="problemStatement">Problem Statement</label>
+                    <textarea id="problemStatement" placeholder="What business problem are you solving?"></textarea>
+                </div>
+            </div>
+
+            <!-- Technical Evaluation -->
+            <div class="section">
+                <h2>⚙️ Technical Evaluation</h2>
+                
+                <div class="form-group">
+                    <label>Prototype Completeness (1-5)</label>
+                    <div class="rating-group">
+                        <button class="rating-btn" data-field="technical" data-value="1">1<br><small>Concept</small></button>
+                        <button class="rating-btn" data-field="technical" data-value="2">2<br><small>Basic</small></button>
+                        <button class="rating-btn" data-field="technical" data-value="3">3<br><small>Working</small></button>
+                        <button class="rating-btn" data-field="technical" data-value="4">4<br><small>Polished</small></button>
+                        <button class="rating-btn" data-field="technical" data-value="5">5<br><small>Production-Ready</small></button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="accuracy">Accuracy / Performance (%)</label>
+                    <input type="number" id="accuracy" min="0" max="100" placeholder="Enter accuracy %">
+                </div>
+
+                <div class="form-group">
+                    <label for="dataQuality">Data Quality (1-5)</label>
+                    <div class="rating-group">
+                        <button class="rating-btn" data-field="dataQuality" data-value="1">1<br><small>Poor</small></button>
+                        <button class="rating-btn" data-field="dataQuality" data-value="2">2<br><small>Fair</small></button>
+                        <button class="rating-btn" data-field="dataQuality" data-value="3">3<br><small>Good</small></button>
+                        <button class="rating-btn" data-field="dataQuality" data-value="4">4<br><small>Very Good</small></button>
+                        <button class="rating-btn" data-field="dataQuality" data-value="5">5<br><small>Excellent</small></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Value -->
+            <div class="section">
+                <h2>💰 Business Value</h2>
+                
+                <div class="form-group">
+                    <label for="annualSavings">Estimated Annual Savings / Revenue ($)</label>
+                    <input type="number" id="annualSavings" min="0" placeholder="Enter amount in USD">
+                </div>
+
+                <div class="form-group">
+                    <label>Business Impact (1-5)</label>
+                    <div class="rating-group">
+                        <button class="rating-btn" data-field="businessImpact" data-value="1">1<br><small>Minimal</small></button>
+                        <button class="rating-btn" data-field="businessImpact" data-value="2">2<br><small>Low</small></button>
+                        <button class="rating-btn" data-field="businessImpact" data-value="3">3<br><small>Medium</small></button>
+                        <button class="rating-btn" data-field="businessImpact" data-value="4">4<br><small>High</small></button>
+                        <button class="rating-btn" data-field="businessImpact" data-value="5">5<br><small>Critical</small></button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Implementation Complexity (1-5, lower is better)</label>
+                    <div class="rating-group">
+                        <button class="rating-btn" data-field="complexity" data-value="5">1<br><small>Very Simple</small></button>
+                        <button class="rating-btn" data-field="complexity" data-value="4">2<br><small>Simple</small></button>
+                        <button class="rating-btn" data-field="complexity" data-value="3">3<br><small>Medium</small></button>
+                        <button class="rating-btn" data-field="complexity" data-value="2">4<br><small>Complex</small></button>
+                        <button class="rating-btn" data-field="complexity" data-value="1">5<br><small>Very Complex</small></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Innovation & Presentation -->
+            <div class="section">
+                <h2>🌟 Innovation & Presentation</h2>
+                
+                <div class="form-group">
+                    <label>Innovation / Creativity (1-5)</label>
+                    <div class="rating-group">
+                        <button class="rating-btn" data-field="innovation" data-value="1">1<br><small>Basic</small></button>
+                        <button class="rating-btn" data-field="innovation" data-value="2">2<br><small>Standard</small></button>
+                        <button class="rating-btn" data-field="innovation" data-value="3">3<br><small>Creative</small></button>
+                        <button class="rating-btn" data-field="innovation" data-value="4">4<br><small>Innovative</small></button>
+                        <button class="rating-btn" data-field="innovation" data-value="5">5<br><small>Groundbreaking</small></button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Presentation Quality (1-5)</label>
+                    <div class="rating-group">
+                        <button class="rating-btn" data-field="presentation" data-value="1">1<br><small>Poor</small></button>
+                        <button class="rating-btn" data-field="presentation" data-value="2">2<br><small>Fair</small></button>
+                        <button class="rating-btn" data-field="presentation" data-value="3">3<br><small>Good</small></button>
+                        <button class="rating-btn" data-field="presentation" data-value="4">4<br><small>Excellent</small></button>
+                        <button class="rating-btn" data-field="presentation" data-value="5">5<br><small>Outstanding</small></button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calculate-btn" onclick="calculateScore()">📊 Calculate Score & Recommendation</button>
+
+            <!-- Results -->
+            <div class="results" id="results">
+                <div class="score-card">
+                    <h2 style="text-align: center; color: #0078D4;">Overall Score</h2>
+                    <div class="score-value" id="overallScore">--</div>
+                    <div class="score-label" id="scoreLabel">--</div>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-box">
+                        <h4>Technical Score</h4>
+                        <div class="value" id="technicalScore">--</div>
+                    </div>
+                    <div class="metric-box">
+                        <h4>Business Value Score</h4>
+                        <div class="value" id="businessScore">--</div>
+                    </div>
+                    <div class="metric-box">
+                        <h4>Innovation Score</h4>
+                        <div class="value" id="innovationScore">--</div>
+                    </div>
+                    <div class="metric-box">
+                        <h4>Estimated ROI</h4>
+                        <div class="value" id="estimatedROI">--</div>
+                    </div>
+                </div>
+
+                <div class="recommendation" id="recommendation">
+                    <h3>📋 Recommendation</h3>
+                    <p id="recommendationText">--</p>
+                </div>
+
+                <button class="export-btn" onclick="exportResults()">💾 Export Report</button>
+                <button class="export-btn" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scores = {
+            technical: 0,
+            dataQuality: 0,
+            businessImpact: 0,
+            complexity: 0,
+            innovation: 0,
+            presentation: 0
+        };
+
+        // Rating button handlers
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const field = this.dataset.field;
+                const value = parseInt(this.dataset.value);
+                
+                // Remove selected from siblings
+                this.parentElement.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+                
+                // Add selected to this button
+                this.classList.add('selected');
+                
+                // Store score
+                scores[field] = value;
+            });
+        });
+
+        function calculateScore() {
+            // Validate inputs
+            const teamName = document.getElementById('teamName').value;
+            const useCaseName = document.getElementById('useCaseName').value;
+            const accuracy = parseFloat(document.getElementById('accuracy').value) || 0;
+            const annualSavings = parseFloat(document.getElementById('annualSavings').value) || 0;
+
+            if (!teamName || !useCaseName) {
+                alert('Please fill in Team Name and Use Case Name');
+                return;
+            }
+
+            // Calculate scores
+            const technicalScore = Math.round(((scores.technical + scores.dataQuality + (accuracy / 20)) / 3) * 20);
+            const businessScore = Math.round(((scores.businessImpact + scores.complexity) / 2) * 20);
+            const innovationScore = Math.round(((scores.innovation + scores.presentation) / 2) * 20);
+            
+            const overallScore = Math.round((technicalScore + businessScore + innovationScore) / 3);
+
+            // Calculate estimated ROI
+            const implementationCost = 150000; // Simplified estimate
+            const roi = annualSavings > 0 ? Math.round(((annualSavings - implementationCost) / implementationCost) * 100) : 0;
+
+            // Display results
+            document.getElementById('overallScore').textContent = overallScore;
+            document.getElementById('technicalScore').textContent = technicalScore;
+            document.getElementById('businessScore').textContent = businessScore;
+            document.getElementById('innovationScore').textContent = innovationScore;
+            document.getElementById('estimatedROI').textContent = roi + '%';
+
+            // Score label
+            let scoreLabel = '';
+            let recommendation = '';
+            if (overallScore >= 85) {
+                scoreLabel = '🏆 Exceptional - Priority for Production';
+                recommendation = '<strong>Recommendation: FAST TRACK TO PRODUCTION</strong><br><br>' +
+                    '• Allocate resources immediately<br>' +
+                    '• Executive sponsorship recommended<br>' +
+                    '• Target 8-12 week implementation<br>' +
+                    '• High ROI potential: ' + roi + '%<br>' +
+                    '• Expected business impact: Transformational';
+            } else if (overallScore >= 70) {
+                scoreLabel = '⭐ Strong - Recommended for Development';
+                recommendation = '<strong>Recommendation: PROCEED WITH DETAILED PLANNING</strong><br><br>' +
+                    '• Business case development required<br>' +
+                    '• Detailed technical architecture<br>' +
+                    '• Target 12-16 week implementation<br>' +
+                    '• ROI potential: ' + roi + '%<br>' +
+                    '• Expected business impact: Significant';
+            } else if (overallScore >= 55) {
+                scoreLabel = '✓ Good - Consider with Refinement';
+                recommendation = '<strong>Recommendation: REFINE AND RE-EVALUATE</strong><br><br>' +
+                    '• Address technical gaps<br>' +
+                    '• Strengthen business case<br>' +
+                    '• Consider pilot phase<br>' +
+                    '• ROI potential: ' + roi + '%<br>' +
+                    '• Expected business impact: Moderate';
+            } else {
+                scoreLabel = '⚠️ Needs Work - Not Ready';
+                recommendation = '<strong>Recommendation: SIGNIFICANT WORK REQUIRED</strong><br><br>' +
+                    '• Major technical challenges<br>' +
+                    '• Business value unclear<br>' +
+                    '• Consider alternative approaches<br>' +
+                    '• ROI potential: ' + roi + '%<br>' +
+                    '• Expected business impact: Limited';
+            }
+
+            document.getElementById('scoreLabel').textContent = scoreLabel;
+            document.getElementById('recommendationText').innerHTML = recommendation;
+
+            // Show results
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function exportResults() {
+            const data = {
+                teamName: document.getElementById('teamName').value,
+                useCaseName: document.getElementById('useCaseName').value,
+                problemStatement: document.getElementById('problemStatement').value,
+                scores: {
+                    overall: document.getElementById('overallScore').textContent,
+                    technical: document.getElementById('technicalScore').textContent,
+                    business: document.getElementById('businessScore').textContent,
+                    innovation: document.getElementById('innovationScore').textContent,
+                    roi: document.getElementById('estimatedROI').textContent
+                },
+                recommendation: document.getElementById('scoreLabel').textContent,
+                timestamp: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `hackathon-evaluation-${data.teamName.replace(/\s+/g, '-')}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const text = `
+Hackathon Evaluation Results
+=============================
+
+Team: ${document.getElementById('teamName').value}
+Use Case: ${document.getElementById('useCaseName').value}
+
+Overall Score: ${document.getElementById('overallScore').textContent}
+${document.getElementById('scoreLabel').textContent}
+
+Detailed Scores:
+- Technical: ${document.getElementById('technicalScore').textContent}
+- Business Value: ${document.getElementById('businessScore').textContent}
+- Innovation: ${document.getElementById('innovationScore').textContent}
+- Estimated ROI: ${document.getElementById('estimatedROI').textContent}
+
+Recommendation:
+${document.getElementById('recommendationText').textContent.replace(/<br>/g, '\n').replace(/<[^>]*>/g, '')}
+            `;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Results copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
