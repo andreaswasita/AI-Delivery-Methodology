@@ -79,6 +79,8 @@
 - ⚠️ [Risk Register](./templates/05-risk-register.md)
 - 📢 [Communication Plan](./templates/06-communication-plan.md)
 - 🎯 [Success Criteria & KPIs](./templates/07-success-criteria-kpis.md)
+- 🔗 **[Benefits Dependency Network](./templates/15-benefits-dependency-network.md)** ⭐ **NEW!**
+- 🔄 **[Business Process Change Analysis](./templates/16-business-process-change-analysis.md)** ⭐ **NEW!**
 - ✅ [Phase Checklists](./checklists)
 
 [→ Get All Templates](./templates)

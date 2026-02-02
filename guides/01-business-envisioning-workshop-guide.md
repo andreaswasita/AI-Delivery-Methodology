@@ -522,8 +522,8 @@ Title: [Concise, descriptive name]
 Business Problem: [Reference to problem from Activity 3]
 Root Cause (from Five Whys): [Core issue to address]
 
-Current Process: [How this is done today]
-Proposed Solution: [How AI would work]
+Current Process (As-Is): [How this is done today - step by step]
+Proposed Solution (To-Be): [How AI would work - step by step]
 AI Capability Required: [Predictive / Generative / Vision / NLP]
 
 Users/Stakeholders: [Who will use this?]
@@ -538,6 +538,11 @@ Business Value:
 - Revenue Impact: [Quantify]
 
 Success Metrics: [How will we measure success?]
+
+Business Changes Required (Key Question):
+- How must people work differently? [List 2-3 key behavioral/process changes]
+- What organizational changes are needed? [Training, new roles, governance]
+- What is the change readiness? [High / Medium / Low]
 
 Validation (Five Whys Check):
 - Does this solution address the root cause? [Yes/No]
@@ -560,6 +565,149 @@ Validation (Five Whys Check):
 - Watch for overly complex solutions
 - Ensure diversity of AI capabilities explored
 - Document creative ideas even if not immediately feasible
+
+---
+
+### Activity 4.5: Business Change Analysis (45 minutes) **NEW!**
+
+**Objectives:**
+- Identify business process changes required for each use case
+- Map benefits dependencies (IT Enablers → Enabling Changes → Business Changes → Benefits)
+- Assess change readiness and risks
+- Ensure use cases include transformation planning, not just technology
+
+**Why This Matters:**
+> **Critical Principle:** Technology doesn't deliver value - business change delivers value. This activity ensures we explicitly plan for the organizational and process changes needed to realize benefits from AI.
+
+**Materials Needed:**
+- [Benefits Dependency Network Template](../../templates/15-benefits-dependency-network.md)
+- [Business Process Change Analysis Framework](../../templates/16-business-process-change-analysis.md)
+- Change readiness assessment tool
+- Whiteboard or digital collaboration tool (Miro)
+
+**Script:**
+
+**[0-10 min] Benefits Dependency Network Introduction**
+
+**Framework:**
+```
+Business Drivers → Investment Objectives → Benefits → Business Changes → Enabling Changes → IT Enablers
+```
+
+**Explain to participants:**
+- **Business Drivers**: External forces (competition, regulation, cost pressures)
+- **Investment Objectives**: What this investment must achieve
+- **Benefits**: Measurable outcomes we want
+- **Business Changes**: How people must work differently (THE KEY LAYER)
+- **Enabling Changes**: Organizational support (training, new roles, governance)
+- **IT Enablers**: Technology components (Azure AI, Power Platform, etc.)
+
+**Show Example:**
+```
+Cost Pressures (Business Driver)
+  → Reduce operating costs 15% (Investment Objective)
+    → $2.5M cost savings (Benefit)
+      → Staff review AI-processed transactions vs. manual entry (Business Change)
+        → AI literacy training program, new "AI Exception Handler" role (Enabling Changes)
+          → Azure OpenAI + Power Apps (IT Enablers)
+```
+
+**Key Message:** "If you can't describe how people will work differently, you haven't identified real business value - just technology capabilities."
+
+**[10-35 min] Business Change Identification Workshop**
+
+For each prioritized use case (top 3-5), work in small groups:
+
+**Business Change Worksheet:**
+```
+Use Case: [Name]
+
+1. BUSINESS CHANGES REQUIRED (How must people work differently?)
+   BC-01: [e.g., Shift from manual data entry to AI review and exception handling]
+      - Impacted Roles: [e.g., Customer Service Reps - 200 people]
+      - Current Behavior: [e.g., Manual entry 80% of time]
+      - Future Behavior: [e.g., Review AI outputs 20% of time]
+      - Change Type: [Process / Behavioral / Cultural]
+      - Impact Level: [High / Medium / Low]
+      - Change Readiness: [High / Medium / Low]
+
+   BC-02: [Add 2-3 more business changes]
+
+2. ENABLING CHANGES NEEDED (What organizational support is required?)
+   EC-01: [e.g., AI Literacy Training - 40 hours per employee]
+      - Owner: [e.g., HR Director]
+      - Timeline: [e.g., Months 1-2]
+      
+   EC-02: [e.g., New role definition - "AI Steward"]
+      - Owner: [e.g., HR Director]
+      - Timeline: [e.g., Month 2]
+      
+   EC-03: [e.g., Process redesign workshops]
+      - Owner: [e.g., COO]
+      - Timeline: [e.g., Month 1]
+
+3. PROCESS MAPPING (As-Is → To-Be)
+   Current Process (As-Is):
+   Step 1: [e.g., Receive application via email - 5 min]
+   Step 2: [e.g., Manual data entry into CRM - 15 min]
+   Step 3: [e.g., Email compliance team - 2 min]
+   [Continue...]
+   Total Time: [e.g., 62 minutes + 2-3 days wait]
+
+   Future Process (To-Be):
+   Step 1: [e.g., AI monitors inbox, auto-extracts data - 30 sec]
+   Step 2: [e.g., AI populates CRM, human reviews - 2 min]
+   Step 3: [e.g., AI runs compliance checks, flags issues - 1 min]
+   [Continue...]
+   Total Time: [e.g., 5 minutes + instant processing]
+
+4. CHANGE READINESS ASSESSMENT
+   Leadership Support: [Score 1-10] [Comments]
+   Stakeholder Buy-In: [Score 1-10] [Comments]
+   Resource Availability: [Score 1-10] [Comments]
+   Organizational Capacity: [Score 1-10] [Comments]
+   
+   Overall Readiness: [Sum/40 = %]
+   Risk Level: [Low <60% | Medium 60-75% | High >75%]
+
+5. CRITICAL SUCCESS FACTORS
+   - [ ] Have we identified ALL required business process changes?
+   - [ ] Can we realize benefits WITHOUT these business changes? (Answer should be NO)
+   - [ ] Are enabling changes sufficient to support business changes?
+   - [ ] Is change readiness realistic? (Not wishful thinking)
+   - [ ] Do we have executive sponsorship for change?
+```
+
+**[35-45 min] Gallery Walk & Change Risk Discussion**
+
+**Process:**
+1. Each group posts their business change analysis (5 min)
+2. Gallery walk - participants review all use cases (5 min)
+3. Facilitated discussion (5 min):
+   - Which use cases have highest change risk?
+   - Do we have capacity for multiple change initiatives simultaneously?
+   - Are there shared enabling changes across use cases?
+   - What are our biggest change management gaps?
+
+**Facilitator Tips:**
+- **Push participants beyond technology**: "That's what the AI does - how must PEOPLE work differently?"
+- **Challenge vague statements**: "Users will adopt AI" → "How exactly will their daily work change?"
+- **Surface hidden assumptions**: "Do you assume people will trust AI recommendations immediately?"
+- **Validate change readiness**: "What evidence do you have for that readiness score?"
+- **Link to previous work**: "Remember the root cause from Five Whys - does this business change address it?"
+
+**Red Flags to Watch For:**
+- ❌ No business changes identified (means no transformation, just tech installation)
+- ❌ Business changes are really technology changes ("implement AI system")
+- ❌ Unrealistic change readiness scores (all 9s and 10s)
+- ❌ No enabling changes planned (assumes change will happen magically)
+- ❌ Impact on stakeholders underestimated ("they'll adapt quickly")
+
+**Capture Outputs:**
+- Business change requirements for each use case
+- Change readiness scores and risk assessment
+- Shared enabling changes across use cases
+- Change management capacity constraints
 
 ---
 

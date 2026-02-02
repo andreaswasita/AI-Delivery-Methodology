@@ -350,6 +350,158 @@ Example: "By implementing an AI-powered integration layer that intelligently agg
 
 ---
 
+## Business Change Analysis (Benefits Dependency Network)
+
+> **Critical Success Factor:** Technology enables, but business change delivers value. This section identifies the organizational and process changes required to realize benefits from this AI investment.
+
+### Benefits Dependency Network Overview
+
+For detailed guidance, see [Benefits Dependency Network Template](./15-benefits-dependency-network.md).
+
+```
+Business Drivers → Investment Objectives → Benefits → Business Changes → Enabling Changes → IT Enablers
+```
+
+---
+
+### 1. Business Drivers
+
+*What strategic forces are driving this use case?*
+
+| Driver ID | Business Driver | Description | Impact Level |
+|-----------|----------------|-------------|--------------|
+| BD-01 | [e.g., Market Competition] | [Competitors using AI, risk of market share loss] | High |
+| BD-02 | [e.g., Cost Pressures] | [Board mandate to reduce operating costs 15%] | High |
+| BD-03 | [e.g., Regulatory Requirements] | [New regulations requiring faster compliance] | Medium |
+
+---
+
+### 2. Investment Objectives
+
+*What specific objectives must this AI investment achieve to address business drivers?*
+
+| Objective ID | Investment Objective | Success Criteria | Business Driver Link |
+|--------------|---------------------|------------------|---------------------|
+| SO1 | [e.g., Reduce operational costs] | [15% cost reduction within 12 months] | BD-02 |
+| SO2 | [e.g., Improve customer satisfaction] | [NPS score >75, currently 45] | BD-01 |
+| SO3 | [e.g., Ensure regulatory compliance] | [100% on-time compliance reporting] | BD-03 |
+
+---
+
+### 3. Benefits (Measurable Outcomes)
+
+*What measurable benefits will be realized?*
+
+| Benefit ID | Benefit | Measurement | Baseline | Target | Investment Objective Link |
+|------------|---------|-------------|----------|--------|--------------------------|
+| B-01 | [e.g., Cost Reduction] | [Operating cost per transaction] | [$50] | [$35] | SO1 |
+| B-02 | [e.g., Customer Satisfaction] | [NPS score] | [45] | [75] | SO2 |
+| B-03 | [e.g., Compliance Timeliness] | [% reports submitted on time] | [85%] | [100%] | SO3 |
+| B-04 | [e.g., Employee Productivity] | [Transactions per employee per day] | [25] | [50] | SO1, SO2 |
+
+---
+
+### 4. Business Changes Required
+
+**🔴 CRITICAL: These are NOT technology changes - these are changes in how people work.**
+
+| Change ID | Business Change | Description | Impacted Stakeholders | Benefit Link | Change Readiness |
+|-----------|----------------|-------------|----------------------|--------------|------------------|
+| BC-01 | [e.g., Adopt AI-Assisted Decision Making] | [Managers use AI insights for daily decisions instead of gut feel] | [Management team - 50 people] | B-01, B-04 | Medium |
+| BC-02 | [e.g., Shift from Manual to Automated Processing] | [Staff review AI-processed transactions instead of manual entry] | [Operations team - 200 people] | B-01, B-04 | Low |
+| BC-03 | [e.g., Real-Time Communication and Collaboration] | [Teams use digital channels for instant collaboration vs. email] | [All staff - 500 people] | B-02, B-04 | High |
+| BC-04 | [e.g., Proactive Compliance Monitoring] | [Compliance team monitors AI alerts vs. periodic audits] | [Compliance team - 10 people] | B-03 | Medium |
+
+**Change Readiness Assessment:**
+- **High Risk Changes:** [List BC-IDs that have Low or Medium readiness]
+- **Mitigation Strategy:** [How will you address change resistance?]
+
+---
+
+### 5. Enabling Changes (Organizational Support)
+
+*What organizational changes must occur to enable the business changes?*
+
+| Enabler ID | Enabling Change | Description | Business Change Link | Owner | Status |
+|------------|----------------|-------------|---------------------|-------|--------|
+| EC-01 | [e.g., AI Literacy Training] | [40-hour training program for all staff on AI basics and tools] | BC-01, BC-02 | [HR Director] | Not Started |
+| EC-02 | [e.g., Process Redesign] | [Map as-is and to-be processes, redesign 5 core workflows] | BC-02, BC-04 | [COO] | Not Started |
+| EC-03 | [e.g., New Roles and Responsibilities] | [Define AI Steward role, update job descriptions for 3 roles] | BC-01, BC-04 | [HR Director] | Not Started |
+| EC-04 | [e.g., Communication Campaign] | [Monthly AI newsletters, champions network, success stories] | BC-01, BC-02, BC-03 | [Comms Director] | Not Started |
+| EC-05 | [e.g., Performance Metrics] | [Update KPIs to measure AI-assisted work, not manual work] | BC-01, BC-02 | [COO] | Not Started |
+| EC-06 | [e.g., Change Management Program] | [Dedicated change manager, stakeholder engagement plan] | BC-01, BC-02, BC-03 | [PMO] | Not Started |
+
+---
+
+### 6. IT Enablers / Technology Components
+
+*What technology enables the organizational changes?*
+
+| Technology ID | Enabling Technology | Purpose | Enabling Change Link | Azure Service | Cost Estimate |
+|---------------|-------------------|---------|---------------------|---------------|---------------|
+| TE-01 | [e.g., Azure OpenAI Service] | [Document processing, summarization] | EC-01, EC-02 | [Azure OpenAI] | [$5K/month] |
+| TE-02 | [e.g., Power Apps] | [Custom business app for AI-assisted workflow] | EC-02, EC-05 | [Power Apps] | [$10/user/month] |
+| TE-03 | [e.g., Power BI] | [Dashboards showing AI performance and business metrics] | EC-05 | [Power BI Premium] | [$20/user/month] |
+| TE-04 | [e.g., Microsoft Teams] | [Collaboration platform] | EC-04 | [Microsoft 365] | [Included] |
+| TE-05 | [e.g., Azure Machine Learning] | [Model training, deployment, monitoring] | EC-02, EC-05 | [Azure ML] | [$2K/month] |
+
+---
+
+### Business Change Impact Assessment
+
+**Process Changes Required:**
+
+| Current Process (As-Is) | Future Process (To-Be) | Impact Level | Effort to Change |
+|------------------------|------------------------|--------------|------------------|
+| [e.g., Manual document review: 30 min per doc] | [AI pre-screens, human reviews exceptions: 5 min per doc] | High | Medium |
+| [e.g., Email-based approvals: 2-3 day cycle] | [Digital workflow with AI routing: same-day approval] | Medium | Low |
+| [e.g., Quarterly compliance reports: 40 hours manual work] | [Automated reports with AI insights: 4 hours review] | High | High |
+
+**Stakeholder Impact Analysis:**
+
+| Stakeholder Group | Size | Current State | Future State | Impact Level | Change Support |
+|------------------|------|---------------|--------------|--------------|----------------|
+| [e.g., Operations Team] | [200] | [Manual data entry 80% of day] | [AI processing 90%, exceptions handling 10%] | High | Low |
+| [e.g., Management] | [50] | [Decision making based on experience] | [Data-driven decisions with AI insights] | Medium | High |
+| [e.g., IT Team] | [20] | [Maintain legacy systems] | [Support AI platform, decommission 2 legacy systems] | High | Medium |
+
+**Change Readiness Score:** [0-100, where 100 = fully ready]
+- **Current Score:** [45]
+- **Target Score:** [80]
+- **Gap:** [35 points]
+- **Mitigation Plan:** [See Enabling Changes above]
+
+---
+
+### Dependency Validation
+
+**Validate all dependencies are mapped:**
+
+- [ ] Each Benefit links to at least one Investment Objective
+- [ ] Each Benefit is enabled by at least one Business Change
+- [ ] Each Business Change is supported by at least one Enabling Change
+- [ ] Each Enabling Change is supported by at least one IT Enabler
+- [ ] No orphaned items (everything connects to the chain)
+
+**Critical Path Analysis:**
+
+```
+Example:
+Cost Pressures (BD-02) 
+  → Reduce operational costs (SO1) 
+    → Cost Reduction (B-01) 
+      → Shift from Manual to Automated Processing (BC-02) 
+        → Process Redesign (EC-02) 
+          → Azure OpenAI Service (TE-01)
+```
+
+Your Critical Path:
+```
+[Document your most important dependency chain here]
+```
+
+---
+
 ## Feasibility Assessment
 
 ### Technical Feasibility: [HIGH / MEDIUM / LOW]
