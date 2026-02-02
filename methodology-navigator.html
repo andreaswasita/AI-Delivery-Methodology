@@ -861,7 +861,8 @@
                 objectives: ["Set up Azure environment", "Configure security", "Establish MLOps", "Set up monitoring"],
                 deliverables: ["Development environment", "CI/CD pipelines", "Governance framework"],
                 resources: {
-                    checklist: "markdown-viewer.html?file=checklists/03-setup-platform-checklist.md"
+                    checklist: "markdown-viewer.html?file=checklists/03-setup-platform-checklist.md",
+                    deploy: "deploy-landing-zone.html"
                 }
             },
             {
@@ -982,6 +983,7 @@
                         ${phase.resources.checklist ? `<a href="${phase.resources.checklist}" class="quick-link-btn">✅ Checklist</a>` : ''}
                         ${phase.resources.guide ? `<a href="${phase.resources.guide}" class="quick-link-btn secondary">📖 Guide</a>` : ''}
                         ${phase.resources.calculator ? `<a href="${phase.resources.calculator}" class="quick-link-btn secondary">🧮 Calculator</a>` : ''}
+                        ${phase.resources.deploy ? `<a href="${phase.resources.deploy}" class="quick-link-btn" style="background: #107C10;">🚀 Deploy to Azure</a>` : ''}
                     </div>
                 </div>
             `;
