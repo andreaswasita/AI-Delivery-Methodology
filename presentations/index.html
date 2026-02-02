@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentations - AI Delivery Methodology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+
+        .presentations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .presentation-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .presentation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+
+        .presentation-card .preview {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .presentation-card .preview::after {
+            content: '▶';
+            position: absolute;
+            font-size: 4em;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .presentation-card:hover .preview::after {
+            opacity: 0.8;
+        }
+
+        .presentation-card .preview .icon {
+            font-size: 5em;
+        }
+
+        .presentation-card .content {
+            padding: 30px;
+        }
+
+        .presentation-card h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .presentation-card p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .presentation-card .meta {
+            display: flex;
+            gap: 20px;
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .presentation-card .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .presentation-card .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            color: white;
+        }
+
+        .features h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-box .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            .presentations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 AI Delivery Presentations</h1>
+            <p>Stunning, interactive HTML presentations for every phase</p>
+        </header>
+
+        <div class="presentations-grid">
+            <!-- Business Envisioning -->
+            <div class="presentation-card" onclick="window.location.href='business-envisioning-workshop.html'">
+                <div class="preview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <span class="icon">🎯</span>
+                </div>
+                <div class="content">
+                    <h2>Business Envisioning Workshop</h2>
+                    <div class="meta">
+                        <span>📊 9 slides</span>
+                        <span>⏱️ 45-60 min</span>
+                    </div>
+                    <p>Transform your business with AI in 1-2 weeks. Define vision, quantify value, and build roadmap.</p>
+                    <a href="business-envisioning-workshop.html" class="btn">View Presentation →</a>
+                </div>
+            </div>
+
+            <!-- Presales Discovery -->
+            <div class="presentation-card" onclick="window.location.href='presales-discovery.html'">
+                <div class="preview" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="icon">🔍</span>
+                </div>
+                <div class="content">
+                    <h2>Presales & Discovery</h2>
+                    <div class="meta">
+                        <span>📊 8 slides</span>
+                        <span>⏱️ 30-45 min</span>
+                    </div>
+                    <p>Qualify opportunities and assess AI readiness. Perfect for initial client engagements.</p>
+                    <a href="presales-discovery.html" class="btn">View Presentation →</a>
+                </div>
+            </div>
+
+            <!-- Hackathon Kickoff -->
+            <div class="presentation-card" onclick="window.location.href='hackathon-kickoff.html'">
+                <div class="preview" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <span class="icon">🚀</span>
+                </div>
+                <div class="content">
+                    <h2>Hackathon Kickoff</h2>
+                    <div class="meta">
+                        <span>📊 10 slides</span>
+                        <span>⏱️ 30 min</span>
+                    </div>
+                    <p>Energize your team for rapid prototyping. Rules, resources, and success criteria.</p>
+                    <a href="hackathon-kickoff.html" class="btn">View Presentation →</a>
+                </div>
+            </div>
+
+            <!-- Platform Setup -->
+            <div class="presentation-card" onclick="window.location.href='platform-setup.html'">
+                <div class="preview" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <span class="icon">🏗️</span>
+                </div>
+                <div class="content">
+                    <h2>Platform Setup & Architecture</h2>
+                    <div class="meta">
+                        <span>📊 8 slides</span>
+                        <span>⏱️ 45 min</span>
+                    </div>
+                    <p>Compliance-ready Azure infrastructure. Security, governance, and MLOps.</p>
+                    <a href="platform-setup.html" class="btn">View Presentation →</a>
+                </div>
+            </div>
+
+            <!-- Methodology Overview -->
+            <div class="presentation-card" onclick="window.location.href='methodology-overview.html'">
+                <div class="preview" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <span class="icon">📚</span>
+                </div>
+                <div class="content">
+                    <h2>AI Delivery Methodology Overview</h2>
+                    <div class="meta">
+                        <span>📊 12 slides</span>
+                        <span>⏱️ 60 min</span>
+                    </div>
+                    <p>Complete end-to-end methodology. 8 phases from vision to value.</p>
+                    <a href="methodology-overview.html" class="btn">View Presentation →</a>
+                </div>
+            </div>
+
+            <!-- Executive Briefing -->
+            <div class="presentation-card" onclick="window.location.href='executive-briefing.html'">
+                <div class="preview" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <span class="icon">👔</span>
+                </div>
+                <div class="content">
+                    <h2>Executive Briefing</h2>
+                    <div class="meta">
+                        <span>📊 7 slides</span>
+                        <span>⏱️ 15-20 min</span>
+                    </div>
+                    <p>C-suite summary. ROI, risk, and roadmap in 15 minutes.</p>
+                    <a href="executive-briefing.html" class="btn">View Presentation →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <h2>✨ Why HTML Presentations?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="icon">🎨</div>
+                    <h3>Stunning Visuals</h3>
+                    <p>Gradient backgrounds, smooth animations, modern design</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">⌨️</div>
+                    <h3>Easy Navigation</h3>
+                    <p>Keyboard arrows, mouse wheel, touch swipe, remote control</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">📱</div>
+                    <h3>Works Everywhere</h3>
+                    <p>Desktop, tablet, mobile. No software installation needed</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">🔗</div>
+                    <h3>Easy Sharing</h3>
+                    <p>Send link, embed in website, present remotely</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">⛶</div>
+                    <h3>Fullscreen Mode</h3>
+                    <p>Click fullscreen button for immersive presentation</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon">💨</div>
+                    <h3>Lightweight</h3>
+                    <p>No PowerPoint file to email. Just open in browser</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="../methodology-navigator.html" style="color: white; font-size: 1.3em; text-decoration: none;">
+                ← Back to Methodology Navigator
+            </a>
+        </div>
+    </div>
+</body>
+</html>
