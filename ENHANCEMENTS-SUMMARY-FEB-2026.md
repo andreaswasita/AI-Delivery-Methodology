@@ -356,12 +356,14 @@ Total New Resources: 50+ frameworks, templates, and examples
 2. **Pilot Literacy Program**: Test with 50-100 employees
 3. **Implement Metrics Dashboard**: Build first adoption dashboard
 4. **Gather Feedback**: Survey users on new resources
+5. **Migrate Agent to Azure**: Deploy value analysis agent to Azure for enterprise scalability and integration
 
 ### Long-Term (Next 90 days)
 1. **Complete Video Library**: Produce phase walkthroughs
 2. **Roll Out Literacy Program**: Scale to full organization
 3. **Comprehensive Metrics**: Track all 5 dimensions
 4. **Case Study Collection**: Document 3-5 additional success stories
+5. **Azure Agent Enhancement**: Integrate agent with Azure OpenAI, Application Insights, and enterprise authentication
 
 ---
 
