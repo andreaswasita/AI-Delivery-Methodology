@@ -1,7 +1,7 @@
 ﻿# AI Delivery Methodology
 ## Microsoft AI Frontier - Vision to Value Approach
 
-🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🎯 **[AI Maturity Assessment](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)** | 🚀 **[Interactive Navigator](./methodology-navigator.html)** 
+🌐 **[Visit Our Interactive Tools](https://andreaswasita.github.io/AI-Delivery-Methodology/)** | 🎯 **[AI Maturity Assessment](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/ai-maturity-assessment.html)** | 🤖 **[Value Analysis Chatbot](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/value-analysis-chatbot.html)** | 💰 **[ROI Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/roi-calculator.html)** | ⏱️ **[Effort Estimator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/effort-estimator.html)** | 👥 **[Team Sizer](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/team-sizer.html)** | ☁️ **[Azure Cost Calculator](https://andreaswasita.github.io/AI-Delivery-Methodology/calculators/azure-cost-estimator.html)** | 🚀 **[Interactive Navigator](https://andreaswasita.github.io/AI-Delivery-Methodology/methodology-navigator.html)** 
 
 ---
 
@@ -18,7 +18,7 @@ We've significantly expanded the methodology to address key feedback and common 
 - [Five Whys Analysis Impact](./success-stories/five-whys-analysis-impact.md) - **43% higher success rate** with root cause analysis
 
 #### 🚀 **Interactive Navigator** NEW!
-- [Methodology Navigator Dashboard](./methodology-navigator.html) - Interactive phase navigation with resources
+- [Methodology Navigator Dashboard](https://andreaswasita.github.io/AI-Delivery-Methodology/methodology-navigator.html) - Interactive phase navigation with resources
 - Explore all 8 phases with detailed timelines, team sizes, and deliverables
 - Quick access to tools, success stories, and learning resources
 - **Perfect for GitHub Pages** - Beautiful, responsive, and easy to navigate
