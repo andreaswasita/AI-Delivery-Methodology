@@ -945,12 +945,15 @@
                 name: "Operate & Care",
                 duration: "Ongoing",
                 team: "2-4 people",
-                description: "Continuous monitoring, optimization, model retraining, and ongoing support",
+                description: "Continuous monitoring, optimization, model retraining, and ongoing support - includes 30-day hypercare period",
                 objectives: ["24/7 production monitoring", "Incident management per SLA", "Model performance tracking & retraining", "User support & adoption", "Continuous improvement & optimization", "Value realization tracking", "Security & compliance maintenance"],
                 deliverables: ["Operations dashboard (24/7 monitoring)", "Monthly performance reports", "Incident reports & RCA", "Model performance reports (accuracy, drift)", "Value realization report (ROI, cost savings)", "User adoption reports", "Continuous improvement backlog", "Quarterly business reviews"],
                 resources: {
                     checklist: "markdown-viewer.html?file=checklists/08-operate-care-phase-checklist.md",
                     guide: "markdown-viewer.html?file=guides/phases/08-operate-care-phase-complete-guide.md",
+                    day1ops: "markdown-viewer.html?file=guides/phases/08-day1-operations-runbook.md",
+                    hypercare: "markdown-viewer.html?file=guides/phases/08-hypercare-framework.md",
+                    valuetracker: "calculators/value-realization-tracker.html",
                     riskguide: "markdown-viewer.html?file=guides/96-ai-model-risk-management-guide.md"
                 }
             }
@@ -1023,6 +1026,9 @@
                     <div class="quick-links">
                         ${phase.resources.checklist ? `<a href="${phase.resources.checklist}" class="quick-link-btn">✅ Checklist</a>` : ''}
                         ${phase.resources.guide ? `<a href="${phase.resources.guide}" class="quick-link-btn secondary">📖 Complete Guide</a>` : ''}
+                        ${phase.resources.day1ops ? `<a href="${phase.resources.day1ops}" class="quick-link-btn secondary">🚀 Day 1 Operations</a>` : ''}
+                        ${phase.resources.hypercare ? `<a href="${phase.resources.hypercare}" class="quick-link-btn secondary">🏥 Hypercare Guide</a>` : ''}
+                        ${phase.resources.valuetracker ? `<a href="${phase.resources.valuetracker}" class="quick-link-btn secondary">📊 Value Tracker</a>` : ''}
                         ${phase.resources.workshop ? `<a href="${phase.resources.workshop}" class="quick-link-btn secondary">🎯 Workshop Guide</a>` : ''}
                         ${phase.resources.templates ? `<a href="${phase.resources.templates}" class="quick-link-btn secondary">📝 Templates</a>` : ''}
                         ${phase.resources.template ? `<a href="${phase.resources.template}" class="quick-link-btn secondary">📝 Sprint Template</a>` : ''}

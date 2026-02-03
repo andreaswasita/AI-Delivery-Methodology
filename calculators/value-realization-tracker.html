@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Realization Tracker - AI Delivery Methodology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+            padding: 0 20px;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 1em;
+            font-weight: 600;
+            color: #6c757d;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .metric-card h3 {
+            color: #495057;
+            font-size: 1em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .metric-change {
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .metric-change.positive {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .metric-change.negative {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .dashboard-card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card .label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background: #e9ecef;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-on-track {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-at-risk {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-exceeded {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .chart-placeholder {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-left: 5px solid #17a2b8;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .tabs {
+                padding: 0;
+            }
+            
+            .tab {
+                padding: 12px 15px;
+                font-size: 0.9em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .metric-grid,
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Value Realization Tracker</h1>
+            <p>Track, measure, and demonstrate ROI from your AI implementation</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('dashboard')">📈 Dashboard</button>
+            <button class="tab" onclick="showTab('financial')">💰 Financial</button>
+            <button class="tab" onclick="showTab('operational')">⚙️ Operational</button>
+            <button class="tab" onclick="showTab('user-adoption')">👥 User Adoption</button>
+            <button class="tab" onclick="showTab('quality')">✨ Quality</button>
+            <button class="tab" onclick="showTab('tracking')">📝 Track Values</button>
+            <button class="tab" onclick="showTab('reports')">📄 Reports</button>
+        </div>
+
+        <div class="content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <h2>Executive Dashboard</h2>
+                <p style="margin: 20px 0; color: #6c757d;">Real-time view of value delivered across all dimensions</p>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="icon">💰</div>
+                        <div class="value" id="total-savings">$0</div>
+                        <div class="label">Total Cost Savings</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="icon">📈</div>
+                        <div class="value" id="roi-percentage">0%</div>
+                        <div class="label">ROI Achieved</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="icon">⏱️</div>
+                        <div class="value" id="time-saved">0h</div>
+                        <div class="label">Time Saved</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="icon">👥</div>
+                        <div class="value" id="user-adoption">0%</div>
+                        <div class="label">User Adoption</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Value Realization Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="overall-progress" style="width: 0%">0%</div>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <h3>Financial Impact</h3>
+                        <div class="metric-value" id="dash-financial">$0</div>
+                        <span class="metric-change positive" id="dash-financial-change">+0%</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Operational Efficiency</h3>
+                        <div class="metric-value" id="dash-efficiency">0%</div>
+                        <span class="metric-change positive" id="dash-efficiency-change">+0%</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Quality Improvement</h3>
+                        <div class="metric-value" id="dash-quality">0%</div>
+                        <span class="metric-change positive" id="dash-quality-change">+0%</span>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Quick Start:</strong> Go to the "Track Values" tab to start recording your metrics and see this dashboard come to life!
+                </div>
+            </div>
+
+            <!-- Financial Tab -->
+            <div id="financial" class="tab-content">
+                <h2>💰 Financial Value Tracking</h2>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <h3>Cost Savings</h3>
+                        <div class="metric-value" id="cost-savings">$0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Reduced operational costs</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Cost Avoidance</h3>
+                        <div class="metric-value" id="cost-avoidance">$0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Prevented future costs</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Revenue Impact</h3>
+                        <div class="metric-value" id="revenue-impact">$0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Increased revenue</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Total Financial Value</h3>
+                        <div class="metric-value" id="total-financial">$0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Combined financial impact</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">ROI Analysis</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Total Investment</td>
+                                <td id="total-investment">$0</td>
+                                <td><span class="status-badge status-on-track">Tracked</span></td>
+                            </tr>
+                            <tr>
+                                <td>Total Value Realized</td>
+                                <td id="total-value-realized">$0</td>
+                                <td><span class="status-badge status-on-track">Tracked</span></td>
+                            </tr>
+                            <tr>
+                                <td>Net Benefit</td>
+                                <td id="net-benefit">$0</td>
+                                <td><span class="status-badge status-on-track">Calculated</span></td>
+                            </tr>
+                            <tr>
+                                <td>ROI Percentage</td>
+                                <td id="roi-calc">0%</td>
+                                <td><span class="status-badge status-on-track">Calculated</span></td>
+                            </tr>
+                            <tr>
+                                <td>Payback Period</td>
+                                <td id="payback-period">N/A</td>
+                                <td><span class="status-badge status-on-track">Estimated</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Operational Tab -->
+            <div id="operational" class="tab-content">
+                <h2>⚙️ Operational Efficiency Metrics</h2>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <h3>Time Savings</h3>
+                        <div class="metric-value" id="op-time-saved">0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Hours saved per month</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Process Efficiency</h3>
+                        <div class="metric-value" id="process-efficiency">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Improvement in process time</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Automation Rate</h3>
+                        <div class="metric-value" id="automation-rate">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Tasks automated</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Productivity Gain</h3>
+                        <div class="metric-value" id="productivity-gain">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Overall productivity increase</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Process Improvements</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Process</th>
+                                <th>Before AI</th>
+                                <th>After AI</th>
+                                <th>Improvement</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="process-table">
+                            <tr>
+                                <td colspan="5" style="text-align: center; color: #6c757d;">No process improvements tracked yet. Add data in the "Track Values" tab.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- User Adoption Tab -->
+            <div id="user-adoption" class="tab-content">
+                <h2>👥 User Adoption & Engagement</h2>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <h3>Total Users</h3>
+                        <div class="metric-value" id="total-users">0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Registered users</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Active Users</h3>
+                        <div class="metric-value" id="active-users">0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Weekly active users</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Adoption Rate</h3>
+                        <div class="metric-value" id="adoption-rate">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Active/Total users</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>User Satisfaction</h3>
+                        <div class="metric-value" id="user-satisfaction">0.0</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Out of 5.0</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Adoption Target Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="adoption-progress" style="width: 0%">0%</div>
+                </div>
+
+                <div class="alert alert-success" style="margin-top: 30px;">
+                    <strong>✅ Adoption Milestone:</strong> Track user adoption weekly to ensure your AI solution is delivering value to end users.
+                </div>
+            </div>
+
+            <!-- Quality Tab -->
+            <div id="quality" class="tab-content">
+                <h2>✨ Quality & Accuracy Metrics</h2>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <h3>Model Accuracy</h3>
+                        <div class="metric-value" id="model-accuracy">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Current model performance</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Error Reduction</h3>
+                        <div class="metric-value" id="error-reduction">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">vs baseline</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Data Quality</h3>
+                        <div class="metric-value" id="data-quality">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Data completeness & accuracy</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>System Uptime</h3>
+                        <div class="metric-value" id="system-uptime">0%</div>
+                        <p style="color: #6c757d; margin-top: 10px;">Availability</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;">Quality Improvement Trend</h3>
+                <div class="chart-placeholder">
+                    📊 Quality metrics chart will appear here as you track data over time
+                </div>
+            </div>
+
+            <!-- Tracking Tab -->
+            <div id="tracking" class="tab-content">
+                <h2>📝 Track Value Metrics</h2>
+                <p style="margin: 20px 0; color: #6c757d;">Record your actual metrics to calculate ROI and value realization</p>
+
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                    <h3 style="margin-bottom: 25px;">Financial Metrics</h3>
+                    
+                    <div class="form-group">
+                        <label>Total Project Investment ($)</label>
+                        <input type="number" id="input-investment" placeholder="e.g., 500000" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Monthly Cost Savings ($)</label>
+                        <input type="number" id="input-cost-savings" placeholder="e.g., 50000" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Monthly Cost Avoidance ($)</label>
+                        <input type="number" id="input-cost-avoidance" placeholder="e.g., 20000" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Monthly Revenue Impact ($)</label>
+                        <input type="number" id="input-revenue" placeholder="e.g., 30000" onchange="calculateMetrics()">
+                    </div>
+
+                    <h3 style="margin: 40px 0 25px 0;">Operational Metrics</h3>
+
+                    <div class="form-group">
+                        <label>Time Saved (hours/month)</label>
+                        <input type="number" id="input-time-saved" placeholder="e.g., 500" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Process Efficiency Improvement (%)</label>
+                        <input type="number" id="input-efficiency" placeholder="e.g., 40" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Automation Rate (%)</label>
+                        <input type="number" id="input-automation" placeholder="e.g., 75" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Productivity Gain (%)</label>
+                        <input type="number" id="input-productivity" placeholder="e.g., 35" onchange="calculateMetrics()">
+                    </div>
+
+                    <h3 style="margin: 40px 0 25px 0;">User Adoption Metrics</h3>
+
+                    <div class="form-group">
+                        <label>Total Users</label>
+                        <input type="number" id="input-total-users" placeholder="e.g., 250" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Active Users (Weekly)</label>
+                        <input type="number" id="input-active-users" placeholder="e.g., 225" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>User Satisfaction (1-5)</label>
+                        <input type="number" id="input-satisfaction" step="0.1" min="1" max="5" placeholder="e.g., 4.2" onchange="calculateMetrics()">
+                    </div>
+
+                    <h3 style="margin: 40px 0 25px 0;">Quality Metrics</h3>
+
+                    <div class="form-group">
+                        <label>Model Accuracy (%)</label>
+                        <input type="number" id="input-accuracy" placeholder="e.g., 94" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Error Reduction (%)</label>
+                        <input type="number" id="input-error-reduction" placeholder="e.g., 60" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Data Quality (%)</label>
+                        <input type="number" id="input-data-quality" placeholder="e.g., 99" onchange="calculateMetrics()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>System Uptime (%)</label>
+                        <input type="number" id="input-uptime" step="0.01" placeholder="e.g., 99.95" onchange="calculateMetrics()">
+                    </div>
+
+                    <button class="btn btn-primary" onclick="calculateMetrics()">📊 Calculate Value</button>
+                    <button class="btn btn-secondary" onclick="saveData()">💾 Save Data</button>
+                    <button class="btn btn-secondary" onclick="loadSampleData()">📝 Load Sample Data</button>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reports" class="tab-content">
+                <h2>📄 Value Realization Report</h2>
+                
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px;">
+                    <button class="btn btn-primary" onclick="generateReport()">📄 Generate Executive Report</button>
+                    <button class="btn btn-secondary" onclick="exportData()">📥 Export to CSV</button>
+                </div>
+
+                <div id="report-output" style="margin-top: 30px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+
+            // Save active tab to localStorage
+            localStorage.setItem('activeTab', tabName);
+        }
+
+        // Calculate all metrics
+        function calculateMetrics() {
+            // Financial
+            const investment = parseFloat(document.getElementById('input-investment').value) || 0;
+            const costSavings = parseFloat(document.getElementById('input-cost-savings').value) || 0;
+            const costAvoidance = parseFloat(document.getElementById('input-cost-avoidance').value) || 0;
+            const revenue = parseFloat(document.getElementById('input-revenue').value) || 0;
+
+            const totalMonthlyValue = costSavings + costAvoidance + revenue;
+            const annualValue = totalMonthlyValue * 12;
+            const netBenefit = annualValue - investment;
+            const roi = investment > 0 ? ((netBenefit / investment) * 100).toFixed(1) : 0;
+            const paybackMonths = totalMonthlyValue > 0 ? (investment / totalMonthlyValue).toFixed(1) : 0;
+
+            // Update financial displays
+            document.getElementById('cost-savings').textContent = '$' + formatNumber(costSavings);
+            document.getElementById('cost-avoidance').textContent = '$' + formatNumber(costAvoidance);
+            document.getElementById('revenue-impact').textContent = '$' + formatNumber(revenue);
+            document.getElementById('total-financial').textContent = '$' + formatNumber(totalMonthlyValue);
+            document.getElementById('total-investment').textContent = '$' + formatNumber(investment);
+            document.getElementById('total-value-realized').textContent = '$' + formatNumber(annualValue);
+            document.getElementById('net-benefit').textContent = '$' + formatNumber(netBenefit);
+            document.getElementById('roi-calc').textContent = roi + '%';
+            document.getElementById('payback-period').textContent = paybackMonths + ' months';
+
+            // Operational
+            const timeSaved = parseFloat(document.getElementById('input-time-saved').value) || 0;
+            const efficiency = parseFloat(document.getElementById('input-efficiency').value) || 0;
+            const automation = parseFloat(document.getElementById('input-automation').value) || 0;
+            const productivity = parseFloat(document.getElementById('input-productivity').value) || 0;
+
+            document.getElementById('op-time-saved').textContent = formatNumber(timeSaved);
+            document.getElementById('process-efficiency').textContent = efficiency + '%';
+            document.getElementById('automation-rate').textContent = automation + '%';
+            document.getElementById('productivity-gain').textContent = productivity + '%';
+
+            // User Adoption
+            const totalUsers = parseFloat(document.getElementById('input-total-users').value) || 0;
+            const activeUsers = parseFloat(document.getElementById('input-active-users').value) || 0;
+            const satisfaction = parseFloat(document.getElementById('input-satisfaction').value) || 0;
+
+            const adoptionRate = totalUsers > 0 ? ((activeUsers / totalUsers) * 100).toFixed(1) : 0;
+
+            document.getElementById('total-users').textContent = formatNumber(totalUsers);
+            document.getElementById('active-users').textContent = formatNumber(activeUsers);
+            document.getElementById('adoption-rate').textContent = adoptionRate + '%';
+            document.getElementById('user-satisfaction').textContent = satisfaction.toFixed(1);
+            document.getElementById('adoption-progress').style.width = adoptionRate + '%';
+            document.getElementById('adoption-progress').textContent = adoptionRate + '%';
+
+            // Quality
+            const accuracy = parseFloat(document.getElementById('input-accuracy').value) || 0;
+            const errorReduction = parseFloat(document.getElementById('input-error-reduction').value) || 0;
+            const dataQuality = parseFloat(document.getElementById('input-data-quality').value) || 0;
+            const uptime = parseFloat(document.getElementById('input-uptime').value) || 0;
+
+            document.getElementById('model-accuracy').textContent = accuracy + '%';
+            document.getElementById('error-reduction').textContent = errorReduction + '%';
+            document.getElementById('data-quality').textContent = dataQuality + '%';
+            document.getElementById('system-uptime').textContent = uptime + '%';
+
+            // Dashboard
+            document.getElementById('total-savings').textContent = '$' + formatNumber(annualValue);
+            document.getElementById('roi-percentage').textContent = roi + '%';
+            document.getElementById('time-saved').textContent = formatNumber(timeSaved) + 'h';
+            document.getElementById('user-adoption').textContent = adoptionRate + '%';
+
+            document.getElementById('dash-financial').textContent = '$' + formatNumber(totalMonthlyValue);
+            document.getElementById('dash-efficiency').textContent = efficiency + '%';
+            document.getElementById('dash-quality').textContent = accuracy + '%';
+
+            // Overall progress (average of key metrics)
+            const overallProgress = ((parseFloat(roi) + parseFloat(adoptionRate) + parseFloat(efficiency)) / 3).toFixed(1);
+            document.getElementById('overall-progress').style.width = Math.min(overallProgress, 100) + '%';
+            document.getElementById('overall-progress').textContent = Math.min(overallProgress, 100).toFixed(1) + '%';
+        }
+
+        // Format numbers with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            const data = {
+                investment: document.getElementById('input-investment').value,
+                costSavings: document.getElementById('input-cost-savings').value,
+                costAvoidance: document.getElementById('input-cost-avoidance').value,
+                revenue: document.getElementById('input-revenue').value,
+                timeSaved: document.getElementById('input-time-saved').value,
+                efficiency: document.getElementById('input-efficiency').value,
+                automation: document.getElementById('input-automation').value,
+                productivity: document.getElementById('input-productivity').value,
+                totalUsers: document.getElementById('input-total-users').value,
+                activeUsers: document.getElementById('input-active-users').value,
+                satisfaction: document.getElementById('input-satisfaction').value,
+                accuracy: document.getElementById('input-accuracy').value,
+                errorReduction: document.getElementById('input-error-reduction').value,
+                dataQuality: document.getElementById('input-data-quality').value,
+                uptime: document.getElementById('input-uptime').value,
+                savedDate: new Date().toISOString()
+            };
+
+            localStorage.setItem('valueRealizationData', JSON.stringify(data));
+            alert('✅ Data saved successfully!');
+        }
+
+        // Load data from localStorage
+        function loadData() {
+            const savedData = localStorage.getItem('valueRealizationData');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                
+                document.getElementById('input-investment').value = data.investment || '';
+                document.getElementById('input-cost-savings').value = data.costSavings || '';
+                document.getElementById('input-cost-avoidance').value = data.costAvoidance || '';
+                document.getElementById('input-revenue').value = data.revenue || '';
+                document.getElementById('input-time-saved').value = data.timeSaved || '';
+                document.getElementById('input-efficiency').value = data.efficiency || '';
+                document.getElementById('input-automation').value = data.automation || '';
+                document.getElementById('input-productivity').value = data.productivity || '';
+                document.getElementById('input-total-users').value = data.totalUsers || '';
+                document.getElementById('input-active-users').value = data.activeUsers || '';
+                document.getElementById('input-satisfaction').value = data.satisfaction || '';
+                document.getElementById('input-accuracy').value = data.accuracy || '';
+                document.getElementById('input-error-reduction').value = data.errorReduction || '';
+                document.getElementById('input-data-quality').value = data.dataQuality || '';
+                document.getElementById('input-uptime').value = data.uptime || '';
+
+                calculateMetrics();
+            }
+        }
+
+        // Load sample data
+        function loadSampleData() {
+            document.getElementById('input-investment').value = '500000';
+            document.getElementById('input-cost-savings').value = '50000';
+            document.getElementById('input-cost-avoidance').value = '20000';
+            document.getElementById('input-revenue').value = '30000';
+            document.getElementById('input-time-saved').value = '500';
+            document.getElementById('input-efficiency').value = '40';
+            document.getElementById('input-automation').value = '75';
+            document.getElementById('input-productivity').value = '35';
+            document.getElementById('input-total-users').value = '250';
+            document.getElementById('input-active-users').value = '225';
+            document.getElementById('input-satisfaction').value = '4.2';
+            document.getElementById('input-accuracy').value = '94';
+            document.getElementById('input-error-reduction').value = '60';
+            document.getElementById('input-data-quality').value = '99';
+            document.getElementById('input-uptime').value = '99.95';
+
+            calculateMetrics();
+            alert('✅ Sample data loaded! This shows typical values for a successful AI implementation.');
+        }
+
+        // Generate report
+        function generateReport() {
+            const reportHTML = `
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h2 style="color: #667eea; border-bottom: 3px solid #667eea; padding-bottom: 15px;">Executive Value Realization Report</h2>
+                    
+                    <h3 style="margin-top: 30px; color: #495057;">Financial Summary</h3>
+                    <p><strong>Total Investment:</strong> ${document.getElementById('total-investment').textContent}</p>
+                    <p><strong>Annual Value Realized:</strong> ${document.getElementById('total-value-realized').textContent}</p>
+                    <p><strong>Net Benefit:</strong> ${document.getElementById('net-benefit').textContent}</p>
+                    <p><strong>ROI:</strong> ${document.getElementById('roi-calc').textContent}</p>
+                    <p><strong>Payback Period:</strong> ${document.getElementById('payback-period').textContent}</p>
+
+                    <h3 style="margin-top: 30px; color: #495057;">Operational Impact</h3>
+                    <p><strong>Time Saved:</strong> ${document.getElementById('op-time-saved').textContent} hours/month</p>
+                    <p><strong>Process Efficiency:</strong> ${document.getElementById('process-efficiency').textContent} improvement</p>
+                    <p><strong>Automation Rate:</strong> ${document.getElementById('automation-rate').textContent}</p>
+                    <p><strong>Productivity Gain:</strong> ${document.getElementById('productivity-gain').textContent}</p>
+
+                    <h3 style="margin-top: 30px; color: #495057;">User Adoption</h3>
+                    <p><strong>Total Users:</strong> ${document.getElementById('total-users').textContent}</p>
+                    <p><strong>Active Users:</strong> ${document.getElementById('active-users').textContent}</p>
+                    <p><strong>Adoption Rate:</strong> ${document.getElementById('adoption-rate').textContent}</p>
+                    <p><strong>User Satisfaction:</strong> ${document.getElementById('user-satisfaction').textContent}/5.0</p>
+
+                    <h3 style="margin-top: 30px; color: #495057;">Quality Metrics</h3>
+                    <p><strong>Model Accuracy:</strong> ${document.getElementById('model-accuracy').textContent}</p>
+                    <p><strong>Error Reduction:</strong> ${document.getElementById('error-reduction').textContent}</p>
+                    <p><strong>Data Quality:</strong> ${document.getElementById('data-quality').textContent}</p>
+                    <p><strong>System Uptime:</strong> ${document.getElementById('system-uptime').textContent}</p>
+
+                    <p style="margin-top: 30px; padding: 20px; background: #d4edda; border-radius: 10px; color: #155724;">
+                        <strong>✅ Status:</strong> This AI implementation is delivering measurable value across financial, operational, and quality dimensions.
+                    </p>
+
+                    <p style="margin-top: 20px; color: #6c757d; font-size: 0.9em;">
+                        Report generated on ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+                    </p>
+                </div>
+            `;
+
+            document.getElementById('report-output').innerHTML = reportHTML;
+        }
+
+        // Export data to CSV
+        function exportData() {
+            const data = {
+                'Investment': document.getElementById('input-investment').value,
+                'Cost Savings': document.getElementById('input-cost-savings').value,
+                'Cost Avoidance': document.getElementById('input-cost-avoidance').value,
+                'Revenue Impact': document.getElementById('input-revenue').value,
+                'Time Saved': document.getElementById('input-time-saved').value,
+                'Process Efficiency': document.getElementById('input-efficiency').value,
+                'Automation Rate': document.getElementById('input-automation').value,
+                'Productivity Gain': document.getElementById('input-productivity').value,
+                'Total Users': document.getElementById('input-total-users').value,
+                'Active Users': document.getElementById('input-active-users').value,
+                'User Satisfaction': document.getElementById('input-satisfaction').value,
+                'Model Accuracy': document.getElementById('input-accuracy').value,
+                'Error Reduction': document.getElementById('input-error-reduction').value,
+                'Data Quality': document.getElementById('input-data-quality').value,
+                'System Uptime': document.getElementById('input-uptime').value
+            };
+
+            const csv = Object.entries(data).map(([key, value]) => `${key},${value}`).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `value-realization-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            loadData();
+            
+            // Restore last active tab
+            const lastTab = localStorage.getItem('activeTab');
+            if (lastTab && lastTab !== 'dashboard') {
+                document.querySelector('.tab.active').classList.remove('active');
+                document.querySelector('.tab-content.active').classList.remove('active');
+                
+                const tabButton = Array.from(document.querySelectorAll('.tab')).find(btn => 
+                    btn.getAttribute('onclick').includes(lastTab)
+                );
+                if (tabButton) {
+                    tabButton.classList.add('active');
+                    document.getElementById(lastTab).classList.add('active');
+                }
+            }
+        };
+    </script>
+</body>
+</html>
