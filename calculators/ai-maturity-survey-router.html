@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Maturity Assessment - Start Here</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { text-align: center; color: white; margin-bottom: 50px; }
+        .header h1 { font-size: 2.8em; margin-bottom: 15px; }
+        .header p { font-size: 1.3em; opacity: 0.95; }
+        .info-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            margin-bottom: 40px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .info-box h2 { margin-bottom: 15px; font-size: 1.5em; }
+        .info-box ul { margin-left: 20px; line-height: 1.8; }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .survey-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .survey-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        .survey-card .icon { font-size: 3.5em; margin-bottom: 20px; display: block; }
+        .survey-card h3 { color: #1f2937; font-size: 1.5em; margin-bottom: 15px; }
+        .survey-card .duration {
+            display: inline-block;
+            background: #ede9fe;
+            color: #5b21b6;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .survey-card p { color: #6b7280; line-height: 1.6; margin-bottom: 15px; }
+        .survey-card .target { color: #10b981; font-weight: 600; font-size: 0.95em; }
+        .survey-card .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .survey-card:hover .btn { transform: scale(1.05); }
+        .deployment-guide {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        .deployment-guide h2 { color: #1f2937; margin-bottom: 25px; font-size: 2em; }
+        .deployment-guide h3 {
+            color: #4b5563;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .deployment-guide ol, .deployment-guide ul {
+            margin-left: 25px;
+            line-height: 2;
+            color: #374151;
+        }
+        .deployment-guide .example {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .back-link { text-align: center; margin-top: 40px; }
+        .back-link a { color: white; font-size: 1.2em; text-decoration: none; opacity: 0.9; }
+        .back-link a:hover { opacity: 1; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 AI Maturity Assessment</h1>
+            <p>Choose the right survey for your role</p>
+        </div>
+        <div class="info-box">
+            <h2>📊 Organization-Wide AI Maturity Survey</h2>
+            <p><strong>Purpose:</strong> Understand our organization's AI readiness across all departments and roles.</p>
+            <ul>
+                <li><strong>Anonymous</strong> - Your responses are confidential and viewed in aggregate only</li>
+                <li><strong>Role-based</strong> - Each survey is tailored to your responsibilities</li>
+                <li><strong>Actionable</strong> - Results drive training programs and AI initiatives</li>
+                <li><strong>Quick</strong> - Takes 5-20 minutes depending on your role</li>
+            </ul>
+        </div>
+        <div class="cards-grid">
+            <a href="ai-maturity-pulse-survey.html" class="survey-card">
+                <span class="icon">⚡</span>
+                <h3>Quick Pulse Survey</h3>
+                <span class="duration">⏱️ 5 minutes</span>
+                <p>Fast check-in on AI awareness, current usage, and interest in learning.</p>
+                <p class="target">✅ Recommended for: ALL employees</p>
+                <span class="btn">Start Quick Survey →</span>
+            </a>
+            <a href="ai-maturity-business-user.html" class="survey-card">
+                <span class="icon">💼</span>
+                <h3>Business User Assessment</h3>
+                <span class="duration">⏱️ 15 minutes</span>
+                <p>Detailed assessment for managers, analysts, and key decision-makers.</p>
+                <p class="target">✅ Recommended for: Managers, Directors, Business Analysts, Department Leads</p>
+                <span class="btn">Start Business Assessment →</span>
+            </a>
+            <a href="ai-maturity-assessment.html" class="survey-card">
+                <span class="icon">⚙️</span>
+                <h3>Technical Assessment</h3>
+                <span class="duration">⏱️ 20 minutes</span>
+                <p>In-depth technical readiness, infrastructure, and AI development capabilities.</p>
+                <p class="target">✅ Recommended for: Developers, Data Scientists, IT/DevOps, Technical Architects</p>
+                <span class="btn">Start Technical Assessment →</span>
+            </a>
+            <a href="ai-maturity-assessment.html" class="survey-card">
+                <span class="icon">👔</span>
+                <h3>Executive Assessment</h3>
+                <span class="duration">⏱️ 15 minutes</span>
+                <p>Strategic view on AI vision, governance, investment, and organizational readiness.</p>
+                <p class="target">✅ Recommended for: C-Suite, VPs, Senior Directors, Board Members</p>
+                <span class="btn">Start Executive Assessment →</span>
+            </a>
+        </div>
+        <div class="deployment-guide">
+            <h2>📧 How to Deploy Organization-Wide</h2>
+            <h3>Option 1: Tiered Approach (Recommended)</h3>
+            <ol>
+                <li><strong>Week 1:</strong> Send Quick Pulse Survey to ALL employees via company-wide email</li>
+                <li><strong>Week 2:</strong> Based on pulse results, send targeted detailed assessments</li>
+                <li><strong>Week 3:</strong> Analyze results and share organization-wide findings</li>
+            </ol>
+            <div class="example">
+                <strong>📧 Sample Email - Week 1 (All Employees):</strong><br><br>
+                <em>Subject: 5-Minute AI Survey - Help Shape Our AI Future</em><br><br>
+                Hi team,<br><br>
+                We're assessing our organization's AI readiness to plan training and initiatives. Please take 5 minutes to complete this anonymous survey:<br><br>
+                <strong>🔗 [Survey Link]</strong><br><br>
+                Your honest feedback will help us build AI capabilities that support YOUR role.<br><br>
+                Deadline: [Date]<br>
+                Questions? Contact [AI Initiative Lead]
+            </div>
+            <h3>📊 Tracking & Analysis</h3>
+            <ul>
+                <li>Each survey saves responses to localStorage (client-side)</li>
+                <li>For production: Integrate with survey platform (TypeForm, SurveyMonkey, Microsoft Forms)</li>
+                <li>Export results to Excel/Power BI for analysis</li>
+            </ul>
+        </div>
+        <div class="back-link">
+            <a href="index.html">← Back to All Calculators</a>
+        </div>
+    </div>
+</body>
+</html>
