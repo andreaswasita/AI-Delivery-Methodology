@@ -167,41 +167,49 @@ Goal: Job-specific AI skills for daily productivity
    └─ For: Executives, Directors, Senior Managers
    └─ Focus: Strategy, ROI, governance, change leadership
    └─ Tools: M365 Copilot, Copilot Studio, Power BI
+   └─ **[Microsoft Learn: Business Leader Role](https://learn.microsoft.com/en-us/training/browse/?roles=business-leader)**
 
 2. Product & Design Track (50 hours)
    └─ For: Product Managers, UX Designers, Business Analysts
    └─ Focus: AI-enhanced workflows, requirements, user research
    └─ Tools: M365 Copilot, Copilot Studio, Figma AI
+   └─ **[Microsoft Learn: Business Analyst Role](https://learn.microsoft.com/en-us/training/browse/?roles=business-analyst)**
 
 3. Engineering Track (60 hours)
    └─ For: Software Developers, Engineers
    └─ Focus: Code generation, testing, debugging with AI
    └─ Tools: GitHub Copilot, Azure OpenAI, Azure AI Services
+   └─ **[Microsoft Learn: Developer Role](https://learn.microsoft.com/en-us/training/browse/?roles=developer&products=azure)**
 
 4. Data Science Track (60 hours)
    └─ For: Data Scientists, ML Engineers, Data Analysts
    └─ Focus: MLOps, model development, AI/ML platforms
    └─ Tools: Azure ML, Azure AI Studio, Python/R with AI assistants
+   └─ **[Microsoft Learn: Data Scientist Role](https://learn.microsoft.com/en-us/training/browse/?roles=data-scientist&products=azure)**
 
 5. Marketing & Sales Track (45 hours)
    └─ For: Marketing, Sales, Customer Success teams
    └─ Focus: Content creation, customer insights, personalization
    └─ Tools: M365 Copilot, Dynamics 365 Copilot, marketing AI tools
+   └─ **[Microsoft Learn: Business User Role](https://learn.microsoft.com/en-us/training/browse/?roles=business-user&products=microsoft-copilot)**
 
 6. Operations & Finance Track (40 hours)
    └─ For: Operations, Finance, HR professionals
    └─ Focus: Process automation, analytics, decision support
    └─ Tools: M365 Copilot, Power Automate, Power BI
+   └─ **[Microsoft Learn: Functional Consultant Role](https://learn.microsoft.com/en-us/training/browse/?roles=functional-consultant&products=microsoft-power-platform)**
 
 7. Customer Support Track (50 hours)
    └─ For: Support agents, customer service teams
    └─ Focus: Copilot for Service, knowledge management, automation
    └─ Tools: Dynamics 365 Copilot, Copilot Studio, knowledge bases
+   └─ **[Microsoft Learn: Service Adoption Specialist Role](https://learn.microsoft.com/en-us/training/browse/?roles=service-adoption-specialist)**
 
 8. IT & Admin Track (55 hours)
    └─ For: IT admins, security, infrastructure teams
    └─ Focus: AI platform management, security, governance
    └─ Tools: Azure Admin, M365 Admin, security tools
+   └─ **[Microsoft Learn: Administrator Role](https://learn.microsoft.com/en-us/training/browse/?roles=administrator&products=azure)**
 
 Delivery: Blended (60% self-paced, 30% live sessions, 10% projects)
 Assessment: Project-based + skills assessment
@@ -223,6 +231,7 @@ Goal: Deep expertise in AI development and architecture
       RAG systems, vector databases, multi-agent systems, cost optimization
    └─ Capstone: Design enterprise AI architecture for business case
    └─ Certification: Aligns with Microsoft AZ-305 + AI-102
+   └─ **[Microsoft Learn: Solution Architect Role](https://learn.microsoft.com/en-us/training/browse/?roles=solution-architect&products=azure)**
 
 2. AI Engineer / Developer (140 hours)
    └─ Prerequisites: Programming proficiency, cloud basics
@@ -231,6 +240,7 @@ Goal: Deep expertise in AI development and architecture
       AI application development, testing & monitoring
    └─ Capstone: Build production-ready AI application
    └─ Certification: Aligns with Microsoft AI-102
+   └─ **[Microsoft Learn: AI Engineer Role](https://learn.microsoft.com/en-us/training/browse/?roles=ai-engineer&products=azure)**
 
 3. MLOps Engineer (160 hours)
    └─ Prerequisites: ML basics, DevOps experience
@@ -239,6 +249,7 @@ Goal: Deep expertise in AI development and architecture
       AutoML, responsible AI practices
    └─ Capstone: Implement end-to-end MLOps pipeline
    └─ Certification: Aligns with Microsoft DP-100
+   └─ **[Microsoft Learn: DevOps Engineer Role](https://learn.microsoft.com/en-us/training/browse/?roles=devops-engineer&products=azure)**
 
 4. Data Engineer for AI (150 hours)
    └─ Prerequisites: Data engineering fundamentals
@@ -247,6 +258,7 @@ Goal: Deep expertise in AI development and architecture
       real-time data processing, data governance
    └─ Capstone: Build AI-ready data platform
    └─ Certification: Aligns with Microsoft DP-203 + AI components
+   └─ **[Microsoft Learn: Data Engineer Role](https://learn.microsoft.com/en-us/training/browse/?roles=data-engineer&products=azure)**
 
 5. AI Governance & Ethics Specialist (120 hours)
    └─ Prerequisites: AI literacy, governance/compliance background
