@@ -14,6 +14,7 @@ This guide explains how to edit `phases.json` to update the AI Delivery Methodol
 4. Save the file
 
 **Example - changing duration:**
+
 ```json
 "duration": "3-5 weeks"
 ```
@@ -25,6 +26,7 @@ This guide explains how to edit `phases.json` to update the AI Delivery Methodol
 3. Put a comma after the previous item
 
 **Example:**
+
 ```json
 "objectives": [
     "Existing objective",
