@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Maturity Pulse Survey - 5 Minutes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .header .time {
+            font-size: 1.1em;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .intro-box h2 {
+            color: #4c1d95;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .intro-box p {
+            color: #5b21b6;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .intro-box ul {
+            margin-left: 20px;
+            color: #5b21b6;
+            line-height: 1.8;
+        }
+
+        .question-card {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+
+        .helper-text {
+            font-size: 0.9em;
+            color: #6b7280;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .option:hover {
+            background: #f3f4f6;
+            border-color: #667eea;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            color: #374151;
+            font-size: 1em;
+        }
+
+        .demographics {
+            background: #fffbeb;
+            border: 2px solid #fbbf24;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .demographics h3 {
+            color: #92400e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-group select,
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.2s;
+        }
+
+        .form-group select:focus,
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-box {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .results-box.show {
+            display: block;
+        }
+
+        .results-box h2 {
+            color: #065f46;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .results-box p {
+            color: #047857;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .next-step-btn {
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: 2px solid #667eea;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+        }
+
+        .progress-indicator {
+            margin-bottom: 30px;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .progress-bar-container {
+            background: #e5e7eb;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .next-steps {
+                flex-direction: column;
+            }
+
+            .next-step-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 AI Maturity Pulse Survey</h1>
+            <div class="time">
+                <span>⏱️</span>
+                <span>5 minutes • All employees • Anonymous</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <h2>Welcome! Help us understand our AI journey</h2>
+                <p><strong>Purpose:</strong> This quick survey helps us understand how AI is currently used across our organization and identify opportunities for growth.</p>
+                <p><strong>What happens next:</strong></p>
+                <ul>
+                    <li>Complete these 5 questions (takes ~5 minutes)</li>
+                    <li>Based on your role, you may receive a follow-up detailed assessment</li>
+                    <li>Your responses are <strong>anonymous</strong> and will only be viewed in aggregate</li>
+                    <li>Results will be shared with all employees within 2 weeks</li>
+                </ul>
+            </div>
+
+            <form id="pulseForm">
+                <!-- Progress Indicator -->
+                <div class="progress-indicator">
+                    <div class="progress-text">Progress: <span id="progressPercent">0%</span> (<span id="progressCount">0</span>/8 answered)</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                </div>
+
+                <!-- Question 1: AI Awareness -->
+                <div class="question-card">
+                    <div class="question-number">1</div>
+                    <div class="question-text">How aware are you of AI and its potential business applications?</div>
+                    <div class="helper-text">Be honest - this helps us design appropriate training programs</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q1_1" name="q1" value="1" required>
+                            <label for="q1_1"><strong>No awareness</strong> - I don't understand what AI is or how it's used</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_2" name="q1" value="2">
+                            <label for="q1_2"><strong>Basic awareness</strong> - I've heard of AI but don't know much about it</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_3" name="q1" value="3">
+                            <label for="q1_3"><strong>Moderate awareness</strong> - I understand AI basics and some use cases</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_4" name="q1" value="4">
+                            <label for="q1_4"><strong>Good awareness</strong> - I understand AI well and follow industry trends</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1_5" name="q1" value="5">
+                            <label for="q1_5"><strong>Expert awareness</strong> - I deeply understand AI technology and its applications</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2: Current AI Usage -->
+                <div class="question-card">
+                    <div class="question-number">2</div>
+                    <div class="question-text">Do you currently use AI tools or AI-powered features in your daily work?</div>
+                    <div class="helper-text">Examples: ChatGPT, Copilot, automated reporting, predictive analytics, chatbots</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q2_1" name="q2" value="no" required>
+                            <label for="q2_1"><strong>No</strong> - I don't use any AI tools</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_2" name="q2" value="unsure">
+                            <label for="q2_2"><strong>Unsure</strong> - I might be using AI but don't know for sure</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_3" name="q2" value="occasionally">
+                            <label for="q2_3"><strong>Occasionally</strong> - I use AI tools once or twice per month</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_4" name="q2" value="regularly">
+                            <label for="q2_4"><strong>Regularly</strong> - I use AI tools weekly</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2_5" name="q2" value="daily">
+                            <label for="q2_5"><strong>Daily</strong> - AI tools are essential to my daily work</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3: AI Confidence -->
+                <div class="question-card">
+                    <div class="question-number">3</div>
+                    <div class="question-text">How confident are you in working with AI tools or AI-enhanced processes?</div>
+                    <div class="helper-text">Think about your comfort level if asked to use AI in your role tomorrow</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q3_1" name="q3" value="1" required>
+                            <label for="q3_1"><strong>Not confident at all</strong> - I would need extensive training and support</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_2" name="q3" value="2">
+                            <label for="q3_2"><strong>Slightly confident</strong> - I could try with significant guidance</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_3" name="q3" value="3">
+                            <label for="q3_3"><strong>Moderately confident</strong> - I could learn with some training</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_4" name="q3" value="4">
+                            <label for="q3_4"><strong>Very confident</strong> - I'm comfortable learning new AI tools independently</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3_5" name="q3" value="5">
+                            <label for="q3_5"><strong>Extremely confident</strong> - I can learn and teach others about AI tools</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4: AI Training Interest -->
+                <div class="question-card">
+                    <div class="question-number">4</div>
+                    <div class="question-text">Would you be interested in AI training or learning opportunities?</div>
+                    <div class="helper-text">This helps us plan training programs tailored to different roles</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q4_1" name="q4" value="not-interested" required>
+                            <label for="q4_1"><strong>Not interested</strong> - AI is not relevant to my role</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_2" name="q4" value="maybe">
+                            <label for="q4_2"><strong>Maybe</strong> - Depends on the time commitment and relevance</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_3" name="q4" value="interested">
+                            <label for="q4_3"><strong>Yes, interested</strong> - I'd like to learn AI basics</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_4" name="q4" value="very-interested">
+                            <label for="q4_4"><strong>Very interested</strong> - I want hands-on training with AI tools</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4_5" name="q4" value="advanced">
+                            <label for="q4_5"><strong>Need advanced training</strong> - I want to develop/build AI solutions</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 5: AI Impact on Role -->
+                <div class="question-card">
+                    <div class="question-number">5</div>
+                    <div class="question-text">How do you think AI will impact your role in the next 2-3 years?</div>
+                    <div class="helper-text">Your honest perspective helps us plan for change management</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q5_1" name="q5" value="no-impact" required>
+                            <label for="q5_1"><strong>No impact</strong> - AI won't affect my role</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_2" name="q5" value="minor">
+                            <label for="q5_2"><strong>Minor impact</strong> - AI might help with small tasks</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_3" name="q5" value="moderate">
+                            <label for="q5_3"><strong>Moderate impact</strong> - AI will help me work more efficiently</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_4" name="q5" value="significant">
+                            <label for="q5_4"><strong>Significant impact</strong> - AI will transform how I work</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5_5" name="q5" value="transformative">
+                            <label for="q5_5"><strong>Transformative</strong> - My role will fundamentally change with AI</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demographics Section -->
+                <div class="demographics">
+                    <h3>📊 About You (helps us analyze patterns)</h3>
+                    
+                    <div class="form-group">
+                        <label for="department">Department / Business Unit *</label>
+                        <select id="department" name="department" required>
+                            <option value="">Select your department</option>
+                            <option value="executive">Executive / C-Suite</option>
+                            <option value="finance">Finance</option>
+                            <option value="hr">Human Resources</option>
+                            <option value="it">IT / Technology</option>
+                            <option value="operations">Operations</option>
+                            <option value="sales">Sales</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="customer-service">Customer Service</option>
+                            <option value="product">Product Management</option>
+                            <option value="data">Data & Analytics</option>
+                            <option value="legal">Legal / Compliance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Your Role Type *</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select your role type</option>
+                            <option value="executive">Executive Leadership (C-level, VP)</option>
+                            <option value="senior-manager">Senior Manager / Director</option>
+                            <option value="manager">Manager / Team Lead</option>
+                            <option value="technical">Technical / Developer / Engineer</option>
+                            <option value="data-science">Data Scientist / Data Engineer</option>
+                            <option value="business-analyst">Business Analyst</option>
+                            <option value="specialist">Individual Contributor / Specialist</option>
+                            <option value="support">Support / Administrative</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tenure">Years at Company *</label>
+                        <select id="tenure" name="tenure" required>
+                            <option value="">Select tenure</option>
+                            <option value="0-1">Less than 1 year</option>
+                            <option value="1-3">1-3 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="5-10">5-10 years</option>
+                            <option value="10+">10+ years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Survey & See Next Steps →
+                </button>
+            </form>
+
+            <!-- Results Section (Hidden initially) -->
+            <div class="results-box" id="resultsBox">
+                <h2>✅ Thank You for Your Feedback!</h2>
+                <p id="resultsMessage"></p>
+                
+                <div class="next-steps">
+                    <a href="ai-maturity-business-user.html" class="next-step-btn btn-primary" id="detailedAssessmentBtn" style="display: none;">
+                        📊 Take Detailed Assessment
+                    </a>
+                    <a href="index.html" class="next-step-btn btn-secondary">
+                        🏠 Back to Calculators
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking
+        function updateProgress() {
+            const totalQuestions = 8; // 5 questions + 3 demographics
+            const form = document.getElementById('pulseForm');
+            let answeredCount = 0;
+
+            // Count answered questions
+            for (let i = 1; i <= 5; i++) {
+                if (form.querySelector(`input[name="q${i}"]:checked`)) {
+                    answeredCount++;
+                }
+            }
+
+            // Count demographics
+            if (document.getElementById('department').value) answeredCount++;
+            if (document.getElementById('role').value) answeredCount++;
+            if (document.getElementById('tenure').value) answeredCount++;
+
+            const progress = (answeredCount / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+            document.getElementById('progressCount').textContent = answeredCount;
+
+            // Enable submit button when all required fields are filled
+            const submitBtn = document.getElementById('submitBtn');
+            if (answeredCount === totalQuestions) {
+                submitBtn.disabled = false;
+            } else {
+                submitBtn.disabled = true;
+            }
+        }
+
+        // Add event listeners
+        document.querySelectorAll('input[type="radio"], select').forEach(element => {
+            element.addEventListener('change', updateProgress);
+        });
+
+        // Form submission
+        document.getElementById('pulseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect responses
+            const responses = {
+                awareness: document.querySelector('input[name="q1"]:checked').value,
+                currentUsage: document.querySelector('input[name="q2"]:checked').value,
+                confidence: document.querySelector('input[name="q3"]:checked').value,
+                trainingInterest: document.querySelector('input[name="q4"]:checked').value,
+                roleImpact: document.querySelector('input[name="q5"]:checked').value,
+                department: document.getElementById('department').value,
+                role: document.getElementById('role').value,
+                tenure: document.getElementById('tenure').value
+            };
+
+            // Calculate engagement score
+            const awarenessScore = parseInt(responses.awareness);
+            const confidenceScore = parseInt(responses.confidence);
+            const avgScore = (awarenessScore + confidenceScore) / 2;
+
+            // Determine if detailed assessment is recommended
+            const roleType = responses.role;
+            const needsDetailedAssessment = 
+                roleType === 'executive' || 
+                roleType === 'senior-manager' || 
+                roleType === 'technical' || 
+                roleType === 'data-science' ||
+                avgScore >= 3;
+
+            // Store in localStorage (in production, send to backend)
+            localStorage.setItem('pulseResponse', JSON.stringify(responses));
+            localStorage.setItem('pulseCompletedDate', new Date().toISOString());
+
+            // Hide form, show results
+            document.getElementById('pulseForm').style.display = 'none';
+            const resultsBox = document.getElementById('resultsBox');
+            const resultsMessage = document.getElementById('resultsMessage');
+            const detailedBtn = document.getElementById('detailedAssessmentBtn');
+
+            if (needsDetailedAssessment) {
+                resultsMessage.innerHTML = `
+                    <strong>Based on your role and responses, we'd like to learn more!</strong><br><br>
+                    You've been selected for a detailed AI maturity assessment (15 minutes).<br>
+                    This will help us create targeted AI initiatives for ${responses.department} teams.<br><br>
+                    <em>Optional but highly valuable - your insights will shape our AI strategy.</em>
+                `;
+                detailedBtn.style.display = 'inline-block';
+            } else {
+                resultsMessage.innerHTML = `
+                    <strong>Your feedback has been recorded!</strong><br><br>
+                    We'll analyze all responses and share organizational insights within 2 weeks.<br>
+                    Look out for AI training opportunities tailored to your role.<br><br>
+                    <em>Thank you for helping us build our AI future together!</em>
+                `;
+            }
+
+            resultsBox.classList.add('show');
+            resultsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // In production, send data to backend
+            console.log('Survey Response:', responses);
+            console.log('Needs detailed assessment:', needsDetailedAssessment);
+        });
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>
