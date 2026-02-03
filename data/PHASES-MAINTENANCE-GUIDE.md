@@ -7,41 +7,42 @@ This guide explains how to edit `phases.json` to update the AI Delivery Methodol
 ## 🔧 How to Edit phases.json
 
 ### Step 1: Open the File
+
 Open `data/phases.json` in any text editor (VS Code recommended for syntax highlighting).
 
 ### Step 2: Find the Phase to Edit
+
 Each phase is a block that looks like this:
 
 ```json
 {
-    "number": 0,
-    "name": "Presales & Discovery",
-    "duration": "2-4 weeks",
-    "team": "2-4 people",
-    "description": "Initial assessment and opportunity...",
-    "objectives": [
-        "Understand business needs",
-        "Assess AI readiness"
-    ],
-    "deliverables": [
-        "Opportunity Qualification Report",
-        "Business Requirements Document"
-    ],
-    "resources": {
-        "checklist": "markdown-viewer.html?file=checklists/00-presales-discovery-checklist.md",
-        "guide": "markdown-viewer.html?file=guides/phases/00-presales-discovery-activities.md"
-    }
+  "number": 0,
+  "name": "Presales & Discovery",
+  "duration": "2-4 weeks",
+  "team": "2-4 people",
+  "description": "Initial assessment and opportunity...",
+  "objectives": ["Understand business needs", "Assess AI readiness"],
+  "deliverables": [
+    "Opportunity Qualification Report",
+    "Business Requirements Document"
+  ],
+  "resources": {
+    "checklist": "markdown-viewer.html?file=checklists/00-presales-discovery-checklist.md",
+    "guide": "markdown-viewer.html?file=guides/phases/00-presales-discovery-activities.md"
+  }
 }
 ```
 
 ### Step 3: Make Your Changes
 
 **To change text:** Simply update the value in quotes.
+
 ```json
 "duration": "3-5 weeks"   // Changed from "2-4 weeks"
 ```
 
 **To add an objective:** Add a new line in the objectives array.
+
 ```json
 "objectives": [
     "Understand business needs",
@@ -51,6 +52,7 @@ Each phase is a block that looks like this:
 ```
 
 **To add a resource link:**
+
 ```json
 "resources": {
     "checklist": "...",
@@ -60,6 +62,7 @@ Each phase is a block that looks like this:
 ```
 
 ### Step 4: Validate Your JSON
+
 Before saving, validate your JSON to catch syntax errors:
 
 1. **VS Code:** Install the "JSON" extension - it will show red underlines for errors
@@ -67,6 +70,7 @@ Before saving, validate your JSON to catch syntax errors:
 3. **Command line:** `python -m json.tool data/phases.json`
 
 ### Step 5: Test Locally
+
 ```bash
 # From the repository root
 python -m http.server 8000
@@ -79,7 +83,9 @@ python -m http.server 8000
 ## ⚠️ Common Mistakes to Avoid
 
 ### 1. Missing Commas
+
 **Wrong:**
+
 ```json
 {
     "name": "Build Phase"
@@ -88,36 +94,42 @@ python -m http.server 8000
 ```
 
 **Correct:**
+
 ```json
 {
-    "name": "Build Phase",
-    "duration": "8-16 weeks"
+  "name": "Build Phase",
+  "duration": "8-16 weeks"
 }
 ```
 
 ### 2. Trailing Commas
+
 **Wrong:**
+
 ```json
 {
-    "objectives": [
-        "First objective",
-        "Second objective",   // ← Extra comma on last item
-    ]
+  "objectives": [
+    "First objective",
+    "Second objective" // ← Extra comma on last item
+  ]
 }
 ```
 
 **Correct:**
+
 ```json
 {
-    "objectives": [
-        "First objective",
-        "Second objective"    // ← No comma on last item
-    ]
+  "objectives": [
+    "First objective",
+    "Second objective" // ← No comma on last item
+  ]
 }
 ```
 
 ### 3. Unescaped Quotes
+
 **Wrong:**
+
 ```json
 {
     "description": "Use the "Five Whys" technique"
@@ -125,21 +137,25 @@ python -m http.server 8000
 ```
 
 **Correct:**
+
 ```json
 {
-    "description": "Use the \"Five Whys\" technique"
+  "description": "Use the \"Five Whys\" technique"
 }
 ```
 
 ### 4. Wrong File Paths
+
 All resource paths are **relative to the repository root**, not to the data folder.
 
 **Wrong:**
+
 ```json
 "checklist": "../checklists/00-presales-discovery-checklist.md"
 ```
 
 **Correct:**
+
 ```json
 "checklist": "markdown-viewer.html?file=checklists/00-presales-discovery-checklist.md"
 ```
@@ -148,34 +164,35 @@ All resource paths are **relative to the repository root**, not to the data fold
 
 ## 📋 Phase Structure Reference
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `number` | Integer | ✅ | Phase number (0-8) |
-| `name` | String | ✅ | Display name |
-| `duration` | String | ✅ | Typical duration (e.g., "2-4 weeks") |
-| `team` | String | ✅ | Team size (e.g., "4-6 people") |
-| `description` | String | ✅ | One paragraph description |
-| `objectives` | Array of Strings | ✅ | Key objectives (bullet points) |
-| `deliverables` | Array of Strings | ✅ | Expected deliverables (bullet points) |
-| `resources` | Object | ✅ | Links to resources (see below) |
+| Field          | Type             | Required | Description                           |
+| -------------- | ---------------- | -------- | ------------------------------------- |
+| `number`       | Integer          | ✅       | Phase number (0-8)                    |
+| `name`         | String           | ✅       | Display name                          |
+| `duration`     | String           | ✅       | Typical duration (e.g., "2-4 weeks")  |
+| `team`         | String           | ✅       | Team size (e.g., "4-6 people")        |
+| `description`  | String           | ✅       | One paragraph description             |
+| `objectives`   | Array of Strings | ✅       | Key objectives (bullet points)        |
+| `deliverables` | Array of Strings | ✅       | Expected deliverables (bullet points) |
+| `resources`    | Object           | ✅       | Links to resources (see below)        |
 
 ### Resource Keys
-| Key | Icon | Button Style |
-|-----|------|--------------|
-| `checklist` | ✅ | Primary (blue) |
-| `guide` | 📖 | Secondary |
-| `workshop` | 🎯 | Secondary |
-| `template` | 📝 | Secondary |
-| `templates` | 📝 | Secondary |
-| `calculator` | 🧮 | Secondary |
-| `assessment` | 🎯 | Secondary |
-| `deploy` | 🚀 | Green |
-| `mlops` | 🔄 | Secondary |
-| `coe` | 🏢 | Secondary |
-| `day1ops` | 🚀 | Secondary |
-| `hypercare` | 🏥 | Secondary |
-| `valuetracker` | 📊 | Secondary |
-| `riskguide` | ⚠️ | Secondary |
+
+| Key            | Icon | Button Style   |
+| -------------- | ---- | -------------- |
+| `checklist`    | ✅   | Primary (blue) |
+| `guide`        | 📖   | Secondary      |
+| `workshop`     | 🎯   | Secondary      |
+| `template`     | 📝   | Secondary      |
+| `templates`    | 📝   | Secondary      |
+| `calculator`   | 🧮   | Secondary      |
+| `assessment`   | 🎯   | Secondary      |
+| `deploy`       | 🚀   | Green          |
+| `mlops`        | 🔄   | Secondary      |
+| `coe`          | 🏢   | Secondary      |
+| `day1ops`      | 🚀   | Secondary      |
+| `hypercare`    | 🏥   | Secondary      |
+| `valuetracker` | 📊   | Secondary      |
+| `riskguide`    | ⚠️   | Secondary      |
 
 ---
 
@@ -188,6 +205,7 @@ All resource paths are **relative to the repository root**, not to the data fold
 5. Don't forget the comma after the previous phase's closing `}`
 
 **Example:**
+
 ```json
     },     // ← Comma after previous phase
     {
