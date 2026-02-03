@@ -49,8 +49,9 @@ async function loadPhases() {
 /**
  * Switch between tabs (Overview, Phases, Tools, etc.)
  * @param {string} tabName - The ID of the tab to show
+ * @param {Event} event - The click event (optional, for updating active state)
  */
-function showTab(tabName) {
+function showTab(tabName, event) {
     // Hide all tabs
     const tabs = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => tab.classList.remove('active'));
@@ -60,8 +61,19 @@ function showTab(tabName) {
 
     // Update nav tabs
     const navTabs = document.querySelectorAll('.nav-tab');
-    navTabs.forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
+    navTabs.forEach(tab => {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
+    });
+    
+    // Handle both event parameter and inline onclick
+    if (event && event.target) {
+        event.target.classList.add('active');
+        event.target.setAttribute('aria-selected', 'true');
+    } else if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+        event.currentTarget.setAttribute('aria-selected', 'true');
+    }
 
     // If phases tab, show first phase by default
     if (tabName === 'phases' && phases.length > 0) {
