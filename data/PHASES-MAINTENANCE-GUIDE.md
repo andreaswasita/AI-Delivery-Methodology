@@ -4,7 +4,39 @@ This guide explains how to edit `phases.json` to update the AI Delivery Methodol
 
 ---
 
-## 🔧 How to Edit phases.json
+## ⚡ Quick Start (Most Common Edits)
+
+**To change phase text (duration, description, etc.):**
+
+1. Open `data/phases.json` in any text editor
+2. Find the phase by searching for its name (e.g., "Mobilisation")
+3. Change the text inside the quotes
+4. Save the file
+
+**Example - changing duration:**
+```json
+"duration": "3-5 weeks"
+```
+
+**To add a bullet point (objective or deliverable):**
+
+1. Find the `"objectives"` or `"deliverables"` section
+2. Add your new item in quotes
+3. Put a comma after the previous item
+
+**Example:**
+```json
+"objectives": [
+    "Existing objective",
+    "New objective here"
+]
+```
+
+**That's it!** For more details, see below.
+
+---
+
+## 🔧 How to Edit phases.json (Detailed)
 
 ### Step 1: Open the File
 
