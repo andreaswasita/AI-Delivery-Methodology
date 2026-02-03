@@ -1,0 +1,819 @@
+{
+  "original": {
+    "url": "https://andreaswasita.github.io/AI-Delivery-Methodology/methodology-navigator.html",
+    "tabs": [
+      {
+        "text": "\ud83c\udfe0 Overview",
+        "onclick": "showTab('overview')"
+      },
+      {
+        "text": "\ud83d\udcca Phases",
+        "onclick": "showTab('phases')"
+      },
+      {
+        "text": "\ud83d\udee0\ufe0f Tools",
+        "onclick": "showTab('tools')"
+      },
+      {
+        "text": "\u2b50 Success Stories",
+        "onclick": "showTab('success-stories')"
+      },
+      {
+        "text": "\ud83d\udcda Resources",
+        "onclick": "showTab('resources')"
+      },
+      {
+        "text": "\ud83c\udfa5 Videos",
+        "onclick": "showTab('videos')"
+      }
+    ],
+    "links": [
+      {
+        "text": "\ud83d\udcd6 Read Full Documentation",
+        "href": "README.md",
+        "target": "_self"
+      },
+      {
+        "text": "\ud83c\udfaf Assess AI Maturity",
+        "href": "calculators/ai-maturity-assessment.html",
+        "target": "_self"
+      },
+      {
+        "text": "\ud83d\udca1 Plan Workshop",
+        "href": "guides/01-business-envisioning-workshop-guide.md",
+        "target": "_self"
+      },
+      {
+        "text": "ROI Calculator",
+        "href": "calculators/roi-calculator.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Azure Cost Estimator",
+        "href": "calculators/azure-cost-estimator.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Effort Estimator",
+        "href": "calculators/effort-estimator.html",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Maturity Assessment",
+        "href": "calculators/ai-maturity-assessment.html",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Academy Framework",
+        "href": "calculators/ai-academy-framework.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Team Sizing Calculator",
+        "href": "calculators/team-sizer.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Value Analysis Chatbot",
+        "href": "calculators/value-analysis-chatbot.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Presales Discovery",
+        "href": "markdown-viewer.html?file=checklists/00-presales-discovery-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Mobilisation",
+        "href": "markdown-viewer.html?file=checklists/01-mobilisation-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Build Phase",
+        "href": "markdown-viewer.html?file=checklists/04-build-phase-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Deployment",
+        "href": "markdown-viewer.html?file=checklists/07-prepare-deploy-phase-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Use Case Business Change \u2b50 NEW",
+        "href": "markdown-viewer.html?file=checklists/use-case-business-change-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "\ud83d\udce5 Download Excel Version",
+        "href": "checklists/Use-Case-Business-Change-Checklist.xlsx",
+        "target": "_blank"
+      },
+      {
+        "text": "Business Case Template",
+        "href": "markdown-viewer.html?file=templates/02-business-case.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Use Case Template",
+        "href": "markdown-viewer.html?file=templates/14-business-envisioning-use-case-template.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Benefits Dependency Network \u2b50",
+        "href": "markdown-viewer.html?file=templates/15-benefits-dependency-network.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Process Change Analysis \u2b50",
+        "href": "markdown-viewer.html?file=templates/16-business-process-change-analysis.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Plan & Roadmap",
+        "href": "markdown-viewer.html?file=templates/04-project-plan-roadmap.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Risk Register",
+        "href": "markdown-viewer.html?file=templates/05-risk-register.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Read Full Case Study",
+        "href": "markdown-viewer.html?file=success-stories/case-study-healthcare-ai.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Read Full Case Study",
+        "href": "markdown-viewer.html?file=success-stories/case-study-financial-fraud-detection.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Learn the Method",
+        "href": "markdown-viewer.html?file=success-stories/five-whys-analysis-impact.md",
+        "target": "_blank"
+      },
+      {
+        "text": "View All Stories",
+        "href": "markdown-viewer.html?file=success-stories/README.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Business Envisioning Workshop",
+        "href": "guides/01-business-envisioning-workshop-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Maturity Assessment",
+        "href": "guides/99-ai-maturity-assessment-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Center of Excellence",
+        "href": "guides/91-ai-center-of-excellence-framework.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Academy Framework",
+        "href": "markdown-viewer.html?file=guides/92-ai-academy-framework.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Video Tutorial Creation",
+        "href": "guides/video-tutorial-creation-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Engagement Modes",
+        "href": "guides/92-engagement-modes-framework.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Story Points Estimation",
+        "href": "guides/94-story-points-estimation-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Scaling Patterns",
+        "href": "guides/95-ai-scaling-patterns-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Model Risk Management",
+        "href": "guides/96-ai-model-risk-management-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Executive Coaching Guide",
+        "href": "guides/90-executive-coaching-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "3-Month Fast Track",
+        "href": "guides/93-3-month-fast-track-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Executive Presentations",
+        "href": "presentations/",
+        "target": "_blank"
+      },
+      {
+        "text": "Agents Overview",
+        "href": "agents/README.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Value Analysis Agent",
+        "href": "agents/value_analysis_agent.py",
+        "target": "_blank"
+      },
+      {
+        "text": "Methodology Phases",
+        "href": "agents/methodology_phases.py",
+        "target": "_blank"
+      },
+      {
+        "text": "\ud83d\udcd6 View Video Creation Guide",
+        "href": "guides/video-tutorial-creation-guide.md",
+        "target": "_self"
+      },
+      {
+        "text": "Full Documentation",
+        "href": "README.md",
+        "target": "_self"
+      },
+      {
+        "text": "GitHub Repository",
+        "href": "https://github.com/andreaswasita/AI-Delivery-Methodology",
+        "target": "_self"
+      }
+    ],
+    "buttons": [],
+    "phases": [
+      {
+        "label": "Presales",
+        "number": "0",
+        "onclick": "showPhaseDetails(0)"
+      },
+      {
+        "label": "Envisioning",
+        "number": "1",
+        "onclick": "showPhaseDetails(1)"
+      },
+      {
+        "label": "Hackathons",
+        "number": "2",
+        "onclick": "showPhaseDetails(2)"
+      },
+      {
+        "label": "Platform",
+        "number": "3",
+        "onclick": "showPhaseDetails(3)"
+      },
+      {
+        "label": "Build",
+        "number": "4",
+        "onclick": "showPhaseDetails(4)"
+      },
+      {
+        "label": "Integrate",
+        "number": "5",
+        "onclick": "showPhaseDetails(5)"
+      },
+      {
+        "label": "Deploy",
+        "number": "6",
+        "onclick": "showPhaseDetails(6)"
+      },
+      {
+        "label": "Operate",
+        "number": "7",
+        "onclick": "showPhaseDetails(7)"
+      }
+    ],
+    "onclick_handlers": [
+      {
+        "tag": "button",
+        "onclick": "showTab('overview')",
+        "text": "\ud83c\udfe0 Overview"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('phases')",
+        "text": "\ud83d\udcca Phases"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('tools')",
+        "text": "\ud83d\udee0\ufe0f Tools"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('success-stories')",
+        "text": "\u2b50 Success Stories"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('resources')",
+        "text": "\ud83d\udcda Resources"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('videos')",
+        "text": "\ud83c\udfa5 Videos"
+      },
+      {
+        "tag": "div",
+        "onclick": "showTab('phases')",
+        "text": "\ud83d\udcca8 Delivery PhasesStructured a"
+      },
+      {
+        "tag": "div",
+        "onclick": "window.open('calculators/roi-calculator.html', '_blank')",
+        "text": "\ud83d\udcb0ROI CalculatorsQuantify value"
+      },
+      {
+        "tag": "div",
+        "onclick": "showTab('success-stories')",
+        "text": "\u2b50Success StoriesReal case stud"
+      },
+      {
+        "tag": "div",
+        "onclick": "showTab('tools')",
+        "text": "\ud83d\udee0\ufe0fTools & TemplatesReady-to-us"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(0)",
+        "text": "0Presales"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(1)",
+        "text": "1Envisioning"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(2)",
+        "text": "2Hackathons"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(3)",
+        "text": "3Platform"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(4)",
+        "text": "4Build"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(5)",
+        "text": "5Integrate"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(6)",
+        "text": "6Deploy"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(7)",
+        "text": "7Operate"
+      }
+    ]
+  },
+  "fork": {
+    "url": "http://localhost:8000/methodology-navigator.html",
+    "tabs": [
+      {
+        "text": "\u00f0\u009f\u008f\u00a0 Overview",
+        "onclick": "showTab('overview', event)"
+      },
+      {
+        "text": "\u00f0\u009f\u0093\u008a Phases",
+        "onclick": "showTab('phases', event)"
+      },
+      {
+        "text": "\u00f0\u009f\u009b\u00a0\u00ef\u00b8\u008f Tools",
+        "onclick": "showTab('tools', event)"
+      },
+      {
+        "text": "\u00e2\u00ad\u0090 Success Stories",
+        "onclick": "showTab('success-stories', event)"
+      },
+      {
+        "text": "\u00f0\u009f\u0093\u009a Resources",
+        "onclick": "showTab('resources', event)"
+      },
+      {
+        "text": "\u00f0\u009f\u008e\u00a5 Videos",
+        "onclick": "showTab('videos', event)"
+      }
+    ],
+    "links": [
+      {
+        "text": "\u00f0\u009f\u0093\u0096 Read Full Documentation",
+        "href": "README.md",
+        "target": "_self"
+      },
+      {
+        "text": "\u00f0\u009f\u008e\u00af Assess AI Maturity",
+        "href": "calculators/ai-maturity-assessment.html",
+        "target": "_self"
+      },
+      {
+        "text": "\u00f0\u009f\u0092\u00a1 Plan Workshop",
+        "href": "guides/01-business-envisioning-workshop-guide.md",
+        "target": "_self"
+      },
+      {
+        "text": "ROI Calculator",
+        "href": "calculators/roi-calculator.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Azure Cost Estimator",
+        "href": "calculators/azure-cost-estimator.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Effort Estimator",
+        "href": "calculators/effort-estimator.html",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Maturity Assessment",
+        "href": "calculators/ai-maturity-assessment.html",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Academy Framework",
+        "href": "calculators/ai-academy-framework.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Team Sizing Calculator",
+        "href": "calculators/team-sizer.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Value Analysis Chatbot",
+        "href": "calculators/value-analysis-chatbot.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Presales Discovery",
+        "href": "markdown-viewer.html?file=checklists/00-presales-discovery-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Mobilisation",
+        "href": "markdown-viewer.html?file=checklists/01-mobilisation-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Build Phase",
+        "href": "markdown-viewer.html?file=checklists/04-build-phase-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Deployment",
+        "href": "markdown-viewer.html?file=checklists/07-prepare-deploy-phase-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Use Case Business Change \u00e2\u00ad\u0090 NEW",
+        "href": "markdown-viewer.html?file=checklists/use-case-business-change-checklist.md",
+        "target": "_blank"
+      },
+      {
+        "text": "\u00f0\u009f\u0093\u00a5 Download Excel Version",
+        "href": "checklists/Use-Case-Business-Change-Checklist.xlsx",
+        "target": "_blank"
+      },
+      {
+        "text": "Business Case Template",
+        "href": "markdown-viewer.html?file=templates/02-business-case.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Use Case Template",
+        "href": "markdown-viewer.html?file=templates/14-business-envisioning-use-case-template.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Benefits Dependency Network \u00e2\u00ad\u0090",
+        "href": "markdown-viewer.html?file=templates/15-benefits-dependency-network.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Process Change Analysis \u00e2\u00ad\u0090",
+        "href": "markdown-viewer.html?file=templates/16-business-process-change-analysis.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Plan & Roadmap",
+        "href": "markdown-viewer.html?file=templates/04-project-plan-roadmap.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Risk Register",
+        "href": "markdown-viewer.html?file=templates/05-risk-register.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Read Full Case Study",
+        "href": "markdown-viewer.html?file=success-stories/case-study-healthcare-ai.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Read Full Case Study",
+        "href": "markdown-viewer.html?file=success-stories/case-study-financial-fraud-detection.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Learn the Method",
+        "href": "markdown-viewer.html?file=success-stories/five-whys-analysis-impact.md",
+        "target": "_blank"
+      },
+      {
+        "text": "View All Stories",
+        "href": "markdown-viewer.html?file=success-stories/README.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Business Envisioning Workshop",
+        "href": "guides/01-business-envisioning-workshop-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Maturity Assessment",
+        "href": "guides/99-ai-maturity-assessment-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Center of Excellence",
+        "href": "guides/91-ai-center-of-excellence-framework.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Academy Framework",
+        "href": "markdown-viewer.html?file=guides/92-ai-academy-framework.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Video Tutorial Creation",
+        "href": "guides/video-tutorial-creation-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Engagement Modes",
+        "href": "guides/92-engagement-modes-framework.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Story Points Estimation",
+        "href": "guides/94-story-points-estimation-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "AI Scaling Patterns",
+        "href": "guides/95-ai-scaling-patterns-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Model Risk Management",
+        "href": "guides/96-ai-model-risk-management-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Executive Coaching Guide",
+        "href": "guides/90-executive-coaching-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "3-Month Fast Track",
+        "href": "guides/93-3-month-fast-track-guide.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Executive Presentations",
+        "href": "presentations/",
+        "target": "_blank"
+      },
+      {
+        "text": "Agents Overview",
+        "href": "agents/README.md",
+        "target": "_blank"
+      },
+      {
+        "text": "Value Analysis Agent",
+        "href": "agents/value_analysis_agent.py",
+        "target": "_blank"
+      },
+      {
+        "text": "Methodology Phases",
+        "href": "agents/methodology_phases.py",
+        "target": "_blank"
+      },
+      {
+        "text": "\u00f0\u009f\u0093\u0096 View Video Creation Guide",
+        "href": "guides/video-tutorial-creation-guide.md",
+        "target": "_self"
+      },
+      {
+        "text": "Full Documentation",
+        "href": "README.md",
+        "target": "_self"
+      },
+      {
+        "text": "GitHub Repository",
+        "href": "https://github.com/andreaswasita/AI-Delivery-Methodology",
+        "target": "_self"
+      }
+    ],
+    "buttons": [],
+    "phases": [
+      {
+        "label": "Presales",
+        "number": "0",
+        "onclick": "showPhaseDetails(0)"
+      },
+      {
+        "label": "Mobilise",
+        "number": "1",
+        "onclick": "showPhaseDetails(1)"
+      },
+      {
+        "label": "Hackathons",
+        "number": "2",
+        "onclick": "showPhaseDetails(2)"
+      },
+      {
+        "label": "Platform",
+        "number": "3",
+        "onclick": "showPhaseDetails(3)"
+      },
+      {
+        "label": "Build",
+        "number": "4",
+        "onclick": "showPhaseDetails(4)"
+      },
+      {
+        "label": "Integrate",
+        "number": "5",
+        "onclick": "showPhaseDetails(5)"
+      },
+      {
+        "label": "Test",
+        "number": "6",
+        "onclick": "showPhaseDetails(6)"
+      },
+      {
+        "label": "Deploy",
+        "number": "7",
+        "onclick": "showPhaseDetails(7)"
+      },
+      {
+        "label": "Operate",
+        "number": "8",
+        "onclick": "showPhaseDetails(8)"
+      }
+    ],
+    "onclick_handlers": [
+      {
+        "tag": "button",
+        "onclick": "showTab('overview', event)",
+        "text": "\u00f0\u009f\u008f\u00a0 Overview"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('phases', event)",
+        "text": "\u00f0\u009f\u0093\u008a Phases"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('tools', event)",
+        "text": "\u00f0\u009f\u009b\u00a0\u00ef\u00b8\u008f Tools"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('success-stories', event)",
+        "text": "\u00e2\u00ad\u0090 Success Stories"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('resources', event)",
+        "text": "\u00f0\u009f\u0093\u009a Resources"
+      },
+      {
+        "tag": "button",
+        "onclick": "showTab('videos', event)",
+        "text": "\u00f0\u009f\u008e\u00a5 Videos"
+      },
+      {
+        "tag": "div",
+        "onclick": "showTab('phases')",
+        "text": "\u00f0\u009f\u0093\u008a8 Delivery PhasesStructure"
+      },
+      {
+        "tag": "div",
+        "onclick": "window.open('calculators/roi-calculator.html', '_blank')",
+        "text": "\u00f0\u009f\u0092\u00b0ROI CalculatorsQuantify va"
+      },
+      {
+        "tag": "div",
+        "onclick": "showTab('success-stories')",
+        "text": "\u00e2\u00ad\u0090Success StoriesReal case st"
+      },
+      {
+        "tag": "div",
+        "onclick": "showTab('tools')",
+        "text": "\u00f0\u009f\u009b\u00a0\u00ef\u00b8\u008fTools & TemplatesReady-"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(0)",
+        "text": "0Presales"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(1)",
+        "text": "1Mobilise"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(2)",
+        "text": "2Hackathons"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(3)",
+        "text": "3Platform"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(4)",
+        "text": "4Build"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(5)",
+        "text": "5Integrate"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(6)",
+        "text": "6Test"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(7)",
+        "text": "7Deploy"
+      },
+      {
+        "tag": "div",
+        "onclick": "showPhaseDetails(8)",
+        "text": "8Operate"
+      }
+    ]
+  },
+  "differences": [
+    {
+      "type": "count_mismatch",
+      "element": "phases",
+      "original": 8,
+      "fork": 9
+    },
+    {
+      "type": "phase_label_mismatch",
+      "index": 1,
+      "original": "Envisioning",
+      "fork": "Mobilise"
+    },
+    {
+      "type": "phase_label_mismatch",
+      "index": 6,
+      "original": "Deploy",
+      "fork": "Test"
+    },
+    {
+      "type": "phase_label_mismatch",
+      "index": 7,
+      "original": "Operate",
+      "fork": "Deploy"
+    },
+    {
+      "type": "phase_added",
+      "index": 8,
+      "fork": {
+        "label": "Operate",
+        "number": "8",
+        "onclick": "showPhaseDetails(8)"
+      }
+    }
+  ]
+}
