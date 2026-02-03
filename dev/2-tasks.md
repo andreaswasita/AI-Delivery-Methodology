@@ -54,26 +54,26 @@ Automated comparison between original and fork using `scripts/compare-pages.py`:
 
 #### Element Count Comparison
 
-| Element  | Original | Fork | Status |
-|----------|----------|------|--------|
-| Tabs     | 6        | 6    | ✅ Match |
-| Links    | 44       | 44   | ✅ Match |
-| Buttons  | 0        | 0    | ✅ Match |
-| Phases   | 8        | 9    | 🆕 Improvement |
+| Element | Original | Fork | Status         |
+| ------- | -------- | ---- | -------------- |
+| Tabs    | 6        | 6    | ✅ Match       |
+| Links   | 44       | 44   | ✅ Match       |
+| Buttons | 0        | 0    | ✅ Match       |
+| Phases  | 8        | 9    | 🆕 Improvement |
 
 #### Phase Label Comparison
 
-| # | Original | Fork | JSON Data | Verdict |
-|---|----------|------|-----------|---------|
-| 0 | Presales | Presales | "Presales & Discovery" | ✅ Match |
-| 1 | Envisioning | Mobilise | "Mobilisation" | ✅ Fork corrected |
-| 2 | Hackathons | Hackathons | "Hackathons & Proof of Value" | ✅ Match |
-| 3 | Platform | Platform | "Platform Setup" | ✅ Match |
-| 4 | Build | Build | "Build Phase" | ✅ Match |
-| 5 | Integrate | Integrate | "Integration & Testing" | ✅ Match |
-| 6 | Deploy | Test | "Test & Evaluate" | ✅ Fork corrected |
-| 7 | Operate | Deploy | "Prepare & Deploy" | ✅ Fork corrected |
-| 8 | *(missing)* | Operate | "Operate & Care" | 🆕 Fork added |
+| #   | Original    | Fork       | JSON Data                     | Verdict           |
+| --- | ----------- | ---------- | ----------------------------- | ----------------- |
+| 0   | Presales    | Presales   | "Presales & Discovery"        | ✅ Match          |
+| 1   | Envisioning | Mobilise   | "Mobilisation"                | ✅ Fork corrected |
+| 2   | Hackathons  | Hackathons | "Hackathons & Proof of Value" | ✅ Match          |
+| 3   | Platform    | Platform   | "Platform Setup"              | ✅ Match          |
+| 4   | Build       | Build      | "Build Phase"                 | ✅ Match          |
+| 5   | Integrate   | Integrate  | "Integration & Testing"       | ✅ Match          |
+| 6   | Deploy      | Test       | "Test & Evaluate"             | ✅ Fork corrected |
+| 7   | Operate     | Deploy     | "Prepare & Deploy"            | ✅ Fork corrected |
+| 8   | _(missing)_ | Operate    | "Operate & Care"              | 🆕 Fork added     |
 
 #### Key Findings
 
@@ -136,9 +136,9 @@ python -m http.server 8000
 ## Definition of Done
 
 - [x] All 6 phases complete
-- [x] No visual changes to the navigator (looks identical) - *verified via automated comparison*
+- [x] No visual changes to the navigator (looks identical) - _verified via automated comparison_
 - [x] All functionality works (tabs, phase selection, search)
-- [ ] Works on GitHub Pages - *local testing complete, GitHub Pages pending*
+- [ ] Works on GitHub Pages - _local testing complete, GitHub Pages pending_
 - [x] Maintainer documentation exists
 - [ ] PR approved and merged
 
@@ -149,14 +149,17 @@ python -m http.server 8000
 During code review, the following issues were identified and fixed:
 
 ### JavaScript ([navigator.js](../js/navigator.js))
+
 - ✅ Fixed: `event` parameter was undefined in `showTab()` - now explicitly passed
 - ✅ Fixed: Added ARIA state management (`aria-selected` attribute updates)
 
 ### HTML ([methodology-navigator.html](../methodology-navigator.html))
+
 - ✅ Fixed: Added `role="tablist"` and `role="tab"` for accessibility
 - ✅ Fixed: Added `aria-selected` attributes to tab buttons
 - ✅ Fixed: Added missing Phase 8 to timeline
 - ✅ Fixed: Corrected Phase 1 label from "Envisioning" to "Mobilise"
 
 ### CSS ([navigator.css](../css/navigator.css))
+
 - ✅ Fixed: Added `:focus-visible` styles for keyboard accessibility
