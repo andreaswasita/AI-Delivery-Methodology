@@ -820,43 +820,50 @@
                 name: "Presales & Discovery",
                 duration: "2-4 weeks",
                 team: "2-4 people",
-                description: "Initial assessment and opportunity qualification",
-                objectives: ["Understand business needs", "Assess AI readiness", "Define project scope", "Establish success criteria"],
-                deliverables: ["Discovery report", "Initial business case", "Project charter"],
+                description: "Initial assessment and opportunity qualification - qualify AI opportunities and deeply understand business requirements",
+                objectives: ["Understand business needs & strategic context", "Assess AI readiness & data availability", "Define project scope & use cases", "Establish success criteria & ROI", "Validate technical feasibility"],
+                deliverables: ["Opportunity Qualification Report", "Business Envisioning Workshop Output", "Business Requirements Document (BRD)", "Data Assessment Report", "Solution Architecture Document", "ML Approach Document", "Privacy & Compliance Assessment", "Initial Business Case", "Discovery Report"],
                 resources: {
                     checklist: "markdown-viewer.html?file=checklists/00-presales-discovery-checklist.md",
-                    guide: "markdown-viewer.html?file=guides/planning-execution-howto-guide.md"
+                    guide: "markdown-viewer.html?file=guides/phases/00-presales-discovery-activities.md",
+                    workshop: "markdown-viewer.html?file=guides/01-business-envisioning-workshop-guide.md",
+                    templates: "markdown-viewer.html?file=templates/11-presales-qualification.md",
+                    assessment: "calculators/ai-maturity-assessment.html"
                 }
             },
             {
                 number: 1,
-                name: "Business Envisioning",
-                duration: "1-2 weeks",
+                name: "Mobilisation",
+                duration: "2-3 weeks",
                 team: "5-8 people",
-                description: "Collaborative workshops to define AI vision and value proposition",
-                objectives: ["Align stakeholders", "Define success metrics", "Identify use cases", "Build business case"],
-                deliverables: ["Workshop outputs", "Value proposition", "ROI projection", "Roadmap"],
+                description: "Establish project foundation, governance, and team - set up for delivery success",
+                objectives: ["Secure executive sponsorship & governance", "Build & mobilize delivery team", "Define roles, responsibilities & RACI", "Set up Azure environment & DevOps", "Develop project plan & risk register", "Establish communication framework"],
+                deliverables: ["Approved Project Charter", "Approved Business Case", "RACI Matrix", "Detailed Project Plan & Roadmap", "Risk Register (18+ risks)", "Communication Plan", "Success Criteria & KPIs Dashboard", "Stakeholder Analysis", "Azure Environment (Dev/Test/UAT/Prod)", "DevOps pipelines"],
                 resources: {
                     checklist: "markdown-viewer.html?file=checklists/01-mobilisation-checklist.md",
-                    guide: "markdown-viewer.html?file=guides/01-business-envisioning-workshop-guide.md",
+                    guide: "markdown-viewer.html?file=guides/phases/01-mobilisation-complete-guide.md",
+                    charter: "markdown-viewer.html?file=templates/01-project-charter.md",
+                    businesscase: "markdown-viewer.html?file=templates/02-business-case.md",
+                    raci: "markdown-viewer.html?file=templates/03-raci-matrix.md",
                     calculator: "calculators/roi-calculator.html"
                 }
             },
             {
                 number: 2,
                 name: "Hackathons & Proof of Value",
-                duration: "2-4 weeks",
+                duration: "4-8 weeks",
                 team: "4-6 people",
-                description: "Rapid prototyping to validate feasibility and value",
-                objectives: ["Validate technical approach", "Demonstrate value", "Assess data quality", "Refine requirements"],
-                deliverables: ["Working prototype", "Feasibility report", "Data assessment", "Refined scope"],
+                description: "Rapid prototyping with high-velocity sprints to validate ML approach and build MVP",
+                objectives: ["Validate technical approach & ML feasibility", "Demonstrate business value with working prototype", "Assess data quality & model performance", "Refine requirements & architecture", "Build team velocity & momentum", "De-risk the delivery"],
+                deliverables: ["Working MVP prototype", "Trained ML models (registered)", "APIs for model serving", "Simple UI/demo", "Data pipelines (ingestion, prep, features)", "Technical documentation", "Test results & metrics", "Demo scenarios", "Lessons learned & backlog"],
                 resources: {
                     checklist: "markdown-viewer.html?file=checklists/02-hackathons-checklist.md",
-                    guide: "markdown-viewer.html?file=hackathons/README.md",
+                    guide: "markdown-viewer.html?file=guides/phases/02-hackathons-complete-guide.md",
                     evaluator: "hackathons/hackathon-evaluator.html",
                     setup: "markdown-viewer.html?file=hackathons/azure-dev-setup.md",
                     datasets: "markdown-viewer.html?file=hackathons/datasets.md",
-                    snippets: "markdown-viewer.html?file=hackathons/code-snippets/azure-openai-patterns.md"
+                    snippets: "markdown-viewer.html?file=hackathons/code-snippets/azure-openai-patterns.md",
+                    template: "markdown-viewer.html?file=templates/12-sprint-planning-template.md"
                 }
             },
             {
@@ -864,12 +871,17 @@
                 name: "Platform Setup",
                 duration: "2-6 weeks",
                 team: "3-5 people",
-                description: "Establish infrastructure, tools, and development environment",
-                objectives: ["Set up Azure environment", "Configure security", "Establish MLOps", "Set up monitoring"],
-                deliverables: ["Development environment", "CI/CD pipelines", "Governance framework"],
+                description: "Establish production-grade infrastructure, tools, MLOps foundation, and development environment",
+                objectives: ["Set up production Azure environment", "Configure security & compliance", "Establish MLOps & CI/CD pipelines", "Set up monitoring & observability", "Configure data platform", "Implement governance framework"],
+                deliverables: ["Production Azure environment", "MLOps platform (Azure ML, model registry, feature store)", "CI/CD pipelines", "Data platform (data lake, pipelines, quality)", "Monitoring & observability dashboards", "Security controls & compliance", "Backup & disaster recovery", "Infrastructure documentation & runbooks"],
                 resources: {
                     checklist: "markdown-viewer.html?file=checklists/03-setup-platform-checklist.md",
-                    deploy: "deploy-landing-zone.html"
+                    guide: "markdown-viewer.html?file=guides/phases/03-setup-platform-complete-guide.md",
+                    mlops: "markdown-viewer.html?file=guides/phases/03-mlops-devops-complete-guide.md",
+                    coe: "markdown-viewer.html?file=guides/91-ai-center-of-excellence-framework.md",
+                    scaling: "markdown-viewer.html?file=guides/95-ai-scaling-patterns-guide.md",
+                    deploy: "deploy-landing-zone.html",
+                    infrastructure: "markdown-viewer.html?file=infrastructure/README.md"
                 }
             },
             {
@@ -877,47 +889,69 @@
                 name: "Build Phase",
                 duration: "8-16 weeks",
                 team: "6-10 people",
-                description: "Develop, train, and optimize AI models",
-                objectives: ["Data engineering", "Model development", "Feature engineering", "Model optimization"],
-                deliverables: ["Trained models", "Documentation", "Test results", "Performance metrics"],
+                description: "Build production-ready solution with full features and enterprise-grade quality (typically 4-8 sprints)",
+                objectives: ["Data engineering & feature pipelines", "Model development & training", "API & integration development", "UI/UX implementation", "Security hardening & compliance", "Performance optimization", "Documentation & training materials"],
+                deliverables: ["Production-ready application", "Production ML models (trained, validated, registered)", "Data pipelines (production-grade)", "APIs (documented, secured)", "User interface (web/mobile, accessible)", "Integrations tested", "Security controls", "Monitoring & alerting", "User & technical documentation", "Training materials"],
                 resources: {
-                    checklist: "markdown-viewer.html?file=checklists/04-build-phase-checklist.md"
+                    checklist: "markdown-viewer.html?file=checklists/04-build-phase-checklist.md",
+                    guide: "markdown-viewer.html?file=guides/phases/04-build-phase-complete-guide.md",
+                    template: "markdown-viewer.html?file=templates/12-sprint-planning-template.md"
                 }
             },
             {
                 number: 5,
                 name: "Integration & Testing",
-                duration: "4-8 weeks",
+                duration: "2-4 weeks",
                 team: "6-8 people",
-                description: "Integrate AI with existing systems and conduct thorough testing",
-                objectives: ["System integration", "UAT", "Performance testing", "Security testing"],
-                deliverables: ["Integrated solution", "Test reports", "Bug fixes", "Documentation"],
+                description: "Integrate AI solution with enterprise ecosystem and validate end-to-end functionality",
+                objectives: ["System integration with enterprise systems", "API & database integration", "Authentication & SSO integration", "Integration testing & validation", "Data flow validation", "Performance & security testing", "Error handling & monitoring setup"],
+                deliverables: ["All system integrations complete", "Integration test results (>95% pass rate)", "Integration architecture documentation", "Integration specs & data mappings", "Integration monitoring dashboards", "Integration runbooks", "Integration sign-off"],
                 resources: {
-                    checklist: "markdown-viewer.html?file=checklists/06-test-evaluate-phase-checklist.md"
+                    checklist: "markdown-viewer.html?file=checklists/05-integrate-phase-checklist.md",
+                    guide: "markdown-viewer.html?file=guides/phases/05-integrate-phase-complete-guide.md"
                 }
             },
             {
                 number: 6,
-                name: "Prepare & Deploy",
-                duration: "2-4 weeks",
-                team: "5-8 people",
-                description: "Production deployment and go-live preparation",
-                objectives: ["Production deployment", "User training", "Change management", "Go-live support"],
-                deliverables: ["Production system", "Training materials", "Support plan", "Runbooks"],
+                name: "Test & Evaluate",
+                duration: "4-6 weeks",
+                team: "6-8 people",
+                description: "Comprehensive testing, quality assurance, model validation, and performance evaluation",
+                objectives: ["User Acceptance Testing (UAT)", "Functional & integration testing", "Performance & security testing", "Model validation (accuracy, fairness, explainability)", "Accessibility & usability testing", "Disaster recovery testing", "Go-live readiness assessment"],
+                deliverables: ["Comprehensive test plan & cases", "UAT results with sign-off", "Performance test results & benchmarks", "Security test results (penetration test)", "Model validation report (accuracy, fairness, explainability)", "Defect log with resolutions", "Test summary report", "Go-live readiness assessment", "QA sign-off"],
                 resources: {
-                    checklist: "markdown-viewer.html?file=checklists/07-prepare-deploy-phase-checklist.md"
+                    checklist: "markdown-viewer.html?file=checklists/06-test-evaluate-phase-checklist.md",
+                    guide: "markdown-viewer.html?file=guides/phases/06-test-evaluate-phase-complete-guide.md",
+                    modelcard: "markdown-viewer.html?file=templates/17-model-card-template.md",
+                    datasheet: "markdown-viewer.html?file=templates/18-dataset-datasheet-template.md",
+                    riskguide: "markdown-viewer.html?file=guides/96-ai-model-risk-management-guide.md"
                 }
             },
             {
                 number: 7,
+                name: "Prepare & Deploy",
+                duration: "2-4 weeks",
+                team: "5-8 people",
+                description: "Production deployment, training delivery, change management, and successful go-live",
+                objectives: ["Production deployment & cutover", "User & admin training delivery", "Change management & communication", "Support infrastructure setup", "Hypercare operations (30 days)", "Monitoring & issue triage"],
+                deliverables: ["Production deployment", "Deployment plan & runbook", "Cutover plan executed", "Training delivered (all users)", "Training materials (guides, videos, FAQs)", "User accounts provisioned", "Support infrastructure (helpdesk, ticketing)", "Hypercare plan", "Monitoring dashboards", "Go-live communication"],
+                resources: {
+                    checklist: "markdown-viewer.html?file=checklists/07-prepare-deploy-phase-checklist.md",
+                    guide: "markdown-viewer.html?file=guides/phases/07-prepare-deploy-phase-complete-guide.md"
+                }
+            },
+            {
+                number: 8,
                 name: "Operate & Care",
                 duration: "Ongoing",
                 team: "2-4 people",
-                description: "Continuous monitoring, optimization, and support",
-                objectives: ["Monitor performance", "Model retraining", "User support", "Continuous improvement"],
-                deliverables: ["Performance reports", "Updated models", "Support tickets resolved"],
+                description: "Continuous monitoring, optimization, model retraining, and ongoing support",
+                objectives: ["24/7 production monitoring", "Incident management per SLA", "Model performance tracking & retraining", "User support & adoption", "Continuous improvement & optimization", "Value realization tracking", "Security & compliance maintenance"],
+                deliverables: ["Operations dashboard (24/7 monitoring)", "Monthly performance reports", "Incident reports & RCA", "Model performance reports (accuracy, drift)", "Value realization report (ROI, cost savings)", "User adoption reports", "Continuous improvement backlog", "Quarterly business reviews"],
                 resources: {
-                    checklist: "markdown-viewer.html?file=checklists/08-operate-care-phase-checklist.md"
+                    checklist: "markdown-viewer.html?file=checklists/08-operate-care-phase-checklist.md",
+                    guide: "markdown-viewer.html?file=guides/phases/08-operate-care-phase-complete-guide.md",
+                    riskguide: "markdown-viewer.html?file=guides/96-ai-model-risk-management-guide.md"
                 }
             }
         ];
@@ -988,7 +1022,21 @@
                     <h3 style="margin-bottom: 15px;">📚 Resources</h3>
                     <div class="quick-links">
                         ${phase.resources.checklist ? `<a href="${phase.resources.checklist}" class="quick-link-btn">✅ Checklist</a>` : ''}
-                        ${phase.resources.guide ? `<a href="${phase.resources.guide}" class="quick-link-btn secondary">📖 Guide</a>` : ''}
+                        ${phase.resources.guide ? `<a href="${phase.resources.guide}" class="quick-link-btn secondary">📖 Complete Guide</a>` : ''}
+                        ${phase.resources.workshop ? `<a href="${phase.resources.workshop}" class="quick-link-btn secondary">🎯 Workshop Guide</a>` : ''}
+                        ${phase.resources.templates ? `<a href="${phase.resources.templates}" class="quick-link-btn secondary">📝 Templates</a>` : ''}
+                        ${phase.resources.template ? `<a href="${phase.resources.template}" class="quick-link-btn secondary">📝 Sprint Template</a>` : ''}
+                        ${phase.resources.charter ? `<a href="${phase.resources.charter}" class="quick-link-btn secondary">📜 Project Charter</a>` : ''}
+                        ${phase.resources.businesscase ? `<a href="${phase.resources.businesscase}" class="quick-link-btn secondary">💼 Business Case</a>` : ''}
+                        ${phase.resources.raci ? `<a href="${phase.resources.raci}" class="quick-link-btn secondary">👥 RACI Matrix</a>` : ''}
+                        ${phase.resources.mlops ? `<a href="${phase.resources.mlops}" class="quick-link-btn secondary">🔄 MLOps Guide</a>` : ''}
+                        ${phase.resources.coe ? `<a href="${phase.resources.coe}" class="quick-link-btn secondary">🏢 AI CoE Framework</a>` : ''}
+                        ${phase.resources.scaling ? `<a href="${phase.resources.scaling}" class="quick-link-btn secondary">📈 Scaling Patterns</a>` : ''}
+                        ${phase.resources.infrastructure ? `<a href="${phase.resources.infrastructure}" class="quick-link-btn secondary">🏗️ Infrastructure</a>` : ''}
+                        ${phase.resources.modelcard ? `<a href="${phase.resources.modelcard}" class="quick-link-btn secondary">🎴 Model Card</a>` : ''}
+                        ${phase.resources.datasheet ? `<a href="${phase.resources.datasheet}" class="quick-link-btn secondary">📋 Dataset Datasheet</a>` : ''}
+                        ${phase.resources.riskguide ? `<a href="${phase.resources.riskguide}" class="quick-link-btn secondary">⚠️ Risk Management</a>` : ''}
+                        ${phase.resources.assessment ? `<a href="${phase.resources.assessment}" class="quick-link-btn secondary">🎯 Maturity Assessment</a>` : ''}
                         ${phase.resources.calculator ? `<a href="${phase.resources.calculator}" class="quick-link-btn secondary">🧮 Calculator</a>` : ''}
                         ${phase.resources.deploy ? `<a href="${phase.resources.deploy}" class="quick-link-btn" style="background: #107C10;">🚀 Deploy to Azure</a>` : ''}
                         ${phase.resources.evaluator ? `<a href="${phase.resources.evaluator}" class="quick-link-btn secondary">🏆 Evaluator</a>` : ''}
