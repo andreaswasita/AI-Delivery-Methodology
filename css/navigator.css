@@ -55,6 +55,108 @@ header p {
     opacity: 0.9;
 }
 
+/* Global Search */
+.global-search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 25px auto 0;
+}
+
+.global-search-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1em;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--dark-gray);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.global-search-input:focus {
+    border-color: var(--accent-blue);
+    background: var(--white);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.global-search-input::placeholder {
+    color: #666;
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    max-height: 500px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.search-result-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--light-gray);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: var(--light-gray);
+}
+
+.search-result-item.no-results {
+    cursor: default;
+    color: #666;
+    text-align: center;
+}
+
+.search-result-item.no-results:hover {
+    background: transparent;
+}
+
+.search-result-category {
+    display: inline-block;
+    font-size: 0.75em;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--primary-blue);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-result-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+}
+
+.search-result-description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.search-result-title mark,
+.search-result-description mark {
+    background: #fff59d;
+    color: var(--dark-gray);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
 /* Navigation Tabs */
 .nav-tabs {
     display: flex;
