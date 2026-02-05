@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live PM Dashboard - GitHub Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0078d4;
+            --success-green: #0f7b0f;
+            --light-gray: #f3f2f1;
+            --dark-gray: #323130;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            color: #0277bd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #0277bd;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-box ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .info-box code {
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .input-group input {
+            flex: 1;
+            min-width: 300px;
+            padding: 12px;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        .input-group button {
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .input-group button:hover {
+            background: #005a9e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,120,212,0.3);
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 800px;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .quick-link-btn {
+            display: block;
+            padding: 15px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quick-link-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,120,212,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Live PM Dashboard</h1>
+            <p>Direct view of your GitHub Projects board with real-time updates</p>
+        </header>
+
+        <div class="info-box">
+            <strong>⚠️ Important: GitHub Security Restriction</strong>
+            <p style="margin-bottom: 10px;">GitHub blocks embedding in iframes for security reasons. Instead, this dashboard provides direct links to open your projects in new tabs/windows.</p>
+            <strong>🚀 Quick Access to Your GitHub Project:</strong>
+            <ol>
+                <li>Go to your GitHub repository: <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/projects" target="_blank">View Projects</a></li>
+                <li>Create a new Project (Classic or Beta) or open an existing one</li>
+                <li>Bookmark your project for quick access</li>
+                <li>Use the quick links below to manage your project</li>
+            </ol>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: var(--primary-blue); margin-bottom: 15px;">📊 Your Project Management Hub</h3>
+            <div class="quick-links">
+                <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/projects" target="_blank" class="quick-link-btn" style="background: linear-gradient(135deg, var(--primary-blue), #005a9e); color: white; font-size: 1.1em;">
+                    🚀 Open GitHub Projects
+                </a>
+                <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/issues" target="_blank" class="quick-link-btn">
+                    📋 View All Issues
+                </a>
+                <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/milestones" target="_blank" class="quick-link-btn">
+                    🎯 Manage Milestones/Sprints
+                </a>
+                <a href="https://github.com/andreaswasita/AI-Delivery-Methodology/issues/new" target="_blank" class="quick-link-btn">
+                    ➕ Create New Issue
+                </a>
+            </div>
+        </div>
+
+        <div style="background: var(--light-gray); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: var(--primary-blue); margin-bottom: 15px;">💡 Pro Tip: Set Up Your Project Board</h4>
+            <p style="margin-bottom: 10px;"><strong>For the best PM experience:</strong></p>
+            <ol style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Create Milestones as Sprints:</strong> Go to Milestones → New Milestone → Set 2-week duration</li>
+                <li><strong>Add Story Point Labels:</strong> Create labels like "SP: 1", "SP: 2", "SP: 3", "SP: 5", "SP: 8", "SP: 13"</li>
+                <li><strong>Priority Labels:</strong> Create "High", "Medium", "Low" priority labels</li>
+                <li><strong>Create Project Board:</strong> Projects tab → New Project → Choose "Board" template</li>
+                <li><strong>Link Issues to Sprints:</strong> Assign issues to milestones as you plan sprints</li>
+            </ol>
+        </div>
+        <!-- PM Resources & Guides -->
+        <div style="margin-top: 30px;">
+            <h3 style="color: var(--primary-blue); margin-bottom: 15px;">📚 PM Resources & Templates</h3>
+            <div class="quick-links">
+                <a href="markdown-viewer.html?file=templates/12-sprint-planning-template.md" target="_blank" class="quick-link-btn">
+                    📅 Sprint Planning Template
+                </a>
+                <a href="markdown-viewer.html?file=templates/05-risk-register.md" target="_blank" class="quick-link-btn">
+                    ⚠️ Risk Register
+                </a>
+                <a href="markdown-viewer.html?file=templates/06-communication-plan.md" target="_blank" class="quick-link-btn">
+                    📢 Communication Plan
+                </a>
+                <a href="markdown-viewer.html?file=templates/03-raci-matrix.md" target="_blank" class="quick-link-btn">
+                    👥 RACI Matrix
+                </a>
+                <a href="markdown-viewer.html?file=guides/94-story-points-estimation-guide.md" target="_blank" class="quick-link-btn">
+                    📐 Story Points Guide
+                </a>
+                <a href="markdown-viewer.html?file=checklists/01-mobilisation-checklist.md" target="_blank" class="quick-link-btn">
+                    ✅ Mobilisation Checklist
+                </a>
+            </div>
+        </div>
+
+        <!-- Microsoft Learn Resources -->
+        <div style="margin-top: 30px;">
+            <h3 style="color: var(--primary-blue); margin-bottom: 15px;">🎓 PM Learning Path (Microsoft Learn)</h3>
+            <div class="quick-links">
+                <a href="https://learn.microsoft.com/training/paths/intro-to-ai/" target="_blank" class="quick-link-btn">
+                    Week 1: AI Project Phases
+                </a>
+                <a href="https://learn.microsoft.com/training/paths/manage-project-lifecycle-github/" target="_blank" class="quick-link-btn">
+                    Week 2: Agile with GitHub
+                </a>
+                <a href="https://learn.microsoft.com/training/modules/communicate-effectively/" target="_blank" class="quick-link-btn">
+                    Week 3: Communication Skills
+                </a>
+                <a href="https://learn.microsoft.com/training/modules/introduction-to-github-copilot/" target="_blank" class="quick-link-btn">
+                    Week 4: AI Agent Mastery
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Removed iframe loading code since GitHub blocks embedding
+        // All links now open in new tabs for better experience
+    </script>
+</body>
+</html>

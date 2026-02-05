@@ -391,6 +391,168 @@
             margin-bottom: 15px;
         }
 
+        /* Role Filter */
+        .role-filter-container {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .role-filter-label {
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 1.1em;
+        }
+
+        .role-select {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            min-width: 200px;
+            font-weight: 500;
+        }
+
+        .role-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* PM Dashboard Styles */
+        .pm-workflow {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sprint-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .sprint-card {
+            border-left: 5px solid var(--primary-blue);
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .sprint-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(10px);
+        }
+
+        .sprint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .sprint-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .sprint-duration {
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .sprint-activities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .sprint-activity {
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            font-size: 0.9em;
+        }
+
+        .pm-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .pm-metric-card {
+            background: linear-gradient(135deg, var(--primary-blue), #005a9e);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .pm-metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .pm-metric-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .pm-quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .pm-quick-link {
+            padding: 15px;
+            background: white;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .pm-quick-link:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
         /* Footer */
         footer {
             background: var(--dark-gray);
@@ -495,11 +657,28 @@
         <nav class="nav-tabs">
             <button class="nav-tab active" onclick="showTab('overview')">🏠 Overview</button>
             <button class="nav-tab" onclick="showTab('phases')">📊 Phases</button>
+            <button class="nav-tab" id="pmDashboardTab" class="hidden" onclick="showTab('pm-dashboard')">📊 PM Dashboard</button>
             <button class="nav-tab" onclick="showTab('tools')">🛠️ Tools</button>
             <button class="nav-tab" onclick="showTab('success-stories')">⭐ Success Stories</button>
             <button class="nav-tab" onclick="showTab('resources')">📚 Resources</button>
             <button class="nav-tab" onclick="showTab('videos')">🎥 Videos</button>
         </nav>
+
+        <!-- Role Filter -->
+        <div class="role-filter-container">
+            <span class="role-filter-label">🎯 View As:</span>
+            <select class="role-select" id="roleFilter" onchange="applyRoleFilter()">
+                <option value="all">All Roles (Default)</option>
+                <option value="pm">📊 Project Manager</option>
+                <option value="executive">👔 Executive/Sponsor</option>
+                <option value="ba">💼 Business Analyst</option>
+                <option value="ds">🔬 Data Scientist</option>
+                <option value="dev">💻 Developer</option>
+                <option value="qa">🧪 QA Engineer</option>
+                <option value="arch">🏗️ Solution Architect</option>
+            </select>
+            <span id="roleDescription" style="color: #666; font-style: italic;"></span>
+        </div>
 
         <div class="content">
             <!-- Overview Tab -->
@@ -539,6 +718,237 @@
                         <a href="README.md" class="quick-link-btn">📖 Read Full Documentation</a>
                         <a href="calculators/ai-maturity-assessment.html" class="quick-link-btn secondary">🎯 Assess AI Maturity</a>
                         <a href="guides/01-business-envisioning-workshop-guide.md" class="quick-link-btn secondary">💡 Plan Workshop</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Dashboard Tab -->
+            <div id="pm-dashboard" class="tab-content">
+                <h2>📊 Project Manager Dashboard</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1em;"><span class="role-badge">PM-Optimized View</span> Your command center for agile AI delivery</p>
+                
+                <!-- Live Dashboard Link -->
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; text-align: center;">
+                    <h3 style="margin-bottom: 15px; color: white;">🔴 LIVE: Connect to Your GitHub Projects</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">View real-time sprint metrics, burndown charts, and team velocity from your actual GitHub Projects</p>
+                    <a href="pm-dashboard-live.html" target="_blank" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1.1em; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s;">
+                        🚀 Open Live PM Dashboard →
+                    </a>
+                    <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+                        ✓ Connect to any GitHub repository<br>
+                        ✓ Real-time sprint progress & velocity<br>
+                        ✓ Live burndown & velocity charts<br>
+                        ✓ Actual issue tracking & team metrics
+                    </div>
+                </div>
+
+                <!-- PM Quick Reference -->
+                <div class="pm-workflow">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 20px;">⚡ PM Quick Reference Guide</h3>
+                    
+                    <h4 style="margin-top: 25px;">🎯 Essential PM Templates</h4>
+                    <div class="pm-quick-links">
+                        <a href="markdown-viewer.html?file=templates/12-sprint-planning-template.md" target="_blank" class="pm-quick-link">📅 Sprint Planning</a>
+                        <a href="markdown-viewer.html?file=templates/05-risk-register.md" target="_blank" class="pm-quick-link">⚠️ Risk Register</a>
+                        <a href="markdown-viewer.html?file=templates/06-communication-plan.md" target="_blank" class="pm-quick-link">📢 Communication Plan</a>
+                        <a href="markdown-viewer.html?file=templates/03-raci-matrix.md" target="_blank" class="pm-quick-link">👥 RACI Matrix</a>
+                        <a href="markdown-viewer.html?file=templates/04-project-plan-roadmap.md" target="_blank" class="pm-quick-link">🗺️ Project Roadmap</a>
+                        <a href="markdown-viewer.html?file=templates/07-success-criteria-kpis.md" target="_blank" class="pm-quick-link">🎯 Success Criteria</a>
+                    </div>
+
+                    <h4 style="margin-top: 25px;">📊 PM Key Activities by Phase</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead>
+                            <tr style="background: var(--primary-blue); color: white;">
+                                <th style="padding: 12px; text-align: left;">Phase</th>
+                                <th style="padding: 12px; text-align: left;">Key PM Activities</th>
+                                <th style="padding: 12px; text-align: left;">Time Investment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: var(--light-gray);">
+                                <td style="padding: 12px; font-weight: 600;">Discovery</td>
+                                <td style="padding: 12px;">Stakeholder mapping, Initial risk assessment, Team charter</td>
+                                <td style="padding: 12px;">5-10 hrs/week</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; font-weight: 600;">Mobilization</td>
+                                <td style="padding: 12px;">Team onboarding, Sprint 0 setup, Governance framework</td>
+                                <td style="padding: 12px;">15-20 hrs/week</td>
+                            </tr>
+                            <tr style="background: var(--light-gray);">
+                                <td style="padding: 12px; font-weight: 600;">Hackathons</td>
+                                <td style="padding: 12px;">Sprint facilitation, Daily standups, Demo coordination</td>
+                                <td style="padding: 12px;">10-15 hrs/week</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; font-weight: 600;">Build</td>
+                                <td style="padding: 12px;">Velocity tracking, Burndown monitoring, Blocker removal</td>
+                                <td style="padding: 12px;">12-18 hrs/week</td>
+                            </tr>
+                            <tr style="background: var(--light-gray);">
+                                <td style="padding: 12px; font-weight: 600;">Deploy</td>
+                                <td style="padding: 12px;">Release planning, Go-live coordination, Hypercare setup</td>
+                                <td style="padding: 12px;">15-20 hrs/week</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; font-weight: 600;">Operate</td>
+                                <td style="padding: 12px;">Retrospectives, Value tracking, Team health</td>
+                                <td style="padding: 12px;">5-8 hrs/week</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="margin-top: 25px;">🤖 PM Agent Workflows</h4>
+                    <div style="background: var(--light-gray); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                        <p style="font-weight: 600; margin-bottom: 15px;">How PMs leverage AI agents to save 80% admin time:</p>
+                        <ul style="line-height: 1.8;">
+                            <li><strong>Monday AM (Sprint Planning):</strong> "@PMAgent create sprint plan for next 2 weeks" → Review & facilitate planning poker</li>
+                            <li><strong>Daily (Standup):</strong> "@PMAgent generate standup report from yesterday's commits" → Review blockers & update board</li>
+                            <li><strong>Wednesday (Mid-Sprint):</strong> "@PMAgent show velocity trend and forecast" → Identify risks early</li>
+                            <li><strong>Friday PM (Status Report):</strong> "@PMAgent create executive status report" → Add commentary & distribute</li>
+                            <li><strong>End of Sprint (Retrospective):</strong> "@RiskAgent analyze retro for patterns" → Drive continuous improvement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive PM Workflow Diagram -->
+                <div class="pm-workflow">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 20px;">🔄 Interactive PM Sprint-by-Sprint Workflow</h3>
+                    <p style="margin-bottom: 20px;">Your week-by-week guide through an AI delivery project (16-week timeline with AI agents)</p>
+
+                    <div class="sprint-timeline">
+                        <!-- Sprint 1 -->
+                        <div class="sprint-card" style="border-left-color: #667eea;">
+                            <div class="sprint-header">
+                                <span class="sprint-title">🚀 Sprint 1: Requirements Gathering</span>
+                                <span class="sprint-duration">Week 1-2</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Team setup, initial planning, stakeholder alignment</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ Project charter finalized</div>
+                                <div class="sprint-activity">✅ RACI matrix defined</div>
+                                <div class="sprint-activity">✅ Sprint 0 planning</div>
+                                <div class="sprint-activity">📊 BA Agent: Generate user stories</div>
+                                <div class="sprint-activity">📊 PM Agent: Create backlog</div>
+                                <div class="sprint-activity">🎯 48 story points delivered</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 12 hours (agent-generated stories & backlog)
+                            </div>
+                        </div>
+
+                        <!-- Sprint 2-5 -->
+                        <div class="sprint-card" style="border-left-color: var(--success-green);">
+                            <div class="sprint-header">
+                                <span class="sprint-title">⚙️ Sprints 2-5: Development</span>
+                                <span class="sprint-duration">Week 3-10</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Velocity tracking, daily standups, blocker removal</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ Daily standups (15 min)</div>
+                                <div class="sprint-activity">✅ Sprint reviews every 2 weeks</div>
+                                <div class="sprint-activity">✅ Velocity tracking (real-time)</div>
+                                <div class="sprint-activity">📊 Dev Agent: 55% faster coding</div>
+                                <div class="sprint-activity">📊 PM Agent: Auto-generate burndown</div>
+                                <div class="sprint-activity">🎯 52 points/sprint (consistent)</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e8f5e9; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 48 hours over 4 sprints (automated tracking & reports)
+                            </div>
+                        </div>
+
+                        <!-- Sprint 6-7 -->
+                        <div class="sprint-card" style="border-left-color: var(--warning-yellow);">
+                            <div class="sprint-header">
+                                <span class="sprint-title">🧪 Sprints 6-7: Testing & Integration</span>
+                                <span class="sprint-duration">Week 11-14</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Quality gates, UAT coordination, defect tracking</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ UAT planning & execution</div>
+                                <div class="sprint-activity">✅ Defect triage meetings</div>
+                                <div class="sprint-activity">✅ Integration testing oversight</div>
+                                <div class="sprint-activity">📊 Test Agent: 500 test cases generated</div>
+                                <div class="sprint-activity">📊 PM Agent: Defect dashboards</div>
+                                <div class="sprint-activity">🎯 45 points delivered, 3 defects only</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #fff9e6; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 20 hours (automated test reporting & tracking)
+                            </div>
+                        </div>
+
+                        <!-- Sprint 8 -->
+                        <div class="sprint-card" style="border-left-color: var(--primary-blue);">
+                            <div class="sprint-header">
+                                <span class="sprint-title">🚀 Sprint 8: Deployment & Hypercare</span>
+                                <span class="sprint-duration">Week 15-16</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Go-live coordination, incident management, retrospective</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ Deployment checklist validation</div>
+                                <div class="sprint-activity">✅ Go-live war room coordination</div>
+                                <div class="sprint-activity">✅ Sprint & project retrospective</div>
+                                <div class="sprint-activity">📊 DevOps Agent: CI/CD automation</div>
+                                <div class="sprint-activity">📊 PM Agent: Lessons learned report</div>
+                                <div class="sprint-activity">🎯 Zero critical defects Week 1</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 16 hours (automated deployment docs & reporting)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Impact -->
+                    <div style="background: linear-gradient(135deg, var(--primary-blue), #005a9e); color: white; padding: 30px; border-radius: 12px; margin-top: 30px; text-align: center;">
+                        <h3 style="margin-bottom: 15px;">💪 Total PM Impact Over 16 Weeks</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">96 Hours</div>
+                                <div>Total Time Saved</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">33% Faster</div>
+                                <div>Delivery (24 → 16 weeks)</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">+50%</div>
+                                <div>Sprint Predictability</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">90%</div>
+                                <div>Goal Achievement Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PM Resources -->
+                <div class="resources-grid" style="margin-top: 30px;">
+                    <div class="resource-card">
+                        <h3><span class="resource-icon">📘</span> PM Guides</h3>
+                        <ul>
+                            <li><a href="markdown-viewer.html?file=guides/94-story-points-estimation-guide.md" target="_blank">Story Points Estimation</a></li>
+                            <li><a href="markdown-viewer.html?file=guides/93-3-month-fast-track-guide.md" target="_blank">3-Month Fast Track</a></li>
+                            <li><a href="markdown-viewer.html?file=guides/92-engagement-modes-framework.md" target="_blank">Engagement Modes</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3><span class="resource-icon">✅</span> PM Checklists</h3>
+                        <ul>
+                            <li><a href="markdown-viewer.html?file=checklists/01-mobilisation-checklist.md" target="_blank">Mobilisation Checklist</a></li>
+                            <li><a href="markdown-viewer.html?file=checklists/04-build-phase-checklist.md" target="_blank">Build Phase Checklist</a></li>
+                            <li><a href="markdown-viewer.html?file=checklists/07-prepare-deploy-phase-checklist.md" target="_blank">Deployment Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3><span class="resource-icon">🎓</span> PM Learning Path</h3>
+                        <ul>
+                            <li><strong>Week 1:</strong> <a href="https://learn.microsoft.com/training/paths/intro-to-ai/" target="_blank">Understand AI project phases</a></li>
+                            <li><strong>Week 2:</strong> <a href="https://learn.microsoft.com/training/paths/manage-project-lifecycle-github/" target="_blank">Master sprint structure & agile with GitHub</a></li>
+                            <li><strong>Week 3:</strong> <a href="https://learn.microsoft.com/training/modules/communicate-effectively/" target="_blank">Stakeholder & communication skills</a></li>
+                            <li><strong>Week 4:</strong> <a href="https://learn.microsoft.com/training/modules/introduction-to-github-copilot/" target="_blank">AI agent mastery & automation with Copilot</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -693,6 +1103,246 @@
                         <div style="margin-top: 15px;">
                             <a href="markdown-viewer.html?file=success-stories/README.md" class="quick-link-btn secondary" target="_blank">View All Stories</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PM Dashboard Tab -->
+            <div id="pm-dashboard" class="tab-content">
+                <h2>📊 Project Manager Dashboard</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1em;"><span class="role-badge">PM-Optimized View</span> Your command center for agile AI delivery</p>
+
+                <!-- PM Quick Metrics -->
+                <div class="pm-metrics-grid">
+                    <div class="pm-metric-card">
+                        <div class="pm-metric-label">Time Saved with PM Agent</div>
+                        <div class="pm-metric-value">80%</div>
+                        <div class="pm-metric-label">24 hrs → 6 hrs/sprint on admin</div>
+                    </div>
+                    <div class="pm-metric-card" style="background: linear-gradient(135deg, var(--success-green), #0b5a0b);">
+                        <div class="pm-metric-label">Sprint Velocity Boost</div>
+                        <div class="pm-metric-value">+32%</div>
+                        <div class="pm-metric-label">38 → 50 story points/sprint</div>
+                    </div>
+                    <div class="pm-metric-card" style="background: linear-gradient(135deg, var(--accent-blue), #2ba5b0);">
+                        <div class="pm-metric-label">Sprint Predictability</div>
+                        <div class="pm-metric-value">90%</div>
+                        <div class="pm-metric-label">Up from 60% goal achievement</div>
+                    </div>
+                    <div class="pm-metric-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <div class="pm-metric-label">Defect Reduction</div>
+                        <div class="pm-metric-value">-70%</div>
+                        <div class="pm-metric-label">150 → 45 defects per project</div>
+                    </div>
+                </div>
+
+                <!-- PM Quick Reference -->
+                <div class="pm-workflow">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 20px;">⚡ PM Quick Reference Guide</h3>
+                    
+                    <h4 style="margin-top: 25px;">🎯 Essential PM Templates</h4>
+                    <div class="pm-quick-links">
+                        <a href="markdown-viewer.html?file=templates/12-sprint-planning-template.md" target="_blank" class="pm-quick-link">📅 Sprint Planning</a>
+                        <a href="markdown-viewer.html?file=templates/05-risk-register.md" target="_blank" class="pm-quick-link">⚠️ Risk Register</a>
+                        <a href="markdown-viewer.html?file=templates/06-communication-plan.md" target="_blank" class="pm-quick-link">📢 Communication Plan</a>
+                        <a href="markdown-viewer.html?file=templates/03-raci-matrix.md" target="_blank" class="pm-quick-link">👥 RACI Matrix</a>
+                        <a href="markdown-viewer.html?file=templates/04-project-plan-roadmap.md" target="_blank" class="pm-quick-link">🗺️ Project Roadmap</a>
+                        <a href="markdown-viewer.html?file=templates/07-success-criteria-kpis.md" target="_blank" class="pm-quick-link">🎯 Success Criteria</a>
+                    </div>
+
+                    <h4 style="margin-top: 25px;">📊 PM Key Activities by Phase</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                        <thead>
+                            <tr style="background: var(--primary-blue); color: white;">
+                                <th style="padding: 12px; text-align: left;">Phase</th>
+                                <th style="padding: 12px; text-align: left;">Key PM Activities</th>
+                                <th style="padding: 12px; text-align: left;">Time Investment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: var(--light-gray);">
+                                <td style="padding: 12px; font-weight: 600;">Discovery</td>
+                                <td style="padding: 12px;">Stakeholder mapping, Initial risk assessment, Team charter</td>
+                                <td style="padding: 12px;">5-10 hrs/week</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; font-weight: 600;">Mobilization</td>
+                                <td style="padding: 12px;">Team onboarding, Sprint 0 setup, Governance framework</td>
+                                <td style="padding: 12px;">15-20 hrs/week</td>
+                            </tr>
+                            <tr style="background: var(--light-gray);">
+                                <td style="padding: 12px; font-weight: 600;">Hackathons</td>
+                                <td style="padding: 12px;">Sprint facilitation, Daily standups, Demo coordination</td>
+                                <td style="padding: 12px;">10-15 hrs/week</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; font-weight: 600;">Build</td>
+                                <td style="padding: 12px;">Velocity tracking, Burndown monitoring, Blocker removal</td>
+                                <td style="padding: 12px;">12-18 hrs/week</td>
+                            </tr>
+                            <tr style="background: var(--light-gray);">
+                                <td style="padding: 12px; font-weight: 600;">Deploy</td>
+                                <td style="padding: 12px;">Release planning, Go-live coordination, Hypercare setup</td>
+                                <td style="padding: 12px;">15-20 hrs/week</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px; font-weight: 600;">Operate</td>
+                                <td style="padding: 12px;">Retrospectives, Value tracking, Team health</td>
+                                <td style="padding: 12px;">5-8 hrs/week</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 style="margin-top: 25px;">🤖 PM Agent Workflows</h4>
+                    <div style="background: var(--light-gray); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                        <p style="font-weight: 600; margin-bottom: 15px;">How PMs leverage AI agents to save 80% admin time:</p>
+                        <ul style="line-height: 1.8;">
+                            <li><strong>Monday AM (Sprint Planning):</strong> "@PMAgent create sprint plan for next 2 weeks" → Review & facilitate planning poker</li>
+                            <li><strong>Daily (Standup):</strong> "@PMAgent generate standup report from yesterday's commits" → Review blockers & update board</li>
+                            <li><strong>Wednesday (Mid-Sprint):</strong> "@PMAgent show velocity trend and forecast" → Identify risks early</li>
+                            <li><strong>Friday PM (Status Report):</strong> "@PMAgent create executive status report" → Add commentary & distribute</li>
+                            <li><strong>End of Sprint (Retrospective):</strong> "@RiskAgent analyze retro for patterns" → Drive continuous improvement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive PM Workflow Diagram -->
+                <div class="pm-workflow">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 20px;">🔄 Interactive PM Sprint-by-Sprint Workflow</h3>
+                    <p style="margin-bottom: 20px;">Your week-by-week guide through an AI delivery project (16-week timeline with AI agents)</p>
+
+                    <div class="sprint-timeline">
+                        <!-- Sprint 1 -->
+                        <div class="sprint-card" style="border-left-color: #667eea;">
+                            <div class="sprint-header">
+                                <span class="sprint-title">🚀 Sprint 1: Requirements Gathering</span>
+                                <span class="sprint-duration">Week 1-2</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Team setup, initial planning, stakeholder alignment</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ Project charter finalized</div>
+                                <div class="sprint-activity">✅ RACI matrix defined</div>
+                                <div class="sprint-activity">✅ Sprint 0 planning</div>
+                                <div class="sprint-activity">📊 BA Agent: Generate user stories</div>
+                                <div class="sprint-activity">📊 PM Agent: Create backlog</div>
+                                <div class="sprint-activity">🎯 48 story points delivered</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 12 hours (agent-generated stories & backlog)
+                            </div>
+                        </div>
+
+                        <!-- Sprint 2-5 -->
+                        <div class="sprint-card" style="border-left-color: var(--success-green);">
+                            <div class="sprint-header">
+                                <span class="sprint-title">⚙️ Sprints 2-5: Development</span>
+                                <span class="sprint-duration">Week 3-10</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Velocity tracking, daily standups, blocker removal</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ Daily standups (15 min)</div>
+                                <div class="sprint-activity">✅ Sprint reviews every 2 weeks</div>
+                                <div class="sprint-activity">✅ Velocity tracking (real-time)</div>
+                                <div class="sprint-activity">📊 Dev Agent: 55% faster coding</div>
+                                <div class="sprint-activity">📊 PM Agent: Auto-generate burndown</div>
+                                <div class="sprint-activity">🎯 52 points/sprint (consistent)</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e8f5e9; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 48 hours over 4 sprints (automated tracking & reports)
+                            </div>
+                        </div>
+
+                        <!-- Sprint 6-7 -->
+                        <div class="sprint-card" style="border-left-color: var(--warning-yellow);">
+                            <div class="sprint-header">
+                                <span class="sprint-title">🧪 Sprints 6-7: Testing & Integration</span>
+                                <span class="sprint-duration">Week 11-14</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Quality gates, UAT coordination, defect tracking</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ UAT planning & execution</div>
+                                <div class="sprint-activity">✅ Defect triage meetings</div>
+                                <div class="sprint-activity">✅ Integration testing oversight</div>
+                                <div class="sprint-activity">📊 Test Agent: 500 test cases generated</div>
+                                <div class="sprint-activity">📊 PM Agent: Defect dashboards</div>
+                                <div class="sprint-activity">🎯 45 points delivered, 3 defects only</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #fff9e6; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 20 hours (automated test reporting & tracking)
+                            </div>
+                        </div>
+
+                        <!-- Sprint 8 -->
+                        <div class="sprint-card" style="border-left-color: var(--primary-blue);">
+                            <div class="sprint-header">
+                                <span class="sprint-title">🚀 Sprint 8: Deployment & Hypercare</span>
+                                <span class="sprint-duration">Week 15-16</span>
+                            </div>
+                            <p style="margin-bottom: 15px;"><strong>PM Focus:</strong> Go-live coordination, incident management, retrospective</p>
+                            <div class="sprint-activities">
+                                <div class="sprint-activity">✅ Deployment checklist validation</div>
+                                <div class="sprint-activity">✅ Go-live war room coordination</div>
+                                <div class="sprint-activity">✅ Sprint & project retrospective</div>
+                                <div class="sprint-activity">📊 DevOps Agent: CI/CD automation</div>
+                                <div class="sprint-activity">📊 PM Agent: Lessons learned report</div>
+                                <div class="sprint-activity">🎯 Zero critical defects Week 1</div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 6px;">
+                                <strong>PM Time Saved:</strong> 16 hours (automated deployment docs & reporting)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Impact -->
+                    <div style="background: linear-gradient(135deg, var(--primary-blue), #005a9e); color: white; padding: 30px; border-radius: 12px; margin-top: 30px; text-align: center;">
+                        <h3 style="margin-bottom: 15px;">💪 Total PM Impact Over 16 Weeks</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">96 Hours</div>
+                                <div>Total Time Saved</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">33% Faster</div>
+                                <div>Delivery (24 → 16 weeks)</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">+50%</div>
+                                <div>Sprint Predictability</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2em; font-weight: 700;">90%</div>
+                                <div>Goal Achievement Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PM Resources -->
+                <div class="resources-grid" style="margin-top: 30px;">
+                    <div class="resource-card">
+                        <h3><span class="resource-icon">📘</span> PM Guides</h3>
+                        <ul>
+                            <li><a href="markdown-viewer.html?file=guides/94-story-points-estimation-guide.md" target="_blank">Story Points Estimation</a></li>
+                            <li><a href="markdown-viewer.html?file=guides/93-3-month-fast-track-guide.md" target="_blank">3-Month Fast Track</a></li>
+                            <li><a href="markdown-viewer.html?file=guides/92-engagement-modes-framework.md" target="_blank">Engagement Modes</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3><span class="resource-icon">✅</span> PM Checklists</h3>
+                        <ul>
+                            <li><a href="markdown-viewer.html?file=checklists/01-mobilisation-checklist.md" target="_blank">Mobilisation Checklist</a></li>
+                            <li><a href="markdown-viewer.html?file=checklists/04-build-phase-checklist.md" target="_blank">Build Phase Checklist</a></li>
+                            <li><a href="markdown-viewer.html?file=checklists/07-prepare-deploy-phase-checklist.md" target="_blank">Deployment Checklist</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-card">
+                        <h3><span class="resource-icon">🎓</span> PM Learning Path</h3>
+                        <ul>
+                            <li><strong>Week 1:</strong> <a href="https://learn.microsoft.com/training/paths/intro-to-ai/" target="_blank">Understand AI project phases</a></li>
+                            <li><strong>Week 2:</strong> <a href="https://learn.microsoft.com/training/paths/manage-project-lifecycle-github/" target="_blank">Master sprint structure & agile with GitHub</a></li>
+                            <li><strong>Week 3:</strong> <a href="https://learn.microsoft.com/training/modules/communicate-effectively/" target="_blank">Stakeholder & communication skills</a></li>
+                            <li><strong>Week 4:</strong> <a href="https://learn.microsoft.com/training/modules/introduction-to-github-copilot/" target="_blank">AI agent mastery & automation with Copilot</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -977,6 +1627,67 @@
             if (tabName === 'phases') {
                 showPhaseDetails(0);
             }
+        }
+
+        // Role-based filtering
+        function applyRoleFilter() {
+            const roleSelect = document.getElementById('role-select');
+            const selectedRole = roleSelect.value;
+            const pmDashboardTab = document.getElementById('pmDashboardTab');
+            const pmDashboard = document.getElementById('pm-dashboard');
+            const roleDescription = document.getElementById('role-description');
+
+            // Update role description
+            roleDescription.textContent = getRoleDescription(selectedRole);
+
+            // Show/hide PM Dashboard tab based on role
+            if (selectedRole === 'pm') {
+                pmDashboardTab.classList.remove('hidden');
+                // Auto-switch to PM Dashboard
+                const tabs = document.querySelectorAll('.tab-content');
+                tabs.forEach(tab => tab.classList.remove('active'));
+                pmDashboard.classList.add('active');
+                
+                // Update active nav tab
+                const navTabs = document.querySelectorAll('.nav-tab');
+                navTabs.forEach(tab => tab.classList.remove('active'));
+                pmDashboardTab.classList.add('active');
+            } else {
+                pmDashboardTab.classList.add('hidden');
+                // If currently on PM Dashboard, switch to overview
+                if (pmDashboard.classList.contains('active')) {
+                    const tabs = document.querySelectorAll('.tab-content');
+                    tabs.forEach(tab => tab.classList.remove('active'));
+                    document.getElementById('overview').classList.add('active');
+                    
+                    const navTabs = document.querySelectorAll('.nav-tab');
+                    navTabs.forEach(tab => tab.classList.remove('active'));
+                    document.querySelector('.nav-tab').classList.add('active');
+                }
+            }
+
+            // TODO: Future enhancement - filter other content by role
+            // filterResourcesByRole(selectedRole);
+        }
+
+        function getRoleDescription(role) {
+            const descriptions = {
+                'all': 'Full methodology access for all roles',
+                'pm': 'Optimized for Project Managers: Sprint planning, velocity tracking, stakeholder management',
+                'executive': 'Executive summary: Business value, ROI, strategic outcomes',
+                'ba': 'Business Analyst view: Requirements, user stories, process mapping',
+                'ds': 'Data Scientist focus: Model development, evaluation, MLOps',
+                'dev': 'Developer essentials: Technical architecture, coding standards, DevOps',
+                'qa': 'QA Engineer perspective: Testing strategies, quality gates, automation',
+                'arch': 'Architect lens: System design, security, scalability, governance'
+            };
+            return descriptions[role] || descriptions['all'];
+        }
+
+        function filterResourcesByRole(role) {
+            // Future enhancement: Filter resources, templates, and guides by role
+            // Example: Show only PM-relevant templates when PM role is selected
+            console.log('Filtering resources for role:', role);
         }
 
         // Show phase details
