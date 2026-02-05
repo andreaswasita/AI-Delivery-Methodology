@@ -672,3 +672,334 @@ footer a:hover {
     background: linear-gradient(135deg, #005a9e, var(--primary-blue));
     transform: scale(1.05);
 }
+
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Mobile devices (phones, portrait tablets) */
+@media only screen and (max-width: 768px) {
+    /* Body & Container */
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 8px;
+    }
+
+    /* Header */
+    header {
+        padding: 20px 15px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+        margin-bottom: 8px;
+    }
+
+    header p {
+        font-size: 0.9em;
+    }
+
+    /* Global Search */
+    .global-search-container {
+        margin: 15px auto 0;
+    }
+
+    .global-search-input {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+
+    /* Navigation Tabs - Horizontal Scroll */
+    .nav-tabs {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding: 0 5px;
+    }
+
+    .nav-tab {
+        display: inline-block;
+        padding: 12px 16px;
+        font-size: 0.85em;
+        min-width: auto;
+        flex-shrink: 0;
+    }
+
+    /* Role Filter */
+    .role-filter-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .role-filter-label {
+        font-size: 0.9em;
+    }
+
+    .role-select {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+
+    .role-description {
+        font-size: 0.85em;
+        text-align: center;
+    }
+
+    /* Content */
+    .content {
+        padding: 20px 15px;
+    }
+
+    /* Overview Grid - Stack on mobile */
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .overview-card {
+        padding: 20px;
+    }
+
+    .overview-icon {
+        font-size: 2em;
+    }
+
+    /* Phase Timeline - Horizontal Scroll */
+    .phase-timeline {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 20px 5px;
+        display: flex;
+        gap: 0;
+    }
+
+    .phase-item {
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+
+    .phase-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2em;
+        line-height: 50px;
+    }
+
+    .phase-label {
+        font-size: 0.8em;
+    }
+
+    /* Phase Details */
+    .phase-details {
+        padding: 20px 15px;
+    }
+
+    .phase-details h3 {
+        font-size: 1.3em;
+    }
+
+    /* Resources Grid - Stack on mobile */
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .resource-card {
+        padding: 20px 15px;
+    }
+
+    .resource-card h3 {
+        font-size: 1.1em;
+    }
+
+    .resource-icon {
+        font-size: 1.5em;
+    }
+
+    /* Quick Links */
+    .quick-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quick-link-btn {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 0.95em;
+    }
+
+    /* Lists */
+    .resource-card ul {
+        font-size: 0.9em;
+    }
+
+    .resource-card li {
+        margin: 8px 0;
+    }
+
+    /* Footer */
+    footer {
+        padding: 20px 15px;
+        font-size: 0.85em;
+    }
+
+    /* PM Dashboard specific mobile styles */
+    #pm-dashboard h2 {
+        font-size: 1.5em;
+    }
+
+    #pm-dashboard .quick-link-btn {
+        font-size: 1em !important;
+        padding: 15px 25px !important;
+    }
+
+    /* Touch-friendly hover states (disable on mobile) */
+    .overview-card:hover,
+    .resource-card:hover,
+    .phase-item:hover {
+        transform: none;
+    }
+
+    /* Search Results - Full width on mobile */
+    .search-results {
+        left: -10px;
+        right: -10px;
+        max-height: 300px;
+    }
+
+    .search-result-item {
+        padding: 12px 15px;
+    }
+
+    /* Improve tap targets */
+    a, button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+/* Tablets (portrait) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .overview-grid,
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content {
+        padding: 30px 25px;
+    }
+
+    .nav-tab {
+        padding: 14px 18px;
+        font-size: 0.9em;
+    }
+}
+
+/* Small phones (320px-480px) */
+@media only screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.3em;
+    }
+
+    header p {
+        font-size: 0.85em;
+    }
+
+    .nav-tab {
+        padding: 10px 12px;
+        font-size: 0.8em;
+    }
+
+    .phase-circle {
+        width: 45px;
+        height: 45px;
+        font-size: 1em;
+        line-height: 45px;
+    }
+
+    .phase-label {
+        font-size: 0.75em;
+    }
+
+    .quick-link-btn {
+        padding: 12px 16px;
+        font-size: 0.9em;
+    }
+
+    .resource-card {
+        padding: 15px 12px;
+    }
+
+    .resource-card h3 {
+        font-size: 1em;
+    }
+
+    .resource-card ul {
+        font-size: 0.85em;
+    }
+}
+
+/* Landscape orientation optimizations */
+@media only screen and (max-height: 600px) and (orientation: landscape) {
+    header {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.3em;
+        margin-bottom: 5px;
+    }
+
+    header p {
+        font-size: 0.85em;
+    }
+
+    .global-search-container {
+        margin: 10px auto 0;
+    }
+
+    .content {
+        padding: 15px;
+    }
+}
+
+/* High DPI screens (Retina displays) */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi) {
+    /* Ensure crisp rendering on high DPI screens */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    /* Future enhancement: Add dark mode styles */
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
